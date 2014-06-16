@@ -1,0 +1,287 @@
+Einleitung:
+
+	- höhere Energieauflösung als bei anderen detektoren
+	- gamma spektroskopie
+
+	- WW gamma/Materie
+	- Aufbau
+	- Diskussion der Kenngrößen (Auflösungsvemögen, spektrale Empfindlichkeit)
+	- elektronische Beschaltung
+
+	- Energieeichung 
+	- Nachweisempfindlichkeit
+	- Spektren unbekannter Strahler auswerten
+
+WW Gamma/Materie:
+
+	Hier wichtig:
+	- innerer Photoeffekt
+	- Compton- Effekt
+	- Paarbildung
+
+	=> Intensität des gamma strahls nimmt ab (Quanten/(t*A))
+
+	- Abhängigkeit (Schichtdicke, Elektronen/Volumeneinheit, Wirkungsquerschnitt sigma)
+	- Wikrungsquerschnitt: 
+		Wahrscheinlichkeit des Eintritts einer WW
+
+	- Wahrscheinlichkeit fürs Eintreten einer WW:
+		dW = n F dx sigma/F = n sigma dx
+	- Bei N0 Quanten/t 
+		dN = N0 n sigma dx
+
+	Für endliche Schichtdicke D:
+		int_N0^ND dN/N = int_0^D n sigma dx
+	oder
+		N(D) = N0 e^(-n sigma D)
+
+	Es haben bei der Schichtdicke D also
+		N0(1-e^(-n sigma D))
+	WW stattgefunden
+
+	Extinktionskoeffizient µ = n sigma = z NL rho sigma / A
+	Der Reziproke wert ist gleich der mittleren Reichweite x(bar) der Quanten in Materie
+	NL loschmidtsche Zahl (NA für ideale Gase)(2.68x10^25 1/m^3)
+	Dieses Modell beschreibt die Realität nur eingeschränkt
+
+Photo Effekt:
+
+	- WW mit Hüllenelektron
+	- Impulserhaltung => K-Schale
+	- E_gamma > E_Bindung
+	- E_kin = E_gamma - E_Bindung
+	- auslöschung des gamma Quants
+	- gamma + atom -> Atom+ + e-
+	- Abgabe von charakteristischer Röntgenstrahlung beim "runterfallen" in untere Schalen (z<25 diskrete ELektronen, E_auger = E_K - 2*E_L)
+	- Energie bleibt im Absorber (???)
+	- sigma_photo ~ z^alpha E^delta, da punktförmige annahme und isolierte Elektronen nicht hinreichend gut. Berücksichtigung der Ladungsdichteverteilung ist notwendig.
+	4 < alpha < 5, delta ca. -3.5 bei natürlichen strahlern. sinkt bis auf -1 bei höheren Energien
+	- unstetige Kanten bei E_photo = E_schale
+	- ab L-Kante feinstrukturaufspaltung wegen spin und bahndrehimpuls
+
+Compton Effekt:
+
+	- Näherung: WW des gamma quants mit freiem punktförmigen Elektron
+	- sigma_com ~ Z
+	- unelastische Streuung des gamma quants an ruhendem Elektron => änderung der Bewegungsrichtung
+	- gamme + e- -> gamma' + e-, E_gamma > E_gamma'
+	- h nu + m_0 c^2 = h nu' + m_0 c^2 / sqrt(1-v^2/c^2)
+	- h nu /c = h nu' /c cos(psi_gamma) + m_0 nu cos(psi_e) /sqrt(1-v^2/c^2)
+	0 = h nu' / c sin(psi_gamma) - m_0 nu sin(psi_e) / sqrt(1-v^2/c^2)
+
+	=> E_gamma' = E_gamma / (1 + epsilon(1-cos(psi_gamma))), epsilon = E_gamma / (m_0 c^2)
+	=> E_elektron = E_gamma - E_gamma' = E_gamma epsilon(1-cos(psi_gamma)) / (1 + epsilon(1-cos(psi_gamma)))
+	=> E_elektron,max = E_gamma 2*epsilon/ (1+2*espilon) < E_gamma
+
+	- unerwünschte Erscheinung bei gamma Spektroskopie, da nicht die Gesamte Energie des Gamma quants abgegeben werden kann und nur ein variierender Bruchteil am Detektor ankommt
+	- nicht isotrope Streuung
+	- Je Stärker die Energie des Quants, umso größer wird der Anteil der Streuung in Vorwärtsrichtung
+
+	- sigma_Co sehr kompliziert, fällt monoton mit zunehmender Quantenenergie bei E_gamma >> m_0 c^2 ca. 1/E_gamma
+	- bei kleinen Energien ist epsilon << 1
+	- Dabei geht sigma_Co in sigma_Tho (Thomsonscher Streuquerschnitt, rückstoßfreier Compton effekt, grenzfall hoher Frequenzen, näherung hertzscher Dipol) über
+	- sigma_Tho = 8/3 pi r_e^2
+	- Bei epsilon = 1 und h nu = 511 keV sinkt der differentielle Wirkungsquerschnitt von 1 auf ca 0.6 bei 0.2MeV und steigt wieder auf 1.5 bei ca 0.35MeV zur Compton Kante
+
+Paarbildung:
+
+	- E_gamma > 2 m_0 c^2
+	- wandelt sich in e- und e+
+	- Stoßpartner zur Impulsaufnahme muss vorhanden sein (Kernnähe, Elektronnähe)
+	- Beim Kern ist die Rückstoßenergie nur sehr klein E = p^2/2M
+	- Beim Elektron muss E_gamma < 4 m_0 c^2 sein, Rückstoßenergie groß
+	=> gamma + Atom -> e+ + e- + Atom und gamma + e- -> e+ + e- + e-
+	- Restenergie verteilt sich auf Elektron und Positron mit gleichen Betrag aufgrund der Symmetrie
+	- sehr aufwändige Berechnung des Wirkungsquerschnitts sigma_paar
+	- Abhängigkeit von Ort und Abschirmung
+	- verschwindende Abschirmung (Kernnähe)
+	=> sigma_paar = alpha r_e^2 z^2 (28/9 ln(2*epsilon) - 218/27), alpha = feinstrukturkonstante 1/137
+	- 20 < epsilon < 50, 10 < E_gamma < 25 MeV
+	- vollständige Abschirmung (außerhalb der Elektronenhülle)
+	=> sigma_paar = alpha r_e^2 z^2 (28/9 ln(183/z^(1/3)) - 2/27)
+	- Energieunabhängigkeit bei vollständiger Abschirmung
+	- E_gamma > 500 MeV
+
+	- Energie steigt an, wird linear (doppel log)
+
+	- Es tritt eine Energie von E_gamma im Spektrometer auf, wenn e+ und e- auftreffen, geht eins oder beide verloren, wird die Energie um den Betrag kleiner, aufgrund von Bremsstrahlung können die Linien zu niedrigeren Energien verbreitert werden.
+
+Aufbau und Wirkungsweise:
+
+	- Halbleiter Detektor
+	- Höhere Auflösung als bei Szintillations Detektoren
+	- Halbleiterdiode mit n und p dotierter seite
+	- Durch Spannungsanlegung in Sperrichtung wird der Potentialunterschied erhöht
+	- Gamma quanten erzeugen Elektronen-Loch Paare
+	- Geschieht dies in der Sperrschicht, kann ein Ladungsimpuls gemessen werde 
+	=> möglichst große Sperrschicht durch Spannung und dotierung
+	=> extrem unsymmetrische Dotierung
+	=> Temperatur des Detektormaterials herbasetzten um thermische Elektronen zu verhindern (T ca. 77K), bandlücke ist etwa 0.67 eV bei Ge
+	=> U ca 5-6 kV
+	=> Sperrschicht etwa 3cm mit epsilon_Ge = 16, n_A = 10^10/cm^3 (U_D < 1V)
+
+	- koaxialer Ge Detektor (Zylinder)
+	- Li atome an der äußeren Oberfläche zur besseren Leitfähigkeit (N-dotiert, anschluss Pluspol der Sperrspannung)
+	- Innen Gold Bedampfung als starke p Dotierung
+	- Ausgedehnte Sperrschicht
+	- Al-Blech ummantelt (+Li) zur mindestnachweisgrenze (40-50 keV)
+
+Eigenschaften eines Halbleiter-Detektors:
+
+	- Kenngröße: energetisches Auflösungsvermögen des Detektors, Halbwertsbreite Delta E_1/2 der Impulshöhenverteilung bei monochromatischer gamma strahlung (unterscheidung von zwei Spektrallinien)
+	- Breite der Impulshöhenverteilung, Strahlungsdetektor durch Zahln n der bei der Absorption des gamma Quants freigesetzten Elektron-Loch-Paare
+	- Erzeugung der Elektronen-Loch-Paare nur unter Beteiligung von Phononen, da 2.9 eV als Mittelwerte obwohl 0.67 eV als Lücke
+	- E_gamma wird statistisch auf Phononen und Elektron-Loch-Paare verteilt
+
+	- Standardabweichung bei unkorrelation: sqrt(n) (Poisson)
+	- Fluktuation der Ladungsträgererzeugung wird durch Fluktuation der Phononenanregung kompensiert
+	=> sigma kleiner durch den Fano-Faktor F<1
+	=> sigma = sqrt(F n) = sqrt( F E_gamma / E_El)
+	- F ca. 0.1 in Germanium 
+	=> da n groß: Poission Verteilung -> Gauss Verteilung
+
+	=> Delta E_1/2 = sqrt(8 ln(2)) sigma_E = sqrt(8 ln(2)) sigma E_gamma / n ca. 2.35 sqrt(0.1 E_gamma E_El)
+
+	=> für E_gamma ca 500 keV: Delta E_1/2 = 895 eV >> alles andere was auf Ionisation beruht (Proprtionalitätszählroh 20-30 eV, Szintiallationszähler 500-600 bei F = 1)
+
+	- Zudem kommt noch Rauschen durch Leckstrom(Saugspannung, Restverunreinigungen, Eigenleitung, Verstärker, unvollständige Ladungssammlung durch Feldinhomogenität)
+	- Unkorreliert => Halbwertsbreiten der Verteilungsfunktionen fließen Quadratisch in die Gesamthalbwertsbreite ein
+
+	- Leckstrom durch abkühlunf reduzieren (n_i um den Faktor 10^-17 bei T=300K auf T = 77K) 
+	- Durch Saugspannung steigt der Leckstrom überproporional
+	- Hohe Saugspannung verringert Feldinhomogenität
+	=> Kompromiss
+	- Verstärkerrauschen steigt mit Detektorkapazität, Detektorspannung > Depletionsspannung (Verarmungsspannung), kühlung der ersten Stufe des Verstärkers
+
+	- Kenngröße: Energieabhängigkeit der Nachweiswahrscheinlichkeit (Effizienz)
+	- Es ist nur interessant wenn die GESAMTE Gamma-Energie an den Detektor abgegeben wird
+	=> unter 3 MeV nur der Photoeffekt geeignet, die WS fällt aber hier mit steigender Quantenenergie
+	- Compton Effekt variiert zu stark mit dem Streuwinkel
+	- Beispiel: E_gamma = 700 keV hat µ = 0.0006 1/cm
+	=> bei 3.9 cm länge werden 2% der Quanten absorbiert :O
+	- Messungen der Effizienz zeigen jedoch, dass die Nachweiswahrscheinlichkeit deutlich höher liegt :) und die Energieabhängigkeit wesentlich geringer ist
+
+Elektronische Beschaltung eines Germanium Detektors:
+	
+	- Ziel: Erzeugungs eines Spannungsimpulses proportional zur gamma Energie und speicherung nach Höhe und Häufigkeit
+	- durch elektrische Integration wird ein dazu proportionaler Spannungspegel erzeugt
+	=> kapazitiv rückgekoppelter Operationsverstärker (Wer hätte das gedacht ;) )
+	(- In einem Kondensator wird Ladung aufsummiert. Der Operationsverstärker bekommt die Angelegte Spannung und die Spannung, welche durch das Halbleiterelement geht. Dieser Verstärkt die Differenz der Signale und speichert sie im Kondensator)
+	
+	- U_A = - 1/C_K int_0^t_s I(t) dt, t_s = Pulslänge der Sammelzeit
+	- Ausgangspotential U_A steigt stufenförmig an wenn mehrere Quanten nach einandern in den Detektor eintreten, wodurch eine Impulshöhenanalyse unmöglich wird. (Integration über viele Peaks). Daher ist ein Entladewiederstand für den Integrationskondensator C_K vonnöten um den Kondensator nach jedem Quantennachweis zu entladen
+	
+	- U_A wird zu klein gemessen wenn nicht R_K C_K >> t_s
+	- Der Widerstand verschlechtert das Gesamtrauschen durch das Eigenrauschen
+	- Daher besser eine optoelektronische Rückkopplung
+	(LED macht sperrschicht leitend und Ladung auf dem Kondensator kann abfließen)
+	
+	- Nach dem Vorverstärker bringt ein Hauptverstärker das Signal auf 0 bis 10 V
+	- Analog-Digital konverter hat einen genormten Messbereich von 10V (hohe Linearität und Langzeitstabilität)
+	- nicht zu große Bandbreite wählen, da Rauschspannung ~ Bandbreite
+	- zu kleine Bandbreite lässt nicht alle wesentlichen Komponenten des Eingangssignals durch.
+	- Steile Anstiegsflanke des Vorverstärkers
+	- Hoch und Tiefpassfilter im Hauptverstärker durch RC Glieder gewährleisten möglichst viel Linearität
+	
+	- Vorverstärker und Hauptverstärker sind über ein RC Glied miteinander gekoppelt, da Gleichspannungsdriften und Offsetspannung so nicht mitverstärkt werden
+	- Die Energieauflösung wird dadurch geschwächt, da die Koppelglieder von R_K C_K und R_1 C_1 nicht gleich sind und eine Unterschwingung erzeugt wird
+	
+	- Pole-Zero-Kompensation (geeigneter Bruchteil des Gleichspannungsanteils wird vom Vorverstärker unter Umgehung des RC-Gliedes auf den Hauptverstärker gegeben um das Unterschwingen zu unterdrücken)
+	- Base Line Restorer (Am Ausgang des Haupterstärkers verschiebt sich die Nullinie in den Negativen Bereich, Dies wird verhindert)
+	- Pile-Up-Rejection (Es kann zu einem starken Peak (Pile Up) der nicht kompensiert werden kann, es wird der ADC gesperrt)
+	- Dadurch evtl Totzeit Korrekturen, wenn die absolute Teilchenzahl von Interesse ist
+	- Vielkanal-Analysator erzeugt Histogramm
+	- (Kondensator wird mit dem Puls aufgeladen, konstanter Strom entlädt den Kondensator)
+	- Bis U_c = 0 geht die Entladung vor sich, gemessen mit Nulldetektor
+	- ist U_c = 0 wird das Gatter geschlossen, binärzahlen werden aufaddiert, Impulshöhenspektrum
+	- Während der Entladung sperrt der ADC den Eingang für die Zeit (Totzeit)
+	- t_c = t_0 + K/nu
+	- t_c ca. 40 µs
+
+	- Sicherheitsschalter NICHT UMLEGEN!!!!!
+	- Hochspannung nur sehr langsam ändern! RC_Glied macht das schon
+
+Das von einem Ge-Detektor erzeugte Spektrum eines monochrmatischen gamma-Strahlers
+
+	- Photopeak, Compton Kontinuum mit compton Kante, Rückstreupeak
+	-Photopeak ist der eigentlich interessante Peak für die Quantenenergiemessung, da die Breite ein Maß für die Energieauflösung ist
+
+Bestimmung der Energie und der Aktivität einer gamma Quelle
+
+	- Anfangs kann einem Peak nur eine Kanalnummer zugeordnet werden
+	- Erst mit einer Eichmessung kann genau bestimmt werden, dafür Probe mit bekanntem Spektrum, dabei möglichst linienreiches Spektrum
+	- Zuordnung Kanalnummer und Energieeigenwert über eine lineare Ausgleichsrechnung
+
+	- Die Effizienz Q des Detektors muss bekannt sein! Auch durch Eichmessung
+
+	- Gamma Strahler mit bekannter Aktivität A
+
+	- Zählergebnis ist SUmme der Impulse im Peak
+	=> Z = Omega A W Q /(4 pi), Omega Raumwinkel unter dem der Strahler von Detektor "gesehen" wird, W die Emissionswahrscheinlichkeit einer Energie bei einem Mehrlinienstrahler
+	- Z ist aus dem Energiespektrum abzulesen, A aus Herstellerangaben (errechnen aus Halbwertszeit), W aus einschlägigen Tabellen, Omega für a>=10cm 
+
+	- Radius????
+
+	- E_gamma > 150 keV: zusammenhang zwischen Q und E_gamma durch eine Potenzfunktion
+	- Unterhalb dominiert absorption durch die Alumnium Schutzhaube und die N-dotierte Oberflächenschicht
+	- < 40 keV kann nicht mehr nachgewiesen werden
+
+	- Nach einer Eichung lassen sich aus den Spektren unbekannter Strahler deren Energie und Aktivität bestimmen und evtl. die aktiven Nuklide ermitteln
+
+	- dies wird auch getan
+
+Messprogramm:
+
+	a) Eu^152 zur Energieeichung und bestimmung der Effizienz (Europium)
+
+	b) Cs^137 zur Bestimmung von Detektoreigenschaften (Caesium)
+
+	c) Positronenstrahler Na^22
+
+	d) Aktivitätenbestimmung Sb^125 und Ba^133
+
+	e) FeMnNb_2O_6 oder Uransalz oder Ra226 um die aktiven Nuklide zu identifizieren
+
+Auswertung der Ergebnisse:
+
+	8a) 
+	In der Tabelle sind die Energien des Europiums sowie die Emissionswahrscheinlichkeiten
+	lineare Ausgleichsrechnung zur Energieeichung 
+	Aktivität am Tag der Herstellung (5007 Tage) (noch 2046.55 Bq)
+	Abstand a messen!!!
+	Z entnehmen!!!
+	Effizienz Berechnen!!!
+	Q(E_gamme),E_gamma Wertepaare eine Potenzfunktion bestimmen die den Zusammenhang wiedergibt!!!
+
+	8b) 
+
+	Energie E_gamma aus dem Spektrum entnehmen
+	Halbwertsbreite entnehmen
+	Zehntelwertsbreite des Photopeaks entnehmen
+	Lagen der Compton Kante und der Rückstreupeaks
+	Inhalte des Photopeaks und Compton Kontinuum 
+	gemessene Werte von Compton Kante und Rückstreupeak mit theorie vergleichen
+	Zehntelwertsbreite mit halbwertsbreite vergleichen vom photopeak: X_1/10 = 1.823 X_1/2
+	Gemessene Halbwertsbreite mit theorie vergleichen
+	Absorptionswahrscheinlichkeit der Cs_137 Quanten errechnen
+	Inhalte der Photo-Linie und des Compton Kontinuums vergleichen
+	Anpassen durch Funktion (etwas unterhalb der Compton Kante Messen)
+
+	8c)
+
+	Na^22 zerfällt mit positivem Beta Zerfall zu Ne^22, welcher in einem angeregtem Zustand verbleibt
+	Nach etwa 4ps geht er in den Grundzustand über und entsendet einen Gamma Quant, welcher nachgewiesen wird
+	Auch das Positron zerstrahlt und diese Vernichtungsquanten können nachgewiesen werden
+	Verhältnis gemessener Vernichtungsstrahl und Übergangsstrahl soll gemessen und erklärt werden
+	Auch Elektroneneinfang als Konkurrenzzerfall, daher nur 90.4% Emissionswahrscheinlichkeit
+
+	8d)
+
+	Intensität der Spektrallinien bestimmen und daraus Aktivität der Probe bestimmen.
+	Emissionswahrscheinlichkeiten aus den Tabellen.
+
+	8e)
+
+	natürliche radioaktive Strahler mit langlebiegen Nuklieden oder Glieder aus Zerfallsreihen min mindestens einem langlebigen Nuklid.
+	Es soll versucht werden mithilfe der gemessenen Linienenergien herauszufinden, welche Glieder zu welcher Zerfallsreige in der Probe enthalten sind.
+	Wichtigste in Tabelle 4 und 5
