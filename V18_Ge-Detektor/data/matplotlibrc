@@ -1,7 +1,10 @@
-text.usetex           : True
 font.family           : serif
-figure.figsize        : 5,5
+figure.figsize        : 6,6
 figure.dpi            : 72
 lines.markeredgewidth : 0
 savefig.bbox          : tight
-pgf.texsystem         : lualatex
+
+# Nice plots
+#text.usetex           : True
+#pgf.texsystem         : lualatex
+#text.latex.preamble   : \usepackage{siunitx}

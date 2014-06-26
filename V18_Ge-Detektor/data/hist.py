@@ -32,7 +32,7 @@ plt.setp([a.get_xticklabels() for a in compare_figure.axes[:-1]],
 plt.setp([a.get_yticklabels() for a in compare_figure.axes],
          visible=False)
 
-plt.savefig("01_comp.png")
+plt.savefig("01_comp.pdf")
 plt.clf()
 
 # Remove Background and select maxima
@@ -40,28 +40,8 @@ bkg_time = 68580.0
 eur_time = 2964.0
 maxima_figure = plt.subplot(111)
 europium_distribution -= (eur_time / bkg_time) * background_dist
-# europium_distribution = europium_distribution[400:1100]
-# europium_distribution_orig = europium_distribution.copy()
-#
-# # try to use peakdetect.py
-# plt.plot(peakdetect._smooth(europium_distribution))
-# plt.plot(europium_distribution_orig - 1000)
-# peaks = peakdetect.peakdetect(peakdetect._smooth(europium_distribution,
-#                                                  31)[10:],
-#                               lookahead=15,
-#                               delta=20)
-#
-# ax = plt.axes()
-# for peak in peaks[0]:
-#     print peak, europium_distribution[peak[0]]
-#     ax.arrow(peak[0], peak[1] + 100,
-#              0, -50,
-#              head_length=0.1)
-#
-# maxima = peaks[0]
 
-# own try to detect the peaks
-
+# Own try to detect the peaks
 n_max = 8
 
 maxima = np.zeros((n_max, 2))
@@ -71,8 +51,6 @@ for index in np.arange(0, n_max):
     max_val_index = np.argmax(no_max_dist[200:]) + 200
     maxima[index] = max_val_index, europium_distribution[max_val_index]
     no_max_dist[max_val_index - 10:max_val_index + 10] = 0
-    # for ignore_index in np.arange(max_val_index - 10, max_val_index + 10):
-    #     no_max_dist[ignore_index] = 0
 
 ax = plt.axes()
 for maximum in maxima:
@@ -102,17 +80,28 @@ eu_spectrum = np.array(
      [1408.0, 0.210]]
 )
 
-calibration_function = lambda x, m, b: m*x + b
-coeff, var = cfit(calibration_function, eu_spectrum[:, 0], maxima[:, 0])
-print(coeff, var)
+channels = np.sort(maxima[:, 0])
+print(channels)
 
+calibration_function = lambda x, m, b: m*x + b
+coeff, var = cfit(calibration_function, channels, eu_spectrum[:, 0])
 
 calibration_fig = plt.subplot(111)
-energies = np.arange(0, 1500)
-plt.errorbar(eu_spectrum[:, 0], maxima[:, 0], 0, 0, fmt="ro")
-plt.plot(energies, calibration_function(energies, coeff[0], coeff[1]))
-# plt.xlabel("$E\,[\si{\kilo \electronvolt}]$")
-plt.ylabel("Kanal")
+x_values = np.arange(0, 4500)
+plt.plot(x_values, calibration_function(x_values, coeff[0], coeff[1]))
+plt.errorbar(channels, eu_spectrum[:, 0], 0, 0, "ko")
+plt.xlabel("Kanal")
+plt.ylabel("Energie")
 plt.title("Kalibrationsfit")
 plt.savefig("03_calibration.pdf")
+plt.clf()
+
+calibrated_eu_fig = plt.subplot(111)
+plt.plot(calibration_function(x_values, coeff[0], coeff[1]),
+         europium_distribution[:len(x_values)])
+plt.xlabel("Energie")
+plt.ylabel("Anz. Ereignisse")
+plt.ylim(0, 4500)
+plt.xlim(0, 1500)
+plt.savefig("04_eudist_calibrated.pdf")
 plt.clf()
