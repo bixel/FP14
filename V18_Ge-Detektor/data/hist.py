@@ -1,9 +1,9 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3.3
 
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
-import peakdetect
+# import peakdetect
 
 
 def sigma_delta(pos, arr):
@@ -74,8 +74,6 @@ for index in np.arange(0, n_max):
     # for ignore_index in np.arange(max_val_index - 10, max_val_index + 10):
     #     no_max_dist[ignore_index] = 0
 
-print(maxima)
-
 ax = plt.axes()
 for maximum in maxima:
     ax.arrow(maximum[0], maximum[1] + 150,
@@ -83,6 +81,38 @@ for maximum in maxima:
              head_width=20.0, head_length=20.0)
 plt.plot(x_values, europium_distribution[:len(x_values)])
 plt.plot(x_values, (eur_time / bkg_time) * background_dist[:len(x_values)])
+plt.title("Detektion der Maxima")
+plt.xlabel("Kanal")
+plt.ylabel("Anz. Ereignisse")
 plt.ylim(0, 4200)
 
 plt.savefig("02_maxima.pdf")
+plt.clf()
+
+# Calibrate Energy
+# literatur Eu152-Spectrum with [Energy[keV], Probability]
+eu_spectrum = np.array(
+    [[121.78, 0.286],
+     [244.7,  0.76],
+     [344.3,  0.265],
+     [778.9,  0.129],
+     [964.08, 0.146],
+     [1085.9, 0.102],
+     [1112.1, 0.136],
+     [1408.0, 0.210]]
+)
+
+calibration_function = lambda x, m, b: m*x + b
+coeff, var = cfit(calibration_function, eu_spectrum[:, 0], maxima[:, 0])
+print(coeff, var)
+
+
+calibration_fig = plt.subplot(111)
+energies = np.arange(0, 1500)
+plt.errorbar(eu_spectrum[:, 0], maxima[:, 0], 0, 0, fmt="ro")
+plt.plot(energies, calibration_function(energies, coeff[0], coeff[1]))
+# plt.xlabel("$E\,[\si{\kilo \electronvolt}]$")
+plt.ylabel("Kanal")
+plt.title("Kalibrationsfit")
+plt.savefig("03_calibration.pdf")
+plt.clf()
