@@ -1,6 +1,0 @@
-pgf.texsystem: lualatex
-savefig.bbox: tight
-font.family: serif
-figure.figsize: 8,8
-figure.dpi: 72
-lines.markeredgewidth: 0
