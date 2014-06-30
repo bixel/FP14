@@ -1,0 +1,96 @@
+\section{Transmissionselektronenmikroskopie} % (fold)
+\label{sec:elektron_spektroskopie}
+
+\begin{wrapfigure}{r}{7cm}
+	\centering
+	\includegraphics[width = 7cm]{Abbildungen/TEM.png}
+	\caption[Schematische Aufbau eines Transmissionselektronenmikroskop]{Schematische Aufbau eines Transmissionselektronenmikroskop. (Quelle Benutzerhandbuch, JEOL Ldt.)}
+	\label{TEM}
+\end{wrapfigure}
+
+Das Prinzip der Bildentstehung bei einem Transmissionselektronenmikroskop ist dem eines Lichtmikroskops sehr ähnlich:
+Ein Elektronenstrahl erzeugt eine Projektion der Probe im Realraum.
+Im Vergleich zum Lichtmikroskop werden jedoch keine optischen, sondern elektrische Linsen verwendet.
+Ein schematischer Aufbau der verwendeten Mikroskope ist in Abbildung \ref{TEM} dargestellt.
+Die dazugehörigen technischen Daten können der Tabelle (Tabellen ref hier einfügen) entnommen werden.
+
+Als Elektronenquelle wird je nach Mikroskop entweder ein LaB$_6$-Kris\-tall (Lanthanhexaborid) oder eine Feldemissionsquelle genutzt.
+Bei der Feldemission ($\Delta$E = \unit[0.6-1.2]{eV}) ist ein schmaleres Energiespektrum der Elektronen zu beobachten als beim LaB$_6$-Kris\-tall ($\Delta$E = \unit[1.5-3]{eV}), wodurch ein höheres Aufl"osungsverm"ogen ermöglicht wird.
+Nach dem Beschleunigen der Elektronen werden diese mithilfe von elektronischen Linsen auf die Probe und anschließend auf die Kamera fokusiert.
+Diese Linsen bestehen aus Spulen, die Magnetfelder erzeugen.
+Die bewegten Elektronen werden von diesen durch die Lorentz-Kraft abgelenkt ohne deren Energie zu beeinflussen (Nur die senkrechte Komponente der Kraft wirkt auf die Elektronen).
+Um Wechselwirkungen der Elektronen mit anderer Materie als der Probe zu verhindern, ist das gesamte Spulensystem evakuiert.
+Abschließend wird das Transmissionsbild im Objektsystem vergrößert und auf einem Fluoreszensschirm abgebildet oder direkt mit einer Kamera oder einem Photofilm detektiert.
+Abhängig von der Intensität erzeugt dieser ein Bild mit Graustufen.
+Je dunkler der Bildpunkt ist, umso größer ist die Intensität.
+
+Damit auf dem Bild Strukturen erkennbar werden, muss ein ausgeprägter Amplitudenkontrast zwischen Probe und Lösung vorhanden sein.
+Eine Schwierigkeit tritt dabei bereits dadurch auf, dass die Elektronendosis bei biologischen Proben nicht zu groß gewählt werden darf um Schäden zu vermeiden.
+Der Amplitudenkontrast kann sowohl durch Teilchen- als auch durch Welleneigenschaften der Elektronen entstehen. 
+Bei der Betrachtung als Teilchen ergiebt sich der Kontrast durch Streueffekte.
+Dafür dürfen die Ordnungszahlen der Elemente in der Probe und der Lösung nicht in derselben Größenordnung sein.
+Dies ist auf die Wechselwirkung der Elektronen an Atomkernen zurückzuführen.
+An großen Kernen werden diese vermehrt elastisch gestreut, während an kleinen Kernen bevorzugt inelastische Streuung auftritt.
+Erstere führt zu einer Richtungsänderung der Elektronen.
+Mithilfe einer Blende werden diese aus dem Elektronenstrahl entfernt.
+
+Die inelastisch gestreuten Elektronen tragen jedoch nur zum Rauschen im Bild bei und tragen keine Information.
+Der Amplitudenkontrast kommt dementsprechend durch die geringere Intensität bei Elementen größerer Ordnungszahl zustande.
+
+Befinden sich nun die Elemente der Probe und der Lösung in derselben Größenordnung, werden an beiden etwa gleich viele Elektronen elastisch gestreut und es ist kein Kontrast zu erkennen.
+Wird das Elektron jedoch als Welle betrachtet kann eine andere Art von Kontrast hergeleitet werden.
+Wenn elektromagnetische Wellen mit Materie wechselwirken, kommt es zu einer Phasenverschiebung.
+Dies führt wiederum zu Interferenzerscheinungen zwischen den gebeugten und den ungebeugten Elektronen und wird als Phasenkontrast bezeichnet.
+Die Verschiebung wird durch die Gleichung \eqref{Phase}(Quelle) beschrieben.
+
+\begin{equation}
+	\gamma(k,\Delta z) = \frac{\pi}{2}\left(\lambda^3 C_s k^4 - 2\lambda \Delta z k^2\right). \label{Phase}
+\end{equation}
+
+Dabei ist $\Delta z$ der Unterfokus, $C_s$ die mikroskopspezifische sph"arischen Aberationskonstante, $\lambda$ die Wellenl"ange der Elektronen und $k$ der reziproke Abstand vom Bildmittelpunkt im Frequenzraum.
+Biologische Proben führen nur zu einem schwachen Phasenkontrast, weshalb der Unterfokus relativ hoch gewählt werden muss.
+Zur Rückrechnung auf den Amplitudenkontrast wird die Kontrast Transfer Funktion (KTF, Gleichung \eqref{KTF}, Quelle) verwendet, die sowohl Anteile von Phasen-, als auch Amplitudenkontrast beinhaltet.
+Sie ist die Fouriertransformierte der Punktspreizfunktion, die angibt, wie ein punktförmiges Objekt durch das System dargestellt wird.
+
+\begin{equation}
+	\text{KTF}(\gamma(k,\Delta z)) = \sqrt{1-A^2} \sin[\gamma(k,\Delta z)] - A \cos[\gamma(k,\Delta z)]. \label{KTF}
+\end{equation}
+
+Ein Beispiel für eine KTF ist in Abbildung \ref{KTF_pic} dargestellt.
+Die Funktion alterniert zwischen $+1$ und $-1$, wobei die Nullstellen vom Unterfokus abhängen.
+An den Nullstellen gibt es keinen Kontrast und das Bild enthält keine Informationen bei den entsprechenden Frequenzen.
+Es ist daher wichtig während der Bildaufnahme verschiedene Defokuswerte zu wählen, um möglichst alle Frequenzen im gesamten Fourierraum abzudecken.
+Die Funktion wird durch eine einhüllende Funktion gedämpft und ist auf Störungen (Drift, Energieaufspaltung im Strahl usw.) zurückzuführen.
+Beschrieben wird diese dabei durch den Exponentialkoeffizienten (B-Faktor) der approximierten Gaußfunktion.
+
+\begin{figure}[h!]
+\includegraphics[width = 15cm]{Abbildungen/KTF.png}
+\caption[Beispiel der Kontrast Transfer Funktion]{Beispiel einer Kontrast Transfer Funktion. Links ist der theoretische, rechts ist der reale Verlauf dargestellt. Der reale Verlauf wird von einer  dämpfenden Funktion eingehüllt. (Quelle Behrmann,
+2012)}
+\end{figure}
+
+Für das Auflösungsvermögen eines Mikroskops gilt: Zwei Gegenstände können nicht voneinander getrennt dargestellt werden, wenn das Objekt kleiner ist, als die Wellenlänge der eingesetzten Strahlung.
+Bei Elektronen, die mit einer Beschleunigungsspannung von \unit[300]{kV} beschleunigt werden, liegt diese bei $\lambda = \unit[0.02]{\mathring{A}}$.
+Die wichtigsten begrenzenden Faktoren für die Auflösungsgrenze sind das Abbe-Kriterium, Abbildungsfehler und die Pixelgröße des Photochips.
+Das Abbe-Kriterium ergiebt sich aus der Gleichung \eqref{Abbe} (Quelle).
+
+\begin{equation}
+	d = 0.61 \frac{\lambda}{n \sin(\alpha)} \label{Abbe}
+\end{equation}
+
+Es ist abhängig von der Brechzahl $n$ des Mediums zwischen Objektiv und Probe und dem halben Öffnungswinkel des Objektivs (Quelle).
+Abbildungsfehler, wie die spährische Aberation, führen zu Anteilen in der Kontrast Transfer Funktion (Gleichung \eqref{KTF}).
+Bei höheren Frequenzen führt der geringer werdende Abstand zwischen zwei Nulldurchgängen dazu, dass das Signal nicht mehr fehlerfrei ausgewertet werden kann.
+Auch ein driften der Probe während der Aufnahme führt zu einer Abschwächung des Signals.
+Zudem spielt die Pixelgröße $A_{px}$ des Photochips eine Rolle, das Abtasttheorem (Quelle) besagt, dass die maximale Auflösung dem doppelten Wert der Pixelgröße entspricht.
+Eine Fouriertransformation überträgt die Bildinformation in den Frequenzraum, in dem die Intensität bei verschiedenen Frequenzen $f_s$ (spartial frequency).
+Die Frequenz der maximalen Auflösung wird als Nyquist-Frequenz bezeichnet.
+Es wird meist die Einheit der absoluten Frequenz $f_a$ verwendet, die eine Verbindung zwischen der Pixelgröße und der Frequenz durch Gleichung \eqref{freq} erstellt.
+
+\begin{equation}
+	f_a = A_{px} / f_s \label{freq}
+\end{equation}
+
+Es ist zu erkennen, dass dieser Wert nicht kleiner als $0.5$ werden sollte, da dies der Nyquist Frequenz entspricht und eine höhere Auflösung nicht möglich ist.
+
+\FloatBarrier

@@ -1,0 +1,21 @@
+\section{Einzelpartikelanalyse}
+
+(Selbst erstellte Abbildung des Verlaufs)
+
+Ein Problem bei der rekonstruktion eines 3D Modells mithilfe eines Transmissionselektronenmikroskops ist, dass sich nur 2D Abbildungen der 3D Elektronendichte erzeugen lassen.
+Es ist daher eine Rückprojektion nötig, um das Objekt darstellen zu können.
+Eine etablierte Methode für Rücktransformationen ist die Tomographie, doch ist diese bei biologischen Proben nicht vorteilhaft, da die relativ hohe Elektronendosis das Material zerstört und nicht alle Raumwinkel abgedeckt werden können.
+Alternativ wird daher auf die Einzepartikelanalyse zurückgegriffen.
+Für diese ist es notwendig, dass die Probe ungeordnet vorliegt, sodass viele 2D Projektionen bei verschiedenen Projektionsparametern der Probe auftreten.
+Diese sind neben den drei Euler-Winkeln $\Psi$, $\Phi$ und $\Theta$ auch die Verschiebung in x- und y-Richtung, da die ausgewählten Partikel nicht immer im Schwerpunkt des Bildes liegen.
+Während bei der Tomographie diese bekannt sind, müssen bei dieser Methode diese erst iterativ berechnet werden.
+Die Methode Arbeitet nach dem in Abbildung \ref{Vorgehensweise} dargestellten Schema.
+
+Von einer 3D Referenzrekonstruktion werden in festgelegten Winkelabständen eine definierte Anzahl an 2D Projektionen erstellt.
+Jeder Partikel wird mit den Projektionen verglichen, indem die Projektionsparamter des Partikels variiert werden (\textit{multi reference alignment}). 
+Anschließend wird er der am besten passenden Projektionsrichtung zugeordnet.
+Wurde zu jedem Partikel eine Projektionsrichtung gefunden wird eine Rekonstruktion mit diesen Parametern erstellt.
+Das erstellte Volumen kann anschließend noch symmetrisiert und gefiltert werden.
+Abschließend wird der Iterationsschritt beendet, indem das Volumen als Referenz für den nächsten Iterationsschritt.
+
+\FloatBarrier
