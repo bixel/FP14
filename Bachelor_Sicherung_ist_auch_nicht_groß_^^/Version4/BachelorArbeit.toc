@@ -1,0 +1,16 @@
+\contentsline {chapter}{Inhaltsverzeichnis}{IV}{section*.2}
+\contentsline {chapter}{Abbildungsverzeichnis}{V}{chapter*.3}
+\contentsline {chapter}{Tabellenverzeichnis}{VI}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.6}
+\contentsline {chapter}{\numberline {2}Theoretische Grundlagen und Messvorbereitung}{2}{chapter.7}
+\contentsline {section}{\numberline {2.1}H\active@dq \dq@prtct {a}mocyanin}{2}{section.8}
+\contentsline {section}{\numberline {2.2}Transmissionselektronenmikroskopie}{3}{section.9}
+\contentsline {section}{\numberline {2.3}Probenpräparation für die negative Kontrastierung}{6}{section.17}
+\contentsline {section}{\numberline {2.4}Kryopr\active@dq \dq@prtct {a}paration}{7}{section.18}
+\contentsline {section}{\numberline {2.5}Einzelpartikelanalyse}{7}{section.19}
+\contentsline {chapter}{\numberline {3}Computerbasierte Auswertungsmethodik}{9}{chapter.20}
+\contentsline {section}{\numberline {3.1}Digitale Bildbearbeitung}{10}{section.26}
+\contentsline {chapter}{\numberline {4}Symmetrieproblem}{11}{chapter.27}
+\contentsline {chapter}{\numberline {5}Ergebnisse}{12}{chapter.28}
+\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{13}{chapter.29}
+\contentsline {chapter}{Quellenverzeichnis}{13}{chapter.29}

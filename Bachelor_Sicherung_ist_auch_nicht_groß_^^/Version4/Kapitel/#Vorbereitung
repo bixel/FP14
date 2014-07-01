@@ -1,0 +1,48 @@
+#Vorbereitung 
+
+cmd1='mpirun -np 80 -hostfile hostfile.$JOB_ID sxali2d.py bdb:HCS-stack-norm REFREE1 --ou=85 --center=0 --MPI '
+
+cmd2='mpirun -np 80 -hostfile  hostfile.$JOB_ID sxali2d.py bdb:HCS-stack-norm REFREE2 --ou=85 --xr="3 3 1" --yr="3 3 1" --ts="2 1 1" --center=0 --maxit=3 --MPI '
+
+cmd3='mpirun -np 80 -hostfile hostfile.$JOB_ID sxk_means.py bdb:HCS-stack-norm CLA1 msk.hdf  --K=10  --normalize --trials=8 --maxit=100  --MPI '
+
+cmd4='mpirun -np 80 -hostfile hostfile.$JOB_ID sxmref_ali2d.py bdb:HCS-stack-norm CLA1/averages.hdf 1MRA --ou=85  --xr=3 --yr=3 --ts=1 --maxit=5 --center=0 --MPI --function=ref_ali2d_m '
+
+cmd5='mpirun -np 80 -hostfile hostfile.$JOB_ID sxk_means.py bdb:HCS-stack-norm CLA2 msk.hdf  --K=40  --normalize --trials=8 --maxit=150  --MPI '
+
+cmd6='mpirun -np 80 -hostfile hostfile.$JOB_ID sxmref_ali2d.py bdb:HCS-stack-norm CLA2/averages.hdf 2MRA --ou=85 --xr=3 --yr=3 --ts=1 --maxit=3 --center=0 --MPI --function=ref_ali2d_m '
+
+cmd6='mpirun -np 80 -hostfile hostfile.$JOB_ID sxisac.py bdb:HCS-stack-norm --ou=85 --max_round=5 --stab_ali=2 --init_iter=1 --main_iter=1 --match_second=1 --thld_err=0.75 --img_per_grp=60 --generation=1 --MPI'
+
+cmd8='mpirun -np 8 -hostfile hostfile.$JOB_ID sxk_means.py bdb:stackside 08k-means-side msk_sideview.hdf  --K=60  --normalize --trials=8 --maxit=150  --MPI '
+
+cmd9='mpirun -np 24 -hostfile hostfile.$JOB_ID sxviper.py bdb:averageside-norm 09viper --ou=85 --xr=1 --center=0 --delta=2.0 --function=reference4'
+
+cmd9='mpirun -np 24 -hostfile hostfile.$JOB_ID sxviper.py bdb:averageside-norm-isac 10viper-isac --ou=85 --xr=1 --center=0 --delta=2.0 --function=reference4 '
+
+cmd9='mpirun -np 24 -hostfile hostfile.$JOB_ID sxviper.py bdb:sidetop 11viper-sidetop --ou=85 --xr=1 --center=0 --delta=2.0 --function=reference4 '
+
+cmd9='mpirun -np 24 -hostfile hostfile.$JOB_ID sxviper.py bdb:topside-isac 12viper-sidetop-i --ou=85 --xr=1 --center=0 --delta=2.0 --function=reference4 '
+
+cmd9='mpirun -np 60 -hostfile hostfile.$JOB_ID sxali3d.py bdb:stackside Masken/refvol2_lp40b_mask_rad10_20px.hdf 13ali3d-side-k-mask Masken/refvol2_lp40b_mask_rad10_20px_maske.mrc --ou=85 --rs=1 --xr="4 2 2 1" --ts="2 2 1 1" --delta="10 5 5 3" --an="-1 -1 -1 -1" --snr=1.0 --maxit=1 --function=[/work/stabrin/home/SepiaHC/stain/,userfunction,ref_ali3d_lp40_mask] --sym=c1 --MPI'
+
+cmd9='mpirun -np 4 -hostfile hostfile.$JOB_ID sxrecons3d_n.py bdb:topside-isac 12viper-sidetop-i2/volf.hdf --list=topless.txt --MPI'
+
+cmd9='mpirun -np 60 -hostfile hostfile.$JOB_ID sxali3d.py bdb:stackside Masken/volf0001_lp40_mask_25px.hdf 15ali3d-mask Masken/volf0001_lp40_mask_25px_mask.mrc --ou=85 --rs=1 --xr="4 2 2 1" --ts="2 2 1 1" --delta="10 5 5 3" --an="-1 -1 -1 -1" --snr=1.0 --maxit=1 --function=[/work/stabrin/home/SepiaHC/stain/,userfunction,ref_ali3d_lp40_mask] --sym=c1 --MPI'
+
+--------------------------------------------------------------------------------------------------------------
+Schritt 1: Lösen der Struktur des Äußeren Rings
+
+cmd9='mpirun -np 60 -hostfile hostfile.$JOB_ID sxali3d.py bdb:HC_stack_rin_4bin_pf 17isac-zflip.mrc 17ali3d-all-iter1 --ou=70 --rs=1 --xr="8 4 4 2 2" --ts="4 2 2 1 1" --delta="10 5 5 3 2" --an="-1 -1 -1 -1 -1" --snr=1.0 --maxit=1 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_lp12] --sym=c5 --MPI'
+
+cmd9='mpirun -np 60 -hostfile hostfile.$JOB_ID sxali3d.py bdb:HC_stack_rin_4bin_pf 17ali3d-all-iter1/volf0005_masked.hdf 18ali3d-all-iter2 17ali3d-all-iter1/volf0005_lp20_mask10.mrc --ou=70 --rs=1 --xr="4 2 2 2 2" --ts="2 1 1 1 1" --delta="4 3 2 1 1" --an="-1 -1 15 15 15" --snr=1.0 --maxit=1 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_fsc] --sym=c5 --MPI'
+
+cmd9='mpirun -np 80 -hostfile hostfile.$JOB_ID sxali3d.py bdb:HC_stack_rin_4bin_pf 18ali3d-all-iter2/volf0005_masked.hdf 19ali3d-all-iter3 18ali3d-all-iter2/mask_out_20_7.mrc --ou=70 --rs=1 --xr="4 2 2 2 2" --ts="1 1 1 1 1" --delta="2 2 2 1 1" --an="10 10 10 10 10" --snr=1.0 --maxit=2 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_fsc] --sym=c5 --MPI'
+
+cmd9='mpirun -np 40 -hostfile hostfile.$JOB_ID sxali3d.py bdb:HC_stack_4bin 19ali3d-all-iter3/vol0010_mask_PW_lp88.hdf 20ali3d-all-iter4 18ali3d-all-iter2/mask_out_20_7.mrc --ou=70 --rs=1 --xr="4 2 2 2 2" --ts="1 1 1 1 1" --delta="1 1 1 1 1" --an="10 10 10 10 10" --snr=1.0 --maxit=2 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_fsc_pw] --sym=c5 --CTF --MPI'
+
+cmd9='mpirun -np 40 -hostfile hostfile.$JOB_ID sxlocal_ali3d.py bdb:HC_stack_4bin 21local_iter1/ 18ali3d-all-iter2/mask_out_20_7.mrc --ou=70 --maxit=5 --center=0 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_fsc_pw] --sym=c5 --CTF --MPI'
+
+cmd9='mpirun -np 80 -hostfile hostfile.$JOB_ID sxlocal_ali3d.py bdb:HC_stack_4bin 22local_iter2/ 18ali3d-all-iter2/mask_out_20_7.mrc --ou=70 --maxit=5 --center=0 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_lp7_pw] --sym=c5 --CTF --MPI'
+
+cmd9='mpirun -np 80 -hostfile hostfile.$JOB_ID sxali3d.py bdb:HC_stack_4bin 22local_iter2/volf005_000_bf300_lp65.mrc '+str(out)+' 22local_iter2/volf005_000_lp15_mask_7px.mrc --ou=70 --rs=1 --xr="2" --ts="0.5" --delta="0.75" --an="5" --snr=0.1 --maxit=1 --function=[/work/stabrin/home/SepiaHC/cryo/,userfunction,ref_ali3d_lp7_pw] --sym=c5 --MPI --CTF'

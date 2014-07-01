@@ -1,0 +1,41 @@
+Die Anzahl der verwendeten Partikel umfasst mehrere Tausend.
+Um 3D Rekonstruktionen mithilfe der Einzelpartikelanalyse (Siehe \ref{einzelpartikelanalyse}) erstellen zu können, muss auf die Rechenleistung von Computern zurückgegriffen werden.
+Eine Liste der verwendeten Systeme und Programme ist in Tabelle \ref{EDV} gegeben.
+
+Um eine effizientere Methode der Verarbeitung zu gewährleisten ist es nötig das Bildformat der Bilddateien von TIFF (\textit{tagged image file format}) auf HDF (\textit{hierarchical data format}) zu ändern.
+Diese Art von Dateien besitzen eine Kopfzeile (\textit{header}), in der Bildinformationen (Projektionsparamter, Verschiebungen, Bildzugehörigkeit etc.) gespeichert werden können.
+Zudem gibt es die Möglichkeit die Speicherung in einer Datenbank (BDB, \textit{Berkeley-Datenbak} vorzunehmen.
+In dieser sind Bild und Kopfzeile getrennt voneinander gespeichert, sodass diese getrennt geladen werden können um die Zugriffszeit zu minimieren.
+
+In diesem Kapitel wird besonders auf die Datenauswertung der bei der Kryo-TEM entstandenen Daten eingegangen.
+Bei der negativen Kontrastierung sind die Schritte analog. 
+Der schematische Rekonstruktionsprozess kann wie folgt unterteilt werden:
+
+\begin{enumerate}
+	\item \textbf{Digitale Bildbearbeitung:} Bestimmung des Defokus aus der KTF-Information; Aussortieren von Bildern (\textit{micrograph}); Filterung der Bilder
+	\item \textbf{Extraktion der Partikel:} Auswahl der Partikel aus den Bildern (\textit{particle picking}); Speichern der Einzelnen Partikel in einem Datensatz (\textit{stack})
+	\item \textbf{Klassifizierung:} Zentrierung und Drehung der Partikel (\textit{alignment}); Zuordnung der Partikel in verschiedene Klassen; Aussortierung schlechter Einzelbilder
+	\item \textbf{3D Rekonstruktion:} Iterative Bestimmung der Projektionsparameter; Rekonstruktion; Vergleich mit PDB Modellen
+\end{enumerate}
+
+\begin{table}
+	\begin{tabular}[!h]{l l l}
+		Name & Verwendung & Quelle \\
+		\hline
+		Eman/Eman2 & Prozessierung & http://blake.bcm.edu \\
+		Sparx & Prozessierung & http://sparx-em.org \\
+		CTF-GUI & KTF \& Defokus bestimmung & MPI-Dortmund (R.Efremov, C.Gatsogiannis)\\
+		GUI & Klassifizierung (K-Means) & MPI-Dortmund (C.Gatogiannis)\\ 
+		USFC Chimera & 3D Modellierung & http://www.cgl.ucsf.edu/chimera \\
+		Python & Programmierung & https://www.python.org \\
+		CLB cluster & Datenverarbeitung & MPI Dortmund \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption[Verwendete EDV]{Verwendete Software, Programmiersprachen und Systeme.}
+	\label{EDV}
+\end{table}
+
+
+
+\FloatBarrier
