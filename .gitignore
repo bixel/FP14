@@ -4,3 +4,8 @@
 *.png
 */build/*
 *.pyc
+*.aux
+*.lof
+*.lot
+*.out
+*.toc
