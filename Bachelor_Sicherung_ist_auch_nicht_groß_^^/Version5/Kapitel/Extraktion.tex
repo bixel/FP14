@@ -1,0 +1,15 @@
+\section{Extraktion der Partikel} % (fold)
+\label{sec:extraktion_der_partikel}
+
+(Wrapfigure: Oben micrograph, da unter 3 einzelapartikel)
+
+Aus den bearbeiteten Bildern müssen nun die einzelnen Partikel extrahiert werden.
+Dafür ist das EMAN2 Programm \textit{e2boxer.py} verwendet worden.
+Es wird dafür jeder Partikel auf jedem Bild einzeln ausgewählt und die Koordinaten der Partikelmittelpunkte in einer Textdatei gespeichert.
+Anschließend werden die Koordianten auf den ungefilterten Datensatz angewendet und von dort extrahiert.
+Dabei ist eine quadratische Boxgröße mit einer Seitenlänge von \unit[512]{px} bei einer Pixelgröße von \unit[0.83]{\AA} gewählt worden.
+Diese ist nur knapp größer als das Protein und zudem ist die Boxgröße von \unit[256]{px} eine von EMAN2 empfohlene Boxgröße um eine erste Rekosntruktion mit einem verkleinerten Datensatz durchzuführen.
+Zudem werden die extrahierten Partikel in einem HDF Datensatz (\textit{stack}) gespeichert.
+Abschließend wird der Datensatz normalisiert, invertiert und KTF-Korrigiert.
+
+\FloatBarrier

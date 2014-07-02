@@ -1,0 +1,36 @@
+\section{Ausrichtung und Klassifizierung} % (fold)
+\label{sec:klassifizierung}
+
+Klassifizieren bedeutet, dass Gruppen gleicher Projektionsrichtungen gefunden werden.
+Durch Aufsummieren der Bilder zu einer Klassensumme wird das Signal-zu-Rausch Verhältnis verbessert, wodurch die geringe Elektronendosis ausgeglichen werden kann.
+Eine Klassensumme entspricht dabei einer Projektionsrichtung.
+Können manche Partikel keinen Klassen zugeordnet werden, werden diese aus dem Datensatz entfernt, da sie zum Rauschen beitragen.
+\\
+\\
+\textbf{1. Ausrichtung (Referenzfrei):}
+Zunächst werden alle Bilder der Partikel zu einem Bild aufsummiert und als Referenz benutzt.
+Das Sparxmodul \textit{sxali2d.py} vergleicht zunächst alle Partikel mit dieser und richtet durch Rotation an diesem aus.
+Anschließend werden die Partikel noch zueinander verschoben.
+Mathematisch wird dazu eine Kreuzkorrelation angewandt.
+Nach jedem Iterationsschritt wird eine Überlagerung der neu gefundenen Partikel als Referenz genutzt.
+(Abbildung der Alignierung ?)
+\\
+\\
+\textbf{2. K-Means Klassifizierung:}
+Eine mögliche Klassifizierungsmethode ist der K-Means Algorithmus (SPARX:\textit{sxk\_means.py}).
+Dieser erstellt eine festgelegt Anzahl $K$ an Klassen, indem er die Bilder in einem Hyperraum in Clustern zusammenfast.
+Dazu werden zunächst $K$ zufällige Schwerpunkte in die Hyperebene gesetzt und durch Verschieben ebendieser die Cluster gefunden.
+Dieser Algorithmus ist zwar einfach und schnell, jedoch nicht reproduzierbar, da das Ergebnis stark von den Anfangsbedingungen und der Qualität der Partikel abhängig ist (Quelle Paper).
+\\ 
+\\
+\textbf{3. Ausrichtung (\textit{multi reference alignment}):}
+Im Gegensatz zur referenzfreien Ausrichtung stehen nun die Erzeugten Klassen als Referenz zur Verfügung.
+Die Partikel werden der am besten passenden Klassensumme zugeordnet und nach dieser Ausgerichtet.
+Anschließend werden die zugeordneten Partikel aufsummiert.
+\\ 
+\\
+\textbf{4. ISAC:}
+Der ISAC (\textit{Iterative Stable Alignment and Clustering}) Algorithmus ist eine gute Möglichkeit zur Überprüfung der Klassenergebnisse (SPARX:\textit{sxisac.py}).
+In diesem Fall wird nicht die Anzahl der Klassen, sondern die der Partikel pro Klasse vorgegeben.
+Nach jedem Iterationsschritt werden die Klassen auf Stabilität und Reproduzierbarkeit im Hinblick auf Alignierung und Klassifizierung geprüft (Quelle Paper).
+\FloatBarrier
