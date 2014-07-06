@@ -1,0 +1,20 @@
+\section{Rekonstruktion} % (fold)
+\label{sec:rekonstruktion}
+
+Um eine erste 3D Rekonstruktion als Startreferenz zu erhalten, werden die erzeugten Klassensummen genutzt.
+Deren Signal-zu-Rausch Verhältnis ist im Vergleich zu den Einzelpartikeln durch die Summation verbessert worden.
+Mithilfe des SPARX-Programms \textit{sxviper.py} (Bisher unveröffentlicht) wird so ein erstes Modell erzeugt.
+Als Inertialmodell wird hierbei eine zylindrische Struktur verwendet.
+
+Eine iterative Findung der Projektionsparameter führt das SPARX-Programm \textit{sxali3d.py} durch.
+Dafür überführt das Programm die 3D Referenz bei festen Winkelabschritten in 2D Projektionen und vergleicht diese mit den Partikeln (\textit{multi reference alignment}).
+Die Partikel werden nach der am besten passenden Projektion ausgerichtet und die Projektionsrichtungen in die Kopfzeile geschrieben.
+Aus den bestimmten Parametern wird erneut eine 3D Rekonstruktion mithilfe der Partikel erstellt und als Referenz an den nächsten Iterationsschritt übergeben.
+Dabei wird die Größe der Winkelabschritte stetig verringert, sodass mehr Projektionsrichtungen möglich sind.
+
+Um die Auflösung einer Rekonstruktion zu bestimmen ist das FSK$_{0.5}$-Kriterium (Fourier Schalen Korrelation, engl.:\textit{Fourier shell correlation}) angewendet worden.
+Dazu wird der Datensatz der verwendeten Partikel in zwei gleich große Teile aufgespalten und von jedem eine Rekonstruktion erstellt.
+Diese werden mithilfe einer Kreuzkorrelation miteinander verglichen und die Übereinstimmung in Abhängigkeit der Frequenz dargestellt.
+Die Frequenz, bei der noch \unit[50]{\%} der Rekonstruktionen übereinstimmen, stellt die Auflösungsgrenze dar.
+
+\FloatBarrier

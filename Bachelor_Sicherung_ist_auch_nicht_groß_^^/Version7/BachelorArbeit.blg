@@ -1,0 +1,29 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: .\BachelorArbeit.aux
+The style file: unsrt.bst
+Database file #1: BachelorArbeit.bib
+Warning--I didn't find a database entry for "old_struc"
+Warning--I didn't find a database entry for "new_struc"
+Warning--I didn't find a database entry for "bla"
+Warning--I didn't find a database entry for "blubb"
+Warning--empty author in sepi_offi
+Warning--empty journal in sepi_offi
+Warning--empty year in sepi_offi
+Warning--empty journal in jeol
+Too many commas in name 1 of "J. Zhu, P. A. Penczek, R. Schroder, J. Frank" for entry zhu
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "W. H. Press, S. A. Teukolsky, W. T. Vetterling, B. P. Flannery" for entry numerical_recipes
+while executing---line 944 of file unsrt.bst
+Warning--empty journal in grid
+Warning--empty year in 2D_align
+Too many commas in name 1 of "Z. Yang, J. Fang, J. Chittuluru, F. J. Asturias, P. A. Penczek" for entry isac
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "Z. Yang, J. Fang, J. Chittuluru, F. J. Asturias, P. A. Penczek" for entry isac
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M. Baker, J. Zhang, S. Ludtke, W. Chiu" for entry aufloesung2
+while executing---line 944 of file unsrt.bst
+Warning--empty author in pdb2
+Warning--empty journal in pdb2
+Warning--empty year in pdb2
+Too many commas in name 1 of "M. E. Cuff, K.I. Miller, K.E. van Holde, W.A. Hendrickson" for entry pdb
+while executing---line 944 of file unsrt.bst
+(There were 6 error messages)

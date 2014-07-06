@@ -1,0 +1,13 @@
+\section{Extraktion der Partikel} % (fold)
+\label{sec:extraktion_der_partikel}
+
+Aus den bearbeiteten Bildern müssen nun die einzelnen Partikel extrahiert werden.
+Dafür ist das EMAN2 Programm \textit{e2boxer.py} verwendet worden.
+Es wird dafür jeder Partikel auf jedem Bild einzeln ausgewählt und die Koordinaten der Partikelmittelpunkte in einer .box Datei gespeichert.
+Anschließend werden die Koordinaten auf den ungefilterten Datensatz angewendet und von dort extrahiert.
+Dem EMAN-Programm \textit{batchboxer} wird die Boxgröße in Pixeln übergeben, wobei sich die gewählten Koordinaten im Mittelpunkt der quadratischen Box befinden.
+Dabei sollte darauf geachtet werden, dass eine von EMAN empfohlene Boxgröße gewählt wird, da sich ansonsten die Rechenzeit erheblich verlängert (Tabelle \ref{EDV}:EMAN).
+Weiterhin werden die extrahierten Partikel in einem HDF Datensatz (\textit{stack}) gespeichert.
+Abschließend wird der Datensatz normalisiert, invertiert und die KTF Objekte in die Kopfzeile geschrieben.
+
+\FloatBarrier

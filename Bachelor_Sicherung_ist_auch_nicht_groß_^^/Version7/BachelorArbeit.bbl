@@ -1,0 +1,122 @@
+\begin{thebibliography}{10}
+
+\bibitem{sepi_offi}
+Bild eines sepia officinalis.
+
+\bibitem{sepia_3D}
+F.~Mouche N.~Boisset.
+\newblock Sepia officinalis hemocyanin: A refined 3d structure from field
+  emission gun cryoelectron microscopy.
+\newblock {\em JMB}, 2000.
+
+\bibitem{julian_haemo}
+J.~Markl.
+\newblock Evolution of molluscan hemocyanin structures.
+\newblock {\em Elsevier}, 2013.
+
+\bibitem{komplex}
+R.~Hübler.
+\newblock Charakterisierung und stabilität von arthropoden-hämocyanin.
+\newblock {\em Johannes Gutenberg-Universität in Mainz}, page~3, 2001.
+
+\bibitem{christos_diss}
+C.~Gatsogiannis.
+\newblock 3d strukturanalyse von molluskenhämocyaninen aus
+  elektronenmikrokopischen bildern.
+\newblock {\em Johannes Gutenberg Universität Mainz}, 2009.
+
+\bibitem{jeol}
+JEOL.
+\newblock Transmissionselektronenmikroskope.
+\newblock 2013.
+
+\bibitem{scherzer}
+O.~Scherzer.
+\newblock The theoretical resolution limit of the electron microscope.
+\newblock {\em Journal of Physics, Bd. 20}, 1949.
+
+\bibitem{zhu}
+R.~Schroder J.~Frank J.~Zhu, P. A.~Penczek.
+\newblock Three-dimensional reconstruction with contrast transfer function
+  correction from energy-filtered cryoelectron micrographs: procedure and
+  application to the 70s escherichia coli ribosome.
+\newblock {\em J Struct Biol, Bd. 118}, pages 197--219, 1997.
+
+\bibitem{behrmann}
+E.~Behrmann.
+\newblock Structure of the actin/tropomyosin/myosin rigor complex as revealed
+  by cryo-electron microscopy.
+\newblock Technical report, TU Dortmund, 2012.
+
+\bibitem{thon}
+F.~Thon.
+\newblock Phase contrast transfer function.
+\newblock {\em Electron Microscopy in Material Sciences}, pages 571--625, 1971.
+
+\bibitem{alex}
+H.~Alexander.
+\newblock {\em Physikalische Grundlagen der Elektronenmikroskopie.}
+\newblock Teubner Studienbücher, 2012.
+
+\bibitem{numerical_recipes}
+W.~T. Vetterling B. P.~Flannery W.~H.~Press, S. A.~Teukolsky.
+\newblock {\em Numerical Recipes in C}.
+\newblock Press Syndicate of the University of Cambridge., 2 edition, 2012.
+
+\bibitem{grid}
+Plano GmbH.
+\newblock Netzchen.
+\newblock pages 20,6, 2014.
+
+\bibitem{neg_stain}
+Y.~Cheng D.~S.~Booth, A. Avila-Sakar.
+\newblock Visualizing proteins and macromolecular complexes by negative stain
+  em: from grid preparation to image acquisition.
+\newblock {\em jove}, 2011.
+
+\bibitem{bio_TEM}
+W.~Baumeister L.~F.~Kourkoutis, J. M.~Plitzko.
+\newblock Electron microscopy of biological materials at the nanometer scale.
+\newblock {\em Annual Reviews}, 2012.
+
+\bibitem{einzelpartikel}
+P.A. Penczek.
+\newblock Fundamentals of three-dimensional reconstruction from projections.
+\newblock {\em Methods Enzymol, Bd. 482}, pages 1--33, 2010.
+
+\bibitem{k_means}
+P.~A. Thuman-Commike.
+\newblock Single particle macromolecular structure determination via electron
+  microscopy.
+\newblock {\em FEBS Letters}, 2001.
+
+\bibitem{2D_align}
+P.~A. Penczek.
+\newblock 2d alignment as an advanced problem.
+\newblock Technical report, The University of Texas.
+
+\bibitem{isac}
+J.~Chittuluru F. J. Asturias P. A.~Penczek Z.~Yang, J.~Fang.
+\newblock Iterative stable alignment and clustering of 2d transmission electron
+  microscope images.
+\newblock {\em Cell Press}, 2012.
+
+\bibitem{aufloesung1}
+P.A. Penczek.
+\newblock Image restoration in cryo-electron microscopy.
+\newblock {\em Methods Enzymol, Bd. 482}, pages 35--72, 2010.
+
+\bibitem{aufloesung2}
+S.~Ludtke W.~Chiu M.~Baker, J.~Zhang.
+\newblock Cryo-em of macromolecular assemblies atnear-atomic resolution.
+\newblock {\em Nature Protocols, Bd. 5}, pages 1697--1708, 2010.
+
+\bibitem{pdb2}
+Protein data bank.
+
+\bibitem{pdb}
+K.E. van Holde W.A.~Hendrickson M.~E.~Cuff, K.I.~Miller.
+\newblock Crystal structure of a functional unit from octopus hemocyanin.
+\newblock {\em J.Mol.Biol., Bd. 278}, pages 855--870, 1998.
+
+\end{thebibliography}
