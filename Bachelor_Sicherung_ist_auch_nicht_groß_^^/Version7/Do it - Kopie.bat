@@ -1,1 +1,0 @@
-lualatex .\BachelorArbeit.tex
