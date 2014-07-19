@@ -1,7 +1,6 @@
 .DS_Store
 *.swp
 *.pdf
-*.png
 */build/*
 *.pyc
 *.aux
