@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 from numpy import *
-from random import *
 from scipy.optimize import curve_fit
 
 A1 = array([200,215,230])
@@ -39,5 +38,7 @@ plt.plot(x,e*exp(-(x-80)**2/11), 'b-')
 plt.plot(A1,F1,'g.')
 plt.plot(A2,F2,'r.')
 plt.plot(A3,F3,'b.')
-plt.ylim([0,610])
-plt.show()
+plt.ylim([0,700])
+plt.xlabel("Spannung [V]")
+plt.ylabel("Leistung [mW]")
+plt.savefig("..\pic\ModenDiagramm.pdf")

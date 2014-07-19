@@ -1,0 +1,7 @@
+pgf.texsystem: lualatex
+text.usetex: true
+savefig.bbox: tight
+font.family: serif
+#font.serif: TeX Gyre Pagella
+#backend: MacOSX
+
