@@ -1,3 +1,0 @@
-mkdir -p ./build
-lualatex --output-directory ./build 00_main.tex
-rm -rf ./build
