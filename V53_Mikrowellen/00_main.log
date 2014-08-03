@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  3 AUG 2014 15:10
+This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  3 AUG 2014 18:49
 **00_main.tex
 (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.tex
 LaTeX2e <2011/06/27>
@@ -436,7 +436,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.031 seconds
+luaotfload: fontloader loaded in 0.016 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1390,7 +1390,7 @@ neric/fonts/otf/latinmodern-math.luc)
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 \g_fontspec_family_latinmodern-math.otf_int=\count374
 luaotfload | load : auto-selecting default features for script: dflt
@@ -1445,7 +1445,7 @@ luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 23 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 23 (LatinModernMath-Regular) defines feature dtls for script
  math
 LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
 (Font)              `operators' in the math version `normal' on input line 71.
@@ -1463,7 +1463,7 @@ back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1555,7 +1555,7 @@ back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1789,7 +1789,7 @@ luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
-<pic/ModenDiagramm.pdf, id=33, 515.93062pt x 399.72775pt>
+<pic/ModenDiagramm.pdf, id=38, 515.93062pt x 399.72775pt>
 File: pic/ModenDiagramm.pdf Graphic file (type pdf)
 
 <use pic/ModenDiagramm.pdf>
@@ -1905,7 +1905,7 @@ luaotfload | load : no defaults for script "latn", falling back to "dflt"
 LaTeX Warning: Reference `bandbreite' on page 2 undefined on input line 31.
 
 [2 <C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/pic/ModenDiagramm.pdf>
-] <pic/Daempfung.pdf, id=85, 500.48228pt x 399.72775pt>
+] <pic/Daempfung.pdf, id=90, 500.48228pt x 399.72775pt>
 File: pic/Daempfung.pdf Graphic file (type pdf)
 
 <use pic/Daempfung.pdf>
@@ -1916,14 +1916,43 @@ Package pdftex.def Info: pic/Daempfung.pdf used on input line 72.
 LaTeX Warning: Reference `frequenz' on page 3 undefined on input line 77.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
 
  []
 
 [3] [4 <C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/pic/Daempfung.pdf>
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
-LaTeX Warning: Reference `3dbswr' on page 5 undefined on input line 134.
+ []
+
+
+LaTeX Warning: Reference `3dbswr' on page 5 undefined on input line 135.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--179
+
+ []
 
 )
 No file 00_main.bbl.
@@ -1934,22 +1963,25 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `00_main.out' has not changed.
-(rerunfilecheck)             Checksum: 69C198FE451C7E1A04368FA47810EB87;302.
+(rerunfilecheck)             Checksum: FA96FCFCE07C2E1AF2A5BA689633FD76;348.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 
 Here is how much of LuaTeX's memory you used:
- 30686 strings out of 494074
+ 30689 strings out of 494074
  100000,794899 words of node,token memory allocated
- 472 words of node memory still in use:
+ 470 words of node memory still in use:
     nodes
-   avail lists: 1:49,2:5038,3:150,4:1365,5:101,6:1527,7:72,8:15,9:514,10:983,11:
+   avail lists: 1:49,2:5704,3:150,4:1392,5:132,6:1806,7:72,8:15,9:514,10:983,11:
 509,12:228
- 33294 multiletter control sequences out of 65536+200000
- 85 fonts using 30943751 bytes
+ 33296 multiletter control sequences out of 65536+200000
+ 85 fonts using 30943899 bytes
  60i,15n,59p,935b,1111s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-bold.otf><C:/Pro
 gram Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-italic.otf><C:/Program 
@@ -1962,9 +1994,9 @@ iKTeX 2.9/fonts/opentype/public/lm/lmroman9-bold.otf><C:/Program Files/MiKTeX 2.
 9/fonts/opentype/public/lm/lmroman10-regular.otf><C:/Program Files/MiKTeX 2.9/fo
 nts/opentype/public/lm/lmroman12-regular.otf><C:/Program Files/MiKTeX 2.9/fonts/
 opentype/public/lm/lmsans10-bold.otf>
-Output written on 00_main.pdf (5 pages, 92813 bytes).
+Output written on 00_main.pdf (5 pages, 95301 bytes).
 
-PDF statistics: 229 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 131072)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 234 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 131072)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

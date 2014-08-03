@@ -81,7 +81,8 @@ Die Bestimmung der Wellenlänge aus dem doppelten Abstand zweier Minima und der 
 	f &=& \SI{8980(10)}{\mega\hertz}
 \end{eqnarray}
 
-ergeben.\\
+ergeben.
+Es ist zu erkennen, dass die errechnete Frequenz des Klystrons der entspricht, auf welche das Klystron zuvor eingestellt worden ist.\\
 
 Die Bestimmung der Dämpfungskurve mithilfe des SWR-Meters und dem Dämpfungsgliedes ergiebt die in Abbildung \ref{daempf} dargestellte Kurve.
 Diese wurde mit der Funktion 
@@ -136,10 +137,10 @@ Das SWR wurde dabei nach Gleichung \eqref{3dbswr} berechnet.\\
 \begin{table}
 	\centering
 	\begin{tabular}{r || r r r r|}
-	 Sonentiefe &    3 &    5 &    7 &    9\\		
+	 Sondentiefe &    3 &    5 &    7 &    9\\		
 	        SWR & 1.20 & 1.55 & 3.00 & 6.00\\
 	\end{tabular}
-	\caption{Ergenisse der SWR-Meter Methode.}
+	\caption{Ergebnisse der SWR-Meter Methode.}
 	\label{v3:1}
 	\begin{tabular}{r r r r r r r}
 	$d_\text{1}[\SI{}{\milli\meter}]$ & $d_\text{2}[\SI{}{\milli\meter}]$ & $x_\text{min1}[\SI{}{\milli\meter}]$ & $x_\text{min2}[\SI{}{\milli\meter}]$ & $x_\text{min3}[\SI{}{\milli\meter}]$ & $\lambda[\SI{}{\milli\meter}]$ & SWR\\
@@ -147,7 +148,7 @@ Das SWR wurde dabei nach Gleichung \eqref{3dbswr} berechnet.\\
 	\hline
 	96.4 & 93.4 & 90.5 & 66.0 & 115.3 & $\SI{49.300(7)}{}$ & $\SI{5.357(12)}{}$\\
 	\end{tabular}
-	\caption{Ergenisse der 3dB-SWR-Methode.}
+	\caption{Ergebnisse der 3dB-SWR-Methode.}
 	\label{v3:2}
 	\begin{tabular}{r r r r}
 	$A_\text{1}[\SI{}{\decibel}]$ & $A_\text{2}[\SI{}{\decibel}]$ & $A_\text{2}-A_\text{1}[\SI{}{\decibel}]$ & SWR\\
@@ -155,8 +156,25 @@ Das SWR wurde dabei nach Gleichung \eqref{3dbswr} berechnet.\\
 	\hline
 	20 & 40 & $\SI{20.0(7)}{}$ & $\SI{10.0(8)}{}$\\
 	\end{tabular}
-	\caption{Ergenisse der Abschwächer-Methode.}
+	\caption{Ergebnisse der Abschwächer-Methode.}
 	\label{v3:3}
 \end{table}
 
-Mit der Abschwächer-Methode bei einer Sondentiefe von $\SI{9}{\milli\meter}$ ergaben sich die Ergebnisse aus Tabelle \ref{v3:3}.
+Mit der Abschwächer-Methode bei einer Sondentiefe von $\SI{9}{\milli\meter}$ ergaben sich die Ergebnisse aus Tabelle \ref{v3:3}.\\
+
+
+\section{Diskussion} % (fold)
+\label{sec:diskussion}
+
+Bei der Untersuchung des Reflexklystrons stellte sich heraus, dass es gut möglich ist mit diesem ein Modus-Diagramm zu erzeugen.\\
+
+Die eingestellte Frequenz von $\SI{8996.0(5)}{\hertz}$ stimmt zudem nahezu mit der errechneten mit $\SI{8980(10)}{\mega\hertz}$ überein.
+Beim Messen der effektiven Dämpfungskurve des Klystrons ergab sich eine steilere Kruve als die Eichkurve des Dämpfungsgliedes.
+Dies könnte durch eine zusätzliche Dämpfung innerhalb der Geräte zustande kommen.\\
+
+Für die Messung des SWR hat sich ergeben, dass die 3dB-SWR-Methode und die SWR-Meter Methode auf etwa dasselbe Ergebnis kamen.
+Mithilfe der Abschwächer-Methode hingegen ergab sich etwa der doppelte Wert.
+Da die Sondentiefe mit $\SI{9}{\milli\meter}$ relativ groß ist, sollte die SWR-Meter Methode nicht hinreichend sein, da es zu Feldverzerrungen kommen kann.
+Am genauesten sollte die Abschwächer-Methode mit $SWR = \SI{10}{}$ sein, da diese die Abweichung des Detektors vom quadratischen Verhalten überwindet.\\
+
+Abschließend lässt sich sagen, dass die Untersuchung von Mikrowellen mit dem Reflexklystron hinreichend genau sind.
