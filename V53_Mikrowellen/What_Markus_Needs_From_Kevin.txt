@@ -1,0 +1,12 @@
+Label zur Bandbreitengleichung nach Versuch1:3.3
+Die Bandbrete habe ich dabei "B" genannt
+Labelname:"bandbreite"
+
+Label zur Frequenzformel nach 3.8
+labelname:"frequenz"
+
+Label zur 3db-SWR Formel nach 3.8
+labelname:"3dbswr"
+
+Label zur Abschwächer-Methode Formel nach 4.5
+labelname:"abschwaecher"

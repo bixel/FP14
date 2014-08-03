@@ -9,6 +9,15 @@ Alle Fehlerrechnungen wurden mithilfe Gaußscher Fehlerfortpflanzung errechnet.
 
 Dafür ist die Python Bibliothek \textit{uncertainties} benutzt worden.
 
+Wenn nicht anders angegeben gelten die Fehler
+
+\begin{eqnarray}
+	\Delta \SI{}{\volt} &=& \pm 5 ,\\
+	\Delta \SI{}{\hertz} &=& \pm 0.5 ,\\
+	\Delta \SI{}{\milli\meter} &=& \pm 0.005 ,\\
+	\Delta \SI{}{\decibel} &=& \pm 0.5 .\\
+\end{eqnarray}
+
 \subsection{Untersuchung eines Reflexklystrons} % (fold)
 \label{sub:untersuchung_der_}
 
@@ -19,16 +28,16 @@ Dafür ist die Python Bibliothek \textit{uncertainties} benutzt worden.
 \end{figure}
 
 Nach der Abstimmung des Klystrons auf $\SI{9}{\giga\hertz}$ und der Bestimmung der Modenbreiten und Amplituden, hat sich das in Abbildung \ref{mode} dargestellte Modus-Diagramm ergeben.
-Für die elektronische Bandbreite $B$ des Klystrons hat sich 
+Für die elektronische Bandbreite $B$ des Klystrons hat sich nach Gleichung \eqref{bandbreite} 
 
 \begin{eqnarray}
-	B &=& \frac{f'-f''}{V'-V''}\\
-	\Rightarrow B &=& \SI{2.1(7)}{\hertz\per\volt}
+	%B &=& \frac{f'-f''}{V'-V''}\\
+	B &=& \SI{2.1(7)}{\hertz\per\volt}
 \end{eqnarray}
 
 ergeben.
 
-Die benutzten Dateien sind in Tabelle \ref{v1} aufgelistet.
+Die benutzten Dateien sind in den Tabellen \ref{v1:1} und \ref{v1:2} aufgelistet.
 
 \begin{table}
 \centering
@@ -36,12 +45,13 @@ Die benutzten Dateien sind in Tabelle \ref{v1} aufgelistet.
 	Mode & $V_\text{0}[\SI{}{\volt}]$ & $V_\text{1}[\SI{}{\volt}]$ & $V_\text{2}[\SI{}{\volt}]$ & $A_\text{0}[\SI{}{\milli\volt}]$ & $f[\SI{}{\mega\hertz}]$ \\
 	\hline
 	\hline
-	1 & 215 & 200 & 230 & 600 & 9000.5\\
-	2 & 185 & 120 & 150 & 600 & 9005.0\\
-	3 &  80 &  70 &  90 & 450 & 9010.5\\
+	1 & 215 & 200 & 230 & {600(10)} & 9000.5\\
+	2 & 185 & 120 & 150 & {600(10)} & 9005.0\\
+	3 &  80 &  70 &  90 & {450(10)} & 9010.5\\
 	\hline
 \end{tabular}
 \caption{Messwerte zur Darstellung des Modus-Diagramms.}
+\label{v1:1}
 \begin{tabular}{r r r r r r}
 	$V_\text{0}[\SI{}{\volt}]$ & $V'[\SI{}{\volt}]$ & $V''[\SI{}{\volt}]$ & $f_\text{0}[\SI{}{\mega\hertz}]$  & $f'[\SI{}{\mega\hertz}]$ & $f''[\SI{}{\mega\hertz}]$ \\
 	\hline
@@ -50,6 +60,103 @@ Die benutzten Dateien sind in Tabelle \ref{v1} aufgelistet.
 	\hline
 \end{tabular}
 \caption{Messwerte zur Bestimmung der Banbreite $B$ des Klystrons.}
-\label{v1}
+\label{v1:2}
 \end{table}
 
+\FloatBarrier
+
+\subsection{Messung von Frequenz, Wellenlänge und Dämpfung} % (fold)
+\label{sub:messung_von_frequenz_wellenlaenge_und_daempfung}
+
+\begin{figure}
+	\includegraphics[width = 14cm]{pic/Daempfung.pdf}
+	\caption[]{Dämpfungskurven des Klystrons.}
+	\label{daempf}
+\end{figure}
+
+Die Bestimmung der Wellenlänge aus dem doppelten Abstand zweier Minima und der Frequenz nach Gleichung \eqref{frequenz} hat
+
+\begin{eqnarray}
+	\lambda &=& \SI{48.933(5)}{\milli\meter},\\
+	f &=& \SI{8980(10)}{\mega\hertz}
+\end{eqnarray}
+
+ergeben.\\
+
+Die Bestimmung der Dämpfungskurve mithilfe des SWR-Meters und dem Dämpfungsgliedes ergiebt die in Abbildung \ref{daempf} dargestellte Kurve.
+Diese wurde mit der Funktion 
+\begin{equation}
+	f(x)=a \cdot (x-d)^2 + b \cdot (x-e) + c	
+\end{equation}
+ durch eine nicht linearen Regression erzeugt.
+
+Es ist zu erkennen, dass die Dämpfungskurve steiler ansteigt als die Eichkurve der Dämpfungsgliedes.
+
+Die verwendeten Werte und Parameter sind in den Tabellen \ref{v2:1} bis \ref{v2:3} aufgelistet.
+
+\begin{table}
+\centering
+\begin{tabular}{r r r r r r}
+	$f_\text{0}[\SI{}{\mega\hertz}]$ & $d_\text{1}[\SI{}{\milli\meter}]$ & $d_\text{2}[\SI{}{\milli\meter}]$ & $d_\text{3}[\SI{}{\milli\meter}]$ & $d_\text{4}[\SI{}{\milli\meter}]$ & $a[\SI{}{\milli\meter}]$\\
+	\hline
+	\hline
+	8996.0 & 114.2 & 89.6 & 65.0 & 40.8 & $\SI{22.860(46)}{}$\\
+	\hline
+\end{tabular}
+\caption{Messwerte zur Bestimmung der Klystronfrequenz.}
+\label{v2:1}
+\begin{tabular}{r|r r r r r r|}
+	SWR-Meter Ausschlag[$\SI{}{\decibel}$] & 0 & 2 & 4 & 6 & 8 & 10\\
+	Mikrometereinstellung[$\SI{}{\milli\meter}$] & 1.00 & 1.40 & 1.89 & 2.11 & 2.34 & 2.48\\
+\end{tabular}
+\caption{Messwerte zur Bestimmung Dämpfungskurve.}
+\label{v2:2}
+\begin{tabular}{r r r r r r}
+	 & a & b & c & d & e\\
+	\hline
+	\hline
+	Regression m. Offset & 3.08 & 2.51 & 0.60 & 0.11 & 0.16\\
+	Regression o. Offset & 3.08 & 1.00 & 0.60 & 0.86 & 1.42\\
+	\hline
+\end{tabular}
+\caption{Fitparameter der Dämpfungskurven.}
+\label{v2:3}
+\end{table}
+
+\FloatBarrier
+
+\subsection{Stehwellenmessungen VSWR} % (fold)
+\label{sec:stehwellenmessungen_vswr}
+
+Mithilfe der SWR-Meter Methode sind die in Tabelle \ref{v3:1} dargestellten SWR bei verschiedenen Sondentiefen ermittelt worden.\\
+
+Mit der 3-dB-Methode bei einer Sodentiefe von $\SI{9}{\milli\meter}$ ergaben sich die Ergebnisse aus Tabelle \ref{v3:2}.
+Das SWR wurde dabei nach Gleichung \eqref{3dbswr} berechnet.\\
+
+\begin{table}
+	\centering
+	\begin{tabular}{r || r r r r|}
+	 Sonentiefe &    3 &    5 &    7 &    9\\		
+	        SWR & 1.20 & 1.55 & 3.00 & 6.00\\
+	\end{tabular}
+	\caption{Ergenisse der SWR-Meter Methode.}
+	\label{v3:1}
+	\begin{tabular}{r r r r r r r}
+	$d_\text{1}[\SI{}{\milli\meter}]$ & $d_\text{2}[\SI{}{\milli\meter}]$ & $x_\text{min1}[\SI{}{\milli\meter}]$ & $x_\text{min2}[\SI{}{\milli\meter}]$ & $x_\text{min3}[\SI{}{\milli\meter}]$ & $\lambda[\SI{}{\milli\meter}]$ & SWR\\
+	\hline
+	\hline
+	96.4 & 93.4 & 90.5 & 66.0 & 115.3 & $\SI{49.300(7)}{}$ & $\SI{5.357(12)}{}$\\
+	\end{tabular}
+	\caption{Ergenisse der 3dB-SWR-Methode.}
+	\label{v3:2}
+	\begin{tabular}{r r r r}
+	$A_\text{1}[\SI{}{\decibel}]$ & $A_\text{2}[\SI{}{\decibel}]$ & $A_\text{2}-A_\text{1}[\SI{}{\decibel}]$ & SWR\\
+	\hline
+	\hline
+	20 & 40 & $\SI{20.0(7)}{}$ & $\SI{10.0(8)}{}$\\
+	\end{tabular}
+	\caption{Ergenisse der Abschwächer-Methode.}
+	\label{v3:3}
+\end{table}
+
+Mit der Abschwächer-Methode bei einer Sondentiefe von $\SI{9}{\milli\meter}$ ergaben sich die Ergebnisse aus Tabelle \ref{v3:3}.

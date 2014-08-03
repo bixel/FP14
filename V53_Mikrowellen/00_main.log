@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  31 JUL 2014 11:38
+This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  3 AUG 2014 15:10
 **00_main.tex
 (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.tex
 LaTeX2e <2011/06/27>
@@ -436,7 +436,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.028 seconds
+luaotfload: fontloader loaded in 0.031 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1321,36 +1321,39 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
+("C:/Program Files/MiKTeX 2.9/tex/latex/placeins/placeins.sty"
+Package: placeins 2005/04/18  v 2.2
+)
 
 LaTeX Warning: Unused global option(s):
     [openany].
 
 (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for EU2/lmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 68.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for EU2/lmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 71.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 71.
 
 ("C:/Program Files/MiKTeX 2.9/tex/latex/tipa/t3cmr.fd"
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
 isodate: babel.sty has been loaded
@@ -1387,7 +1390,7 @@ neric/fonts/otf/latinmodern-math.luc)
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature ssty for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
  math
 \g_fontspec_family_latinmodern-math.otf_int=\count374
 luaotfload | load : auto-selecting default features for script: dflt
@@ -1442,25 +1445,25 @@ luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 23 (LatinModernMath-Regular) defines feature ssty for script
+luaotfload: font no 23 (LatinModernMath-Regular) defines feature aalt for script
  math
 LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
-(Font)              `operators' in the math version `normal' on input line 68.
+(Font)              `operators' in the math version `normal' on input line 71.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> EU2/latinmodern-math.otf(0)/m/n on input
- line 68.
+ line 71.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
-(Font)              `operators' in the math version `bold' on input line 68.
+(Font)              `operators' in the math version `bold' on input line 71.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> EU2/latinmodern-math.otf(0)/bx/n on inp
-ut line 68.
+ut line 71.
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature ssty for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1537,22 +1540,22 @@ T;+ssty=0;"<-8>s*[1.00001]"[latinmodern-math.otf]:mode=base;script=math;language
 . =179404.75sp\relax 
 .................................................
 LaTeX Font Info:    Encoding `OMS' has changed to `EU2' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 68.
+(Font)              `symbols' in the math version `normal' on input line 71.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/cmsy/m/n --> EU2/latinmodern-math.otf(1)/m/n on inpu
-t line 68.
+t line 71.
 LaTeX Font Info:    Encoding `OMS' has changed to `EU2' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 68.
+(Font)              `symbols' in the math version `bold' on input line 71.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> EU2/latinmodern-math.otf(1)/bx/n on inp
-ut line 68.
+ut line 71.
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature ssty for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1612,16 +1615,16 @@ T;+ssty=0;"<-8>s*[0.99999]"[latinmodern-math.otf]:mode=base;script=math;language
 . \fontdimen 12\font =430571.4sp\relax \fontdimen 13\font =0pt\relax 
 .................................................
 LaTeX Font Info:    Encoding `OMX' has changed to `EU2' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 68
+(Font)              `largesymbols' in the math version `normal' on input line 71
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> EU2/latinmodern-math.otf(2)/m/n on inpu
-t line 68.
+t line 71.
 LaTeX Font Info:    Encoding `OMX' has changed to `EU2' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 68.
+(Font)              `largesymbols' in the math version `bold' on input line 71.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> EU2/latinmodern-math.otf(2)/bx/n on inp
-ut line 68.
+ut line 71.
 \AtBeginShipoutBox=\box283
 
 ("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/color.sty"
@@ -1633,7 +1636,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 68.
+Package hyperref Info: Link coloring ON on input line 71.
 
 ("C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1643,9 +1646,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count375
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 71.
+LaTeX Info: Redefining \pageref on input line 71.
+LaTeX Info: Redefining \nameref on input line 71.
 
 (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.out)
 (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.out)
@@ -1663,37 +1666,37 @@ luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95015pt on input line 68.
+(Font)              scaled to size 10.95015pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.66507pt on input line 68.
+(Font)              scaled to size 7.66507pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.47507pt on input line 68.
+(Font)              scaled to size 5.47507pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.94983pt on input line 68.
+(Font)              scaled to size 10.94983pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66484pt on input line 68.
+(Font)              scaled to size 7.66484pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4749pt on input line 68.
+(Font)              scaled to size 5.4749pt on input line 71.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1727,37 +1730,37 @@ luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4002pt on input line 70.
+(Font)              scaled to size 14.4002pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.00015pt on input line 70.
+(Font)              scaled to size 10.00015pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0001pt on input line 70.
+(Font)              scaled to size 7.0001pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.39977pt on input line 70.
+(Font)              scaled to size 14.39977pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.99985pt on input line 70.
+(Font)              scaled to size 9.99985pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.9999pt on input line 70.
+(Font)              scaled to size 6.9999pt on input line 73.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1786,11 +1789,11 @@ luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
-<pic/ModenDiagramm.pdf, id=23, 515.93062pt x 399.72775pt>
+<pic/ModenDiagramm.pdf, id=33, 515.93062pt x 399.72775pt>
 File: pic/ModenDiagramm.pdf Graphic file (type pdf)
 
 <use pic/ModenDiagramm.pdf>
-Package pdftex.def Info: pic/ModenDiagramm.pdf used on input line 16.
+Package pdftex.def Info: pic/ModenDiagramm.pdf used on input line 25.
 (pdftex.def)             Requested size: 398.33858pt x 308.63301pt.
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
@@ -1816,37 +1819,37 @@ luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : auto-selecting default features for script: dflt
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 17.
+(Font)              scaled to size 9.00014pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.00009pt on input line 17.
+(Font)              scaled to size 6.00009pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.00008pt on input line 17.
+(Font)              scaled to size 5.00008pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 17.
+(Font)              scaled to size 8.99986pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.99991pt on input line 17.
+(Font)              scaled to size 5.99991pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
 LaTeX Font Info:    Font shape `EU2/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.99992pt on input line 17.
+(Font)              scaled to size 4.99992pt on input line 26.
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1895,46 +1898,73 @@ back to file:
 luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
-back to file:)
-No file 00_main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
+back to file:
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"
+
+LaTeX Warning: Reference `bandbreite' on page 2 undefined on input line 31.
+
 [2 <C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/pic/ModenDiagramm.pdf>
-] [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
+] <pic/Daempfung.pdf, id=85, 500.48228pt x 399.72775pt>
+File: pic/Daempfung.pdf Graphic file (type pdf)
+
+<use pic/Daempfung.pdf>
+Package pdftex.def Info: pic/Daempfung.pdf used on input line 72.
+(pdftex.def)             Requested size: 398.33858pt x 318.1541pt.
+
+
+LaTeX Warning: Reference `frequenz' on page 3 undefined on input line 77.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
+ []
+
+[3] [4 <C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/pic/Daempfung.pdf>
+]
+
+LaTeX Warning: Reference `3dbswr' on page 5 undefined on input line 134.
+
+)
+No file 00_main.bbl.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (C:/Users/Markud/Documents/GitHub/FP14/V53_Mikrowellen/00_main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 76.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `00_main.out' has not changed.
-(rerunfilecheck)             Checksum: 2E796788D48AEAC5B2DF606771ABB741;130.
+(rerunfilecheck)             Checksum: 69C198FE451C7E1A04368FA47810EB87;302.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  )
 
 Here is how much of LuaTeX's memory you used:
- 30629 strings out of 494074
+ 30686 strings out of 494074
  100000,794899 words of node,token memory allocated
- 440 words of node memory still in use:
+ 472 words of node memory still in use:
     nodes
-   avail lists: 1:49,2:3340,3:95,4:797,5:94,6:1025,7:47,8:10,9:514,10:983,11:509
-,12:228
- 33258 multiletter control sequences out of 65536+200000
- 84 fonts using 30818779 bytes
- 60i,14n,59p,935b,1111s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-italic.otf><C:/P
-rogram Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/
-Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><C:/Progr
-am Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Prog
-ram Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Pro
-gram Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-regular.otf><C:/Program 
-Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-bold.otf><C:/Program Files/Mi
-KTeX 2.9/fonts/opentype/public/lm/lmroman10-regular.otf><C:/Program Files/MiKTeX
- 2.9/fonts/opentype/public/lm/lmroman12-regular.otf><C:/Program Files/MiKTeX 2.9
-/fonts/opentype/public/lm/lmsans10-bold.otf>
-Output written on 00_main.pdf (3 pages, 61024 bytes).
+   avail lists: 1:49,2:5038,3:150,4:1365,5:101,6:1527,7:72,8:15,9:514,10:983,11:
+509,12:228
+ 33294 multiletter control sequences out of 65536+200000
+ 85 fonts using 30943751 bytes
+ 60i,15n,59p,935b,1111s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-bold.otf><C:/Pro
+gram Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-italic.otf><C:/Program 
+Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program
+ Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><C:/Program File
+s/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program Fil
+es/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program Fi
+les/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-regular.otf><C:/Program Files/M
+iKTeX 2.9/fonts/opentype/public/lm/lmroman9-bold.otf><C:/Program Files/MiKTeX 2.
+9/fonts/opentype/public/lm/lmroman10-regular.otf><C:/Program Files/MiKTeX 2.9/fo
+nts/opentype/public/lm/lmroman12-regular.otf><C:/Program Files/MiKTeX 2.9/fonts/
+opentype/public/lm/lmsans10-bold.otf>
+Output written on 00_main.pdf (5 pages, 92813 bytes).
 
-PDF statistics: 142 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 131072)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 229 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 131072)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
