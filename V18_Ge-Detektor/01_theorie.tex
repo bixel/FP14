@@ -15,7 +15,7 @@ Diese Effekte führen zu einem vom Wirkungsquerschnitt $\sigma$ abhängigen Inte
 Die Intensität kann mithilfe der Gleichung
 
 \begin{equation}
-	N(D) = N_\text{0} \left(1-\exp\left(- n \sigma D\right)\right)
+	N(D) = N_\text{0} \left(1-\exp\left(- n \sigma D\right)\right) \label{anzahl}
 \end{equation}
 
 beschrieben werden.
@@ -145,4 +145,134 @@ Zusammen mit der Li-dotierten Oberfläche führt dies zu einer unteren nachweisg
 \label{sec:eigenschaften_eines_halbleiter_detektors}
 
 Das energetische Auflösungvermögen des Detektors ist eine wesentliche Kenngröße für die $\gamma$-Spektroskopie.
-Diese wird über die Halbwertsbreite $\Delta E_\text{1/2}$ bestimmt, welche angiebt wann sich zwei unterschiedliche Spektrallinien bei einfall monochromatischer $\gamma$-Strahlung noch zuverlässig voneinander trennen lassen.
+Diese wird unter anderem über die Halbwertsbreite $\Delta E_\text{1/2}$ bestimmt, welche angiebt wann sich zwei unterschiedliche Spektrallinien bei einfall monochromatischer $\gamma$-Strahlung noch zuverlässig voneinander trennen lassen.
+Die Breite ist von der Zahl $n$ der erzeugten Ladungsträgerpaare wobei
+
+\begin{equation}
+	\bar{n} = \frac{E_\gamma}{E_\text{EL}}
+\end{equation}
+
+gilt.
+
+Eine Bildung von Elektronen-Loch-Paaren ist nur unter der Beteiligung von Phononen möglich und die Energie des $\gamma$-Quants wird statistisch auf beide verteilt.
+Dies konnte herausgefunden werden, da in Ge bei $\SI{77}{\kelvin} E_\text{EL} = \SI{2.9}{\electronvolt}$ ist, obwohl die Energiedifferenz zwischen Leitungs- und Valenzband nur $\SI{0.67}{\electronvolt}$ beträgt.
+Da eine Korrelation zwischen Ladungsträgererzeugung und Phonen vorliegt, verkleinert sich die Standardabweichung durch die Wurzel des Fano-Faktors $F < 1$ zu
+
+\begin{equation}
+	\sigma = \sqrt{F \bar{n}} .
+\end{equation}
+
+Da $n >> 1$ ist, kann die Poisson-Verteilung durch eine Gauß-Verteilung mit der Standardabweichung $\sigma_\text{E}$ approximiert werden wodurch sich für die Halbwertsbreite 
+
+\begin{equation}
+	\Delta E_\text{1/2} = \sqrt{8 \ln{2}} \sigma_\text{E} \approx 2.45 \sqrt{0.1 E_\text{$\gamma$} E_\text{EL}}
+\end{equation}
+
+ergibt.
+
+Weiterhin spielt die Halbwertsbreite des Rauschens des Leckstroms $H_\text{R}$, die Halbwertsbreite durch unvollständige Ladungssammlung aufgrund von Feldinhomogenitäten $H_\text{I}$ und die Halbwertsbreite des Verstärkerrauschens $H_\text{E}$ eine Rolle.
+Da diese Unkorreliert sind, ergiebt sich die Energieauflösung des Detektors durch
+
+\begin{equation}
+	H_\text{ges}^2 = \Delta E_\text{1/2}^2 + H_\text{R}^2 + H_\text{I}^2 + H_\text{E}^2 .
+\end{equation}
+\\
+Eine weitere Kenngröße ist die Effizienz des Detektors, also die Nachweiswahrscheinlichkeit eines $\gamma$-Quants.
+Für die $\gamma$-Spektroskopie ist unterhalb von $\SI{3}{\mega\electronvolt}$ nur der Photoeffekt von Relevanz, doch nach \eqref{anzahl} sollen nur \SI{2}{\%} der $\gamma$-Quanten absorbiert werden.
+Effektiv liegt dieser Wert jedoch höher.
+\FloatBarrier
+\subsection{Elektronische Beschaltung eines Germanium-Detektors} % (fold)
+\label{sub:elektronische_beschaltung_eines_germanium_detektors}
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{pic/schaltung1.png}
+	\caption{Beschaltung eines Ge-Detektors durch eine Integrationsstufe \cite{anleitung}.}
+	\label{schaltung1}
+\end{figure}
+
+Um einen Spannungsimpuls zu erzeugen, welcher proportional zur Energie des eingefallenen $\gamma$-Quants ist, wird die in Abbildung \ref{schaltung1} dargestellte Schaltung verwendet.
+Es wird ein kapzitiv rückgekoppelter Operationsverstärker verwendet, welcher das Signal nach
+
+\begin{equation}
+	U_\text{A} = - \frac{1}{C_\text{K}} \int_0^{t_\text{s}} I(t) \text{d}t
+\end{equation}
+
+elektrisch Integriert.
+Dabei ist $t_\text{K}$ die Sammelzeit.
+\FloatBarrier
+
+Um das Signal auf die Impulshöhe zu analysieren muss der Kondensator nach jedem Ereignis wieder entladen werden.
+Dies kann, wie in Abbildung \ref{schaltung1} dargestellt, durch einen Widerstand möglich gemacht werden, doch induziert dieser ein Eigenrauschen.
+Besser ist daher die Entladung durch einen LED nach Abbildung \ref{schaltung2}, welche die Sperrschicht vorübergehend leitend macht.
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{pic/schaltung2.png}
+	\caption{Prinzipschaltbild zur Entladung des Integrationskondensators $C_\text{K}$ durch optoelektronische Rückkopplung \cite{anleitung}.}
+	\label{schaltung2}
+\end{figure}
+
+\FloatBarrier
+
+Im Anschluss an den Operationsverstärker befindet sich ein Vorverstärker, an den sich ein Hauptverstärker anschließt.
+Dieser bringt die Spannungssignale auf eine Höhe von $\SIrange{0}{10}{\volt}$, da der Messbereich des anschließenden Analog-Digital-Konverters auf diesen Beriech genormt ist.
+Zudem darf die Bandbreite des Hauptverstärkers nicht zu groß gewählt werden, da das Rauschen proportional zu dieser ist.
+Wird sie hingegen zu klein gewählt, werden nicht alle Komponenten des Eingangssignals übertragen.
+Daher wird innerhalb des Hauptverstärkers die Bandbreite durch RC-Glieder Hoch- und Tiefpass gefiltert.
+
+Weiteren Signalverschlechternden Effekten - Unterschwingung, negative Werte der Impulsrate, spontaner viel zu hoher Impuls - kann mithilfe der \textit{Pole-Zero-Kompensation}, der Methode der \textit{Base-Line-Restorer} oder einer \textit{Pile-Up-Schaltung} entgegen gewirkt werden.
+
+Abschließend gelangen die Signale in einen Vielkanalanalysator, der an einen Computer gekoppelt ist.
+An diesem werden die Signale ihrer Impulshöhe entsprechend in verschiedene kanäle sortiert und dort gespeichert.
+In Abbildung \ref{schaltung3} ist der Aufbau eines $\gamma$-Spektrometers dargestellt.
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{pic/schaltung3.png}
+	\caption{Blockschaltbild des hier verwendeten $\gamma$-Spektrometers ohne Kühlung \cite{anleitung}.}
+	\label{schaltung3}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Das Spektrum eines monochromatischen $\gamma$-Strahlers} % (fold)
+\label{sub:das_von_einem_ge_detektor_erzeugt_spektrum_eines_monochromatischen_gamma_strahlers}
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{pic/spek.png}
+	\caption{Das Spektrum eines monochromatischen $\gamma$-Strahls mit der Energie E$_\gamma$ aufgenommen mit einem Ge-Detektor \cite{anleitung}.}
+	\label{spek}
+\end{figure}
+
+Abbildung \ref{spek} zeigt das Spektrum eines monochromatischen $\gamma$-Strahlers.
+Es besteht aus dem Compton-Kontinuum mit Compton-Kante, dem Rückstreupeak und dem Photopeak.
+Die Breite des Photopeaks ist dabei ein Maß für die Energieauflösung des Spektrometers.
+Die von null verschiedene Intensität nach der Compton-Kante ist durch mehfach comptongestreute Quanten zu erklären,
+während der Rückstreupeak durch nicht unmittelbar von der Quelle in den Detektor gelangten Quanten erzeugt wird.
+\FloatBarrier
+\subsection{Bestimmung der Energie und der Aktivität einer $\gamma$-Quelle} % (fold)
+\label{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle}
+
+Wird ein Energiespektrum mit einem Vielkanalanalysator aufegnommen, so kann zunächst kein Zusammenhang zwischen Kanalnummer und Energie hergestellt werden.
+Durch Messung eines bekannten Spektrums können die Kanäle jedoch den dazugehörigen Energien zugeordnet werden.
+Dazu ist es von Vorteil ein besonders Linienreiches Spektrum zu verwenden, da so die Fehler minimal gehalten werden können.
+\\
+Die Effizienz $Q$ des Spektrometers kann durch einen Strahler mit bekannter Aktivität über den Zusammenhang
+
+\begin{equation}
+	Z = \frac{\Omega}{4 \pi} A W Q
+\end{equation}
+
+bestimmt werden.
+Dabei ist $Z$ das Zählerergebnis, $A$ die Aktivität, $\Omega$ der Raumwinkel und $W$ die Emissionswahrscheinlichkeit einer bestimmten Energie bei einem Mehrlinienstrahler.\\
+
+$Z$ kann dem Energiespektrum entnommen werden, $A$ kann aus den Herstellerangaben errechnet werden  und $W$ lässt sich aus einschlägigen Tabellen entnehmen.
+Für $\Omega$ hingegen gilt
+
+\begin{equation}
+	\frac{\Omega}{4 \pi} = \frac{1}{2} \left(1-\frac{a}{\sqrt{a^2+r^2}}\right), a >= \SI{10}{\centi\meter}.
+\end{equation}
+
+Dabei kann der Radius $r$ den Detektorabmessungen entnommen werden.

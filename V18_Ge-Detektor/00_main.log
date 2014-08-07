@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  6 AUG 2014 22:44
+This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.4.14)  7 AUG 2014 20:47
 **00_main.tex
 (C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/00_main.tex
 LaTeX2e <2011/06/27>
@@ -436,7 +436,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.047 seconds
+luaotfload: fontloader loaded in 0.028 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1399,7 +1399,7 @@ neric/fonts/otf/latinmodern-math.luc)
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 \g_fontspec_family_latinmodern-math.otf_int=\count375
 luaotfload | load : auto-selecting default features for script: dflt
@@ -1454,7 +1454,7 @@ luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 23 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 23 (LatinModernMath-Regular) defines feature dtls for script
  math
 LaTeX Font Info:    Encoding `OT1' has changed to `EU2' for symbol font
 (Font)              `operators' in the math version `normal' on input line 71.
@@ -1472,7 +1472,7 @@ back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1564,7 +1564,7 @@ back to file:
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-luaotfload: font no 22 (LatinModernMath-Regular) defines feature aalt for script
+luaotfload: font no 22 (LatinModernMath-Regular) defines feature dtls for script
  math
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
@@ -1869,7 +1869,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-<pic/compton.png, id=46, 953.06062pt x 349.305pt>
+<pic/compton.png, id=61, 953.06062pt x 349.305pt>
 File: pic/compton.png Graphic file (type png)
  <use pic/compton.png>
 Package pdftex.def Info: pic/compton.png used on input line 47.
@@ -1886,7 +1886,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
  []
 
-<pic/compton2.png, id=50, 472.01344pt x 372.64218pt>
+<pic/compton2.png, id=65, 472.01344pt x 372.64218pt>
 File: pic/compton2.png Graphic file (type png)
  <use pic/compton2.png>
 Package pdftex.def Info: pic/compton2.png used on input line 75.
@@ -1925,17 +1925,17 @@ luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
+[2 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/compton.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 91--94
 
  []
 
-[2 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/compton.png>]
 [3 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/compton2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-<pic/german.png, id=82, 483.30562pt x 821.31844pt>
+<pic/german.png, id=97, 483.30562pt x 821.31844pt>
 File: pic/german.png Graphic file (type png)
  <use pic/german.png>
 Package pdftex.def Info: pic/german.png used on input line 126.
@@ -1979,16 +1979,71 @@ luaotfload | load : auto-selecting default features for script: math
 luaotfload | load : no defaults for script "math", falling back to "dflt"
 luaotfload | load : path lookup of "latinmodern-math.otf" unsuccessful, falling 
 back to file:
-<pic/detekt.png, id=86, 639.89063pt x 374.14781pt>
+<pic/detekt.png, id=101, 639.89063pt x 374.14781pt>
 File: pic/detekt.png Graphic file (type png)
  <use pic/detekt.png>
 Package pdftex.def Info: pic/detekt.png used on input line 138.
 (pdftex.def)             Requested size: 216.67871pt x 126.69475pt.
-)
+
 [4 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/german.png>]
-(C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/00_main.bbl
+<pic/schaltung1.png, id=113, 757.32938pt x 437.38406pt>
+File: pic/schaltung1.png Graphic file (type png)
+
+<use pic/schaltung1.png>
+Package pdftex.def Info: pic/schaltung1.png used on input line 189.
+(pdftex.def)             Requested size: 216.67871pt x 125.13626pt.
+ [5 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/detekt.png>] <pi
+c/schaltung2.png, id=129, 770.12718pt x 510.40688pt>
+File: pic/schaltung2.png Graphic file (type png)
+
+<use pic/schaltung2.png>
+Package pdftex.def Info: pic/schaltung2.png used on input line 211.
+(pdftex.def)             Requested size: 216.67871pt x 143.5983pt.
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
+uc: C:/Users/Markud/AppData/Local/MiKTeX/2.9/luatex-cache/generic/fonts/otf/lmro
+man6-regular.luc)
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt" [6 <C:
+/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/schaltung1.png> <C:/User
+s/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/schaltung2.png>]
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
+<pic/schaltung3.png, id=145, 765.6103pt x 283.0575pt>
+File: pic/schaltung3.png Graphic file (type png)
+ <use pic/schaltung3.png>
+Package pdftex.def Info: pic/schaltung3.png used on input line 232.
+(pdftex.def)             Requested size: 216.67871pt x 80.11073pt.
+
+[7 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/schaltung3.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 239.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 239.
+
+<pic/spek.png, id=156, 818.30719pt x 560.0925pt>
+File: pic/spek.png Graphic file (type png)
+ <use pic/spek.png>
+Package pdftex.def Info: pic/spek.png used on input line 244.
+(pdftex.def)             Requested size: 216.67871pt x 148.30415pt.
+ [8 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/spek.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 255.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 255.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
+
+ []
+
+) (C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/00_main.bbl
 Underfull \hbox (badness 1082) in paragraph at lines 4--7
 [][]\EU2/lmr/m/it/10.95 Ver-such Nr 18 - Der Reinst-Germanium-Detektor als In-s
 tru-ment der Gamma-
@@ -1996,43 +2051,40 @@ tru-ment der Gamma-
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 80.
- [5 <C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/pic/detekt.png>]
+ [9]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 80.
-
-(C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/00_main.aux)
+ (C:/Users/Markud/Documents/GitHub/FP14/V18_Ge-Detektor/00_main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 80.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 80.
 Package rerunfilecheck Info: File `00_main.out' has not changed.
-(rerunfilecheck)             Checksum: 84D78C69224F60F8947C85644C996842;441.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: C4D5793126AAC3F1D096261EB1F064F4;765.
  )
 
 Here is how much of LuaTeX's memory you used:
- 30793 strings out of 494074
+ 30854 strings out of 494074
  100000,794899 words of node,token memory allocated
- 520 words of node memory still in use:
+ 610 words of node memory still in use:
     nodes
-   avail lists: 1:49,2:7038,3:158,4:649,5:172,6:2330,7:46,8:16,9:514,10:983,11:5
+   avail lists: 1:49,2:7091,3:199,4:670,5:172,6:2350,7:47,8:18,9:514,10:983,11:5
 09,12:228
- 33360 multiletter control sequences out of 65536+200000
- 90 fonts using 35065611 bytes
- 60i,11n,59p,935b,769s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33389 multiletter control sequences out of 65536+200000
+ 92 fonts using 35315507 bytes
+ 60i,11n,59p,935b,816s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-italic.otf><C:/P
-rogram Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/
-Program Files/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:
-/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-regular.otf><C:/Prog
-ram Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-bold.otf><C:/Program File
-s/MiKTeX 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><C:/Program Files/MiK
-TeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program Files/Mi
-KTeX 2.9/fonts/opentype/public/lm/lmroman10-regular.otf><C:/Program Files/MiKTeX
- 2.9/fonts/opentype/public/lm/lmroman12-regular.otf><C:/Program Files/MiKTeX 2.9
-/fonts/opentype/public/lm/lmsans10-bold.otf>
-Output written on 00_main.pdf (5 pages, 196023 bytes).
+rogram Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman6-regular.otf><C:/Progra
+m Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman5-regular.otf><C:/Program Fil
+es/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program Fi
+les/MiKTeX 2.9//fonts/opentype/public/lm-math/latinmodern-math.otf><C:/Program F
+iles/MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-regular.otf><C:/Program Files/
+MiKTeX 2.9/fonts/opentype/public/lm/lmroman9-bold.otf><C:/Program Files/MiKTeX 2
+.9/fonts/opentype/public/lm/lmroman8-regular.otf><C:/Program Files/MiKTeX 2.9//f
+onts/opentype/public/lm-math/latinmodern-math.otf><C:/Program Files/MiKTeX 2.9/f
+onts/opentype/public/lm/lmroman10-regular.otf><C:/Program Files/MiKTeX 2.9/fonts
+/opentype/public/lm/lmroman12-regular.otf><C:/Program Files/MiKTeX 2.9/fonts/ope
+ntype/public/lm/lmsans10-bold.otf>
+Output written on 00_main.pdf (9 pages, 311590 bytes).
 
-PDF statistics: 168 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 131072)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 251 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 131072)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
