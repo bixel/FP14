@@ -4,3 +4,5 @@
 
 clean:
 	rm -rf ./build
+	./*.bbl
+	./*.log
