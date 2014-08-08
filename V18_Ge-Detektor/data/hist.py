@@ -6,11 +6,18 @@ from scipy.optimize import curve_fit as cfit
 # import peakdetect
 
 
-def sigma_delta(pos, arr):
+def sigma_delta(pos, arr, fit_width=30):
+    """ Try to fit a Gauss to the given datapoints and return the integral of
+        the function, aswell as the width sigma.
+    """
     gauss = lambda x, A, mu, sigma: A * np.exp(-(x-mu)**2/(2.*sigma**2))
+    fit_array = arr[pos - fit_width:pos + fit_width]
     init_values = [1., pos, 1.]
-    coeff, var_matrix = cfit(gauss, arr, p0=init_values)
+    coeff, var_matrix = cfit(gauss, fit_width, p0=init_values)
 
+    xs = np.linspace(pos - fit_width, pos + fit_width, 100)
+    plt.plot(xs, gauss(xs, coeff[0], coeff[1], coeff[2]))
+    plt.show()
 
 # Read Data
 europium_distribution = np.loadtxt("Europium.txt", unpack=True)
@@ -80,9 +87,10 @@ eu_spectrum = np.array(
      [1408.0, 0.210]]
 )
 
+# get the channels for calibration
 channels = np.sort(maxima[:, 0])
-print(channels)
 
+# define and fit linear calibration function
 calibration_function = lambda x, m, b: m*x + b
 coeff, var = cfit(calibration_function, channels, eu_spectrum[:, 0])
 
