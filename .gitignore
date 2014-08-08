@@ -9,3 +9,5 @@
 *.lot
 *.out
 *.toc
+*.log
+*.blg
