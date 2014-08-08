@@ -3,21 +3,28 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
+from scipy.integrate import simps
 # import peakdetect
 
 
-def sigma_delta(pos, arr, fit_width=30):
+def sigma_delta(pos, arr, fit_width=30, plot=''):
     """ Try to fit a Gauss to the given datapoints and return the integral of
         the function, aswell as the width sigma.
     """
     gauss = lambda x, A, mu, sigma: A * np.exp(-(x-mu)**2/(2.*sigma**2))
-    fit_array = arr[pos - fit_width:pos + fit_width]
-    init_values = [1., pos, 1.]
-    coeff, var_matrix = cfit(gauss, fit_width, p0=init_values)
-
-    xs = np.linspace(pos - fit_width, pos + fit_width, 100)
-    plt.plot(xs, gauss(xs, coeff[0], coeff[1], coeff[2]))
-    plt.show()
+    data_xs = np.arange(-fit_width, fit_width)
+    data_ys = arr[pos - fit_width:pos + fit_width]
+    init_values = [1., 0., 1.]
+    coeff, var_matrix = cfit(gauss, data_xs, data_ys, p0=init_values)
+    xs = np.linspace(-fit_width, fit_width, 1000)
+    if plot != '':
+        plt.plot(xs, gauss(xs, coeff[0], coeff[1], coeff[2]))
+        plt.errorbar(data_xs, data_ys, yerr=np.sqrt(data_ys), fmt='.')
+        plt.ylim(ymin=-5)
+        plt.savefig('{}-{}.pdf'.format(plot, pos))
+        plt.clf()
+    # return the integral = number of events in peak
+    return simps(gauss(xs, coeff[0], coeff[1], coeff[2]), xs)
 
 # Read Data
 europium_distribution = np.loadtxt("Europium.txt", unpack=True)
@@ -51,6 +58,8 @@ europium_distribution -= (eur_time / bkg_time) * background_dist
 # Own try to detect the peaks
 n_max = 8
 
+# define array for maxima with index, value of the distribution
+# of the maximum
 maxima = np.zeros((n_max, 2))
 no_max_dist = np.copy(europium_distribution)
 no_max_dist[1200:1400] = 0
@@ -113,3 +122,6 @@ plt.ylim(0, 4500)
 plt.xlim(0, 1500)
 plt.savefig("04_eudist_calibrated.pdf")
 plt.clf()
+
+for maximum in maxima:
+    sigma_delta(maximum[0], europium_distribution, plot='maximum_fit')
