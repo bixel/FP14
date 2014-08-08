@@ -1,7 +1,19 @@
 \section{Messung}
 \label{sec:messung}
-Im Folgenden Abschnitt wird zunächst eine Eichung und energieabhängige Effizienzbestimmung der Apparatur durchgeführt. Anschließend werden mit der Aufnahme eines Cäsium-Strahlers verschiedene Detektoreigenschaften bestimmt.
+Im Folgenden Abschnitt wird zunächst eine Energiekalibration der Apparatur durchgeführt. Anschließend werden mit der Aufnahme eines Cäsium-Strahlers verschiedene Detektoreigenschaften bestimmt.
 Daraufhin wird die Aktivität einer ???-Quelle gemessen und schließlich einige Holzkohlebriketts auf Radioaktivität untersucht.
 
 \subsection{Eichung und Effizienz des Ge-Detektors}
 \label{subse:eichung}
+Wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle} erwähnt, liegen nach der Messung lediglich Informationen über einen Energiekanal vor, in dem ein Ereignis detektiert wurde.
+Um das entsprechende Energiespektrum zu erhalten, wird den Kanälen mit einer lineare Kalibrationsfunktion $E(C)$ eine jeweilige Energie $E$ zugeordnet.
+Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:
+
+\begin{align}
+    E(C) = mC + b\,.
+\end{align}
+
+Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen.
+Um den Einfluss von Untergrundereignisse zu verringern, wird ebenfalls eine Leermessung durchgeführt und die Einträge der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen.
+Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
+Dabei werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet.
