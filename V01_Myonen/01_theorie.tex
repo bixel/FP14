@@ -1,0 +1,57 @@
+\section{Einleitung} % (fold)
+\label{sec:einleitung}
+
+Myonen gehören wie Elektronen zur Familie Leptonen und entstehen durch Pionen-Zerfall in den oberen Schichten der Atmosphäre.
+In diesem Versuch wird die Lebensdauer dieser Myonen untersucht.
+
+\section{Theorie} % (fold)
+\label{sec:theorie}
+
+\subsection{Eigenschaften von Myonen} % (fold)
+\label{sub:eigenschaften_von_myonen}
+
+% subsection eigenschaften_von_myonen (end)
+
+Myonen sind 206,77 mal schwerer als ein Elektronen und gehören zur zweiten Generation der Leptonenfamilie.
+Zudem unterliegen diese nur der Schwachen und Elektromagnetischen Wechselwirkung und besitzen im gegensatz zu Elektronen eine endliche Lebensdauer.
+
+\subsection{Definition der Lebensdauer} % (fold)
+\label{sub:definition_der_lebensdauer}
+
+Der Zerfall von instabilen Teilchen ist ein statistischer Prozess, weshalb jedes Teilchen eine indivduelle Lebensdauer besitzt.
+Eine allgemeine Definition der Lebensdauer ist über 
+
+\begin{equation}
+	\text{d}W = \lambda \text{d}t
+\end{equation}
+
+gegeben.
+
+Bei dieser Definition ist die Wahrscheinlichkeit nicht explizit von $t$ abhängig, weshalb das Alter des Teilchens keine Rolle spielt.
+Für $N$ zerfallende Teilchen ergiebt sich somit 
+
+\begin{equation}
+	\text{d}N = -N \text{d}W = -\lambda \text{d}t.
+\end{equation}
+
+Für große $N$ ergiebt sich näherungsweise für das Integral
+
+\begin{equation}
+	\frac{N(t)}{N_\text{0}} = \exp{-\lambda t},
+\end{equation}
+
+und somit für die Verteilung
+ 
+\begin{equation}
+	\frac{\text{d}N(t)}{N_\text{0}} = \lambda \exp{-\lambda t} \text{d}t .
+\end{equation}
+\\
+Die charakteristische Lebensdauer $\tau$ wird über die Mittelwerte aller möglichen Lebensdauern gebildet, wobei diese mit der Häufigkeit ihres Vorkommens gewichtet sind.
+Dies entspricht dem Ersten Moment der Verteilungsfunktion und es ergibt sich damit
+
+\begin{equation}
+	\tau = \int_\text{0}^\infty \lambda \exp{-\lambda t} \text{d}t = \frac{1}{\lambda} .
+\end{equation}
+
+\subsection{Abschätzung der Lebensdauer mit Hilfe einer Stichprobe} % (fold)
+\label{sub:abschaetzung_der_lebensdauer_mit_hilfe_einer_stichprobe}
