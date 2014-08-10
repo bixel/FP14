@@ -110,14 +110,21 @@ Mit Hilfe eines $^{137}$Cs-Strahlers werden im folgenden Abschnitt einige Detekt
 Das Spektrum des Stahlers ist in Abbildung \ref{fig:cs_spektrum} dargestellt.
 
 Zunächst wird der Photopeak des Spektrums genauer untersucht. Durch Fit einer Gaußfunktion im Bereich des Peaks lassen sich die genaue Lage und der Inhalt des Photopeaks bestimmen.
-Für die Halb- und Zehntelwertsbreite $E_{1/2}$ und $E_{1/10}$ gilt mit Kenntnis über die Breite $\sigma$ der Gaußverteilung
+Für die Halb- und Zehntelwertsbreite $E_{1/2}$ und $E_{1/10}$ gilt mit Kenntnis der Breite $\sigma$ der Gaußverteilung
 \begin{align*}
     E_{1/2} = 2\sigma\sqrt{\ln 2}\,,\quad E_{1/10} = 2\sigma\sqrt{\ln 10}\,.
 \end{align*}
 Der Fit ist in Abbildung \ref{fig:cs_gauss} dargestellt, er liefert folgende Werte für die Lage des Photopeaks $E_\gamma$, die Breiten $E_{1/2}$ und $E_{1/10}$, sowie die Anzahl $N$ der Ereignisse im Peak:
 \begin{align*}
     E_\gamma &= \SI{661.623+-0.006}{keV} \,,&\quad N &= \num{12254}\,,\\
-    E_{1/2} &= \,,&\quad E_{1/10} &= \,.
+    E_{1/2} &= \SI{2.752±0.010}{keV}\,,&\quad E_{1/10} &= \SI{5.016±0.018}{keV}\,.
 \end{align*}
 
+Aschließden wird die Lage der Compton- und Rückstreukante bestimmt.
+Auf Grund der Überlagerung der unterschiedlichen Wechselwirkungen im Detektor, ist die Bestimmung dieser Kanten durch einen Fit schwierig.
+Stattdessen werden die Maxima der Energieverteilungen in den entsprechenden Bereichen mit der Position der Kanten identifiziert.
+Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$ an der Rückstreukante mit
+\begin{align*}
+    E_\text{C} = \SI{463.537}{keV}\,, \quad E_\text{R} = \SI{192.887}{keV} \,.
+\end{align*}
 % subsection bestimmung_einiger_detektoreigenschaften (end)

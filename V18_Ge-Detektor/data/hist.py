@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
 from scipy.integrate import simps
-from uncertainties import ufloat
+from uncertainties import ufloat, umath
 # import peakdetect
 
 
@@ -15,7 +15,7 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
         @return the integral (simpson integration) of the gauss function from
                 -fit_width to fit_width
     """
-    gauss = lambda x, A, mu, sigma, B: B + A * np.exp(-(x-mu)**2/(4*sigma**2))
+    gauss = lambda x, A, mu, sigma, B: B + A / np.sqrt(2 * np.pi * sigma*sigma) * np.exp(- 0.5 * ((x-mu)/sigma)**2)
     data_xs = np.arange(-fit_width, fit_width)
     data_ys = arr[pos - fit_width:pos + fit_width]
     init_values = [1., 0., 1., 0.]
@@ -142,6 +142,11 @@ print(
     )
 )
 
+def calibrated(x):
+    """ Just a little helper to reduce typing
+    """
+    return calibration_function(x, calibration_coeff[0], calibration_coeff[1])
+
 calibration_fig = plt.subplot(111)
 x_values = np.arange(0, 4500)
 plt.plot(x_values, calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]))
@@ -171,7 +176,6 @@ for maximum in maxima:
         sigma_delta(
             maximum[0],
             europium_distribution,
-            plot='maximum_fit'
         )[0]
     )
 
@@ -208,16 +212,60 @@ cs_maxima = peaks(caesium_dist, n_max=1)
 cs_events, cs_coeff, cs_var = sigma_delta(
     cs_maxima[0, 0],
     caesium_dist,
-    plot='caesium_fit'
 )
+
+plt.plot(
+    calibrated(x_values),
+    caesium_dist[:len(x_values)]
+)
+plt.xlim(0, 800)
+plt.xlabel('Energie [keV]')
+plt.ylabel('Ereignisse')
+plt.savefig('06_caesium.pdf')
+plt.clf()
+
+sigma = ufloat(cs_coeff[2], np.sqrt(cs_var[2][2]))
 
 print(
     'Caesium-Photopeak\n=================\n'
-    'Events: {:g}\n'
-    'mean: {:g}±{:g}keV\n'
-    ''.format(
-        cs_events,
-        calibration_function(cs_maxima[0][0] + cs_coeff[1], calibration_coeff[0], calibration_coeff[1]),
-        np.sqrt(cs_var[1][1]),
+    'N      = {:g}±{:g}\n'
+    'μ      = {:g}±{:g}keV\n'
+    'σ      = {:g}±{:g}\n'
+    'E_1/2  = {:g}±{:g}\n'
+    'E_1/10 = {:g}±{:g}\n'.format(
+        cs_events, np.sqrt(cs_events),
+        calibrated(cs_maxima[0][0] + cs_coeff[1]), np.sqrt(cs_var[1][1]),
+        cs_coeff[2], np.sqrt(cs_var[2][2]),
+        (2 * sigma * umath.sqrt(umath.log(2))).nominal_value,
+        (2 * sigma * umath.sqrt(umath.log(2))).std_dev,
+        (2 * sigma * umath.sqrt(umath.log(10))).nominal_value,
+        (2 * sigma * umath.sqrt(umath.log(10))).std_dev,
     )
 )
+
+# raw_data = []
+# for x in range(0,2000):
+#     raw_data.extend([calibration_function(x, calibration_coeff[0], calibration_coeff[1])] * caesium_dist[x])
+
+# plt.hist(raw_data, bins=200)
+
+compton_peak = peaks(caesium_dist, n_max=1, vetos=[[0,1300],[1600,5000]])
+reflex_peak = peaks(caesium_dist, n_max=1, vetos=[[1600,5000]])
+print(
+    'compton = {:g}keV\n'
+    'reflex  = {:g}keV\n'.format(
+        calibrated(compton_peak[0][0]),
+        calibrated(reflex_peak[0][0])
+    )
+)
+
+plt.plot(
+    calibrated(x_values),
+    caesium_dist[:len(x_values)],
+)
+plt.xlim(0, 600)
+plt.ylim(0, 180)
+plt.xlabel('Energie [keV]')
+plt.ylabel('Ereignisse')
+plt.savefig('06_caesium_zoomed.pdf')
+plt.clf()
