@@ -20,16 +20,21 @@ Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermess
     \centering
     \includegraphics[width=0.8\textwidth]{img/02_maxima.pdf}
     \caption{
-
+        Energiespektrum des $^{52}$Eu-Strahlers. Die zur Energiekalibration genutzten Maxima im Spektrum sind mit einem Pfeil markiert.
     }
     \label{fig:eu_uncalibrated}
 \end{figure}
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
-Dabei werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
+Für die Kalibration werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
 Es ergeben sich die Koeffizienten
 %
 \begin{align*}
      m = \SI{345.22+-0.04}{keV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
+\end{align*}
+
+Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle} beschrieben bestimmt werden. Mit Gleichung \eqref{eqn:raumwinkel} ergibt sich ein Raumwinkelanteil des Detektors von
+\begin{align*}
+    \frac{\Omega}{4\pi} = \num{0.443+-0.006}
 \end{align*}
 
 \begin{table}[htb]
@@ -38,20 +43,26 @@ Es ergeben sich die Koeffizienten
         Die für die Kalibration des Ge-Detektors verwendeten Maxima des $^{52}$Eu-Spektrums.
     }
     \label{tab:maxima}
-    \begin{tabular}{rrr}
+    \begin{tabular}{%
+        S[table-format=3.2]%
+        S[table-format=3.2]%
+        S[table-format=3.2]%
+    }
         \toprule
-        Energie [\si{keV}] & Emissionswahrscheinlichkeit [\si{\percent}] & Zugeordneter Kanal \\
+        {Energie [\si{keV}]} &
+        {Emissionsw. [\si{\percent}]} &
+        {Kanal} \\
         \midrule
-        \num{121.78} & \num{0.286} & \num{ 358} \\
-        \num{244.7 } & \num{ 0.76} & \num{1003} \\
-        \num{344.3 } & \num{0.265} & \num{ 714} \\
-        \num{411.12} & \num{0.022} & \num{2262} \\
-        \num{443.96} & \num{0.031} & \num{2798} \\
-        \num{778.9 } & \num{0.129} & \num{4084} \\
-        \num{964.08} & \num{0.146} & \num{3227} \\
-        \num{1085.9} & \num{0.102} & \num{1291} \\
-        \num{1112.1} & \num{0.136} & \num{3150} \\
-        \num{1408.0} & \num{0.210} & \num{1196} \\
+        121.78 & 28.6 &  358 \\
+        244.7  &  7.6 & 1003 \\
+        344.3  & 26.5 &  714 \\
+        411.12 & 02.2 & 2262 \\
+        443.96 & 03.1 & 2798 \\
+        778.9  & 12.9 & 4084 \\
+        964.08 & 14.6 & 3227 \\
+        1085.9 & 10.2 & 1291 \\
+        1112.1 & 13.6 & 3150 \\
+        1408.0 & 21.0 & 1196 \\
         \bottomrule
     \end{tabular}
 \end{table}
