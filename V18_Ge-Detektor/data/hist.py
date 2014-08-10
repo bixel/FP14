@@ -101,8 +101,6 @@ plt.title("Detektion der Maxima")
 plt.xlabel("Kanal")
 plt.ylabel("Anz. Ereignisse")
 plt.ylim(0, 4200)
-# plt.ylim(0, 150)
-# plt.xlim(0, 1500)
 
 plt.savefig("02_maxima.pdf")
 plt.clf()

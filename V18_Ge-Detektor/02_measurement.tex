@@ -18,11 +18,23 @@ Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen (Abb. \ref{fig
 Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen (Abb. \ref{fig:leermessung}).
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/02_maxima.pdf}
+    \begin{subfigure}{.49\linewidth}
+        \includegraphics[width=1.0\linewidth]{img/02_maxima.pdf}
+        \caption{
+            Energiespektrum des $^{52}$Eu-Strahlers.
+        }
+        \label{fig:eu_uncalibrated}
+    \end{subfigure}%
+    \begin{subfigure}{.49\linewidth}
+        \includegraphics[width=1.0\linewidth]{img/03_calibration.pdf}
+        \caption{
+            Fit der Kalibrationsfunktion
+        }
+        \label{fig:calibration}
+    \end{subfigure}
     \caption{
-        Energiespektrum des $^{52}$Eu-Strahlers. Die zur Energiekalibration genutzten Maxima im Spektrum sind mit einem Pfeil markiert.
+        Energiespektrum des $^{52}$Eu-Strahlers und Kalibrationsfunktion. Die Zur Kalibration genutzen Maxima sind in \ref{fig:eu_uncalibrated} durch einen Pfeil markiert.
     }
-    \label{fig:eu_uncalibrated}
 \end{figure}
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
 Für die Kalibration werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
@@ -32,9 +44,28 @@ Es ergeben sich die Koeffizienten
      m = \SI{345.22+-0.04}{keV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
 \end{align*}
 
-Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle} beschrieben bestimmt werden. Mit Gleichung \eqref{eqn:raumwinkel} ergibt sich ein Raumwinkelanteil des Detektors von
+Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle} beschrieben bestimmt werden. Mit Gleichungen \eqref{eqn:raumwinkel} ergibt sich ein Raumwinkelanteil des Detektors von
 \begin{align*}
-    \frac{\Omega}{4\pi} = \num{0.443+-0.006}
+    \frac{\Omega}{4\pi} = \SI{1.575+-0.017}{\percent}\,.
+\end{align*}
+Die Gesamtaktivität $A_\text{ges}$ des Stahlers am Versuchstag berechnet sich mit Hilfe der bekannten Halbwertszeit $t_{1/2} = \SI{4943+-5}{d}$, der Anfangsaktivität $A_0 = \SI{4130+-60}{\becquerel}$ und der Zerfallszeit $\Delta t = \SI{5006}{d}$ zu
+\begin{align*}
+    A_\text{ges} = \SI{1500+-22}{\becquerel}\,.
+\end{align*}
+Für die Aktivität $A$, die im Detektor gemessen werden kann, gilt schließlich
+\begin{align*}
+    A &= \frac{\Omega}{4\pi}\cdot A_\text{ges}\,\\
+    \Rightarrow \quad A &= \SI{23.6+-0.4}{\becquerel}\,.
+\end{align*}
+Unter Hinzunahme der bekannten Emissionswahrscheinlichkeiten kann nun wie in Gleichung \eqref{eqn:effizienz} beschrieben, eine Effizienzfunktion $Q(E)$ für den Detektor aufgestellt werden.
+Die so erhaltenen Wertepaare $(Q,E)$ werden anschließend mit Eine Funktion $Q(E)$ der Form
+\begin{align*}
+    Q(E) = a (E - b)^c + d
+\end{align*}
+wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
+\begin{align*}
+    a &= 1\,, &\quad b &= 2\,, \\
+    c &= 3\,, &\quad d &= 4\,.
 \end{align*}
 
 \begin{table}[htb]
@@ -44,25 +75,31 @@ Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt \ref{
     }
     \label{tab:maxima}
     \begin{tabular}{%
-        S[table-format=3.2]%
-        S[table-format=3.2]%
-        S[table-format=3.2]%
+        S[table-format=4.2]%
+        S[table-format=2.1]%
+        S[table-format=4.0]%
+        S%
+        S%
+        S%
     }
         \toprule
         {Energie [\si{keV}]} &
         {Emissionsw. [\si{\percent}]} &
-        {Kanal} \\
+        {Kanal} &
+        {gemessen} &
+        {erwartet} &
+        {Effizienz} \\
         \midrule
-        121.78 & 28.6 &  358 \\
-        244.7  &  7.6 & 1003 \\
-        344.3  & 26.5 &  714 \\
-        411.12 & 02.2 & 2262 \\
-        443.96 & 03.1 & 2798 \\
-        778.9  & 12.9 & 4084 \\
-        964.08 & 14.6 & 3227 \\
-        1085.9 & 10.2 & 1291 \\
-        1112.1 & 13.6 & 3150 \\
-        1408.0 & 21.0 & 1196 \\
+        121.78 & 28.6 & 358  & & & \\
+        244.7  &  7.6 & 714  & & & \\
+        344.3  & 26.5 & 1003 & & & \\
+        411.12 & 02.2 & 1196 & & & \\
+        443.96 & 03.1 & 1291 & & & \\
+        778.9  & 12.9 & 2262 & & & \\
+        964.08 & 14.6 & 2798 & & & \\
+        1085.9 & 10.2 & 3150 & & & \\
+        1112.1 & 13.6 & 3227 & & & \\
+        1408.0 & 21.0 & 4084 & & & \\
         \bottomrule
     \end{tabular}
 \end{table}
