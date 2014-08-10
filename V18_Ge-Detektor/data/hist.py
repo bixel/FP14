@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
 from scipy.integrate import simps
+from uncertainties import ufloat
 # import peakdetect
 
 
@@ -14,7 +15,7 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
         @return the integral (simpson integration) of the gauss function from
                 -fit_width to fit_width
     """
-    gauss = lambda x, A, mu, sigma, B: B + A * np.exp(-(x-mu)**2/(2.*sigma**2))
+    gauss = lambda x, A, mu, sigma, B: B + A * np.exp(-(x-mu)**2/(4*sigma**2))
     data_xs = np.arange(-fit_width, fit_width)
     data_ys = arr[pos - fit_width:pos + fit_width]
     init_values = [1., 0., 1., 0.]
@@ -28,12 +29,35 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
         plt.savefig('{}-{}.pdf'.format(plot, pos))
         plt.clf()
     # return the integral = number of events in peak (without offset)
-    return simps(gauss(xs, coeff[0], coeff[1], coeff[2], 0), xs)
+    return (
+        simps(gauss(xs, coeff[0], coeff[1], coeff[2], 0), xs),
+        coeff,
+        var_matrix
+    )
+
+def peaks(dist, n_max=10, vetos = []):
+    """ Generate an array with position of maximum value and maximum value
+        for given distribution-array.
+        Look for n_max maxima.
+        vetos defines the ranges excluded from searching
+
+        @return array with [index, value] of the n_max highest maxima
+    """
+    maxima = np.zeros((n_max, 2))
+    no_max_dist = np.copy(dist)
+    for veto in vetos:
+        no_max_dist[veto[0]:veto[1]] = 0
+    for index in np.arange(0, n_max):
+        max_val_index = np.argmax(no_max_dist)
+        maxima[index] = max_val_index, europium_distribution[max_val_index]
+        no_max_dist[max_val_index - 10:max_val_index + 10] = 0
+    return maxima
 
 # Read Data
 europium_distribution = np.loadtxt("Europium.txt", unpack=True)
 eur_proof_dist = np.loadtxt("Europium_proof.txt", unpack=True)
 background_dist = np.loadtxt("Leermessung.txt", unpack=True)
+caesium_dist = np.loadtxt('Caesium.txt', unpack=True)
 
 # literatur Eu152-Spectrum with [Energy[keV], Probability]
 eu_spectrum = np.array(
@@ -76,19 +100,13 @@ europium_distribution -= (eur_time / bkg_time) * background_dist
 # Own try to detect the peaks
 n_max = len(eu_spectrum)
 
-# define array for maxima with index, value of the distribution
-# of the maximum
-maxima = np.zeros((n_max, 2))
-no_max_dist = np.copy(europium_distribution)
-# no_max_dist[1200:1400] = 0
-no_max_dist[:350] = 0
-no_max_dist[400:600] = 0
-for index in np.arange(0, n_max):
-    max_val_index = np.argmax(no_max_dist)
-    maxima[index] = max_val_index, europium_distribution[max_val_index]
-    no_max_dist[max_val_index - 10:max_val_index + 10] = 0
+vetos = np.array(
+    [[0, 350],
+     [400, 600]]
+)
+maxima = peaks(europium_distribution, vetos=vetos)
 
-print(maxima)
+print(peaks(europium_distribution, vetos=[[0,350], [400,600]]))
 
 ax = plt.axes()
 for maximum in maxima:
@@ -112,21 +130,21 @@ channels = np.sort(maxima[:, 0])
 
 # define and fit linear calibration function
 calibration_function = lambda x, m, b: m*x + b
-coeff, var = cfit(calibration_function, channels, eu_spectrum[:, 0])
+calibration_coeff, calibration_var = cfit(calibration_function, channels, eu_spectrum[:, 0])
 print(
     'Calibration\n===========\n'
     'm = {:.8f}±{:.8f}\n'
     'b = {:.4f}±{:.4f}\n'.format(
-        coeff[0],
-        np.sqrt(var[0][0]),
-        coeff[1],
-        np.sqrt(var[1][1])
+        calibration_coeff[0],
+        np.sqrt(calibration_var[0][0]),
+        calibration_coeff[1],
+        np.sqrt(calibration_var[1][1])
     )
 )
 
 calibration_fig = plt.subplot(111)
 x_values = np.arange(0, 4500)
-plt.plot(x_values, calibration_function(x_values, coeff[0], coeff[1]))
+plt.plot(x_values, calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]))
 plt.errorbar(channels, eu_spectrum[:, 0], 0, 0, "ko")
 plt.xlabel("Kanal")
 plt.ylabel("Energie")
@@ -135,7 +153,7 @@ plt.savefig("03_calibration.pdf")
 plt.clf()
 
 calibrated_eu_fig = plt.subplot(111)
-plt.plot(calibration_function(x_values, coeff[0], coeff[1]),
+plt.plot(calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]),
          europium_distribution[:len(x_values)])
 plt.xlabel("Energie")
 plt.ylabel("Anz. Ereignisse")
@@ -154,7 +172,7 @@ for maximum in maxima:
             maximum[0],
             europium_distribution,
             plot='maximum_fit'
-        )
+        )[0]
     )
 
 efficiencies = europium_events / (grand_total * eu_spectrum[:,1])
@@ -185,3 +203,21 @@ plt.xlabel('Energie')
 plt.ylabel('Effizienz')
 plt.savefig('05_efficiencies.pdf')
 plt.clf()
+
+cs_maxima = peaks(caesium_dist, n_max=1)
+cs_events, cs_coeff, cs_var = sigma_delta(
+    cs_maxima[0, 0],
+    caesium_dist,
+    plot='caesium_fit'
+)
+
+print(
+    'Caesium-Photopeak\n=================\n'
+    'Events: {:g}\n'
+    'mean: {:g}±{:g}keV\n'
+    ''.format(
+        cs_events,
+        calibration_function(cs_maxima[0][0] + cs_coeff[1], calibration_coeff[0], calibration_coeff[1]),
+        np.sqrt(cs_var[1][1]),
+    )
+)
