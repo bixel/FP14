@@ -16,6 +16,14 @@ Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:%
 
 Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen (Abb. \ref{fig:eu_uncalibrated}).
 Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen (Abb. \ref{fig:leermessung}).
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/02_maxima.pdf}
+    \caption{
+
+    }
+    \label{fig:eu_uncalibrated}
+\end{figure}
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
 Dabei werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
 Es ergeben sich die Koeffizienten
@@ -24,13 +32,13 @@ Es ergeben sich die Koeffizienten
      m = \SI{345.22+-0.04}{keV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
 \end{align*}
 
-\begin{table}[htp]
+\begin{table}[htb]
     \centering
     \caption{
         Die für die Kalibration des Ge-Detektors verwendeten Maxima des $^{52}$Eu-Spektrums.
     }
     \label{tab:maxima}
-    \begin{tabular}{lll}
+    \begin{tabular}{rrr}
         \toprule
         Energie [\si{keV}] & Emissionswahrscheinlichkeit [\si{\percent}] & Zugeordneter Kanal \\
         \midrule
