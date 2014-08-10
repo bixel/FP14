@@ -146,8 +146,8 @@ plt.clf()
 
 # store the integrated number of events for the peaks
 europium_events = []
-# TODO: This should be calculated with the source's activity
-grand_total = sum(europium_distribution)
+activity = 23.6
+grand_total = activity * eur_time
 for maximum in maxima:
     europium_events.append(
         sigma_delta(
@@ -157,9 +157,27 @@ for maximum in maxima:
         )
     )
 
-efficiencies = europium_events / grand_total / eu_spectrum[:,1]
-print(efficiencies * 100)
-plt.plot(eu_spectrum[:,0], efficiencies, 'bo')
+efficiencies = europium_events / (grand_total * eu_spectrum[:,1])
+eff_function = lambda x, a, b, c, d: a * np.power(x - b, c) + d
+# eff_function = lambda x, a, b: a / x + b
+# eff_function = lambda x, a, b, c: a * np.exp(-x / b) + c
+print(eu_spectrum[:,0], efficiencies)
+coeff, var = cfit(eff_function, eu_spectrum[:, 0][np.array([0,5,6,7,8,9])], efficiencies[np.array([0,5,6,7,8,9])])
+print(
+    'Efficiency\n==========\n'
+    'a = {:g}±{:g}\n'
+    'b = {:g}±{:g}\n'
+    'c = {:g}±{:g}\n'
+    'd = {:g}±{:g}'.format(
+        coeff[0], np.sqrt(var[0][0]),
+        coeff[1], np.sqrt(var[1][1]),
+        coeff[2], np.sqrt(var[2][2]),
+        coeff[3], np.sqrt(var[3][3]),
+    )
+)
+xs = np.arange(50, 1600)
+plt.plot(xs, eff_function(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
+plt.plot(eu_spectrum[:, 0], efficiencies, 'bo')
 plt.xlabel('Energie')
 plt.ylabel('Effizienz')
 plt.savefig('05_efficiencies.pdf')
