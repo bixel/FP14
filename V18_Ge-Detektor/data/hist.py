@@ -158,10 +158,13 @@ for maximum in maxima:
     )
 
 efficiencies = europium_events / (grand_total * eu_spectrum[:,1])
+
+for measured, expected, efficiency in zip(europium_events, grand_total * eu_spectrum[:,1], efficiencies):
+    print('{:.0f}\t{:.0f}\t{:2.1f}'.format(measured, expected, 100 * efficiency))
+
 eff_function = lambda x, a, b, c, d: a * np.power(x - b, c) + d
 # eff_function = lambda x, a, b: a / x + b
 # eff_function = lambda x, a, b, c: a * np.exp(-x / b) + c
-print(eu_spectrum[:,0], efficiencies)
 coeff, var = cfit(eff_function, eu_spectrum[:, 0][np.array([0,5,6,7,8,9])], efficiencies[np.array([0,5,6,7,8,9])])
 print(
     'Efficiency\n==========\n'

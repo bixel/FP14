@@ -78,9 +78,9 @@ wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Der Fit is
         S[table-format=4.2]%
         S[table-format=2.1]%
         S[table-format=4.0]%
-        S%
-        S%
-        S%
+        S[table-format=5.0]%
+        S[table-format=5.0]%
+        S[table-format=2.1]%
     }
         \toprule
         {Energie [\si{keV}]} &
@@ -88,18 +88,35 @@ wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Der Fit is
         {Kanal} &
         {gemessen} &
         {erwartet} &
-        {Effizienz} \\
+        {Effizienz [\si{keV}]} \\
         \midrule
-        121.78 & 28.6 & 358  & & & \\
-        244.7  &  7.6 & 714  & & & \\
-        344.3  & 26.5 & 1003 & & & \\
-        411.12 & 02.2 & 1196 & & & \\
-        443.96 & 03.1 & 1291 & & & \\
-        778.9  & 12.9 & 2262 & & & \\
-        964.08 & 14.6 & 2798 & & & \\
-        1085.9 & 10.2 & 3150 & & & \\
-        1112.1 & 13.6 & 3227 & & & \\
-        1408.0 & 21.0 & 4084 & & & \\
+        121.78 & 28.6 & 358  & 12544 & 20006 & 62.7 \\
+        244.7  &  7.6 & 714  & 5319  & 53162 & 10.0 \\
+        344.3  & 26.5 & 1003 & 2117  & 18537 & 11.4 \\
+        411.12 & 02.2 & 1196 & 1051  &  1539 & 68.3 \\
+        443.96 & 03.1 & 1291 & 996   &  2168 & 45.9 \\
+        778.9  & 12.9 & 2262 & 938   &  9024 & 10.4 \\
+        964.08 & 14.6 & 2798 & 817   & 10213 &  8.0 \\
+        1085.9 & 10.2 & 3150 & 429   &  7135 &  6.0 \\
+        1112.1 & 13.6 & 3227 & 598   &  9513 &  6.3 \\
+        1408.0 & 21.0 & 4084 & 372   & 14690 &  2.5 \\
         \bottomrule
     \end{tabular}
 \end{table}
+
+\subsection{Bestimmung einiger Detektoreigenschaften} % (fold)
+\label{sub:detektoreigenschaften}
+Mit Hilfe eines $^{137}$Cs-Strahlers werden im folgenden Abschnitt einige Detektoreigenschaften bestimmt.
+Das Spektrum des Stahlers ist in Abbildung \ref{fig:cs_spektrum} dargestellt.
+
+Zunächst wird der Photopeak des Spektrums genauer untersucht. Durch Fit einer Gaußfunktion im Bereich des Peaks lassen sich die genaue Lage und der Inhalt des Photopeaks bestimmen.
+Für die Halb- und Zehntelwertsbreite $E_{1/2}$ und $E_{1/10}$ gilt mit Kenntnis über die Breite $\sigma$ der Gaußverteilung
+\begin{align*}
+    E_{1/2} = 2\sigma\sqrt{\ln 2}\,,\quad E_{1/10} = 2\sigma\sqrt{\ln 10}\,.
+\end{align*}
+Die Fit ist in Abbildung \ref{fig:cs_gauss} dargestellt, er liefert
+\begin{align*}
+
+\end{align*}
+
+% subsection bestimmung_einiger_detektoreigenschaften (end)
