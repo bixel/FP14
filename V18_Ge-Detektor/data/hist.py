@@ -115,6 +115,16 @@ channels = np.sort(maxima[:, 0])
 # define and fit linear calibration function
 calibration_function = lambda x, m, b: m*x + b
 coeff, var = cfit(calibration_function, channels, eu_spectrum[:, 0])
+print(
+    'Calibration\n===========\n'
+    'm = {:.8f}±{:.8f}\n'
+    'b = {:.4f}±{:.4f}\n'.format(
+        coeff[0],
+        np.sqrt(var[0][0]),
+        coeff[1],
+        np.sqrt(var[1][1])
+    )
+)
 
 calibration_fig = plt.subplot(111)
 x_values = np.arange(0, 4500)

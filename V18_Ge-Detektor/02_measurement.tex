@@ -1,23 +1,27 @@
 \section{Messung}
 \label{sec:messung}
 Im Folgenden Abschnitt wird zunächst eine Energiekalibration der Apparatur durchgeführt. Anschließend werden mit der Aufnahme eines Cäsium-Strahlers verschiedene Detektoreigenschaften bestimmt.
-Daraufhin wird die Aktivität einer ???-Quelle gemessen und schließlich einige Holzkohlebriketts auf Radioaktivität untersucht.
+Daraufhin wird die Aktivität einer ???-Quelle gemessen und schließlich einige Holzkohlebriketts auf ihre radioaktiven Bestandteile untersucht.
 
 \subsection{Eichung und Effizienz des Ge-Detektors}
 \label{subse:eichung}
 Wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle} erwähnt, liegen nach der Messung lediglich Informationen über einen Energiekanal vor, in dem ein Ereignis detektiert wurde.
-Um das entsprechende Energiespektrum zu erhalten, wird den Kanälen mit einer lineare Kalibrationsfunktion $E(C)$ eine jeweilige Energie $E$ zugeordnet.
-Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:
-
+Um das entsprechende Energiespektrum zu erhalten, wird den Kanälen $C$ mit einer lineare Kalibrationsfunktion $E(C)$ eine jeweilige Energie $E$ zugeordnet.
+Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:%
+%
 \begin{align}
     \label{eqn:kalibration}
     E(C) = mC + b\,.
 \end{align}
 
-Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen.
-Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen.
+Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen (Abb. \ref{fig:eu_uncalibrated}).
+Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen (Abb. \ref{fig:leermessung}).
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
-Dabei werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet.
+Dabei werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
+Es ergeben sich die Koeffizienten
+\begin{align*}
+     m = \SI{345.22+-0.04}{keV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
+\end{align*}
 
 \begin{table}[htp]
     \caption{maxima and stuff}
