@@ -1,7 +1,6 @@
 font.family           : serif
 figure.figsize        : 6,6
 figure.dpi            : 72
-lines.markeredgewidth : 0
 savefig.bbox          : tight
 
 # Nice plots

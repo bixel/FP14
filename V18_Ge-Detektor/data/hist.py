@@ -23,7 +23,7 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
     xs = np.linspace(-fit_width, fit_width, 1000)
     if plot != '':
         plt.plot(xs, gauss(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
-        plt.errorbar(data_xs, data_ys, yerr=np.sqrt(data_ys), fmt='.')
+        plt.errorbar(data_xs, data_ys, yerr=np.sqrt(data_ys), fmt='+')
         plt.ylim(ymin=-5)
         plt.xlim(-fit_width, fit_width)
         plt.savefig('{}-{}.pdf'.format(plot, pos))
@@ -150,7 +150,7 @@ def calibrated(x):
 calibration_fig = plt.subplot(111)
 x_values = np.arange(0, 4500)
 plt.plot(x_values, calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]))
-plt.errorbar(channels, eu_spectrum[:, 0], 0, 0, "ko")
+plt.errorbar(channels, eu_spectrum[:, 0], 0, 0, "k+")
 plt.xlabel("Kanal")
 plt.ylabel("Energie")
 plt.title("Kalibrationsfit")
@@ -202,7 +202,7 @@ print(
 )
 xs = np.arange(50, 1600)
 plt.plot(xs, eff_function(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
-plt.plot(eu_spectrum[:, 0], efficiencies, 'bo')
+plt.plot(eu_spectrum[:, 0], efficiencies, 'b+')
 plt.xlabel('Energie')
 plt.ylabel('Effizienz')
 plt.savefig('05_efficiencies.pdf')
@@ -243,14 +243,34 @@ print(
     )
 )
 
-# raw_data = []
-# for x in range(0,2000):
-#     raw_data.extend([calibration_function(x, calibration_coeff[0], calibration_coeff[1])] * caesium_dist[x])
+raw_data = []
+for x in range(0,2000):
+    raw_data.extend([calibration_function(x, calibration_coeff[0], calibration_coeff[1])] * caesium_dist[x])
 
-# plt.hist(raw_data, bins=200)
+plt.hist(raw_data, bins=100)
+plt.savefig('c2.pdf')
+plt.clf()
 
 compton_peak = peaks(caesium_dist, n_max=1, vetos=[[0,1300],[1600,5000]])
 reflex_peak = peaks(caesium_dist, n_max=1, vetos=[[1600,5000]])
+
+
+me = 511.
+c = 1.0
+# E = calibrated(compton_peak[0][0])
+# eps = E / (me * c*c)
+compton_function = lambda x, A, B, E, eps: A * (2 + (E/(x - E))**2 * (1/eps**2 + (x - E)/x - 2/eps * (x - E)/x)) + B
+
+fitx = calibrated(np.arange(800,1350))
+fity = caesium_dist[800:1350]
+coeff, var = cfit(compton_function, fitx, fity, p0=[1.0, 20.0, 477.0, 0.93])
+
+plt.plot(calibrated(np.arange(500, 1500)), caesium_dist[500:1500])
+plt.plot(calibrated(np.arange(500, 1500)), compton_function(calibrated(np.arange(500, 1500)), coeff[0], coeff[1], coeff[2], coeff[3]))
+plt.ylim(0, 200)
+plt.savefig('c.pdf')
+plt.clf()
+
 print(
     'compton = {:g}keV\n'
     'reflex  = {:g}keV\n'.format(
@@ -262,7 +282,9 @@ print(
 plt.plot(
     calibrated(x_values),
     caesium_dist[:len(x_values)],
+    'k+'
 )
+plt.plot(np.arange(200,510), compton_function(np.arange(200,510), coeff[0], coeff[1], coeff[2], coeff[3]))
 plt.xlim(0, 600)
 plt.ylim(0, 180)
 plt.xlabel('Energie [keV]')
