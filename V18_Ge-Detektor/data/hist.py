@@ -18,7 +18,7 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
     gauss = lambda x, A, mu, sigma, B: B + A / np.sqrt(2 * np.pi * sigma*sigma) * np.exp(- 0.5 * ((x-mu)/sigma)**2)
     data_xs = np.arange(-fit_width, fit_width)
     data_ys = arr[pos - fit_width:pos + fit_width]
-    init_values = [1., 0., 1., 0.]
+    init_values = [arr[pos], 0., 5., 0.]
     coeff, var_matrix = cfit(gauss, data_xs, data_ys, p0=init_values)
     xs = np.linspace(-fit_width, fit_width, 1000)
     if plot != '':
@@ -176,6 +176,7 @@ for maximum in maxima:
         sigma_delta(
             maximum[0],
             europium_distribution,
+            plot='max-fit'
         )[0]
     )
 
@@ -187,7 +188,7 @@ for measured, expected, efficiency in zip(europium_events, grand_total * eu_spec
 eff_function = lambda x, a, b, c, d: a * np.power(x - b, c) + d
 # eff_function = lambda x, a, b: a / x + b
 # eff_function = lambda x, a, b, c: a * np.exp(-x / b) + c
-coeff, var = cfit(eff_function, eu_spectrum[:, 0][np.array([0,5,6,7,8,9])], efficiencies[np.array([0,5,6,7,8,9])])
+coeff, var = cfit(eff_function, eu_spectrum[:, 0], efficiencies, p0=[0.9, 250, -1./2, 0.1])
 print(
     'Efficiency\n==========\n'
     'a = {:g}±{:g}\n'
