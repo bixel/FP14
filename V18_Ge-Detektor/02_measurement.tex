@@ -135,15 +135,46 @@ Für die Halb- und Zehntelwertsbreite $E_{1/2}$ und $E_{1/10}$ gilt mit Kenntnis
 \end{align*}
 Der Fit ist in Abbildung \ref{fig:cs_gauss} dargestellt, er liefert folgende Werte für die Lage des Photopeaks $E_\gamma$, die Breiten $E_{1/2}$ und $E_{1/10}$, sowie die Anzahl $N$ der Ereignisse im Peak:
 \begin{align*}
-    E_\gamma &= \SI{661.623+-0.006}{keV} \,,&\quad N &= \num{12254}\,,\\
-    E_{1/2} &= \SI{2.752+-0.010}{keV}\,,&\quad E_{1/10} &= \SI{5.016+-0.018}{keV}\,.
+    E_\gamma &= \SI{661.623+-0.006}{keV} \,,&\quad N &= \num{12250+-110}\,,\\
+    E_{1/2} &= \SI{2.752+-0.010}{keV}\,,&\quad E_{1/10} &= \SI{5.016+-0.018}{keV}\,,\\
+    E_{1/2}^\text{t} &= \num{2.35} \sqrt{\num{0.1} E_\gamma E_\text{EL}} = \SI{1.03+-0.00}{keV}\,.
 \end{align*}
+Der Wert $E_{1/2}^\text{t}$ bezeichnet den im Skript erwähnten Theoriewert für die Halbwertsbreite.
+Das Verhältnis der Halb- und Zehntelwertsbreiten beträgt
+\begin{align*}
+    \frac{E_{1/10}}{E_{1/2}} = \num{1.822+-0.010}\,,
+\end{align*}
+was mit dem erwarteten Verhältnis dieser Werte einer Gaußverteilung übereinstimmt.
 
-Aschließden wird die Lage der Compton- und Rückstreukante bestimmt.
+Aschließend wird die Lage der Compton- und Rückstreukante bestimmt.
 Auf Grund der Überlagerung der unterschiedlichen Wechselwirkungen im Detektor, ist die Bestimmung dieser Kanten durch einen Fit schwierig.
 Stattdessen werden die Maxima der Energieverteilungen in den entsprechenden Bereichen mit der Position der Kanten identifiziert.
 Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$ an der Rückstreukante mit
 \begin{align*}
-    E_\text{C} = \SI{463.537}{keV}\,, \quad E_\text{R} = \SI{192.887}{keV} \,.
+    E_\text{C} &= \SI{463.537}{keV}\,, &\quad E_\text{R} &= \SI{192.887}{keV} \,,\\
+    E_\text{C}^\text{t} &= \SI{477.302+-0.005}{keV}\,, &\quad E_\text{R}^\text{t} &= \SI{184.3206+-0.0005}{keV} \,.\\
 \end{align*}
+Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der im Skript angegebenen Formeln berechnen. Für den Rückstreu-Peak wird ein Streuwinkel von $\phi = \SI{180}{\degree}$ angenommen.
+
+Der Inhalt $I_\text{C}$ des Compton-Kontinuums wird durch Integration der im Skript vorgeschlagenen Funktion für $\text{d}\sigma/\text{d}E$ von \SI{50}{keV} bis zum Compton-Peak bestimmt.
+Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig:compton_fit} markierten Bereich bestimmt. Damit ergibt sich
+\begin{align*}
+    I_\text{C} = \num{47190+-220}\,.
+\end{align*}
+
+Abschließend wird in diesem Abschnitt das Verhältnis der Anzahl an Ereignissen im Photo-Peak und dem Compton-Kontinuum untersucht.
+Mit Hilfe der Extinktionskoeffizienten $\mu$ für Compton- und Photo-Effekt lassen sich unter Kenntnis der Detektorabmessungen $D$ die Absorptionswahrscheinlichkeiten $W(D)=1-\exp(-\mu D)$ für beide Effekte vorhersagen:
+\begin{align*}
+    \mu_\text{C} &= \num{0.42}\,, &\quad \mu_\text{P} &= \num{0.008}\,,\\
+    \Rightarrow \quad W_\text{C} &\approx \SI{80}{\percent} &\quad W_\text{P} &\approx \SI{3}{\percent} \,.
+\end{align*}
+Das Compton-Kontinuum sollte somit im Vergleich zum Photo-Peak die etwa \num{27}-fache Anzahl an Ereignissen beinhalten.
+Die gemessenen Inhalte ergeben jedoch ein Verhältnis von etwa $4:1$.
 % subsection bestimmung_einiger_detektoreigenschaften (end)
+
+\subsection{Aktivität einer $^{133}$Ba-Quelle} % (fold)
+\label{sub:ba_quelle}
+In diesem Abschnitt wird das Spektrum einer $^{133}$Ba-Quelle vermessen. Anschließend wird der Inhalt der einzelnen Peaks im Spektrum bestimmt, woraus unter Berücksichtigung der Effizienzfunktion $Q$ und dem Raumwinkelanteil $\Omega$ des Detektors auf die Aktivität $A_\text{ges}$ der Quelle geschlossen werden kann.
+Das aufgenommene Spektrum ist in Abbildung \ref{fig:ba_spektrum} gezeigt.
+
+% subsection aktivit_t_einer_ (end)

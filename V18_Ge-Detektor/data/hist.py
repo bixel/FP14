@@ -15,7 +15,7 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
         @return the integral (simpson integration) of the gauss function from
                 -fit_width to fit_width
     """
-    gauss = lambda x, A, mu, sigma, B: B + A / np.sqrt(2 * np.pi * sigma*sigma) * np.exp(- 0.5 * ((x-mu)/sigma)**2)
+    gauss = lambda x, A, mu, sigma, B: B + A * np.exp(- 0.5 * ((x-mu)/sigma)**2)
     data_xs = np.arange(-fit_width, fit_width)
     data_ys = arr[pos - fit_width:pos + fit_width]
     init_values = [arr[pos], 0., 5., 0.]
@@ -225,22 +225,25 @@ plt.ylabel('Ereignisse')
 plt.savefig('06_caesium.pdf')
 plt.clf()
 
-sigma = ufloat(cs_coeff[2], np.sqrt(cs_var[2][2]))
+cal_sig = calibrated(1000 + cs_coeff[2]) - calibrated(1000)
+sigma = ufloat(cal_sig, np.sqrt(cs_var[2][2]) / cs_coeff[2] * cal_sig)
+E12  = 2 * sigma * umath.sqrt(2 * umath.log(2))
+E110 = 2 * sigma * umath.sqrt(2 * umath.log(10))
 
 print(
     'Caesium-Photopeak\n=================\n'
-    'N      = {:g}±{:g}\n'
-    'μ      = {:g}±{:g}keV\n'
-    'σ      = {:g}±{:g}\n'
-    'E_1/2  = {:g}±{:g}\n'
-    'E_1/10 = {:g}±{:g}\n'.format(
+    'N          = {:g}±{:g}\n'
+    'μ          = {:g}±{:g}keV\n'
+    'σ          = {}\n'
+    'E_1/2      = {}\n'
+    'E_1/10     = {}\n'
+    'E12 / E119 = {}'.format(
         cs_events, np.sqrt(cs_events),
         calibrated(cs_maxima[0][0] + cs_coeff[1]), np.sqrt(cs_var[1][1]),
-        cs_coeff[2], np.sqrt(cs_var[2][2]),
-        (2 * sigma * umath.sqrt(umath.log(2))).nominal_value,
-        (2 * sigma * umath.sqrt(umath.log(2))).std_dev,
-        (2 * sigma * umath.sqrt(umath.log(10))).nominal_value,
-        (2 * sigma * umath.sqrt(umath.log(10))).std_dev,
+        sigma,
+        E12,
+        E110,
+        E110 / E12
     )
 )
 
@@ -272,11 +275,18 @@ plt.ylim(0, 200)
 plt.savefig('c.pdf')
 plt.clf()
 
+Ic = simps(compton_function([50, compton_peak[0][0]], coeff[0], coeff[1], coeff[2], coeff[3]), [50, compton_peak[0][0]])
+Ic = ufloat(Ic, np.sqrt(Ic))
+
 print(
+    'params  = {}'
     'compton = {:g}keV\n'
-    'reflex  = {:g}keV\n'.format(
+    'reflex  = {:g}keV\n'
+    'Ic      = {}'.format(
+        coeff,
         calibrated(compton_peak[0][0]),
-        calibrated(reflex_peak[0][0])
+        calibrated(reflex_peak[0][0]),
+        Ic
     )
 )
 
