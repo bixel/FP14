@@ -15,7 +15,7 @@ Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:%
 \end{align}
 
 Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen (Abb. \ref{fig:eu_uncalibrated}).
-Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen (Abb. \ref{fig:leermessung}).
+Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle von dem Spektrum des $^{52}$Eu-Strahlers abgezogen.
 \begin{figure}[htb]
     \centering
     \begin{subfigure}{.49\linewidth}
@@ -58,15 +58,23 @@ Für die Aktivität $A$, die im Detektor gemessen werden kann, gilt schließlich
     \Rightarrow \quad A &= \SI{23.6+-0.4}{\becquerel}\,.
 \end{align*}
 Unter Hinzunahme der bekannten Emissionswahrscheinlichkeiten kann nun wie in Gleichung \eqref{eqn:effizienz} beschrieben, eine Effizienzfunktion $Q(E)$ für den Detektor aufgestellt werden.
-Die so erhaltenen Wertepaare $(Q,E)$ werden anschließend mit Eine Funktion $Q(E)$ der Form
+Eine Funktion $Q(E)$ der Form
 \begin{align*}
-    Q(E) = a (E - b)^c + d
+    Q(E) = ae^{-bE}
 \end{align*}
-wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
+wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Die oben aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz zu der im Skript vorgeschlagenen Potenzfunktion kleinere Fehler des Fits und wird daher bevorzugt. Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
 \begin{align*}
-    a &= 1\,, &\quad b &= 2\,, \\
-    c &= 3\,, &\quad d &= 4\,.
+    a &= \num{0.63+-0.26}\,, &\quad b &= \SI{1.8+-1.1}{\per eV} 2\,.
 \end{align*}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/05_efficiencies.pdf}
+    \caption{
+        Fit der Effizienzfunktion $Q$.
+    }
+    \label{fig:efficiency_fit}
+\end{figure}
 
 \begin{table}[htb]
     \centering

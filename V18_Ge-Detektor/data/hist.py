@@ -176,7 +176,6 @@ for maximum in maxima:
         sigma_delta(
             maximum[0],
             europium_distribution,
-            plot='max-fit'
         )[0]
     )
 
@@ -185,24 +184,25 @@ efficiencies = europium_events / (grand_total * eu_spectrum[:,1])
 for measured, expected, efficiency in zip(europium_events, grand_total * eu_spectrum[:,1], efficiencies):
     print('{:.0f}\t{:.0f}\t{:2.1f}'.format(measured, expected, 100 * efficiency))
 
-eff_function = lambda x, a, b, c, d: a * np.power(x - b, c) + d
+# eff_function = lambda x, a, b, c, d: a * np.power(x - b, c) + d
 # eff_function = lambda x, a, b: a / x + b
 # eff_function = lambda x, a, b, c: a * np.exp(-x / b) + c
-coeff, var = cfit(eff_function, eu_spectrum[:, 0], efficiencies, p0=[0.9, 250, -1./2, 0.1])
+eff_function = lambda x, a, b: a * np.exp(-b * x)
+# coeff, var = cfit(eff_function, eu_spectrum[:, 0][[0,5,6,7,8,9]], efficiencies[:][[0,5,6,7,8,9]], p0=[1.0, 0.001], maxfev=10000)
+q_coeff, q_var = cfit(eff_function, eu_spectrum[:, 0], efficiencies, p0=[1.0, 0.001], maxfev=10000)
+print(q_coeff, np.sqrt(q_var))
 print(
     'Efficiency\n==========\n'
     'a = {:g}±{:g}\n'
-    'b = {:g}±{:g}\n'
-    'c = {:g}±{:g}\n'
-    'd = {:g}±{:g}'.format(
-        coeff[0], np.sqrt(var[0][0]),
-        coeff[1], np.sqrt(var[1][1]),
-        coeff[2], np.sqrt(var[2][2]),
-        coeff[3], np.sqrt(var[3][3]),
+    'b = {:g}±{:g}\n'.format(
+        q_coeff[0], np.sqrt(q_var[0][0]),
+        q_coeff[1], np.sqrt(q_var[1][1]),
+        # q_coeff[2], np.sqrt(q_var[2][2]),
+        # q_coeff[3], np.sqrt(q_var[3][3]),
     )
 )
 xs = np.arange(50, 1600)
-plt.plot(xs, eff_function(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
+plt.plot(xs, eff_function(xs, q_coeff[0], q_coeff[1]))# , q_coeff[2], q_coeff[3]))
 plt.plot(eu_spectrum[:, 0], efficiencies, 'b+')
 plt.xlabel('Energie')
 plt.ylabel('Effizienz')
