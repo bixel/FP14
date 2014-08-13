@@ -174,7 +174,7 @@ Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$ a
     E_\text{C} &= \SI{463.537}{keV}\,, &\quad E_\text{R} &= \SI{192.887}{keV} \,,\\
     E_\text{C}^\text{t} &= \SI{477.302+-0.005}{keV}\,, &\quad E_\text{R}^\text{t} &= \SI{184.3206+-0.0005}{keV} \,.\\
 \end{align*}
-Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der im Skript angegebenen Formeln berechnen. Für den Rückstreu-Peak wird ein Streuwinkel von $\phi = \SI{180}{\degree}$ angenommen.
+Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der Formeln \eqref{eqn:compton_peak} und \eqref{eqn:rueckstreu_peak} berechnen. Für den Rückstreu-Peak wird ein Streuwinkel von $\phi = \SI{180}{\degree}$ angenommen.
 
 Der Inhalt $I_\text{C}$ des Compton-Kontinuums wird durch numerische Integration der im Skript vorgeschlagenen Funktion für $\text{d}\sigma/\text{d}E$ von \SI{50}{keV} bis zum Compton-Peak bestimmt.
 Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig:cs_spektrum_zoom} markierten Bereich bestimmt. Damit ergibt sich
@@ -183,7 +183,7 @@ Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig
 \end{align*}
 
 Abschließend wird das Verhältnis der Anzahl an Ereignissen im Photo-Peak und dem Compton-Kontinuum untersucht.
-Mit Hilfe der Extinktionskoeffizienten $\mu$ für Compton- und Photo-Effekt lassen sich unter Kenntnis der Detektorabmessungen $D$ die Absorptionswahrscheinlichkeiten $W(D)=1-\exp(-\mu D)$ für beide Effekte vorhersagen:
+Mit Hilfe der Extinktionskoeffizienten $\mu$ für Compton- und Photo-Effekt lassen sich unter Kenntnis der Detektorabmessungen $D$ die Absorptionswahrscheinlichkeiten $W(D)=1-\exp(-\mu D)$ für beide Effekte vorhersagen. Die Koeffizienten $\mu$ werden in Abbildung \ref{german} abgelesen:
 \begin{align*}
     \mu_\text{C} &= \num{0.42}\,, &\quad \mu_\text{P} &= \num{0.008}\,,\\
     \Rightarrow \quad W_\text{C} &\approx \SI{80}{\percent} &\quad W_\text{P} &\approx \SI{3}{\percent} \,.
@@ -212,12 +212,31 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_
         \label{fig:ba_spektrum}
     \end{subfigure}
     \begin{subfigure}{0.49\linewidth}
-        \includegraphics[width=0.5\linewidth]{img/07_barium_aktivity.pdf}
+        \includegraphics[width=0.5\linewidth]{img/07_barium_activity.pdf}
         \caption{
             Fit zur Bestimmung der Aktivit der $^{133}$Ba-Quelle.
         }
         \label{fig:barium_aktivitaet}
     \end{subfigure}
 \end{figure}
+\begin{table}
+    \centering
+    \label{tab:barium}
+    \caption{Barium}
+    \begin{tabular}{%
+        S[table-format=3.1]%
+    }
+        \toprule
+        {Peak [\si{keV}]} \\
+        \midrule
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+
+\subsection{Radioaktivität von Holzkohlebrikkets} % (fold)
+\label{sub:holzkohle}
+
+% subsection holzkohle (end)
 
 % subsection ba_quelle (end)
