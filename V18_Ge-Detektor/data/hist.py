@@ -61,6 +61,16 @@ def peaks(dist, n_max=10, vetos = []):
         no_max_dist[max_val_index - 10:max_val_index + 10] = 0
     return maxima
 
+def unbinned_array(binned_array, start=0, end=None, calibration_func=lambda x: x):
+    """ Returned an array with 'raw' Data for creating histograms with plt.hist
+    """
+    raw_data = []
+    if end == None:
+        end = len(binned_array) - 1
+    for x in range(start,end):
+        raw_data.extend([calibration_func(x)] * binned_array[x])
+    return raw_data
+
 # Read Data
 europium_distribution = np.loadtxt("Europium.txt", unpack=True)
 eur_proof_dist = np.loadtxt("Europium_proof.txt", unpack=True)
@@ -117,17 +127,22 @@ maxima = peaks(europium_distribution, vetos=vetos)
 print(peaks(europium_distribution, vetos=[[0,350], [400,600]]))
 
 ax = plt.axes()
-for maximum in maxima:
-    ax.arrow(maximum[0], maximum[1] + 150,
-             0, -100,
-             head_width=20.0, head_length=20.0)
-plt.plot(x_values, europium_distribution[:len(x_values)])
+# plt.plot(x_values, europium_distribution[:len(x_values)])
 # plt.plot(x_values, (eur_time / bkg_time) * background_dist[:len(x_values)])
+heights, positions, bars = plt.hist(unbinned_array(europium_distribution, end=4200), bins=200, histtype='stepfilled', edgecolor='none')
+for maximum in maxima:
+    height = 0
+    for h, pos in zip(heights, positions):
+        if pos >= maximum[0] - 4200/200:
+            height = h
+            break
+    ax.arrow(maximum[0], height + 500,
+             0, -300,
+             head_width=60.0, head_length=100.0, edgecolor='black', facecolor='black')
+plt.ylim(ymax=15000)
 plt.title("Detektion der Maxima")
 plt.xlabel("Kanal")
 plt.ylabel("Anz. Ereignisse")
-plt.ylim(0, 4200)
-
 plt.savefig("02_maxima.pdf")
 plt.clf()
 
@@ -166,12 +181,11 @@ plt.savefig("03_calibration.pdf")
 plt.clf()
 
 calibrated_eu_fig = plt.subplot(111)
-plt.plot(calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]),
-         europium_distribution[:len(x_values)])
-plt.xlabel("Energie")
+plt.hist(unbinned_array(europium_distribution, end=4200, calibration_func=calibrated), edgecolor='none', histtype='stepfilled', bins=200)
+plt.xlabel("Energie [keV]")
 plt.ylabel("Anz. Ereignisse")
-plt.ylim(0, 4500)
-plt.xlim(0, 1500)
+# plt.ylim(0, 4500)
+# plt.xlim(0, 1500)
 plt.savefig("04_eudist_calibrated.pdf")
 plt.clf()
 
@@ -214,6 +228,7 @@ plt.plot(xs, eff_function(xs, q_coeff[0], q_coeff[1]))# , q_coeff[2], q_coeff[3]
 plt.plot(eu_spectrum[:, 0], efficiencies, 'b+')
 plt.xlabel('Energie')
 plt.ylabel('Effizienz')
+plt.legend(['Fit Effizienzfunktion', 'Messdaten'], loc='best')
 plt.savefig('05_efficiencies.pdf')
 plt.clf()
 
@@ -257,17 +272,8 @@ print(
     )
 )
 
-raw_data = []
-for x in range(0,2000):
-    raw_data.extend([calibration_function(x, calibration_coeff[0], calibration_coeff[1])] * caesium_dist[x])
-
-plt.hist(raw_data, bins=100)
-plt.savefig('c2.pdf')
-plt.clf()
-
 compton_peak = peaks(caesium_dist, n_max=1, vetos=[[0,1300],[1600,5000]])
 reflex_peak = peaks(caesium_dist, n_max=1, vetos=[[1600,5000]])
-
 
 me = 511.
 c = 1.0
@@ -308,7 +314,63 @@ plt.plot(
 plt.plot(np.arange(200,510), compton_function(np.arange(200,510), coeff[0], coeff[1], coeff[2], coeff[3]))
 plt.xlim(0, 600)
 plt.ylim(0, 180)
+plt.axvline(x=calibrated(800), ymax=0.4, color='r', linestyle='--')
+plt.axvline(x=calibrated(1350), ymax=0.4, color='r', linestyle='--')
 plt.xlabel('Energie [keV]')
 plt.ylabel('Ereignisse')
+plt.legend(['Datenpunkte', 'Fit'], loc='best')
 plt.savefig('06_caesium_zoomed.pdf')
 plt.clf()
+
+ba_props = np.array(
+    [0.341,
+    0.183,
+    0.006,
+    0.621,
+    0.089]
+)
+
+ba_distribution = np.loadtxt('Barium.txt', unpack=True)
+ba_time = 3551.0
+ba_distribution -= ba_time / bkg_time * background_dist
+unbinned_barium = unbinned_array(ba_distribution[:1200], calibration_func=calibrated)
+plt.hist(unbinned_barium, bins=200, edgecolor='none')
+# xs = np.arange(0,1200)
+# plt.plot(xs, ba_distribution[:1200])
+plt.ylabel('Ereignisse')
+plt.xlabel('Energie [keV]')
+plt.savefig('07_barium.pdf')
+plt.clf()
+
+vetos = [[780, 830]]
+ba_maxima = peaks(ba_distribution, n_max=5, vetos=vetos)
+ba_maxima = np.array(sorted(ba_maxima, key=lambda x: x[0]))
+ba_events = []
+for maximum in ba_maxima:
+    ba_events.append(
+        sigma_delta(
+            maximum[0],
+            ba_distribution,
+            plot='barium-fit',
+            calibration_func=calibrated
+        )[0]
+    )
+print('Barium-133\n==========')
+for m, e in zip(ba_maxima, ba_events):
+    print('E = {}\tN = {}'.format(calibrated(m[0]), e))
+
+omega = 0.01575
+ba_activity = lambda x, a: omega * a * x
+print(ba_maxima)
+fitx = np.array(eff_function(calibrated(ba_maxima[:,0]), q_coeff[0], q_coeff[1])) * ba_props
+ba_activity_coeff, ba_activity_var = cfit(ba_activity, fitx, ba_events)
+plt.plot(fitx, ba_events, 'k+')
+xs = np.linspace(0, 0.2, 100)
+plt.plot(xs, ba_activity(xs, ba_activity_coeff[0]))
+plt.xlabel('$W \cdot Q$')
+plt.ylabel('Peak-Ereignisse')
+plt.savefig('07_barium_activity.pdf')
+plt.clf()
+
+a = ufloat(ba_activity_coeff[0], np.sqrt(ba_activity_var[0][0]))
+print('A_ges = {}'.format(a / ba_time))

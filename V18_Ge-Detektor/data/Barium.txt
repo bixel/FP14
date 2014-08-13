@@ -1,15 +1,15 @@
-$SPEC_ID:
-No sample description was entered.
-$SPEC_REM:
-DET# 1
-DETDESC# MCB 338
-AP# Maestro Version 6.06
-$DATE_MEA:
-06/16/2014 12:58:39
-$MEAS_TIM:
-3546 3551
-$DATA:
-0 8191
+# $SPEC_ID:
+# No sample description was entered.
+# $SPEC_REM:
+# DET# 1
+# DETDESC# MCB 338
+# AP# Maestro Version 6.06
+# $DATE_MEA:
+# 06/16/2014 12:58:39
+# $MEAS_TIM:
+# 3546 3551
+# $DATA:
+# 0 8191
        0
        0
        0
@@ -8202,23 +8202,23 @@ $DATA:
        0
        0
        0
-$ROI:
-6
-112 115
-211 241
-384 394
-596 612
-615 621
-1181 1201
-$PRESETS:
-None
-0
-0
-$ENER_FIT:
--3.068388 0.575002
-$MCA_CAL:
-3
--3.068388E+000 5.750019E-001 0.000000E+000 keV
-$SHAPE_CAL:
-3
-1.505919E+000 9.254546E-004 0.000000E+000
+# $ROI:
+# 6
+# 112 115
+# 211 241
+# 384 394
+# 596 612
+# 615 621
+# 1181 1201
+# $PRESETS:
+# None
+# 0
+# 0
+# $ENER_FIT:
+# -3.068388 0.575002
+# $MCA_CAL:
+# 3
+# -3.068388E+000 5.750019E-001 0.000000E+000 keV
+# $SHAPE_CAL:
+# 3
+# 1.505919E+000 9.254546E-004 0.000000E+000
