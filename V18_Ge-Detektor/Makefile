@@ -12,5 +12,3 @@ bib: 00_main.tex
 
 clean:
 	rm -rf ./build
-	./*.bbl
-	./*.log
