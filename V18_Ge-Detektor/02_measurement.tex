@@ -122,7 +122,7 @@ Das Spektrum des Stahlers ist in Abbildung \ref{fig:cs_spektrum} dargestellt.
         \centering
         \includegraphics[width=1.0\linewidth]{img/06_caesium.pdf}
         \caption{
-            Bla
+            Spektrum des $^{137}$Cs-Strahlers.
         }
         \label{fig:cs_spektrum}
     \end{subfigure}
@@ -130,10 +130,14 @@ Das Spektrum des Stahlers ist in Abbildung \ref{fig:cs_spektrum} dargestellt.
         \centering
         \includegraphics[width=1.0\linewidth]{img/06_caesium_zoomed.pdf}
         \caption{
-            Bla
+            Compton-Streuung im $^{137}$Cs-Spektrum.
         }
         \label{fig:cs_spektrum_zoom}
     \end{subfigure}
+    \caption{
+        Spektrum des $^{137}$Cs-Strahlers. In Abbildung \ref{fig:cs_spektrum} ist das gesamte Spektrum inklusive deutlich erkennbarem Photo-Peak dargestellt.
+        Abbildung \ref{fig:cs_spektrum_zoom} stellt den Bereich der Compton-Streuung dar, wobei jeder Datenpunkt aufgetragen ist und im rot markierten Bereich eine Funktion der Gestalt \eqref{eqn:compton} gefittet wird.
+    }
 \end{figure}
 
 Zunächst wird der Photopeak des Spektrums genauer untersucht. Durch Fit einer Gaußfunktion im Bereich des Peaks lassen sich die genaue Lage und der Inhalt des Photopeaks bestimmen.
@@ -172,13 +176,13 @@ Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$ a
 \end{align*}
 Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der im Skript angegebenen Formeln berechnen. Für den Rückstreu-Peak wird ein Streuwinkel von $\phi = \SI{180}{\degree}$ angenommen.
 
-Der Inhalt $I_\text{C}$ des Compton-Kontinuums wird durch Integration der im Skript vorgeschlagenen Funktion für $\text{d}\sigma/\text{d}E$ von \SI{50}{keV} bis zum Compton-Peak bestimmt.
+Der Inhalt $I_\text{C}$ des Compton-Kontinuums wird durch numerische Integration der im Skript vorgeschlagenen Funktion für $\text{d}\sigma/\text{d}E$ von \SI{50}{keV} bis zum Compton-Peak bestimmt.
 Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig:cs_spektrum_zoom} markierten Bereich bestimmt. Damit ergibt sich
 \begin{align*}
     I_\text{C} = \num{47190+-220}\,.
 \end{align*}
 
-Abschließend wird in diesem Abschnitt das Verhältnis der Anzahl an Ereignissen im Photo-Peak und dem Compton-Kontinuum untersucht.
+Abschließend wird das Verhältnis der Anzahl an Ereignissen im Photo-Peak und dem Compton-Kontinuum untersucht.
 Mit Hilfe der Extinktionskoeffizienten $\mu$ für Compton- und Photo-Effekt lassen sich unter Kenntnis der Detektorabmessungen $D$ die Absorptionswahrscheinlichkeiten $W(D)=1-\exp(-\mu D)$ für beide Effekte vorhersagen:
 \begin{align*}
     \mu_\text{C} &= \num{0.42}\,, &\quad \mu_\text{P} &= \num{0.008}\,,\\
@@ -192,5 +196,28 @@ Die gemessenen Inhalte ergeben jedoch ein Verhältnis von etwa $4:1$.
 \label{sub:ba_quelle}
 In diesem Abschnitt wird das Spektrum einer $^{133}$Ba-Quelle vermessen. Anschließend wird der Inhalt der einzelnen Peaks im Spektrum bestimmt, woraus unter Berücksichtigung der Effizienzfunktion $Q$ und dem Raumwinkelanteil $\Omega$ des Detektors auf die Aktivität $A_\text{ges}$ der Quelle geschlossen werden kann.
 Das aufgenommene Spektrum ist in Abbildung \ref{fig:ba_spektrum} gezeigt.
+Es werden die in Tabelle \ref{tab:barium} aufgeführten Peaks des Spektrums mit den bekannten Gamma-Linien aus dem Skript identifiziert.
+Mit Hilfe von Gleichung \eqref{eqn:effizienz} kann dann die Aktivität $A$ der Quelle als Parameter eine linearen Ausgleichsrechnung bestimmt werden.
+Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_aktivitaet} dargestellt und liefert
+\begin{align*}
+    A_\text{ges} = \SI{970+-190}{\becquerel}\,.
+\end{align*}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics[width=0.5\linewidth]{img/07_barium.pdf}
+        \caption{
+            Spektrum des vermessenen $^{133}$Ba-Strahlers.
+        }
+        \label{fig:ba_spektrum}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics[width=0.5\linewidth]{img/07_barium_aktivity.pdf}
+        \caption{
+            Fit zur Bestimmung der Aktivit der $^{133}$Ba-Quelle.
+        }
+        \label{fig:barium_aktivitaet}
+    \end{subfigure}
+\end{figure}
 
 % subsection ba_quelle (end)
