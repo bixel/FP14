@@ -153,6 +153,14 @@ Das Verhältnis der Halb- und Zehntelwertsbreiten beträgt
     \frac{E_{1/10}}{E_{1/2}} = \num{1.822+-0.010}\,,
 \end{align*}
 was mit dem erwarteten Verhältnis dieser Werte einer Gaußverteilung übereinstimmt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/06_caesium_fit.pdf}
+    \caption{
+        Spektrum des $^{137}$Cs-Strahlers im Bereich des Photo-Peaks. Durch die Datenpunkte wird eine Gaußfunktion gefittet, um die genaue Lage des Peaks zu bestimmen.
+    }
+    \label{fig:cs_gauss}
+\end{figure}
 
 Aschließend wird die Lage der Compton- und Rückstreukante bestimmt.
 Auf Grund der Überlagerung der unterschiedlichen Wechselwirkungen im Detektor, ist die Bestimmung dieser Kanten durch einen Fit schwierig.
@@ -165,7 +173,7 @@ Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$ a
 Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der im Skript angegebenen Formeln berechnen. Für den Rückstreu-Peak wird ein Streuwinkel von $\phi = \SI{180}{\degree}$ angenommen.
 
 Der Inhalt $I_\text{C}$ des Compton-Kontinuums wird durch Integration der im Skript vorgeschlagenen Funktion für $\text{d}\sigma/\text{d}E$ von \SI{50}{keV} bis zum Compton-Peak bestimmt.
-Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig:compton_fit} markierten Bereich bestimmt. Damit ergibt sich
+Die Paramter dieser Funktion werden dabei durch Fit an den in Abbildung \ref{fig:cs_spektrum_zoom} markierten Bereich bestimmt. Damit ergibt sich
 \begin{align*}
     I_\text{C} = \num{47190+-220}\,.
 \end{align*}
@@ -185,4 +193,4 @@ Die gemessenen Inhalte ergeben jedoch ein Verhältnis von etwa $4:1$.
 In diesem Abschnitt wird das Spektrum einer $^{133}$Ba-Quelle vermessen. Anschließend wird der Inhalt der einzelnen Peaks im Spektrum bestimmt, woraus unter Berücksichtigung der Effizienzfunktion $Q$ und dem Raumwinkelanteil $\Omega$ des Detektors auf die Aktivität $A_\text{ges}$ der Quelle geschlossen werden kann.
 Das aufgenommene Spektrum ist in Abbildung \ref{fig:ba_spektrum} gezeigt.
 
-% subsection aktivit_t_einer_ (end)
+% subsection ba_quelle (end)

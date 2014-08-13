@@ -8,7 +8,7 @@ from uncertainties import ufloat, umath
 # import peakdetect
 
 
-def sigma_delta(pos, arr, fit_width=30, plot=''):
+def sigma_delta(pos, arr, fit_width=30, plot='', calibration_func=None):
     """ Try to fit a Gauss to the given datapoints and return the integral of
         the function, aswell as the width sigma.
 
@@ -22,10 +22,18 @@ def sigma_delta(pos, arr, fit_width=30, plot=''):
     coeff, var_matrix = cfit(gauss, data_xs, data_ys, p0=init_values)
     xs = np.linspace(-fit_width, fit_width, 1000)
     if plot != '':
-        plt.plot(xs, gauss(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
-        plt.errorbar(data_xs, data_ys, yerr=np.sqrt(data_ys), fmt='+')
+        plt.plot(xs + pos, gauss(xs, coeff[0], coeff[1], coeff[2], coeff[3]))
+        plt.errorbar(data_xs + pos, data_ys, yerr=np.sqrt(data_ys), fmt='.')
         plt.ylim(ymin=-5)
-        plt.xlim(-fit_width, fit_width)
+        sigma = coeff[2]
+        plt.xlim(pos - 5*sigma, pos + 5*sigma)
+        if calibration_func != None:
+            xticks, xlabels = plt.xticks()
+            xlabels = list(map(lambda x: '%.1f' % x, calibration_func(xticks)))
+            plt.xticks(xticks, xlabels)
+        plt.ylabel('Anzahl Ereignisse')
+        plt.xlabel('Energie [keV]')
+        plt.legend(["Gaußscher Fit", "Datenpunkte"], loc='best')
         plt.savefig('{}-{}.pdf'.format(plot, pos))
         plt.clf()
     # return the integral = number of events in peak (without offset)
@@ -213,6 +221,8 @@ cs_maxima = peaks(caesium_dist, n_max=1)
 cs_events, cs_coeff, cs_var = sigma_delta(
     cs_maxima[0, 0],
     caesium_dist,
+    plot='caesium_fit',
+    calibration_func=calibrated
 )
 
 plt.plot(
