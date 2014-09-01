@@ -384,7 +384,7 @@ coal_time = 84292.0
 coal_dist -= coal_time / bkg_time * background_dist
 unbinned_coal = unbinned_array(coal_dist, calibration_func=calibrated)
 plt.hist(unbinned_coal, bins=200, edgecolor='none')
-plt.xlim(1550)
+plt.xlim(0, 1550)
 plt.ylabel('Ereignisse')
 plt.xlabel('Energie [keV]')
 plt.savefig('08_coal.pdf')
