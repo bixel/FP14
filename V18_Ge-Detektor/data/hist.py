@@ -1,4 +1,5 @@
 #! /usr/bin/env python3.3
+# -*- coding: utf-8 -*-
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -374,3 +375,33 @@ plt.clf()
 
 a = ufloat(ba_activity_coeff[0], np.sqrt(ba_activity_var[0][0]))
 print('A_ges = {}'.format(a / ba_time))
+
+
+# Coal-Brikkets
+
+coal_dist = np.loadtxt('Kohle.txt', unpack=True)
+coal_time = 84292.0
+coal_dist -= coal_time / bkg_time * background_dist
+unbinned_coal = unbinned_array(coal_dist, calibration_func=calibrated)
+plt.hist(unbinned_coal, bins=200, edgecolor='none')
+plt.xlim(1550)
+plt.ylabel('Ereignisse')
+plt.xlabel('Energie [keV]')
+plt.savefig('08_coal.pdf')
+plt.clf()
+
+coal_maxima = peaks(coal_dist, n_max=10)
+coal_maxima = np.array(sorted(coal_maxima, key=lambda x: x[0]))
+coal_events = []
+for maximum in coal_maxima:
+    coal_events.append(
+        sigma_delta(
+            maximum[0],
+            coal_dist,
+            plot='coal-fit',
+            calibration_func=calibrated
+        )[0]
+    )
+print('Wooden Coal\n===========')
+for m, e in zip(coal_maxima, coal_events):
+    print('E = {}\tN = {}'.format(calibrated(m[0]), e))

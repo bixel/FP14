@@ -1,7 +1,10 @@
 \section{Messung}
 \label{sec:messung}
-Im Folgenden Abschnitt wird zunächst eine Energiekalibration der Apparatur durchgeführt. Anschließend werden mit der Aufnahme eines Cäsium-Strahlers verschiedene Detektoreigenschaften bestimmt.
-Daraufhin wird die Aktivität einer ???-Quelle gemessen und schließlich einige Holzkohlebriketts auf ihre radioaktiven Bestandteile untersucht.
+Im Folgenden Abschnitt wird zunächst eine Energiekalibration der Apparatur
+durchgeführt. Anschließend werden mit der Aufnahme eines Cäsium-Strahlers
+verschiedene Detektoreigenschaften bestimmt.
+Daraufhin wird die Aktivität einer ???-Quelle gemessen und schließlich einige
+Holzkohlebriketts auf ihre radioaktiven Bestandteile untersucht.
 
 \subsection{Eichung und Effizienz des Ge-Detektors}
 \label{subse:eichung}
@@ -37,6 +40,7 @@ Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine Leermess
     }
 \end{figure}
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$ der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der Leermessung berücksichtigt.
+Nach allen Messungen wird das $^52$Eu-Spektrum erneut vermessen, um sicherzustellen, dass sich die Kanäle nicht verschoben haben.
 Für die Kalibration werden die in Tabelle \ref{tab:maxima} aufgeführten Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration} dargestellt.
 Es ergeben sich die Koeffizienten
 %
@@ -205,14 +209,14 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_
 \begin{figure}
     \centering
     \begin{subfigure}{0.49\linewidth}
-        \includegraphics[width=0.5\linewidth]{img/07_barium.pdf}
+        \includegraphics[width=1.\linewidth]{img/07_barium.pdf}
         \caption{
             Spektrum des vermessenen $^{133}$Ba-Strahlers.
         }
         \label{fig:ba_spektrum}
     \end{subfigure}
     \begin{subfigure}{0.49\linewidth}
-        \includegraphics[width=0.5\linewidth]{img/07_barium_activity.pdf}
+        \includegraphics[width=1.\linewidth]{img/07_barium_activity.pdf}
         \caption{
             Fit zur Bestimmung der Aktivit der $^{133}$Ba-Quelle.
         }
@@ -225,10 +229,16 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_
     \caption{Barium}
     \begin{tabular}{%
         S[table-format=3.1]%
+        S[table-format=5.0]%
     }
         \toprule
-        {Peak [\si{keV}]} \\
+        {Peak [\si{keV}]}  & {Ereignisse}\\
         \midrule
+         81.0 & 11797 \\
+        160.7 &   274 \\
+        303.0 &  4099 \\
+        356.1 & 11660 \\
+        384.1 &  1567 \\
         \bottomrule
     \end{tabular}
 \end{table}
