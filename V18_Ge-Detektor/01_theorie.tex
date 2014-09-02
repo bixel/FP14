@@ -85,11 +85,17 @@ Bei kleinen Energien gilt für den Wirkungsquerschnitt
 Für $\epsilon \rightarrow 0$ gilt
 
 \begin{equation}
-	\sigma_\text{Co} = \sigma_\text{Th} = \frac{8}{3} \pi r_\text{el}^2 .
+	\sigma_\text{Co} = \sigma_\text{Th} = \frac{8}{3} \pi r_\text{el}^2 . 
 \end{equation}
 
 Da Detektoren nur die Elektronenenergie detektieren, ist die Energieverteilung der gestoßenen Elektronen wichtig.
-Diese ist durch den differentiellen Wikrungsquerschnitt $\frac{\text{d}\sigma}{\text{d}E}$ gegeben.
+Diese ist durch den differentiellen Wikrungsquerschnitt 
+
+\begin{equation}
+	\frac{\text{d}\sigma}{\text{d}E} = \frac{8}{3}\sigma_\text{Th} \frac{1}{m_\text{0} c^2 \epsilon^2} \left(2 + \left(\frac{E}{h \nu - E}\right)^2 \left(\frac{1}{\epsilon^2} + \frac{h \nu - E}{h \nu} - \frac{2}{\epsilon} \left(\frac{h \nu - E}{h \nu}\right)\right)\right) \label{eqn:dsde}
+\end{equation}
+
+gegeben.
 In Abbildung \ref{compton2} ist eine beispielhafte Kurve dargestellt.\\
 \FloatBarrier
 
@@ -248,6 +254,12 @@ In Abbildung \ref{schaltung3} ist der Aufbau eines $\gamma$-Spektrometers darges
 
 Abbildung \ref{spek} zeigt das Spektrum eines monochromatischen $\gamma$-Strahlers.
 Es besteht aus dem Compton-Kontinuum mit Compton-Kante, dem Rückstreupeak und dem Photopeak.
+Der Rückstreupeak berechnet sich nach 
+
+\begin{equation}
+	E_{\gamma'} = E_\gamma \frac{1}{1+2\epsilon} \label{eqn:rueckstreu_peak}.
+\end{equation}
+
 Die Breite des Photopeaks ist dabei ein Maß für die Energieauflösung des Spektrometers.
 Die von null verschiedene Intensität nach der Compton-Kante ist durch mehfach comptongestreute Quanten zu erklären,
 während der Rückstreupeak durch nicht unmittelbar von der Quelle in den Detektor gelangten Quanten erzeugt wird.
