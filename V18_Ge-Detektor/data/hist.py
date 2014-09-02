@@ -178,7 +178,7 @@ x_values = np.arange(0, 4500)
 plt.plot(x_values, calibration_function(x_values, calibration_coeff[0], calibration_coeff[1]))
 plt.errorbar(channels, eu_spectrum[:, 0], 0, 0, "k+")
 plt.xlabel("Kanal")
-plt.ylabel("Energie")
+plt.ylabel("Energie [keV]")
 plt.title("Kalibrationsfit")
 plt.savefig("03_calibration.pdf")
 plt.clf()
@@ -300,7 +300,7 @@ Ic = simps(compton_function([50, compton_peak[0][0]], coeff[0], coeff[1], coeff[
 Ic = ufloat(Ic, np.sqrt(Ic))
 
 print(
-    'params  = {}'
+    'params  = {}\n'
     'compton = {:g}keV\n'
     'reflex  = {:g}keV\n'
     'Ic      = {}'.format(
@@ -418,5 +418,5 @@ a_cs = 1862. / eff_function(661.7, q_coeff[0], q_coeff[1]) \
 a_k = 565. / eff_function(1461.6, q_coeff[0], q_coeff[1]) \
     * 1. / 0.1155 / coal_time
 print('A_coal = {}'.format(a_bi + a_cs + a_k))
-print('sum_coal = {}'.format(sum(coal_dist)))
-print('A_simple = {}'.format(sum(coal_dist) / coal_time))
+coal_n = ufloat(sum(coal_dist), np.sqrt(sum(coal_dist)))
+print('A_simple = {}'.format(2 * coal_n / coal_time))

@@ -68,7 +68,7 @@ eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung
 \ref{fig:calibration} dargestellt. Es ergeben sich die Koeffizienten
 %
 \begin{align*}
-     m = \SI{345.22+-0.04}{keV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
+     m = \SI{345.22+-0.04}{eV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
 \end{align*}
 
 Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt
@@ -102,12 +102,12 @@ aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz zu der im Skript
 vorgeschlagenen Potenzfunktion kleinere Fehler des Fits und wird daher bevorzugt.
 Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
 \begin{align*}
-    a &= \num{0.63+-0.26}\,, &\quad b &= \SI[per-mode=fraction]{1.8+-1.1}{\per eV}\,.
+    a &= \num{0.63+-0.26}\,, &\quad b &= \SI{1.8+-1.1}{eV^{-1}}\,.
 \end{align*}
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/05_efficiencies.pdf}
+    \includegraphics[width=0.7\linewidth]{img/05_efficiencies.pdf}
     \caption{
         Fit der Effizienzfunktion $Q$.
     }
@@ -223,11 +223,12 @@ Aschließend wird die Lage der Compton- und Rückstreukante bestimmt.
 Auf Grund der Überlagerung der unterschiedlichen Wechselwirkungen im Detektor,
 ist die Bestimmung dieser Kanten durch einen Fit schwierig.
 Stattdessen werden die Maxima der Energieverteilungen in den entsprechenden
-Bereichen mit der Position der Kanten identifiziert.
+Bereichen mit der Position der Kanten identifiziert und der Fehler mit
+der Breite eines Kanals geschätzt.
 Dies liefert die Energie $E_\text{C}$ an der Compton-Kante, sowie $E_\text{R}$
 an der Rückstreukante mit
 \begin{align*}
-    E_\text{C} &= \SI{463.537}{keV}\,, &\quad E_\text{R} &= \SI{192.887}{keV} \,,\\
+    E_\text{C} &= \SI{463.5+-0.3}{keV}\,, &\quad E_\text{R} &= \SI{192.9+-0.3}{keV} \,,\\
     E_\text{C}^\text{t} &= \SI{477.302+-0.005}{keV}\,, &\quad E_\text{R}^\text{t} &= \SI{184.3206+-0.0005}{keV} \,.\\
 \end{align*}
 Die Theoretischen Werte $E^\text{t}$ lassen sich mit Hilfe der Formeln
@@ -300,20 +301,24 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung
 \end{figure}
 \begin{table}
     \centering
+    \caption{
+        Detektierte Maxima mit jeweiligen Emissionswahrscheinlichkeiten des
+        $^{133}$Ba-Spektrums.
+    }
     \label{tab:barium}
-    \caption{Barium}
     \begin{tabular}{%
         S[table-format=3.1]%
         S[table-format=5.0]%
+        S[table-format=2.1]%
     }
         \toprule
-        {Peak [\si{keV}]}  & {Ereignisse}\\
+        {Peak [\si{keV}]}  & {Ereignisse} & {Emissionsw.} \\
         \midrule
-         81.0 & 11797 \\
-        160.7 &   274 \\
-        303.0 &  4099 \\
-        356.1 & 11660 \\
-        384.1 &  1567 \\
+         81.0 & 11797 & 34.1 \\
+        160.7 &   274 &  0.6 \\
+        303.0 &  4099 & 18.3 \\
+        356.1 & 11660 & 62.1 \\
+        384.1 &  1567 &  8.9 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -327,10 +332,12 @@ herum verteilt.
 Das Aufgenommene Spektrum ist in Abbildung \ref{fig:coal} dargestellt.
 Tabelle \ref{tab:coal} führt einige Maxima des Energiespektrums auf und weist
 diesen die Herkunft aus einem radioaktiven Nuklid zu.
-Obwohl das Spektrum mehr als die fünf aufgeführten Peaks beinhaltet, stellt es
+Dabei wird auf die \texttt{LARA Database} \cite{lara} zurückgegriffen.
+Obwohl das Spektrum mehr als die drei aufgeführten Peaks beinhaltet, stellt es
 sich als äußerst schwierig heraus, für andere, als die aufgeführten Energien
-eindeutige Quell-Isotope zu finden.
-\begin{figure}
+eindeutige Quell-Isotope zu finden, da stets etliche Isotope mit ähnlichen
+Gamma-Energien gefunden werden können.
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\linewidth]{img/08_coal.pdf}
     \caption{
@@ -338,10 +345,14 @@ eindeutige Quell-Isotope zu finden.
     }
     \label{fig:coal}
 \end{figure}
-\begin{table}
+\begin{table}[htb]
     \centering
+    \caption{
+        Einige Maxima des Spektrums einer Portion Holzkohle-Brikkets.
+        Den jeweiligen Peaks wird anhand der $\gamma$-Energie ein Isotop
+        zugeordnet, sofern das eindeutig möglich ist.
+    }
     \label{tab:coal}
-    \caption{Holzkohlebrikkets}
     \begin{tabular}{%
         S[table-format=4.1]%
         S[table-format=5.0]%
@@ -360,6 +371,8 @@ eindeutige Quell-Isotope zu finden.
 \end{table}
 Die Gesamtaktivität der Quelle beträgt etwa $A_\text{coal} \approx \SI{0.8}{\becquerel}$,
 wobei von einem Raumwinkelanteil der Probe von etwa \num{0.5} ausgangen wird.
+Die Aktivität wird dabei durch einfache Summation über alle Ereignisse
+bestimmt und der Fehler mit $\sqrt{N}$ geschätzt.
 % Auf Basis der hier aufgeführten Peaks des Kohle-Spektrums wird die Aktivität
 % der Probe abgeschätzt. Für die Peaks von $^{214}$Bi bei \SI{609}{keV},
 % $^{137}$Cs bei \SI{661}{keV} und $^{40}$K bei \SI{1461}{keV} wird die Gesamte
@@ -379,3 +392,31 @@ wobei von einem Raumwinkelanteil der Probe von etwa \num{0.5} ausgangen wird.
 % Der Fehler wird mit etwa \SI{50}{\percent} geschätzt, da keine Weiteren
 % Bestandteile identifiziert werden können, diese jedoch einen großen Beitrag
 % liefern.
+
+\section{Diskussion}
+\label{sec:diskussion}
+Insgesamt kann in diesem Versuch die Präzision des Germanium-Detektors hinsichtlich
+der Positionen des Energiespektrums verschiedener Strahler bestätigt
+werden. Hierauf weisen schon die geringen Fehler der Energiekalibration hin.
+
+Eine Schwierigkeit bei allen hier durchgeführten Messungen stellt allerdings
+die bestimmung der Effizienzkurve $Q(E)$ dar.
+Die hierfür genutzten Wertepaare unterliegen starken Schwankungen, was Fehler
+der Größenordnung \SI{40}{\percent} Folge hat und weiter untersucht werden
+sollte.
+
+Die Lagen der Compton- und Rückstreukante im $^{137}$Cs-Spektrum
+weichen um \SI{3}{\percent} beziehungsweise \SI{4.5}{\percent}
+vom theoretischen Wert ab, was möglicherweise durch den nicht Berücksichtigten
+Untergrund zurückzuführen ist.
+
+Die Große Diskrepanz zwischen erwarteten Verhältnis der Inhalte von
+Compton-Kontinuum und Photo-Peak kann ohne weiteres nicht erklärt werden.
+Möglichwerweise sind beide Effekte stark korreliert, was weiter untersucht
+werden müsste.
+
+Abschließend stellt sich die Untersuchung der Holzkohle-Brikkets als sehr
+interessant heraus. Gegen die Erwartungen fällt die naiv bestimmte Aktivität
+von etwa \SI{0.8}{\becquerel} gering aus, wobei hieraus keine Rückschlüsse auf
+etwaige Risiken für den jeweiligen Grillmeister geschlossen werden können,
+da die Untersuchung lediglich Sensitivität auf Gamma-Emission liefert.
