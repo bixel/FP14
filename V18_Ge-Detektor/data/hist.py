@@ -94,9 +94,11 @@ eu_spectrum = np.array(
 
 # Plot raw Eu-152 Distribution
 x_values = np.arange(0, 4200)
+unbinned_eu = unbinned_array(europium_distribution[:4200])
+unbinned_eu_proof = unbinned_array(eur_proof_dist[:4200])
 compare_figure, (eur_plot, eur_proof_plot) = plt.subplots(2, sharex=True)
-eur_plot.plot(x_values, europium_distribution[:len(x_values)])
-eur_proof_plot.plot(x_values, eur_proof_dist[:len(x_values)])
+eur_plot.hist(unbinned_eu, bins=200, edgecolor='none')
+eur_proof_plot.hist(unbinned_eu_proof, bins=200, edgecolor='none')
 eur_proof_plot.set_xlabel('Kanal')
 eur_proof_plot.set_ylabel('Kalibrationsmessung')
 eur_plot.set_ylabel('Vergleichsmessung')
@@ -109,6 +111,8 @@ plt.setp([a.get_yticklabels() for a in compare_figure.axes],
 
 plt.savefig("01_comp.pdf")
 plt.clf()
+print(peaks(europium_distribution))
+print(peaks(eur_proof_dist))
 
 # Remove Background and select maxima
 bkg_time = 68580.0
@@ -239,11 +243,13 @@ cs_events, cs_coeff, cs_var = sigma_delta(
     calibration_func=calibrated
 )
 
-plt.plot(
-    calibrated(x_values),
-    caesium_dist[:len(x_values)]
-)
-plt.xlim(0, 800)
+unbinned_caesium = unbinned_array(caesium_dist[:2500], calibration_func=calibrated)
+# plt.plot(
+#     calibrated(x_values),
+#     caesium_dist[:len(x_values)]
+# )
+plt.hist(unbinned_caesium, bins=200, edgecolor='none')
+plt.xlim(0, 700)
 plt.xlabel('Energie [keV]')
 plt.ylabel('Ereignisse')
 plt.savefig('06_caesium.pdf')
