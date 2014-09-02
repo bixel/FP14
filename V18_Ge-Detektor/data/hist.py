@@ -125,8 +125,6 @@ vetos = np.array(
 )
 maxima = peaks(europium_distribution, vetos=vetos)
 
-print(peaks(europium_distribution, vetos=[[0,350], [400,600]]))
-
 ax = plt.axes()
 # plt.plot(x_values, europium_distribution[:len(x_values)])
 # plt.plot(x_values, (eur_time / bkg_time) * background_dist[:len(x_values)])
@@ -365,7 +363,7 @@ ba_activity = lambda x, a: omega * a * x
 print(ba_maxima)
 fitx = np.array(eff_function(calibrated(ba_maxima[:,0]), q_coeff[0], q_coeff[1])) * ba_props
 ba_activity_coeff, ba_activity_var = cfit(ba_activity, fitx, ba_events)
-plt.plot(fitx, ba_events, 'k+')
+plt.plot(fitx, ba_events, 'rx')
 xs = np.linspace(0, 0.2, 100)
 plt.plot(xs, ba_activity(xs, ba_activity_coeff[0]))
 plt.xlabel('$W \cdot Q$')
@@ -382,15 +380,9 @@ print('A_ges = {}'.format(a / ba_time))
 coal_dist = np.loadtxt('Kohle.txt', unpack=True)
 coal_time = 84292.0
 coal_dist -= coal_time / bkg_time * background_dist
-unbinned_coal = unbinned_array(coal_dist, calibration_func=calibrated)
-plt.hist(unbinned_coal, bins=200, edgecolor='none')
-plt.xlim(0, 1550)
-plt.ylabel('Ereignisse')
-plt.xlabel('Energie [keV]')
-plt.savefig('08_coal.pdf')
-plt.clf()
+unbinned_coal = unbinned_array(coal_dist[0:5000], calibration_func=calibrated)
 
-coal_maxima = peaks(coal_dist, n_max=10)
+coal_maxima = peaks(coal_dist, n_max=8)
 coal_maxima = np.array(sorted(coal_maxima, key=lambda x: x[0]))
 coal_events = []
 for maximum in coal_maxima:
@@ -402,6 +394,23 @@ for maximum in coal_maxima:
             calibration_func=calibrated
         )[0]
     )
+
+plt.hist(unbinned_coal, bins=200, edgecolor='none')
+plt.ylabel('Ereignisse')
+plt.xlabel('Energie [keV]')
+plt.savefig('08_coal.pdf')
+plt.clf()
+
 print('Wooden Coal\n===========')
 for m, e in zip(coal_maxima, coal_events):
-    print('E = {}\tN = {}'.format(calibrated(m[0]), e))
+    print('E = {:g}\tN = {:g}'.format(calibrated(m[0]), e))
+
+a_bi = 330. / eff_function(609.2, q_coeff[0], q_coeff[1]) \
+     * 1. / 0.47 / coal_time
+a_cs = 1862. / eff_function(661.7, q_coeff[0], q_coeff[1]) \
+     * 1. / 0.8899 / coal_time
+a_k = 565. / eff_function(1461.6, q_coeff[0], q_coeff[1]) \
+    * 1. / 0.1155 / coal_time
+print('A_coal = {}'.format(a_bi + a_cs + a_k))
+print('sum_coal = {}'.format(sum(coal_dist)))
+print('A_simple = {}'.format(sum(coal_dist) / coal_time))

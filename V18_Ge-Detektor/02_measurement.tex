@@ -100,7 +100,7 @@ wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Die oben a
         {Kanal} &
         {gemessen} &
         {erwartet} &
-        {Effizienz [\si{keV}]} \\
+        {Effizienz [\si{\percent}]} \\
         \midrule
         121.78 & 28.6 & 358  & 12544 & 20006 & 62.7 \\
         244.7  &  7.6 & 714  & 5319  & 53162 & 10.0 \\
@@ -198,11 +198,18 @@ Die gemessenen Inhalte ergeben jedoch ein Verhältnis von etwa $4:1$.
 
 \subsection{Aktivität einer $^{133}$Ba-Quelle} % (fold)
 \label{sub:ba_quelle}
-In diesem Abschnitt wird das Spektrum einer $^{133}$Ba-Quelle vermessen. Anschließend wird der Inhalt der einzelnen Peaks im Spektrum bestimmt, woraus unter Berücksichtigung der Effizienzfunktion $Q$ und dem Raumwinkelanteil $\Omega$ des Detektors auf die Aktivität $A_\text{ges}$ der Quelle geschlossen werden kann.
+In diesem Abschnitt wird das Spektrum einer $^{133}$Ba-Quelle vermessen.
+Anschließend wird der Inhalt der einzelnen Peaks im Spektrum bestimmt,
+woraus unter Berücksichtigung der Effizienzfunktion $Q$ und dem
+Raumwinkelanteil $\Omega$ des Detektors auf die Aktivität $A_\text{ges}$
+der Quelle geschlossen werden kann.
 Das aufgenommene Spektrum ist in Abbildung \ref{fig:ba_spektrum} gezeigt.
-Es werden die in Tabelle \ref{tab:barium} aufgeführten Peaks des Spektrums mit den bekannten Gamma-Linien aus dem Skript identifiziert.
-Mit Hilfe von Gleichung \eqref{eqn:effizienz} kann dann die Aktivität $A$ der Quelle als Parameter eine linearen Ausgleichsrechnung bestimmt werden.
-Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_aktivitaet} dargestellt und liefert
+Es werden die in Tabelle \ref{tab:barium} aufgeführten Peaks des Spektrums
+mit den bekannten Gamma-Linien aus dem Skript identifiziert.
+Mit Hilfe von Gleichung \eqref{eqn:effizienz} kann dann die Aktivität $A$
+der Quelle als Parameter eine linearen Ausgleichsrechnung bestimmt werden.
+Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung
+\ref{fig:barium_aktivitaet} dargestellt und liefert
 \begin{align*}
     A_\text{ges} = \SI{970+-190}{\becquerel}\,.
 \end{align*}
@@ -245,7 +252,61 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung \ref{fig:barium_
 
 \subsection{Radioaktivität von Holzkohlebrikkets} % (fold)
 \label{sub:holzkohle}
-
-% subsection holzkohle (end)
-
-% subsection ba_quelle (end)
+Abschließend werden etwa \SI{500}{g} Holzkohlebrikkets auf Radioaktive
+Isotope untersucht.
+Die Probe wird dafür für eine Dauer von etwa \num{23} Stunden um den Detektor
+herum verteilt.
+Das Aufgenommene Spektrum ist in Abbildung \ref{fig:coal} dargestellt.
+Tabelle \ref{tab:coal} führt einige Maxima des Energiespektrums auf und weist
+diesen die Herkunft aus einem radioaktiven Nuklid zu.
+Obwohl das Spektrum mehr als die fünf aufgeführten Peaks beinhaltet, stellt es
+sich als äußerst schwierig heraus, für andere, als die aufgeführten Energien
+eindeutige Quell-Isotope zu finden.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/07_coal.pdf}
+    \caption{
+        Spektrum von etwa \SI{500}{g} Holzkohle-Brikkets, Marke Kaufland.
+    }
+    \label{fig:coal}
+\end{figure}
+\begin{table}
+    \centering
+    \label{tab:coal}
+    \caption{Holzkohlebrikkets}
+    \begin{tabular}{%
+        S[table-format=4.1]%
+        S[table-format=5.0]%
+        l%
+        l%
+    }
+        \toprule
+        {Peak [\si{keV}]}  & {Ereignisse} & Strahler   & Reihe      & {Emissionsw. \si{\percent}} \\
+        \midrule
+         609.2             &  330         & $^{214}$Bi & $^{238}$U  & 45.49 \\
+         661.7             & 1862         & $^{137}$Cs &            & 84.99 \\
+        1461.6             &  565         & $^{40}$K   &            & 10.55 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+Die Gesamtaktivität der Quelle beträgt etwa $A_\text{coal} \approx \SI{0.8}{\becquerel}$,
+wobei von einem Raumwinkelanteil der Probe von etwa \num{0.5} ausgangen wird.
+% Auf Basis der hier aufgeführten Peaks des Kohle-Spektrums wird die Aktivität
+% der Probe abgeschätzt. Für die Peaks von $^{214}$Bi bei \SI{609}{keV},
+% $^{137}$Cs bei \SI{661}{keV} und $^{40}$K bei \SI{1461}{keV} wird die Gesamte
+% Aktivität $A_\text{i}$ des Isotops in der Probe mit
+% \begin{equation*}
+%     A_\text{i} \approx \frac{N_\text{i}}{p_\text{i} Q(E_\text{i})} \frac{1}{t_\text{coal}}
+% \end{equation*}
+% genähert. Dabei bezeichnet $N$ die Anzahl der Ereignisse im entsprechenden Peak,
+% bestimmt durch Fit einer Gauß-Funktion, $p_\text{i}$ die Emissionswahrscheinlichkeit
+% der entsprechenden Energie $E_\text{i}$ und $Q$ die Effizienz.
+% Die Dauer der Messung wird mit $t_\text{coal}$ bezeichnet.
+% Der durch die Probe abgedeckte Raumwinkelanteil wird mit \num{0.5} genähert.
+% Insgesamt ergibt sich damit eine Aktivität der Holzkohlebrikkets von
+% \begin{equation*}
+%     A_\text{ges} = 2 \sum A_\text{i} \approx \SI{2.7+-1.5}{\becquerel}\,.
+% \end{equation*}
+% Der Fehler wird mit etwa \SI{50}{\percent} geschätzt, da keine Weiteren
+% Bestandteile identifiziert werden können, diese jedoch einen großen Beitrag
+% liefern.
