@@ -94,13 +94,16 @@ Für die Aktivität $A$, die im Detektor gemessen werden kann, gilt schließlich
 Unter Hinzunahme der bekannten Emissionswahrscheinlichkeiten kann nun wie
 in Gleichung \eqref{eqn:effizienz} beschrieben, eine Effizienzfunktion $Q(E)$
 für den Detektor aufgestellt werden.
+Der Inhalt der jeweiligen Peaks wird dabei durch Fit einer Gauß-Funktion
+an die Datenpunkte und anschließende Integration dieser Funktion bestimmt.
 Eine Funktion $Q(E)$ der Form
 \begin{align*}
     Q(E) = ae^{-bE}
 \end{align*}
-wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Die oben
-aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz zu der im Skript
-vorgeschlagenen Potenzfunktion kleinere Fehler des Fits und wird daher bevorzugt.
+wird dann an die so erhaltenen Wertepaare $(Q,E)$ angepasst.
+Die oben aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz
+zu der im Skript vorgeschlagenen Potenzfunktion kleinere Fehler
+und wird daher bevorzugt.
 Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
 \begin{align*}
     a &= \num{0.63+-0.26}\,, &\quad b &= \SI{1.8+-1.1}{eV^{-1}}\,.
