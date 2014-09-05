@@ -1,0 +1,9 @@
+font.family           : serif
+figure.figsize        : 6,6
+figure.dpi            : 72
+savefig.bbox          : tight
+
+# Nice plots
+#text.usetex           : True
+#pgf.texsystem         : lualatex
+#text.latex.preamble   : \usepackage{siunitx}
