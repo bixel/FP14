@@ -11,7 +11,7 @@ def unbinned_array(binned_array, start=0, end=None, calibration_func=lambda x: x
         raw_data.extend([calibration_func(x)] * binned_array[x])
     return raw_data
 
-data = np.genfromtxt('data.txt', unpack=True)
+data = np.genfromtxt('myons.txt', unpack=True)
 unbinned_data = unbinned_array(data)
 plt.hist(unbinned_data, bins=200)
 plt.show()
