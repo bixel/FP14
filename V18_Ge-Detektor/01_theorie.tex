@@ -13,21 +13,17 @@ Der Detektor besitzt im Vergleich zu anderen Detektoren ein hohes Energieauflös
 Tritt ein $\gamma$-Quant mit Materie in Wechselwirkung, sind für die $\gamma$-Spektroskopie besonders der Photoeffekt, der Compton-Effekt und die Paarbildung von Interesse.
 Diese Effekte führen zu einem vom Wirkungsquerschnitt $\sigma$ abhängigen Intensitätsverlust des $\gamma$-Strahls.
 Die Intensität kann mithilfe der Gleichung
-
 \begin{equation}
 	N(D) = N_\text{0} \left(1-\exp\left(- n \sigma D\right)\right) \label{anzahl}
 \end{equation}
-
 beschrieben werden.
 Dabei ist $D$ die Absorberschichtdicke, $N_\text{0}$ die ursprüngliche Strahlintensität und $n$ die Teilchendichte des Absorbers.\\
 
 Die mittlere Reichweite $\bar{x}$ der $\gamma$-Quanten ist durch den reziproken Wert des Extinktionskoeffizenten gegeben.
 Unter der Annahme von isolierten Elektronen der Absorberatome ist dieser durch
-
 \begin{equation}
 	\mu = n \sigma = \frac{z N_\text{L} \rho}{A} \sigma
 \end{equation}
-
 gegeben.
 $A$ entspricht dem Atomgewicht, $\rho$ der Dichte, $z$ der Kernladungszahl und $N_\text{L}$ der Loschmidtschen Zahl.\\
 
@@ -35,11 +31,9 @@ Beim Photoeffekt muss die Energie des $\gamma$-Quants $E_\gamma$ größer sein a
 Dabei gibt der $\gamma$-Quant seine gesamte Energie an das Elektron ab, sodass dieses die Energiedifferenz als kinetische Energie erhält.
 Die entstandenen Elektronenlöcher werden unter Aussendung charakteristischer Röntgenstrahler von einem Elektron einer höheren Schale aufgefüllt.
 Der Wirkungsquerschnitt des Photoeffekts ist durch
-
 \begin{equation}
 	\sigma_\text{ph} \propto z^\alpha E^\delta \label{photo_quer}
 \end{equation}
-
 gegeben mit 4 < $\alpha$ < 5 und $\delta \approx$ -3,5.\\
 
 \begin{figure}
@@ -48,28 +42,21 @@ gegeben mit 4 < $\alpha$ < 5 und $\delta \approx$ -3,5.\\
 	\caption{Schematische Darstellung der Compton-Streuung \cite{anleitung}.}
 	\label{compton}
 \end{figure}
-
 Der Compton-Effekt kann als inelastische Streuung des $\gamma$-Quants an einem praktisch ruhenden Elektron verstanden werden.
 Mit
-
 \begin{equation}
 	\epsilon = \frac{E_\gamma}{m_\text{0} c^2}
 \end{equation}
 ergibt sich nach Abbildung \ref{compton} für die Energie des gestoßenen Elektrons
-
 \begin{equation}
 	E_\text{el} = E_\gamma - E_{\gamma'} = E_\gamma \frac{\epsilon (1-\cos{\Psi_\gamma})}{1 + \epsilon (1-\cos{\Psi_\gamma})} .
 \end{equation}
-
 Somit ist der maximale Energieübertrag durch
-
 \begin{equation}
 	E_\text{el,max} = E_\gamma \frac{2\epsilon}{1+2\epsilon} < E_\gamma
 \end{equation}
-
 gegeben.
-Somit ist der Compton-Effekt eine unerwünschte Erscheinung, da nur ein sich verändernder Bruchteil der $\gamma$-Energie detektiert wird.\\
-
+Somit ist der Compton-Effekt eine unerwünschte Erscheinung, da nur ein sich verändernder Bruchteil der $\gamma$-Energie detektiert wird.
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/compton2.png}
@@ -77,24 +64,18 @@ Somit ist der Compton-Effekt eine unerwünschte Erscheinung, da nur ein sich ver
 	\label{compton2}
 \end{figure}
 Bei kleinen Energien gilt für den Wirkungsquerschnitt
-
 \begin{equation}
 	\sigma_\text{Co} = \frac{3}{4} \sigma_\text{Th} \left(1 - 2\epsilon + \frac{26}{5} \epsilon^2 + ...\right) .
 \end{equation}
-
 Für $\epsilon \rightarrow 0$ gilt
-
 \begin{equation}
-	\sigma_\text{Co} = \sigma_\text{Th} = \frac{8}{3} \pi r_\text{el}^2 . 
+	\sigma_\text{Co} = \sigma_\text{Th} = \frac{8}{3} \pi r_\text{el}^2 .
 \end{equation}
-
 Da Detektoren nur die Elektronenenergie detektieren, ist die Energieverteilung der gestoßenen Elektronen wichtig.
-Diese ist durch den differentiellen Wikrungsquerschnitt 
-
+Diese ist durch den differentiellen Wikrungsquerschnitt
 \begin{equation}
 	\frac{\text{d}\sigma}{\text{d}E} = \frac{8}{3}\sigma_\text{Th} \frac{1}{m_\text{0} c^2 \epsilon^2} \left(2 + \left(\frac{E}{h \nu - E}\right)^2 \left(\frac{1}{\epsilon^2} + \frac{h \nu - E}{h \nu} - \frac{2}{\epsilon} \left(\frac{h \nu - E}{h \nu}\right)\right)\right) \label{eqn:dsde}
 \end{equation}
-
 gegeben.
 In Abbildung \ref{compton2} ist eine beispielhafte Kurve dargestellt.\\
 \FloatBarrier
@@ -104,12 +85,10 @@ Ist dies ein Atomkern, so muss die Energie des $\gamma$-Quants größer als $2 m
 Die Differenz der Energien wird im gleichen Maße auf das Elektron und das Positron übertragen wodurch sich eine symmetrische Verteilungskurve ergibt.
 
 Für die Grenzfälle des Wirkungsquerschnittes im Falle verschwindender und vollständiger Abschirmung ergiebt sich
-
 \begin{eqnarray}
 	\text{Verschwindend: } \sigma_\text{Pa} &=& \alpha r_\text{el}^2 z^2 \left(\frac{28}{9} \ln(2\epsilon) - \frac{218}{27}\right) ,\\
 	\text{Vollständig: } \sigma_\text{Pa} &=& \alpha r_\text{el}^2 z^2 \left(\frac{28}{9} \ln(\frac{183}{\sqrt[3]{}}) - \frac{2}{27}\right) .
 \end{eqnarray}
-
 Nach der Bildung können das Elektron oder das Positron oder gar beide Teilchen aus dem Detektor austreten.
 Zudem kann auch durch Bremsstrahlung ein Energieverlust zustande kommen.
 Somit verbreitert sich das Spektrum zu kleineren Energien hin.
@@ -125,20 +104,17 @@ Um dem entgegenzuwirken wird der Detektor üblicherweise mit flüssigem Sticksto
 Tritt ein $\gamma$-Quant in die Zone ein, kann es zur Freisetzung eines energiereichen Elektrons kommen, welches wiederum mit anderen Elektronen des Valenzbandes wechselwirkt und seine Energie an diese abgiebt und diese wiederum mit weiteren wechselwirken.
 Die erzeugten Elektronen-Loch-Paare können auf Elektroden gespeichert werden und die resultierende Spannung ist proportional zur Energie des eingefallenen $\gamma$-Quants.
 
-Für den Extinktionskoeffizienten in Abhängigkeit der Energie des $\gamma$-Quants ergeben sich für die verschiedenen Wechselwirkungen die in Abbildung \ref{german} dargestellten Kurven.\\
-
+Für den Extinktionskoeffizienten in Abhängigkeit der Energie des $\gamma$-Quants ergeben sich für die verschiedenen Wechselwirkungen die in Abbildung \ref{german} dargestellten Kurven.
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/german.png}
 	\caption{Energieabhängigkeit des Extinktionskoeffizienten $\mu$ für Ge getrennt nach den verschiedenen Wechselwirkungsmechanismen \cite{anleitung}.}
 	\label{german}
 \end{figure}
-
 Der hier verwendete Detektor ist in Abbildung \ref{detekt} dargestellt.
 Um die Oberfläche gut leitend zu machen, ist diese mit Li-Atomen n-dotiert, während das Innere des Zylinders mithilfe von Gold stark p-dotiert worden ist.
 Der gesamte Detektor ist zudem von einer Aluminium Schicht umgeben.
 Zusammen mit der Li-dotierten Oberfläche führt dies zu einer unteren nachweisgrenze für die $\gamma$-Energie von etwa $\SIrange{40}{50}{\kilo\electronvolt}$, da die $\gamma$-Quanten diese beiden Schichten zunächst durchdringen müssen.
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/detekt.png}
@@ -149,61 +125,47 @@ Zusammen mit der Li-dotierten Oberfläche führt dies zu einer unteren nachweisg
 \FloatBarrier
 \subsection{Eigenschaften eines Halbleiter-Detektors} % (fold)
 \label{sec:eigenschaften_eines_halbleiter_detektors}
-
 Das energetische Auflösungvermögen des Detektors ist eine wesentliche Kenngröße für die $\gamma$-Spektroskopie.
 Diese wird unter anderem über die Halbwertsbreite $\Delta E_\text{1/2}$ bestimmt, welche angiebt wann sich zwei unterschiedliche Spektrallinien bei einfall monochromatischer $\gamma$-Strahlung noch zuverlässig voneinander trennen lassen.
 Die Breite ist von der Zahl $n$ der erzeugten Ladungsträgerpaare wobei
-
 \begin{equation}
 	\bar{n} = \frac{E_\gamma}{E_\text{EL}}
 \end{equation}
-
 gilt.
 
 Eine Bildung von Elektronen-Loch-Paaren ist nur unter der Beteiligung von Phononen möglich und die Energie des $\gamma$-Quants wird statistisch auf beide verteilt.
 Dies konnte herausgefunden werden, da in Ge bei $\SI{77}{\kelvin} E_\text{EL} = \SI{2.9}{\electronvolt}$ ist, obwohl die Energiedifferenz zwischen Leitungs- und Valenzband nur $\SI{0.67}{\electronvolt}$ beträgt.
 Da eine Korrelation zwischen Ladungsträgererzeugung und Phonen vorliegt, verkleinert sich die Standardabweichung durch die Wurzel des Fano-Faktors $F < 1$ zu
-
 \begin{equation}
 	\sigma = \sqrt{F \bar{n}} .
 \end{equation}
-
 Da $n >> 1$ ist, kann die Poisson-Verteilung durch eine Gauß-Verteilung mit der Standardabweichung $\sigma_\text{E}$ approximiert werden wodurch sich für die Halbwertsbreite
-
 \begin{equation}
 	\Delta E_\text{1/2} = \sqrt{8 \ln{2}} \sigma_\text{E} \approx 2.45 \sqrt{0.1 E_\text{$\gamma$} E_\text{EL}}
 \end{equation}
-
 ergibt.
-
 Weiterhin spielt die Halbwertsbreite des Rauschens des Leckstroms $H_\text{R}$, die Halbwertsbreite durch unvollständige Ladungssammlung aufgrund von Feldinhomogenitäten $H_\text{I}$ und die Halbwertsbreite des Verstärkerrauschens $H_\text{E}$ eine Rolle.
 Da diese Unkorreliert sind, ergiebt sich die Energieauflösung des Detektors durch
-
 \begin{equation}
 	H_\text{ges}^2 = \Delta E_\text{1/2}^2 + H_\text{R}^2 + H_\text{I}^2 + H_\text{E}^2 .
 \end{equation}
-\\
 Eine weitere Kenngröße ist die Effizienz des Detektors, also die Nachweiswahrscheinlichkeit eines $\gamma$-Quants.
 Für die $\gamma$-Spektroskopie ist unterhalb von $\SI{3}{\mega\electronvolt}$ nur der Photoeffekt von Relevanz, doch nach \eqref{anzahl} sollen nur \SI{2}{\%} der $\gamma$-Quanten absorbiert werden.
 Effektiv liegt dieser Wert jedoch höher.
 \FloatBarrier
 \subsection{Elektronische Beschaltung eines Germanium-Detektors} % (fold)
 \label{sub:elektronische_beschaltung_eines_germanium_detektors}
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/schaltung1.png}
 	\caption{Beschaltung eines Ge-Detektors durch eine Integrationsstufe \cite{anleitung}.}
 	\label{schaltung1}
 \end{figure}
-
 Um einen Spannungsimpuls zu erzeugen, welcher proportional zur Energie des eingefallenen $\gamma$-Quants ist, wird die in Abbildung \ref{schaltung1} dargestellte Schaltung verwendet.
 Es wird ein kapzitiv rückgekoppelter Operationsverstärker verwendet, welcher das Signal nach
-
 \begin{equation}
 	U_\text{A} = - \frac{1}{C_\text{K}} \int_0^{t_\text{s}} I(t) \text{d}t
 \end{equation}
-
 elektrisch Integriert.
 Dabei ist $t_\text{K}$ die Sammelzeit.
 \FloatBarrier
@@ -211,14 +173,12 @@ Dabei ist $t_\text{K}$ die Sammelzeit.
 Um das Signal auf die Impulshöhe zu analysieren muss der Kondensator nach jedem Ereignis wieder entladen werden.
 Dies kann, wie in Abbildung \ref{schaltung1} dargestellt, durch einen Widerstand möglich gemacht werden, doch induziert dieser ein Eigenrauschen.
 Besser ist daher die Entladung durch einen LED nach Abbildung \ref{schaltung2}, welche die Sperrschicht vorübergehend leitend macht.
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/schaltung2.png}
 	\caption{Prinzipschaltbild zur Entladung des Integrationskondensators $C_\text{K}$ durch optoelektronische Rückkopplung \cite{anleitung}.}
 	\label{schaltung2}
 \end{figure}
-
 \FloatBarrier
 
 Im Anschluss an den Operationsverstärker befindet sich ein Vorverstärker, an den sich ein Hauptverstärker anschließt.
@@ -232,7 +192,6 @@ Weiteren Signalverschlechternden Effekten - Unterschwingung, negative Werte der 
 Abschließend gelangen die Signale in einen Vielkanalanalysator, der an einen Computer gekoppelt ist.
 An diesem werden die Signale ihrer Impulshöhe entsprechend in verschiedene kanäle sortiert und dort gespeichert.
 In Abbildung \ref{schaltung3} ist der Aufbau eines $\gamma$-Spektrometers dargestellt.
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/schaltung3.png}
@@ -244,22 +203,19 @@ In Abbildung \ref{schaltung3} ist der Aufbau eines $\gamma$-Spektrometers darges
 
 \subsection{Das Spektrum eines monochromatischen $\gamma$-Strahlers} % (fold)
 \label{sub:das_von_einem_ge_detektor_erzeugt_spektrum_eines_monochromatischen_gamma_strahlers}
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{pic/spek.png}
 	\caption{Das Spektrum eines monochromatischen $\gamma$-Strahls mit der Energie E$_\gamma$ aufgenommen mit einem Ge-Detektor \cite{anleitung}.}
 	\label{spek}
 \end{figure}
-
 Abbildung \ref{spek} zeigt das Spektrum eines monochromatischen $\gamma$-Strahlers.
 Es besteht aus dem Compton-Kontinuum mit Compton-Kante, dem Rückstreupeak und dem Photopeak.
-Der Rückstreupeak berechnet sich nach 
-
-\begin{equation}
-	E_{\gamma'} = E_\gamma \frac{1}{1+2\epsilon} \label{eqn:rueckstreu_peak}.
-\end{equation}
-
+Dabei gilt für die Lagen $E_\text{C}$ des Compton-Peaks und $E_\text{R}$ des Rückstreu-Peaks
+\begin{align}
+    E_\text{C} & = E_\gamma \frac{2\epsilon}{1+2\epsilon} \label{eqn:compton_peak}\,,\\
+    E_\text{R} & = E_\gamma \frac{1}{1+2\epsilon} \label{eqn:rueckstreu_peak}\,.
+\end{align}
 Die Breite des Photopeaks ist dabei ein Maß für die Energieauflösung des Spektrometers.
 Die von null verschiedene Intensität nach der Compton-Kante ist durch mehfach comptongestreute Quanten zu erklären,
 während der Rückstreupeak durch nicht unmittelbar von der Quelle in den Detektor gelangten Quanten erzeugt wird.
@@ -272,23 +228,18 @@ Durch Messung eines bekannten Spektrums können die Kanäle jedoch den dazugehö
 Dazu ist es von Vorteil ein besonders Linienreiches Spektrum zu verwenden, da so die Fehler minimal gehalten werden können.
 \\
 Die Effizienz $Q$ des Spektrometers kann durch einen Strahler mit bekannter Aktivität über den Zusammenhang
-
 \begin{equation}
 	\label{eqn:effizienz}
 	Z = \frac{\Omega}{4 \pi} A W Q
 \end{equation}
-
 bestimmt werden.
-Dabei ist $Z$ das Zählerergebnis, $A$ die Aktivität, $\Omega$ der Raumwinkel und $W$ die Emissionswahrscheinlichkeit einer bestimmten Energie bei einem Mehrlinienstrahler.\\
-
+Dabei ist $Z$ das Zählerergebnis, $A$ die Aktivität, $\Omega$ der Raumwinkel und $W$ die Emissionswahrscheinlichkeit einer bestimmten Energie bei einem Mehrlinienstrahler.
 $Z$ kann dem Energiespektrum entnommen werden, $A$ kann aus den Herstellerangaben errechnet werden  und $W$ lässt sich aus einschlägigen Tabellen entnehmen.
 Für $\Omega$ hingegen gilt
-
 \begin{equation}
 	\label{eqn:raumwinkel}
 	\frac{\Omega}{4 \pi} = \frac{1}{2} \left(1-\frac{a}{\sqrt{a^2+r^2}}\right), a >= \SI{10}{\centi\meter}.
 \end{equation}
-
 Dabei kann der Radius $r$ den Detektorabmessungen entnommen werden.
 
 \FloatBarrier

@@ -63,9 +63,10 @@ um sicherzustellen, dass sich die Kanäle nicht verschoben haben, was in Abbildu
     \label{fig:control}
 \end{figure}
 Für die Kalibration werden die in Tabelle \ref{tab:maxima} aufgeführten
-Maxima gewählt und den jeweiligen Kanäle mit Hilfe von \eqref{eqn:kalibration}
-eine Energie zugeordnet. Der Fit der Kalibratinosfunktion ist in Abbildung
-\ref{fig:calibration} dargestellt. Es ergeben sich die Koeffizienten
+Maxima des bekannten Spektrums ausgewählt und den jeweiligen Kanäle mit
+Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet.
+Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration}
+dargestellt. Es ergeben sich die Koeffizienten
 %
 \begin{align*}
      m = \SI{345.22+-0.04}{eV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
@@ -93,13 +94,16 @@ Für die Aktivität $A$, die im Detektor gemessen werden kann, gilt schließlich
 Unter Hinzunahme der bekannten Emissionswahrscheinlichkeiten kann nun wie
 in Gleichung \eqref{eqn:effizienz} beschrieben, eine Effizienzfunktion $Q(E)$
 für den Detektor aufgestellt werden.
+Der Inhalt der jeweiligen Peaks wird dabei durch Fit einer Gauß-Funktion
+an die Datenpunkte und anschließende Integration dieser Funktion bestimmt.
 Eine Funktion $Q(E)$ der Form
 \begin{align*}
     Q(E) = ae^{-bE}
 \end{align*}
-wird anschließend an die so erhaltenen Wertepaare $(Q,E)$ angepasst. Die oben
-aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz zu der im Skript
-vorgeschlagenen Potenzfunktion kleinere Fehler des Fits und wird daher bevorzugt.
+wird dann an die so erhaltenen Wertepaare $(Q,E)$ angepasst.
+Die oben aufgeführte Exponentialfunktion für $Q$ liefert im Gegensatz
+zu der im Skript vorgeschlagenen Potenzfunktion kleinere Fehler
+und wird daher bevorzugt.
 Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
 \begin{align*}
     a &= \num{0.63+-0.26}\,, &\quad b &= \SI{1.8+-1.1}{eV^{-1}}\,.

@@ -31,9 +31,10 @@ Für $N$ zerfallende Teilchen ergibt sich somit
 
 Für große $N$ ergibt sich näherungsweise für das Integral
 \begin{equation}
+	\label{eqn:exponential}
 	\frac{N(t)}{N_\text{0}} = \exp{(-\lambda t)},
 \end{equation}
-und somit für die Verteilung 
+und somit für die Verteilung
 \begin{equation}
 	\frac{\text{d}N(t)}{N_\text{0}} = \lambda \exp{(-\lambda t)} \text{d}t .
 \end{equation}
@@ -106,6 +107,7 @@ In Abbildung \ref{schaltung} ist das Blcokschaltbild der verwendeten Apparatur d
 Der Szintillationsdetektor hat ein Volumen von ca. $\SI{50}{\liter}$ und an den Stirnseiten ist je ein SEV angeschlossen.
 Die zeitliche Differenz der Lichtimpulse kann mithilfe eines Zeit-Amplituden-Konverters (TAC) über die \textit{Stopuhr-Methode} gemessen werden.
 Der Impuls des einfallenden Myons startet dabei die Zeitmessung, während der Impuls des zerfallenden Myons diese beendet.
+
 Dies ist möglich, da die Abklingdauer der Lichtpulse mit $\SI{10}{\nano\meter}$ im Detektor klein gegen die Lebensdauer ist.
 Der TAC erzeugt einen Spannungsimpuls proportional zur Zeitdifferenz und leitet diesen an einen Vielkanalanalysator weiter.
 
@@ -113,6 +115,7 @@ Nicht alle Myonen die einen Startimpuls erzeugen führen auch zu einem Stopimpul
 Daher ist es nötig nach einer Suchzeit $T_\text{S}$ abzubrechen.
 Diese sollte ein Vielfaches der Lebensdauer betragen aber klein gegen den mittleren Abstand zweier Startimpulse sein.
 Um dies zu realisierenm, wird eine monostabile Kippstufe verwendet. 
+
 Diese leitet nur einen Impuls an den Stop-Eingang des TAC weiter, wenn in der Zeit $T_\text{S}$ ein weiterer Imulps auftritt, ansonsten kehrt sie wieder in den Ausgangszustand zurück.
 
 Es kann jedoch passieren, dass zwei Myonen innerhalb der Zeit $T_\text{S}$ den Detektor durchlaufen.
