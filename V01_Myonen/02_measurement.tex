@@ -1,3 +1,50 @@
-\section{Vorbereitungen zur Lebensdauermessung}
-\label{sec:vorbereitungen}
-Bevor mit der Messung der Lebensdauer begonnen werden kann,
+\section{Messung der Lebensdauer kosmischer Myonen}
+\label{sec:messung}
+In diesem Abschnitt wird die Bestimmung der Lebensdauer kosmischer Myonen
+vorgestellt.
+Zunächst muss hierfür die Messapparatur kalibriert werden.
+Außerdem wird durch Messung der Myonen-Zählrate unter Variation der
+Verzögerungsleitungen eine Zeitauflösung der Apparatur ermittelt.
+
+\subsection{Zeitkalibration der Apparatur}
+\label{subsec:kalibration}
+Die auszuwertenden Daten werden in dieser Messung mit Hilfe eines
+Vielkanalanalysators (VKA) gewonnen.
+Dieser liefert Histogramm-Daten von Myonen-Kandidaten, die in \num{512} Kanäle
+eingeteilt sind.
+Die Kanalnummer $C_i$ eines Ereignisses hängt dabei linear mit der
+Zeit $t_i$ des entsprechenden Myon-Kandidaten zwischen Start- und
+Stopp-Impuls zusammen:
+\begin{equation}
+    t_i = a + b \cdot C_i\,,
+\end{equation}
+mit den Koeffizienten $a$ und $b$, die im Folgenden bestimmt werden.
+
+Zur Kalibration der Apparatur werden in zeitlich konstanten Abständen
+Signalimpulse auf den VKA gegeben.
+Diese Impulse füllen jeweils einen spezifischen Kanal, wobei die Entsprechende
+Zeit $t_i$ bekannt ist.
+Durch Einstellung verschiedener Signalzeiten können mehreren Kanälen eine
+Zeit zugeordnet werden.
+Die Software \texttt{Maestro V6.06} des VKA führt daraufhin eine lineare Ausgleichsrechnung mit diesen
+Kanälen durch und liefert so die Parameter
+\begin{align*}
+     a &= \SI{0.023}{\micro \second}\\
+     \text{und} \quad b &= \SI[per-mode=fraction]{0.047}{\micro \second \per {Kanal}} \,.
+ \end{align*}
+ Im Folgenden wird lediglich der Parameter $b$ von Interesse sein.
+
+\subsection{Zeitauflösung der Apparatur}
+\label{subsec:zeitaufloesung}
+Um verschiedene Signallaufzeiten der beiden SEV auszugleichen, werden vor der
+Messung Verzögerungsleitungen angeschlossen, die eine zusätzliche
+Verzögerungszeit $T_\text{VZ}$ einbringen.
+Durch Messung der Myonen-Zählraten unter Variation der Verzögerungszeit
+lässt sich so eine Auflösungszeit $\Delta t_\text{K}$ der Koinzidenzeinheit
+als Breite einer Gaußkurve bestimmen.
+Die Messwerte sind in Tabelle \ref{tab:resolution} aufgeführt, Abbildung
+\ref{fig:resolution} zeigt den Fit einer Gauß-Funktion an die Datenpunkte.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/resolution.pdf}
+\end{figure}
