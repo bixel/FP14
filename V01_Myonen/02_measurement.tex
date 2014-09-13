@@ -44,10 +44,21 @@ lässt sich so eine Auflösungszeit $\Delta t_\text{K}$ der Koinzidenzeinheit
 als Breite einer Gaußkurve bestimmen.
 Die Messwerte sind in Tabelle \ref{tab:resolution} aufgeführt, Abbildung
 \ref{fig:resolution} zeigt den Fit einer Gauß-Funktion an die Datenpunkte,
-wodurch sich die folgende Auflösungszeit ergibt:
+welcher die folgende Auflösungszeit liefert:
 \begin{equation*}
     \Delta t_\text{K} = \SI{4.50+-0.11}{\nano \second}\,.
 \end{equation*}
+Die weiteren Messungen werden bei maximaler Zählrate durchgeführt, was bei
+einer Verzögerungszeit $T_\text{VZ} = \SI{0.5}{\nano \second}$ erreicht wird.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/resolution.pdf}
+    \caption{
+        Myonenrate in Abhängigkeit der effektiven Signalverzögerung
+        $T_\text{VZ}$.
+    }
+    \label{fig:resolution}
+\end{figure}
 \begin{table}
     \centering
     \caption{
@@ -84,12 +95,66 @@ wodurch sich die folgende Auflösungszeit ergibt:
         \bottomrule
     \end{tabular}
 \end{table}
+
+\clearpage
+\subsection{Untergrundrate}
+\label{subsec:untergrund}
+Zur Abschätzung der Untergrundrate wird die Wahrscheinlichkeit betrachtet,
+mit der ein zweites Myon in einem Messintervall der Länge
+$T_\text{S} = \SI{10}{\micro \second}$ ein Stopp-Signal erzeugen.
+Dabei wird die Maximale Zählrate von $f = \SI{14.8}{\hertz}$ betrachtet,
+welche nach einer Poissonverteilung einer Wahrscheinlichkeit
+\begin{equation*}
+    p = \lambda \mathrm{e}^{-\lambda} = \SI{0.0149(9)}{\percent}
+\end{equation*}
+entspricht. Hierbeit bezeichnet $\lambda$ den Erwartungswert
+$f \cdot T_\text{S}$ einer Detektion eines Myons innerhalb von $T_\text{S}$.
+Bei einer Messdauer von etwa \num{88} Stunden sind damit
+\begin{equation*}
+    N_\text{Bkg} = \num{47.0+-2.7}
+\end{equation*}
+Untergrundereignisse zu erwarten.
+
+\subsection{Lebensdauerbestimmung}
+\label{subsec:lebensdauer}
+Abschließend wird die Lebensdauer der Myonen bestimmt.
+Hierzu wird mit einem Fit einer Funktion der Form \eqref{eqn:exponential}
+and die Daten des VKA der Parameter $\gamma$ bestimmt.
+Zur Berücksichtigung der Untergrundrate werden pro Kanal \num{0.1} Ereignisse
+abgezogen, was besonders im Bereich kleiner Myonen-Zerfallszeiten einen
+vernachlässigbaren Anteil ausmacht.
+
+Zur Berechnung der kalibrierten Lebensdauer $\tau$ wird der Kehrwert des
+Parameters $\gamma$ gebildet und mit dem zuvor bestimmten Wert $b$ der
+Kalibrationsfunktion multipliziert:
+\begin{equation*}
+    \tau = \frac{1}{\gamma} b \,.
+\end{equation*}
+Der in Abbildung \ref{fig:fit} dargestellte Fit liefert schließlich
+\begin{align*}
+    \gamma &= \SI{0.02125+-0.00021}{\per {Kanal}}\\
+    \Rightarrow \quad \tau_\mu &= \SI{2.19+-0.05}{\micro \second}\..
+\end{align*}
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.7\linewidth]{img/resolution.pdf}
+    \includegraphics[width=0.7\linewidth]{img/fit.pdf}
     \caption{
-        Myonenrate in Abhängigkeit der effektiven Signalverzögerung
-        $T_\text{VZ}$.
+        Bestimmung der Zerfallskonstante der Myonen. Durch Fit einer
+        Exponentialfunktion an die Datenpunkte wird diese bestimmt.
+        Mit Kenntnis einer Kalibrationsfunktion kann somit die Lebensdauer
+        der kosmischen Myonen berechnet werden.
+        Die Statistischen Unsicherheiten sind zur besseren Übersichtlichkeit
+        nicht aufgeführt.
     }
-    \label{fig:resolution}
+    \label{fig:fit}
 \end{figure}
+
+\section{Diskussion}
+\label{sec:diskussion}
+Das Ergebnis dieser Messung stimmt innerhalb der Fehler mit den bekannten
+Werten der Myonen-Lebensdauer von $\tau_{\mu,\text{lit}} = \SI{2.1969811+-0.0000022}{\micro \second}$ \cite{pdgonline} überein.
+Die Unsicherheiten der Messung sind mit etwa \SI{2}{\percent}
+ausgesprochen klein.
+Im Nachhinein wäre eine nachträgliche Zeitkalibration der Apparatur
+einer direkten Kalibration vorzuziehen, um diesen Schritt insgesamt
+transparenter zu gestalten.
