@@ -5,6 +5,9 @@ vorgestellt.
 Zunächst muss hierfür die Messapparatur kalibriert werden.
 Außerdem wird durch Messung der Myonen-Zählrate unter Variation der
 Verzögerungsleitungen eine Zeitauflösung der Apparatur ermittelt.
+Alle Fehler werden im Folgenden mit Hilfe des \texttt{python}-
+Paketes \texttt{uncertainties} berechnet, das eine automatische
+Gauß\'sche Fehlerfortpflanzung anbietet.
 
 \subsection{Zeitkalibration der Apparatur}
 \label{subsec:kalibration}
@@ -99,19 +102,27 @@ einer Verzögerungszeit $T_\text{VZ} = \SI{0.5}{\nano \second}$ erreicht wird.
 \clearpage
 \subsection{Untergrundrate}
 \label{subsec:untergrund}
-Zur Abschätzung der Untergrundrate wird die Wahrscheinlichkeit betrachtet,
-mit der ein zweites Myon in einem Messintervall der Länge
-$T_\text{S} = \SI{10}{\micro \second}$ ein Stopp-Signal erzeugen.
-Dabei wird die Maximale Zählrate von $f = \SI{14.8}{\hertz}$ betrachtet,
-welche nach einer Poissonverteilung einer Wahrscheinlichkeit
+Zur Abschätzung der Anzahl $N_\text{Bkg}$ der Untergrundereignisse wird
+die Wahrscheinlichkeit betrachtet,
+mit der ein Myon in einem zuvor gestarteten Messintervall der Länge
+$T_\text{S} = \SI{10}{\micro \second}$ ein Stopp-Signal erzeugt.
+Unter der Annahme, dass die Myonen normalverteilt auftreten,
+lässt sich die Wahrscheinlichkeit $p_i$ einer Messung von $i$ Myonen im
+gegebenen Zeitintervall durch die Poissonverteilung abschätzen:
+\begin{equation*}
+    p_i = \frac{\lambda^i}{i!}\mathrm{e}^{-\lambda}\,.
+\end{equation*}
+Der Erwartungswert der Messung eines Myons wird dabei mit $\lambda$
+bezeichnet und entspricht $\lambda = T_\text{S}f$, wobei $f$ die Zählrate ist.
+Hier wird die maximale Zählrate von $f = \SI{14.8}{\hertz}$ angesetzt,
+welche schließlich eine Wahrscheinlichkeit der Messung eines Myons von
 \begin{equation*}
     p = \lambda \mathrm{e}^{-\lambda} = \SI{0.0149(9)}{\percent}
 \end{equation*}
-entspricht. Hierbeit bezeichnet $\lambda$ den Erwartungswert
-$f \cdot T_\text{S}$ einer Detektion eines Myons innerhalb von $T_\text{S}$.
-Bei einer Messdauer von etwa \num{88} Stunden sind damit
+ergibt.
+Bei einer Messdauer von etwa $T_\text{M} = \SI{88}{h}$ sind damit
 \begin{equation*}
-    N_\text{Bkg} = \num{47.0+-2.7}
+    N_\text{Bkg} = T_\text{M}fp = \num{47.0+-2.7}
 \end{equation*}
 Untergrundereignisse zu erwarten.
 
