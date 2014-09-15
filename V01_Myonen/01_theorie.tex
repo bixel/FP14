@@ -18,16 +18,16 @@ Zudem unterliegen diese nur der schwachen- und elektromagnetischen-Wechselwirkun
 
 Der Zerfall von instabilen Teilchen ist ein statistischer Prozess, weshalb jedes Teilchen eine indivduelle Lebensdauer besitzt.
 Eine allgemeine Definition der Lebensdauer ist über
-\begin{equation}
+\begin{equation*}
 	\text{d}W = \lambda \text{d}t
-\end{equation}
+\end{equation*}
 gegeben.
 
 Bei dieser Definition ist die Wahrscheinlichkeit nicht explizit von $t$ abhängig, weshalb das Alter des Teilchens keine Rolle spielt.
 Für $N$ zerfallende Teilchen ergibt sich somit
-\begin{equation}
+\begin{equation*}
 	\text{d}N = -N \text{d}W = -\lambda \text{d}t.
-\end{equation}
+\end{equation*}
 
 Für große $N$ ergibt sich näherungsweise für das Integral
 \begin{equation}
@@ -35,32 +35,32 @@ Für große $N$ ergibt sich näherungsweise für das Integral
 	\frac{N(t)}{N_\text{0}} = \exp{(-\lambda t)},
 \end{equation}
 und somit für die Verteilung
-\begin{equation}
+\begin{equation*}
 	\frac{\text{d}N(t)}{N_\text{0}} = \lambda \exp{(-\lambda t)} \text{d}t .
-\end{equation}
+\end{equation*}
 
 Die charakteristische Lebensdauer $\tau$ wird über die Mittelwerte aller möglichen Lebensdauern gebildet, wobei diese mit der Häufigkeit ihres Vorkommens gewichtet sind.
 Dies entspricht dem Ersten Moment der Verteilungsfunktion und es ergibt sich damit
-\begin{equation}
+\begin{equation*}
 	\tau = \int_\text{0}^\infty \lambda \exp{(-\lambda t)} \text{d}t = \frac{1}{\lambda} .
-\end{equation}
+\end{equation*}
 \FloatBarrier
 \subsection{Abschätzung der Lebensdauer mit Hilfe einer Stichprobe} % (fold)
 \label{sub:abschaetzung_der_lebensdauer_mit_hilfe_einer_stichprobe}
 
 Im Experiment lässt sich aus einer Stichprobe der Größe $n$ ein Wert für $\bar{t}$ über
-\begin{equation}
+\begin{equation*}
 	\bar{t} = \frac{1}{n} \sum_{\text{j=1}}^n t_\text{j}
-\end{equation}
+\end{equation*}
 bestimmen.
 Das Erste Moment von $\bar{t}$ ist die beste Näherung für $\tau$ und die beste Abschätzung des Fehlers ergibt sich aus
-\begin{equation}
+\begin{equation*}
 	s_{\bar{t}} = \frac{s}{\sqrt{n}}
-\end{equation}
+\end{equation*}
 mit
-\begin{equation}
+\begin{equation*}
 	s^2 = \frac{1}{n-1} \sum_\text{j=1}^n \left(\bar{t} - t_\text{j}\right)^2 .
-\end{equation}
+\end{equation*}
 
 Das Erste Moment von $s^2$ ist hierbei die Varianz $\sigma^2$ der nicht bekannten Verteilungsfunktion des Messproblems.
 \FloatBarrier
@@ -71,16 +71,16 @@ Das Erste Moment von $s^2$ ist hierbei die Varianz $\sigma^2$ der nicht bekannte
 Beim Messen von Stichproben kann es durch Ausschließung sehr kleiner oder sehr großer Werte zu systematischen Fehlern kommen.
 Eine andere Methode ist eine Abschätzung einer empirischen Verteilungsfunktion.
 Dazu werden mit der \textit{Methode der kleinsten Quadrate} die Variablen $N_\text{0}$ und $\lambda$ variiert bis
-\begin{equation}
+\begin{equation*}
 	\sum_\text{j=1}^n \left(N(t_\text{j})-N_\text{0}\exp{(-\lambda t)}\right)^2 \stackrel{!}{=} \textbf{min}
-\end{equation}
+\end{equation*}
 gilt, wobei $N(t_\text{j})$ die Häufigkeit des Messergebnisses $t_\text{j}$ darstellt.
 
 Da die Nullsetzung der Ableitung zu transzendenten Gleichungen führt, wird das Gleichungssystem linearisiert und es ergibt sich für die Variablen
-\begin{eqnarray}
+\begin{eqnarray*}
 	\lambda = \lambda_\text{A} + \alpha ,\\
 	N_\text{0} = N_{\text{0}_\text{A}} + \beta.
-\end{eqnarray}
+\end{eqnarray*}
 
 Die Näherungswerte $\lambda_\text{A}$ und $N_{\text{0}_\text{A}}$ lassen sich beispielsweise einer graphischen Darstellung von $\ln{N(t_\text{j})}$ gegen $t_\text{j}$ entnehmen, während die Korrekturterme $\alpha$ und $\beta$ durch geeignete Näherungen bestimmt werden können.
 \FloatBarrier

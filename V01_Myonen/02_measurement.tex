@@ -13,14 +13,14 @@ Gauß'sche Fehlerfortpflanzung anbietet.
 \label{subsec:kalibration}
 Die auszuwertenden Daten werden in dieser Messung mit Hilfe eines
 Vielkanalanalysators (VKA) gewonnen.
-Dieser liefert Histogramm-Daten von Myonen-Kandidaten, die in \num{512} Kanäle
-eingeteilt sind.
+Dieser zählt die Myonen-Kandidaten und teilt sie entsprechend ihrer
+gemessenen Lebenszeit in \num{512} Kanäle (Bins) eines Histogrammes ein.
 Die Kanalnummer $C_i$ eines Ereignisses hängt dabei linear mit der
 Zeit $t_i$ des entsprechenden Myon-Kandidaten zwischen Start- und
 Stopp-Impuls zusammen:
-\begin{equation}
+\begin{equation*}
     t_i = a + b \cdot C_i\,,
-\end{equation}
+\end{equation*}
 mit den Koeffizienten $a$ und $b$, die im Folgenden bestimmt werden.
 
 Zur Kalibration der Apparatur werden in zeitlich konstanten Abständen
