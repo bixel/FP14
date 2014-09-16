@@ -28,7 +28,7 @@ Wenn nicht anders angegeben gelten die Fehler
 \end{figure}
 
 Nach der Abstimmung des Klystrons auf $\SI{9}{\giga\hertz}$ und der Bestimmung der Modenbreiten und Amplituden, hat sich das in Abbildung \ref{mode} dargestellte Modus-Diagramm ergeben.
-Für die elektronische Bandbreite $B$ des Klystrons hat sich nach Gleichung \eqref{bandbreite} 
+Für die elektronische Bandbreite $B$ des Klystrons hat sich nach Gleichung \eqref{eqn:empfindlichkeit}
 
 \begin{eqnarray}
 	%B &=& \frac{f'-f''}{V'-V''}\\
@@ -85,9 +85,9 @@ ergeben.
 Es ist zu erkennen, dass die errechnete Frequenz des Klystrons der entspricht, auf welche das Klystron zuvor eingestellt worden ist.\\
 
 Die Bestimmung der Dämpfungskurve mithilfe des SWR-Meters und dem Dämpfungsgliedes ergiebt die in Abbildung \ref{daempf} dargestellte Kurve.
-Diese wurde mit der Funktion 
+Diese wurde mit der Funktion
 \begin{equation}
-	f(x)=a \cdot (x-d)^2 + b \cdot (x-e) + c	
+	f(x)=a \cdot (x-d)^2 + b \cdot (x-e) + c
 \end{equation}
  durch eine nicht linearen Regression erzeugt.
 
@@ -137,7 +137,7 @@ Das SWR wurde dabei nach Gleichung \eqref{3dbswr} berechnet.\\
 \begin{table}
 	\centering
 	\begin{tabular}{r || r r r r|}
-	 Sondentiefe &    3 &    5 &    7 &    9\\		
+	 Sondentiefe &    3 &    5 &    7 &    9\\
 	        SWR & 1.20 & 1.55 & 3.00 & 6.00\\
 	\end{tabular}
 	\caption{Ergebnisse der SWR-Meter Methode.}

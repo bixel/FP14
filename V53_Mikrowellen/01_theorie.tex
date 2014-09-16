@@ -82,7 +82,7 @@ Reflektor und Gitter angelegt, beginnen die Elektronen zu schwingen und
 passieren regelmäßig den Resonator.
 Falls sie im Resonator abgebremst werden, geben sie Energie ab, die als
 Mikrowellenstrahlung ausgekoppelt wird.
-Dabei müssen tritt eine periodische Abhängigkeit der Leistung
+Dabei tritt eine periodische Abhängigkeit der Leistung
 von der Verweildauer der Elektronen vor dem Reflektor auf, die durch die
 Reflektorspannung $V$ beeinflusst werden kann.
 Zudem kann der Abstand der Reflektorplatte mechanisch verändert werden,
@@ -91,13 +91,13 @@ Insgesamt ergeben sich somit zwei Möglichkeiten zur Beeinflussung der
 Ausgangsleistung und -frequenz, die elektronische und mechanische Abstimmung.
 Abbildung \ref{fig:aufbau} stellt den schematischen Aufbau des Klystrons dar.
 Abbildung \ref{fig:output} zeigt die Ausgangsleistung in Abhängigkeit der
-Reflektorspannung $V$.
+Reflektorspannung.
 \begin{figure}[p]
     \centering
     \includegraphics[width=0.9\linewidth]{img/aufbau.png}
     \caption{
         Schematische Darstellung des Aufbaus eines Reflex-Klystrons
-        zur Erzeugung von Mikrowellenstrahlung.
+        zur Erzeugung von Mikrowellenstrahlung \cite{V53}.
     }
     \label{fig:aufbau}
 \end{figure}
@@ -105,9 +105,66 @@ Reflektorspannung $V$.
     \centering
     \includegraphics[width=0.9\linewidth]{img/output.png}
     \caption{
-        Ausgangsleistung des Klystrons in Abhängigkeit zur Reflektorspannung.
+        Ausgangsleistung des Klystrons in Abhängigkeit zur Reflektorspannung
+        \cite{V53}.
     }
     \label{fig:output}
 \end{figure}
+\clearpage
+
+\section{Durchführung}
+Im Folgenden wird das Klystron mit einer Rechteckspannung amplitudenmoduliert.
+Die Rechteckspannung wird dafür auf den Reflektor gegeben und die abgegebene
+Leistung zeitabhängig gemessen.
+Die Leistung wird dabei mit einem Stehwellenmessgerät (SWR-Meter) gemessen.
+Mit Hilfe eines Oszillographen lassen sich dann die Modenkurven, wie in
+Abbildung \ref{fig:moden} dargestellt messen.
+Dabei muss das Zeitsignal auf den $x$- und das Leistungssignal auf die
+$y$-Achse des Oszillographen gelegt werden.
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.6\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/moden.png}
+        \caption{
+            Rechteckmodulation des Klystrons
+        }
+        \label{fig:moden}
+    \end{subfigure}
+    \begin{subfigure}{0.39\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/dip.png}
+        \caption{
+            Dip in der Klystron-Leistung
+        }
+        \label{fig:dip}
+    \end{subfigure}
+    \caption{
+        Modulationsschema des für eine Rechteckmodulation des Klystrons,
+        sowie Rückgang der Klystron-Leistung, hervorgerufen durch einen
+        Frequenzmesser, der auf eine Klystron-Mode eingestellt ist
+        \cite{V53}.
+    }
+    \label{fig:moden-dip}
+\end{figure}
+Die Mikrowellenfrequenz kann dabei mit einem Frequenzmesser überprüft werden.
+Dieser wird durch einen variablen Resonator realisiert. Falls die
+erzeugte Frequenz genau der Resonatorfrequenz entspricht, wird Welle zu einem
+Teil absorbiert, was in einem messbaren Rückgang der Leistung (Dip)
+resultiert und in Abbildung \ref{fig:dip} deutlich erkennbar ist.
+
+\subsection{Messung verschiedener Aufbaueigenschaften}
+\label{subsec:messung}
+Wenn sich auf dem Oszillographen ein Dip erkennen lässt, kann mit dessen Hilfe
+die Abstimmempfindlichkeit $A$ des Aufbaus berechnet werden.
+Hierfür wird der Dip durch variation der Frequenz $f$ des Frequenzmessers auf
+die halbe Höhe der Modenfigur beidseitig neben dem Modenmaximum verschoben.
+Dabei wird die Reflektorspannung $V$ notiert.
+Es gilt
+\begin{equation}
+    \label{eqn:empfindlichkeit}
+    A = \frac{f^\prime - f^{\prime\prime}}{V^\prime - V^{\prime\prime}}\,.
+\end{equation}
+Die gestrichenen Größen sind dabei die Messwerte neben dem Modenmaximum.
 
 \clearpage
