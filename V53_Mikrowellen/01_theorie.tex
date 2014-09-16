@@ -5,20 +5,109 @@ Mikrowellentechnik kaum noch aus dem Alltag wegzudenken.
 Von dem Haushaltsgerät Mikrowelle, das in wahrscheinlich jeder Küche der
 westlichen Hemisphäre zu finden ist, bis zu Alarmanlagen wird diese Technik
 in äußerst breit gefächerten Gebieten genutzt.
-
 Ursprünglich schon zu Ende des zweiten Weltkrieges, als Frühwarnradar
 entwickelt, wird Mikrowellenstrahlung schon einige Jahrzehnte eingesetzt.
 Aus diesem Grund stellt sich die Untersuchung von Mikrowellen als interessante
 Aufgabe für jeden Physiker dar.
-
 Im Folgenden sollen verschiedene Welleneigenschaften mit Hilfe eines
 Reflexklystrons untersucht und das Verhalten von Mikrowellen auf Hohlleitern
 betrachtet werden.
 
 \section{Grundlagen}
 \label{sec:grundlagen}
-Mikrowellenstrahlung bezeichnet elektromagnetische Strahlung im Frequenzbereich
-von etwa \SI{300}{\mega \hertz} bis etwa \SI{300}{\giga \hertz}.
+\begin{wrapfigure}{r}{0.33\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/hohlleiter.png}
+    \caption{
+        Der eransversal-elektrische $\text{TE}_{1,0}$-Modus in einem
+        Rechteckhohlleiter, wie er in diesem Versuch untersucht wird
+        \cite{V53}.
+    }
+    \label{fig:leiter}
+\end{wrapfigure}
+Als Mikrowellen wird elektromagnetische Strahlung im Frequenzbereich
+von etwa \SI{300}{\mega \hertz} bis etwa \SI{300}{\giga \hertz} bezeichnet.
 Niedrigere Frequenzen gehen über in Funkwellen während noch höhere Frequenzen
 in den Bereich des infraroten Lichts reichen.
-Elektromagnetische Wellen breiten sich im Vakuum kugelförmig
+
+Elektromagnetische Wellen breiten sich im Vakuum kugelförmig aus, wobei ihre
+Intensität mit $1 / r^2$ abnimmt.
+Jede elektromagnetische Welle kann jedoch auch in verschiedenen metallischen
+Wellenleitern transportiert werden, wobei -- je nach Leiter -- theoretisch
+keine Verluste auftreten.
+Der hier untersuchte Hohlleiter weist einen rechteckigen Querschnitt auf,
+wie in Abbildung \ref{fig:leiter} dargestellt.
+Leiter diese Art werden für Mikrowellen häufig verwendet.
+
+\subsection{Moden}
+\label{subse:moden}
+Wie in einem Einfachen Hohlraumresonator können Wellen in einem Hohlleiter
+konstruktiv oder destruktiv interferieren.
+Ähnlich zu einer stehenden Welle in jenem Resonator kann sich dabei eine Welle
+mit Bäuchen und Knoten zwischen den Leiterwänden ausbilden, die eine gewisse
+Ausbreitungskomponente entlang der Leiterachse besitzt.
+Für die Wellenlänge $\lambda$ der Mikrowellen muss dabei die Beziehung
+\begin{equation*}
+    \lambda \overset{!}{>} \lambda_\text{c} = 2a\,,
+\end{equation*}
+gelten, wobei $a$ den Abstand der Hohlleiterwänder bezeichnet und
+$\lambda_\text{c}$ die Wellenlänge darstellt, unterhalb derer der Hohlleiter
+keine Energie mehr transportiert -- die sogenannte Cut-Off-Wellenlänge.
+
+Die fortlaufenden Wellen bilden unter dieser Voraussetzung verschiedene Moden,
+die anhand der Ausprägung des elektrischen oder magnetischen Feldanteils
+bezeichnet werden.
+Bei transversal-elektrischen (TE-) Moden schwingt das elektrische Feld
+senkrecht zur Ausbreitungsrichtung, während dies das magnetische Feld
+bei transversal-magnetischen (TM-) Moden macht.
+Die Anzahl der Schwingungsbäuche senkrecht zur Ausbreitungsrichtung $z$
+entspricht dabei der Modenzahl $n$, $m$ in $x$- beziehungsweise $y$-Richtung
+(siehe Abbildung \ref{fig:leiter}).
+
+\subsection{Erzeugung von Mikrowellen mit einem Klystron}
+\label{subsec:klystron}
+Mikrowellen können mit Hilfe verschiedener Geräte erzeugt werden.
+Das Klystron nutzt die von beschleunigten Elektronen abgegebene Strahlung.
+Dafür werden die Elektronen resonant zwischen zwei Elektroden reflektiert
+(Reflex-Klystron), wobei die abgegebene Bremsstrahlung im bereich der
+Mikrowellen liegt.
+
+Aus einer Kathode werden Elektronen emittiert und in Richtung eines positiv
+geladenen Gitters beschleunigt.
+Anschließend erreichen sie den Reflektor, bei dem sie auf Grund seiner
+negativen Ladung abgebremst und in die entgegengesetzte Richtung beschleunigt
+werden.
+Wird nun eine periodische Spannung mit sich änderndem Vorzeichen zwischen
+Reflektor und Gitter angelegt, beginnen die Elektronen zu schwingen und
+passieren regelmäßig den Resonator.
+Falls sie im Resonator abgebremst werden, geben sie Energie ab, die als
+Mikrowellenstrahlung ausgekoppelt wird.
+Dabei müssen tritt eine periodische Abhängigkeit der Leistung
+von der Verweildauer der Elektronen vor dem Reflektor auf, die durch die
+Reflektorspannung $V$ beeinflusst werden kann.
+Zudem kann der Abstand der Reflektorplatte mechanisch verändert werden,
+was einen größeren Einfluss auf die Frequenz hat, in der das Klystron schwingt.
+Insgesamt ergeben sich somit zwei Möglichkeiten zur Beeinflussung der
+Ausgangsleistung und -frequenz, die elektronische und mechanische Abstimmung.
+Abbildung \ref{fig:aufbau} stellt den schematischen Aufbau des Klystrons dar.
+Abbildung \ref{fig:output} zeigt die Ausgangsleistung in Abhängigkeit der
+Reflektorspannung $V$.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/aufbau.png}
+    \caption{
+        Schematische Darstellung des Aufbaus eines Reflex-Klystrons
+        zur Erzeugung von Mikrowellenstrahlung.
+    }
+    \label{fig:aufbau}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/output.png}
+    \caption{
+        Ausgangsleistung des Klystrons in Abhängigkeit zur Reflektorspannung.
+    }
+    \label{fig:output}
+\end{figure}
+
+\clearpage
