@@ -117,11 +117,13 @@ Im Folgenden wird das Klystron mit einer Rechteckspannung amplitudenmoduliert.
 Die Rechteckspannung wird dafür auf den Reflektor gegeben und die abgegebene
 Leistung zeitabhängig gemessen.
 Die Leistung wird dabei mit einem Stehwellenmessgerät (SWR-Meter) gemessen.
-Mit Hilfe eines Oszillographen lassen sich dann die Modenkurven, wie in
-Abbildung \ref{fig:moden} dargestellt messen.
+Alternativ lassen sich mit Hilfe eines Oszillographen die Modenkurven, wie in
+Abbildung \ref{fig:moden} dargestellen.
 Dabei muss das Zeitsignal auf den $x$- und das Leistungssignal auf die
 $y$-Achse des Oszillographen gelegt werden.
-\begin{figure}
+Der Versuchsaufbau ist Exemplarisch in Abbildung \ref{fig:aufbau_microwave.png}
+dargestellt.
+\begin{figure}[p]
     \centering
     \begin{subfigure}{0.6\linewidth}
         \centering
@@ -147,6 +149,16 @@ $y$-Achse des Oszillographen gelegt werden.
     }
     \label{fig:moden-dip}
 \end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/aufbau_microwave.png}
+    \caption{
+        Schematische Abbildung des Versuchsaufbaus. Statt des
+        SWR-Meters wird bei einigen Messungen ein Oszillograph angeschlossen
+        und der Standing-Wave-Detector durch einen Detektor ersetzt.
+    }
+    \label{fig:aufbau_microwave}
+\end{figure}
 Die Mikrowellenfrequenz kann dabei mit einem Frequenzmesser überprüft werden.
 Dieser wird durch einen variablen Resonator realisiert. Falls die
 erzeugte Frequenz genau der Resonatorfrequenz entspricht, wird Welle zu einem
@@ -166,5 +178,22 @@ Es gilt
     A = \frac{f^\prime - f^{\prime\prime}}{V^\prime - V^{\prime\prime}}\,.
 \end{equation}
 Die gestrichenen Größen sind dabei die Messwerte neben dem Modenmaximum.
+
+Neben der Abstimmempfindlichkeit kann die Hohlleiterfrequenz statt durch
+direkte Messung mit Erzeugung einer stehenden Welle bestimmt werden.
+Dafür muss der Frequenzmesser verstimmt werden, um keine Leistung zu
+absorbieren.
+Es wird ein Kurzschluss mit variablem Detektor für stehende Wellen
+angeschlossen.
+Durch Variation der Detektorstellung lassen sich dann Leistungsminima finden,
+die durch einen Knoten der stehenden Welle entstehen.
+Die Wellenlänge $\lambda_\text{g}$ im Hohlleiter entspricht dann dem doppelten
+Abstand benachbarter Minima. Mit der Lichtgeschwindigkeit $c$
+und der Breite $a$ des Hohlleiters gilt für die Frequenz $f$ der stehenden
+Welle
+\begin{equation}
+    \label{frequenz}
+    f = c\cdot\sqrt{\left(\frac{1}{\lambda_\text{g}}\right)^2 + \left(\frac{1}{2a}\right)^2} \,.
+\end{equation}
 
 \clearpage
