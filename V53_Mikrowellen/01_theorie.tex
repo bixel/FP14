@@ -121,7 +121,7 @@ Alternativ lassen sich mit Hilfe eines Oszillographen die Modenkurven, wie in
 Abbildung \ref{fig:moden} dargestellen.
 Dabei muss das Zeitsignal auf den $x$- und das Leistungssignal auf die
 $y$-Achse des Oszillographen gelegt werden.
-Der Versuchsaufbau ist Exemplarisch in Abbildung \ref{fig:aufbau_microwave.png}
+Der Versuchsaufbau ist Exemplarisch in Abbildung \ref{fig:aufbau_microwave}
 dargestellt.
 \begin{figure}[p]
     \centering
@@ -159,28 +159,16 @@ dargestellt.
     }
     \label{fig:aufbau_microwave}
 \end{figure}
-Die Mikrowellenfrequenz kann dabei mit einem Frequenzmesser überprüft werden.
-Dieser wird durch einen variablen Resonator realisiert. Falls die
-erzeugte Frequenz genau der Resonatorfrequenz entspricht, wird Welle zu einem
-Teil absorbiert, was in einem messbaren Rückgang der Leistung (Dip)
-resultiert und in Abbildung \ref{fig:dip} deutlich erkennbar ist.
 
-\subsection{Messung verschiedener Aufbaueigenschaften}
+\subsection{Messung der Mikrowellenfrequenz}
 \label{subsec:messung}
-Wenn sich auf dem Oszillographen ein Dip erkennen lässt, kann mit dessen Hilfe
-die Abstimmempfindlichkeit $A$ des Aufbaus berechnet werden.
-Hierfür wird der Dip durch variation der Frequenz $f$ des Frequenzmessers auf
-die halbe Höhe der Modenfigur beidseitig neben dem Modenmaximum verschoben.
-Dabei wird die Reflektorspannung $V$ notiert.
-Es gilt
-\begin{equation}
-    \label{eqn:empfindlichkeit}
-    A = \frac{f^\prime - f^{\prime\prime}}{V^\prime - V^{\prime\prime}}\,.
-\end{equation}
-Die gestrichenen Größen sind dabei die Messwerte neben dem Modenmaximum.
-
-Neben der Abstimmempfindlichkeit kann die Hohlleiterfrequenz statt durch
-direkte Messung mit Erzeugung einer stehenden Welle bestimmt werden.
+Die Mikrowellenfrequenz $f$ kann mit einem Frequenzmesser überprüft werden.
+Dieser wird durch einen variablen Resonator realisiert. Falls die
+erzeugte Frequenz genau der Resonatorfrequenz entspricht, wird die Welle zu
+einem Teil absorbiert, was in einem messbaren Rückgang der Leistung (Dip)
+resultiert und in Abbildung \ref{fig:dip} deutlich erkennbar ist.
+Die Hohlleiterfrequenz kann, statt durch
+direkte Messung, mit Erzeugung einer stehenden Welle bestimmt werden.
 Dafür muss der Frequenzmesser verstimmt werden, um keine Leistung zu
 absorbieren.
 Es wird ein Kurzschluss mit variablem Detektor für stehende Wellen
@@ -196,4 +184,67 @@ Welle
     f = c\cdot\sqrt{\left(\frac{1}{\lambda_\text{g}}\right)^2 + \left(\frac{1}{2a}\right)^2} \,.
 \end{equation}
 
+\subsection{Abstimmempfindlichkeit}
+\label{subsec:empfindlichkeit}
+Wenn sich auf dem Oszillographen ein Dip erkennen lässt, kann mit dessen Hilfe
+die Abstimmempfindlichkeit $A$ des Aufbaus berechnet werden.
+Hierfür wird der Dip durch variation der Frequenz $f$ des Frequenzmessers auf
+die halbe Höhe der Modenfigur beidseitig neben dem Modenmaximum verschoben.
+Dabei wird die Reflektorspannung $V$ notiert.
+Es gilt
+\begin{equation}
+    \label{eqn:empfindlichkeit}
+    A = \frac{f^\prime - f^{\prime\prime}}{V^\prime - V^{\prime\prime}}\,.
+\end{equation}
+Die gestrichenen Größen sind dabei die Messwerte neben dem Modenmaximum.
+
+\subsection{Stehwellenverhältnis SWR}
+\label{subsec:swr}
+Auch bei nicht kurzgeschlossenem Ende lässt sich die Welle in einem Hohlleiter
+in Komponenten einer einlaufenden, beziehungsweise reflektierten und einer
+auslaufenden Welle unterteilen.
+Die einlaufenden Wellenanteile enstehen durch Reflexion an einer Lastimpedanz
+oder an Unstetigkeiten des Hohlleiters, wie zum Beispiel an Verbindungsteilen
+oder Messinstrumenten.
+Die Summe beider Wellenanteile erzeugt wiederum eine stehende Welle.
+Dabei wird das Verhältnis zwischen maximaler und minimaler Feldstärke
+auf der Leitung als Stehwellenverhältnis (standig wave ratio, SWR)
+$S = E_\text{max}/E_\text{min}$ bezeichnet.
+
+\begin{wrapfigure}{r}{0.33\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/3db.png}
+    \caption{
+        Messung zur \SI{3}{dB}-Methode.
+    }
+    \label{fig:3db}
+\end{wrapfigure}
+Das Stehwellenverhältnis kann mit Hilfe des SWR-Meters direkt gemessen werden.
+Jedoch muss hierfür eine Sonde in den Hohlleiter eingebracht werden, die
+das innere Feld selbst beeinflusst.
+Außerdem sind große Ausgangsleistungen von Nöten, die durch das SWR-Meter
+nicht mehr linear gemessen werden können.
+Die \emph{\SI{3}{dB}-Methode} ermöglicht eine Messung des SWR, in der die
+direkte Beeiflussung der Wellen durch einen Detektor einen kleineren Einfluss
+hat.
+Dabei wird der Abstand zwischen den Punkten $d_1$ und $d_2$ gemessen an denen
+die gemessene Leistung den doppelten Wert des Minimums erreicht
+(siehe Abbildung \ref{fig:3db}).
+Das Stehwellenverhältnis ergibt sich dann zu
+\begin{equation}
+    \label{3dbswr}
+    S = \sqrt{1 + 1/\sin^2\left(\pi\frac{d_1-d_2}{\lambda_\text{g}}\right)}
+    \approx \frac{\lambda_\text{g}}{\pi (d_1-d_2)}\,.
+\end{equation}
+
+Darüber hinaus ermöglicht die \emph{Abschwächer-Methode} eine Messung des
+SWR, bei der der Einfluss der Nichtlinearität des SWR-Meters entfällt.
+Dabei wird zwischen Generator und Detektor ein Abschwächer eingebaut und das
+Signal in einem Feld-Maximum auf die Höhe eine Minimums herabgeregelt.
+Die Differenz der Abschwächereinstellungen $A_1$ und $A_2$ ermöglich dann die
+Berechnung von $S$:
+\begin{equation}
+    \label{abschwaecher}
+    S = 10^{(A_2-A_1)/20}\,.
+\end{equation}
 \clearpage
