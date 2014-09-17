@@ -61,7 +61,11 @@
     \clearscrheadfoot
     \ofoot[\pagemark]{\pagemark}
 
-    \usepackage{cite}
+    \usepackage[%
+        backend=biber,
+        sortlocale=de_DE
+    ]{biblatex}
+    \addbibresource{../00_lit.bib}
 
     % Einfach \FloatBarrier; Verhindert Bild und Tabellensprünge
     \usepackage[]{placeins}
@@ -87,6 +91,5 @@
     \newpage
     \input{01_theorie.tex}
     \input{02_auswertung.tex}
-    \bibliographystyle{utphys}
-    \bibliography{00_lit}
+    \printbibliography
 \end{document}
