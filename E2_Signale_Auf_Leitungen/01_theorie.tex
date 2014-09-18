@@ -6,7 +6,7 @@ In diesem Versuch werden daher verschiedene Konstanten zur klassifizierung
 elektrischer Leitungen bestimmt. Zudem wird das Verhalten elektrischer
 Signalimpulse auf Leitungen untersucht.
 
-\subsection{Beschreibung elektrischer Leitungen} % (fold)
+\subsection{Beschreibung einer elektrischer Leitungen} % (fold)
 \label{sub:beschreibung}
 Eine ideale elektrische Leitung lässt sich physikalisch durch ein Schaltbild
 aus Induktivität $L$ und Kapazität $C$ beschreiben.
@@ -67,30 +67,32 @@ $\omega$ definiert über:
 \end{equation*}
 % subsection dispersion (end)
 
-\subsection{Signalpulse} % (fold)
+\subsection{Beschreibung von Signalpulse} % (fold)
 \label{sub:signalpulse}
 Da in der Digitaltechnik häufig gepulste Singale übertragen werden, ist es
 wichtig, das Verhalten von Signalpulsen auf Leitungen zu untersuchen.
 Der hinlaufende Puls wird dabei an einer Quelle auf die zu untersuchende
 Leitung gegeben, wobei er durch die Quellimpedanz $Z_\text{g}$ beeinflusst
 wird.
-Befindet sich am Ende der Leitung eine Last, wie zum beispiel ein
+Befindet sich am Ende der Leitung eine Last, wie zum Beispiel ein
 Empfangsgerät, wird ein Teil des einlaufenden Pulses hier reflektiert, wobei
 die Rücklaufende Welle wiederum durch die Lastimpedanz $Z_\text{L}$
-beeinflusst wird und einen Phasensprung um $\varphi_\Gamma$ vollziehen kann.
+beeinflusst wird und einen Phasensprung $\varphi_\Gamma$ vollziehen kann.
 Die Spannung $U_\text{L}$, die die Last erreicht setzt sich anschließend aus
 der Summe der ein- und auslaufenden Pulse $U_0$ und $U_\text{r}$ zusammen.
 Der Quotient aus beiden Anteilen wird als Reflektionsfaktor $\Gamma$
 bezeichnet:
 \begin{equation*}
-    \Gamma = \frac{U_\text{r}}{U_0} = \frac{Z_\text{L} - Z_0}{Z_\text{L} + Z_0} = \left|\e^{\i\varphi_\Gamma}\right|\,.
+    \Gamma = \frac{U_\text{r}}{U_0} = \frac{Z_\text{L} - Z_0}{Z_\text{L} + Z_0} = \left|\Gamma\right|\e^{\i\varphi_\Gamma}\,.
 \end{equation*}
 Es wird deutlich, dass unter der Bedingung $Z_\text{L} = Z_0$ der reflektierte
 Anteil der Welle verschwindet und der gesamte Puls an der Last anliegt.
 In diesem Fall ist die Leitung angepasst.
 % subsection signalpulse (end)
 
-\subsection{Bestimmung der Leitungsimpedanz $Z_0$} % (fold)
+\subsection%
+    [Bestimmung der Leitungsimpedanz $Z_0$]%
+    {Bestimmung der Leitungsimpedanz $\mathbf{Z_0}$} % (fold)
 \label{sub:impedanz}
 Der Spannungsverlauf der reflektierten Spannung $U_0$ kann analytisch mit
 Hilfe einer Laplacetransformation des reflektierten Signals bestimmt werden.
@@ -101,6 +103,10 @@ Induktivität $L$ als Abschlußimpedanz ein reflektiertes Signal
 \end{equation*}
 Somit kann beispielsweise in dieser Schaltung durch Messung von $U_\text{r}{t}$
 die Impedanz $Z_0$ bestimmt werden.
-
 % subsection impedanz (end)
+
+\subsection{Störstellen und Impulsfahrplan} % (fold)
+\label{sub:impulsfahrplan}
+
+% subsection impulsfahrplan (end)
 % section grundlagen (end)
