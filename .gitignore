@@ -13,3 +13,5 @@
 *.blg
 *.bbl
 *.ipynb_checkpoints*
+*.bcf
+*.run.xml
