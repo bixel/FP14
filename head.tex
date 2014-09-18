@@ -1,0 +1,78 @@
+\documentclass[%
+    a4paper,%
+    twoside,%
+    BCOR12mm,%
+    DIV13,%
+    %cleardoubleplain,%
+    bibtotoc,%
+    openany,%
+    captions=tableheading,
+]{scrartcl}
+
+% define language-specific formats
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\usepackage[german]{isodate}
+
+\usepackage{fontspec}
+
+\usepackage{subcaption}
+
+\usepackage{siunitx}
+\sisetup{
+    locale=DE,
+    separate-uncertainty=true,
+    per-mode=symbol,
+    range-phrase=%
+         \ifmmode\mathbin{-}
+         \else%
+         { bis }%
+         \fi,%
+    math-micro=\text{µ},
+    text-micro=µ,
+    table-unit-alignment=left,
+    table-text-alignment=center,
+    table-number-alignment=right,
+}
+\DeclareSIUnit\clight{\ensuremath{c}}
+
+\usepackage{amsmath}
+\usepackage{unicode-math}
+
+% ncie fractions in text
+\usepackage{xfrac}
+
+% niiice tables, use \toprule, \midrule and \bottomrule, pls
+\usepackage{booktabs}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{indentfirst}
+% Texteinzug vor Absatz
+\parindent 12pt
+
+% Schönere Captions
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\setcapindent{10pt}
+
+\usepackage[olines]{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ofoot[\pagemark]{\pagemark}
+
+\usepackage[%
+    backend=biber,
+    sortlocale=de_DE
+]{biblatex}
+\addbibresource{../00_lit.bib}
+
+\usepackage{placeins}
+
+\usepackage{wrapfig}

@@ -1,88 +1,22 @@
-\nonstopmode
-\documentclass[%
-    a4paper,%
-    twoside,%
-    BCOR12mm,%
-    DIV13,%
-    %cleardoubleplain,%
-    bibtotoc,%
-    openany,%
-    captions=tableheading,
-]{scrartcl}
-	\usepackage[ngerman]{babel}
-    \usepackage[german]{isodate}
-    \usepackage{fontspec}
+%\nonstopmode
+\input{../head.tex}
 
-    \setmainfont{Comic Sans MS}
-    \setsansfont{Comic Sans MS}
+\KOMAoptions{draft=on}
 
-    \KOMAoptions{draft=on}
-
-    \usepackage{subcaption}
-
-	\usepackage{siunitx}
-	\sisetup{
-	    locale=DE,
-	    separate-uncertainty=true,
-        per-mode=symbol,
-        range-phrase=%
-             \ifmmode\mathbin{-}
-             \else%
-             { bis }%
-             \fi,%
-        math-micro=\text{µ},
-        text-micro=µ,
-        table-unit-alignment=left,
-        table-text-alignment=center,
-        table-number-alignment=right,
-	}
-    \DeclareSIUnit\clight{\ensuremath{c}}
-
-    \usepackage{amsmath}
-    \usepackage{unicode-math}
-
-    \usepackage{xfrac}
-
-    \usepackage{booktabs}
-
-    \usepackage{hyperref}
-    \hypersetup{
-        colorlinks,
-        citecolor=black,
-        filecolor=black,
-        linkcolor=black,
-        urlcolor=black
-    }
-
-    \usepackage{indentfirst}
-	% Texteinzug vor Absatz
-	\parindent 12pt
-    % Schönere Captions
-    \usepackage[font=footnotesize,labelfont=bf]{caption}
-    \setcapindent{10pt}
-
-    \usepackage[olines]{scrpage2}
-    \pagestyle{scrheadings}
-    \clearscrheadfoot
-    \ofoot[\pagemark]{\pagemark}
-
-    \usepackage{cite}
-
-    \usepackage[]{placeins}
-    \usepackage{wrapfig}
-
-    \title{%
-        E2 -- Signale auf Leitungen
-    }
-    \author{%
-        Kevin Heinicke\\
-        \texttt{kevin.heinicke@udo.edu}
-        \and
-        Markus Stabrin\\
-        \texttt{markus.stabrin@udo.edu}
-    }
-
-    \date{XX. Juni 2014}
+\title{%
+    E2 -- Signale auf Leitungen
+}
+\author{%
+    Kevin Heinicke\\
+    \texttt{kevin.heinicke@udo.edu}
+    \and
+    Markus Stabrin\\
+    \texttt{markus.stabrin@udo.edu}
+}
+\date{%
+    7. Juli 2014\\
+    {\small 1. Abgabe} xx. September 2014
+}
 \begin{document}
     \maketitle%
     \tableofcontents
@@ -92,7 +26,5 @@
     % \input{01_theorie.tex}
     % \input{02_measurement.tex}
 
-    % \FloatBarrier
-    % \bibliographystyle{unsrt}
-    % \bibliography{00_lit}
+    \printbibliography
 \end{document}
