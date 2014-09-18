@@ -38,7 +38,8 @@ dargestellt.
         \end{circuitikz}
     \end{subfigure}
     \caption{
-        Ersatzschaltbild einer verlustfreien und verlustbehafteten Leitung.
+        Ersatzschaltbild einer verlustfreien und einer verlustbehafteten
+        Leitung.
     }
     \label{fig:schaltbild}
 \end{figure}
@@ -107,6 +108,27 @@ die Impedanz $Z_0$ bestimmt werden.
 
 \subsection{Störstellen und Impulsfahrplan} % (fold)
 \label{sub:impulsfahrplan}
-
+Zur Identifizierung von Störstellen einer elektrischen Leitung kann ein
+Impulsfahrplan aufgestellt werden.
+Dabei wird die Signalspannung $U(t)$ gemessen und der Verlauf eines einzelnen
+Spannungspulses der Amplitude $U_0$ betrachtet.
+Der einlaufende Impuls wird an einer etwaigen Störstelle reflektiert und
+überlagert den einlaufenden Puls. Somit steigt die Signalspannung um
+$\Gamma_\text{s}U_0$ an, wobei $\Gamma_\text{s}$ den Reflexionskoeffizienten
+an der Störtstelle bezeichnet.
+Der restliche Anteil des Signals läuft bis zur Last, wo dieser wiederum
+reflektiert wird und die Signalspannung zu einem späteren Zeitpunkt erneut
+mit den Reflexionskoeffizienten $\Gamma_\text{L}$ der Last um $\Gamma_\text{L}
+U_0$ anhebt.
+\begin{figure}[b]
+    \center
+    \includegraphics[width=0.9\linewidth]{img/spannung-zeit.pdf}
+    \caption{
+        Spannungs-Zeit-Verlauf eines Spannungspulses bei Reflexion an einem
+        Lastwiderstand.
+        In diesem Diagramm sind keine Störstellen enthalten.
+    }
+    \label{fig:spannung-zeit}
+\end{figure}
 % subsection impulsfahrplan (end)
 % section grundlagen (end)
