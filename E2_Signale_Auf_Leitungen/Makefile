@@ -5,8 +5,7 @@
 bib: 00_main.tex
 	mkdir -p ./build
 	lualatex --output-directory ./build $^
-	bibtex ./build/00_main
-	lualatex --output-directory ./build $^
+	biber ./build/00_main
 	lualatex --output-directory ./build $^
 
 
