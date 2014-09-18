@@ -1,0 +1,43 @@
+\section{Grundlagen} % (fold)
+\label{sec:grundlagen}
+Elektrische Leitungen stellen den grundlegenden Bestandteil moderner
+Energie- und Telekommunikationsinfrastruktur dar.
+In diesem Versuch werden daher verschiedene Konstanten zur klassifizierung
+elektrischer Leitungen bestimmt. Zudem wird das Verhalten elektrischer
+Signalimpulse auf Leitungen untersucht.
+
+\subsection{Beschreibung elektrischer Leitungen} % (fold)
+\label{sub:beschreibung}
+Eine ideale elektrische Leitung lässt sich physikalisch durch ein Schaltbild
+aus Induktivität $L$ und Kapazität $C$ beschreiben.
+Zur Beschreibung einer realen Leitung müssen zusätzlich ein ohmscher Widerstand
+$R$ und ein induktiver Widerstand $G$ betrachtet weden, wobei der Betrag des
+ohmschen Widerstandes bei vielen metallischen Leitern den des induktiven
+überragt.
+\begin{figure}[h]
+    \center
+    \begin{subfigure}{0.39\linewidth}
+        \center
+        \begin{circuitikz}
+            \ctikzset{label/align = smart}
+            \draw (0,2) to[L=$L$] (3,2) -- (4,2);
+            \draw (3,0) to[C, l_=$C$, *-*] (3,2);
+            \draw (0,0) -- (4,0);
+        \end{circuitikz}
+    \end{subfigure}
+    \begin{subfigure}{0.59\linewidth}
+        \center
+        \begin{circuitikz}
+            \ctikzset{label/align = smart}
+            \draw (0,2) -- (0.5,2) to[R=$R$] (2,2) to[L=$L$] (3.5,2) -- (6,2);
+            \draw (4,0) to[R=$G$, *-*] (4,2);
+            \draw (5,0) to[C, l_=$C$, *-*] (5,2);
+            \draw (0,0) -- (6,0);
+        \end{circuitikz}
+    \end{subfigure}
+    \caption{
+        Ersatzschaltbild einer verlustfreien und verlustbehafteten Leitung.
+    }
+\end{figure}
+% subsection beschreibung (end)
+% section grundlagen (end)
