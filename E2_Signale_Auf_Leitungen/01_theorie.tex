@@ -1,10 +1,12 @@
-\section{Grundlagen} % (fold)
+\section{Grundlagen und Messmethoden} % (fold)
 \label{sec:grundlagen}
 Elektrische Leitungen stellen den grundlegenden Bestandteil moderner
 Energie- und Telekommunikationsinfrastruktur dar.
 In diesem Versuch werden daher verschiedene Konstanten zur klassifizierung
 elektrischer Leitungen bestimmt. Zudem wird das Verhalten elektrischer
 Signalimpulse auf Leitungen untersucht.
+Im Folgenden sollen einige grundlegende Prinzipien dargestellt
+und die Bestimmung der Leiterkonstanten bahandelt werden.
 
 \subsection{Beschreibung einer elektrischer Leitungen} % (fold)
 \label{sub:beschreibung}
@@ -68,7 +70,7 @@ $\omega$ definiert über:
 \end{equation*}
 % subsection dispersion (end)
 
-\subsection{Beschreibung von Signalpulse} % (fold)
+\subsection{Beschreibung von Signalpulsen} % (fold)
 \label{sub:signalpulse}
 Da in der Digitaltechnik häufig gepulste Singale übertragen werden, ist es
 wichtig, das Verhalten von Signalpulsen auf Leitungen zu untersuchen.
@@ -111,7 +113,7 @@ die Impedanz $Z_0$ bestimmt werden.
 Zur Identifizierung von Störstellen einer elektrischen Leitung kann ein
 Impulsfahrplan aufgestellt werden.
 Dabei wird die Signalspannung $U(t)$ gemessen und der Verlauf eines einzelnen
-Spannungspulses der Amplitude $U_0$ betrachtet.
+Spannungspulses mit der Eingangsamplitude $U_0$ betrachtet.
 Der einlaufende Impuls wird an einer etwaigen Störstelle reflektiert und
 überlagert den einlaufenden Puls. Somit steigt die Signalspannung um
 $\Gamma_\text{s}U_0$ an, wobei $\Gamma_\text{s}$ den Reflexionskoeffizienten
@@ -119,7 +121,7 @@ an der Störtstelle bezeichnet.
 Der restliche Anteil des Signals läuft bis zur Last, wo dieser wiederum
 reflektiert wird und die Signalspannung zu einem späteren Zeitpunkt erneut
 mit den Reflexionskoeffizienten $\Gamma_\text{L}$ der Last um $\Gamma_\text{L}
-U_0$ anhebt.
+U_0$ anhebt und so weiter.
 \begin{figure}[b]
     \center
     \includegraphics[width=0.9\linewidth]{img/spannung-zeit.pdf}
@@ -131,4 +133,72 @@ U_0$ anhebt.
     \label{fig:spannung-zeit}
 \end{figure}
 % subsection impulsfahrplan (end)
+
+\subsection{Koaxialkabel} % (fold)
+\label{sub:koaxialkabel}
+In diesem Versuch wird als Leiter ein Koaxialkabel herangezogen.
+Das Kabel besteht aus einem zylinderförmigen, äußeren Leiter,
+der einen inneren Leiter umschließt und von diesem mit einem
+Dielektrikum getrennt ist.
+Eine besonderheit des Koaxialkabels ist das verschwindende äußere
+Feld, weshalb Signalübertragungen über diesen Kabeltyp vergleichsweise
+wenig störanfällig sind.
+Die Leitungskonstanten, die die Eigenschafen des Kabels beschreiben
+sind stark von dessen Innen- und
+Ausserndurchmesser $d$ und $D$, beziehungsweise von dem Verhältnis
+$\sfrac{D}{d}$ abhängig:
+\begin{align*}
+    \text{\small Widerstand}\quad R &\propto \left(\frac{1}{d}+\frac{1}{D}\right) &
+    \text{\small Induktivität}\quad L &\propto \text{ln}\left(\frac{D}{d}\right) \\
+    \text{\small Querleitwert}\quad G &\propto \frac{1}{\text{ln}\left(D/d\right)} &
+    \text{\small Kapazität}\quad C &\propto \frac{1}{\text{ln}\left(D/d\right)} \\
+\end{align*}
+Bei hochfrequenten Wechselströmen im Leiter werden Leiterwiderstand $R$ und
+Querleitwert $G$ frequenzabhängig.
+Der Widerstand $R$ folgt in diesem Bereich einer $\sqrt{\omega}$-Abhängigkeit
+(Skin-Effekt).
+% subsection koaxialkabel (end)
+
+\subsection{Impedanzanpassung} % (fold)
+\label{sub:impedanzanpassung}
+Wie in Abschnitt \ref{sub:signalpulse} erwähnt, ist es für eine effiziente
+Signalübertragung wünschenswert, die Leitung an die Impedanz der Last
+anzupassen, um den reflektierten Anteil $\Gamma_\text{L}U_0$ der Welle zu
+minimieren.
+Mit Kenntnis von Abschlussimpedanz $Z_\text{L}$ und Wellenwiderstand $Z_0$
+lässt sich hierbei der Reflektionsfaktor $\Gamma$ einer Leitung mit Hilfe
+eines Smith-Diagrammes bestimmen.
+Dabei werden Real- und Imaginärteil der Normierten Impedanz
+$z_\text{L} = Z_\text{L}/Z_0$ möbius-transformiert und als Kreise in der
+Impulsebene aufgetragen.
+Der Betrag des Reflexionskoeffizienten $\Gamma$ und die Phase $\varphi$ können
+dann, wie in Abbildung \ref{fig:smith} dargestellt, abgelesen werden.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/smith.pdf}
+    \caption{
+        Smith-Diagramm am Beispiel einer normierten Impedanz
+        $z_\text{L} = (\num{50}+\num{100}\i)\si{\ohm}/\num{50}\si{\ohm}$
+        \cite{E02}.
+    }
+    \label{fig:smith}
+\end{figure}
+% subsection impedanzanpassung (end)
 % section grundlagen (end)
+\section{Aufbau} % (fold)
+\label{sec:aufbau}
+Der Versuchsaufbau umfasst einen Signalgenerator, der Rechteckpulse generiert,
+ein Oszilloskop, welches den Signalverlauf zeitaufgelöst messen kann und
+verschiedene Abschlüsse und Lasten, und ist in Abbildung \ref{fig:aufbau}
+dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/aufbau.pdf}
+    \caption{
+        Versuchsaufbau für die Untersuchung von Signalen auf Leitungen
+        \cite{E02}.
+    }
+    \label{fig:aufbau}
+\end{figure}
+
+% section aufbau (end)
