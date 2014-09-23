@@ -348,7 +348,8 @@ plt.ylim(0, 200)
 plt.savefig('c.pdf')
 plt.clf()
 
-Ic = simps(compton_function([50, compton_peak[0][0]], coeff[0], coeff[1], coeff[2], coeff[3]), [50, compton_peak[0][0]])
+Ic = simps(compton_function([50, compton_peak[0][0]], *coeff),
+           [50, compton_peak[0][0]])
 Ic = ufloat(Ic, np.sqrt(Ic))
 
 print(
@@ -368,7 +369,9 @@ plt.plot(
     caesium_dist[:len(x_values)],
     'k+'
 )
-plt.plot(np.arange(200,510), compton_function(np.arange(200,510), coeff[0], coeff[1], coeff[2], coeff[3]))
+plt.plot(
+    np.arange(200, 510),
+    compton_function(np.arange(200, 510), *coeff))
 plt.xlim(0, 600)
 plt.ylim(0, 180)
 plt.axvline(x=calibrated(800), ymax=0.4, color='r', linestyle='--')
@@ -380,17 +383,14 @@ plt.savefig('06_caesium_zoomed.pdf')
 plt.clf()
 
 ba_props = np.array(
-    [0.341,
-    0.183,
-    0.006,
-    0.621,
-    0.089]
+    [0.341, 0.183, 0.006, 0.621, 0.089]
 )
 
 ba_distribution = np.loadtxt('Barium.txt', unpack=True)
 ba_time = 3551.0
 ba_distribution -= ba_time / bkg_time * background_dist
-unbinned_barium = unbinned_array(ba_distribution[:1200], calibration_func=calibrated)
+unbinned_barium = unbinned_array(ba_distribution[:1200],
+                                 calibration_func=calibrated)
 plt.hist(unbinned_barium, bins=200, edgecolor='none')
 # xs = np.arange(0,1200)
 # plt.plot(xs, ba_distribution[:1200])
@@ -417,14 +417,17 @@ for m, e in zip(ba_maxima, ba_events):
     print('E = {}\tN = {}'.format(calibrated(m[0]), e))
 
 omega = 0.01575
-ba_activity = lambda x, a: omega * a * x
+
+
+def ba_activity(x, a):
+    return omega * a * x
 print(ba_maxima)
-fitx = np.array(eff_function(calibrated(ba_maxima[:,0]), *q_coeff)) * ba_props
+fitx = np.array(eff_function(calibrated(ba_maxima[:, 0]), *q_coeff)) * ba_props
 ba_activity_coeff, ba_activity_var = cfit(ba_activity, fitx, ba_events)
 plt.plot(fitx, ba_events, 'rx')
 xs = np.linspace(0, 0.2, 100)
-plt.plot(xs, ba_activity(xs, ba_activity_coeff[0]))
-plt.xlabel('$W \cdot Q$')
+plt.errorbar(xs, ba_activity(xs, ba_activity_coeff[0]))
+plt.xlabel(r'$W \cdot Q$')
 plt.ylabel('Peak-Ereignisse')
 plt.savefig('07_barium_activity.pdf')
 plt.clf()
