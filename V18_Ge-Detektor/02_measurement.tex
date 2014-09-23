@@ -6,7 +6,7 @@ verschiedene Detektoreigenschaften bestimmt.
 Daraufhin wird die Aktivität einer $^{137}$Ba-Quelle gemessen und schließlich einige
 Holzkohlebriketts auf ihre radioaktiven Bestandteile hin untersucht.
 
-\subsection{Eichung und Effizienz des Ge-Detektors}
+\subsection{Kalibration und Effizienz des Ge-Detektors}
 \label{subse:eichung}
 Wie in Abschnitt \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle}
 erwähnt, liegen nach einer Messung mit dem Ge-Detektor lediglich Informationen
@@ -21,37 +21,39 @@ Mit der Steigung $m$ und einem Offset $b$ wird hierfür verwendet:%
     E(C) = mC + b\,.
 \end{equation}
 
-Zunächst wird das Spektrum eines $^{52}$Eu-Strahlers aufgenommen (Abb.
+Zunächst wird das Spektrum eines $^{152}$Eu-Strahlers aufgenommen (Abb.
 \ref{fig:eu_uncalibrated}).
 Um den Einfluss von Untergrundereignisse zu verringern, wird zudem eine
 Leermessung durchgeführt und die Einträge dieser Messung der einzelnen Kanäle
-von dem Spektrum des $^{52}$Eu-Strahlers abgezogen.
+von dem Spektrum des $^{152}$Eu-Strahlers abgezogen.
 \begin{figure}[htb]
     \centering
     \begin{subfigure}{.49\linewidth}
         \includegraphics[width=1.0\linewidth]{img/02_maxima.pdf}
         \caption{
-            Energiespektrum des $^{52}$Eu-Strahlers.
+            Energiespektrum des $^{152}$Eu-Strahlers.
         }
         \label{fig:eu_uncalibrated}
     \end{subfigure}%
     \begin{subfigure}{.49\linewidth}
         \includegraphics[width=1.0\linewidth]{img/03_calibration.pdf}
         \caption{
-            Fit der Kalibrationsfunktion
+            Fit der Kalibrationsfunktion. Die Fehlerbalken in $y$-Richtung
+            sind hier unerkennbar klein. Der größte Fehler liegt
+            unterhalb eines Promills.
         }
         \label{fig:calibration}
     \end{subfigure}
     \caption{
-        Energiespektrum des $^{52}$Eu-Strahlers und Kalibrationsfunktion.
+        Energiespektrum des $^{152}$Eu-Strahlers und Kalibrationsfunktion.
         Die Zur Kalibration genutzen Maxima sind in \ref{fig:eu_uncalibrated}
         durch einen Pfeil markiert.
     }
 \end{figure}
 Die unterschiedliche Messdauer wird mit einem Faktor $t_\text{leer} / t_\text{Eu}$
-der Messdauer $t_\text{Eu}$ des $^{52}$Eu-Strahlers und $t_\text{leer}$ der
+der Messdauer $t_\text{Eu}$ des $^{152}$Eu-Strahlers und $t_\text{leer}$ der
 Leermessung berücksichtigt.
-Nach allen Messungen wird das $^{52}$Eu-Spektrum erneut vermessen,
+Nach allen Messungen wird das $^{152}$Eu-Spektrum erneut vermessen,
 um sicherzustellen, dass sich die Kanäle nicht verschoben haben, was in Abbildung
 \ref{fig:control} verdeutlicht wird.
 \begin{figure}
@@ -65,12 +67,49 @@ um sicherzustellen, dass sich die Kanäle nicht verschoben haben, was in Abbildu
 Für die Kalibration werden die in Tabelle \ref{tab:maxima} aufgeführten
 Maxima des bekannten Spektrums ausgewählt und den jeweiligen Kanäle mit
 Hilfe von \eqref{eqn:kalibration} eine Energie zugeordnet.
-Der Fit der Kalibratinosfunktion ist in Abbildung \ref{fig:calibration}
+Die genaue Lage jedes Maximums wird durch einen Fit einer Gaußfunktion in diesem
+Punkt ermittelt.
+Der Fit der Kalibrationsfunktion \eqref{eqn:kalibration} ist in Abbildung \ref{fig:calibration}
 dargestellt. Es ergeben sich die Koeffizienten
 %
 \begin{align*}
      m = \SI{345.22+-0.04}{eV/C} \qquad b = \SI{-1.82+-0.09}{keV} \,.
 \end{align*}
+\begin{table}[htb]
+    \centering
+    \caption{
+        Die für die Kalibration des Ge-Detektors verwendeten Maxima des $^{152}$Eu-Spektrums.
+    }
+    \label{tab:maxima}
+    \begin{tabular}{%
+        S[table-format=4.2]%
+        S[table-format=2.1]%
+        S[table-format=4.0]%
+        S[table-format=5.0]%
+        S[table-format=5.0]%
+        S[table-format=2.1]%
+    }
+        \toprule
+        {Energie [\si{keV}]} &
+        {Emissionsw. [\si{\percent}]} &
+        {Kanal} &
+        {gemessen} &
+        {erwartet} &
+        {Effizienz [\si{\percent}]} \\
+        \midrule
+        121.78 & 28.6 & 358  & 12544 & 20006 & 62.7 \\
+        244.7  &  7.6 & 714  & 5319  & 53162 & 10.0 \\
+        344.3  & 26.5 & 1003 & 2117  & 18537 & 11.4 \\
+        411.12 & 02.2 & 1196 & 1051  &  1539 & 68.3 \\
+        443.96 & 03.1 & 1291 & 996   &  2168 & 45.9 \\
+        778.9  & 12.9 & 2262 & 938   &  9024 & 10.4 \\
+        964.08 & 14.6 & 2798 & 817   & 10213 &  8.0 \\
+        1085.9 & 10.2 & 3150 & 429   &  7135 &  6.0 \\
+        1112.1 & 13.6 & 3227 & 598   &  9513 &  6.3 \\
+        1408.0 & 21.0 & 4084 & 372   & 14690 &  2.5 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 Nach der Kalibration des Gerätes, kann die Effizienz $Q$ wie in Abschnitt
 \ref{sub:bestimmung_der_energie_und_der_aktivität_einer_gamma_quelle}
@@ -108,7 +147,6 @@ Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
 \begin{align*}
     a &= \num{0.63+-0.26}\,, &\quad b &= \SI{1.8+-1.1}{eV^{-1}}\,.
 \end{align*}
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\linewidth]{img/05_efficiencies.pdf}
@@ -117,42 +155,6 @@ Der Fit ist in Abbildung \ref{fig:efficiency_fit} dargestellt und ergibt
     }
     \label{fig:efficiency_fit}
 \end{figure}
-
-\begin{table}[htb]
-    \centering
-    \caption{
-        Die für die Kalibration des Ge-Detektors verwendeten Maxima des $^{52}$Eu-Spektrums.
-    }
-    \label{tab:maxima}
-    \begin{tabular}{%
-        S[table-format=4.2]%
-        S[table-format=2.1]%
-        S[table-format=4.0]%
-        S[table-format=5.0]%
-        S[table-format=5.0]%
-        S[table-format=2.1]%
-    }
-        \toprule
-        {Energie [\si{keV}]} &
-        {Emissionsw. [\si{\percent}]} &
-        {Kanal} &
-        {gemessen} &
-        {erwartet} &
-        {Effizienz [\si{\percent}]} \\
-        \midrule
-        121.78 & 28.6 & 358  & 12544 & 20006 & 62.7 \\
-        244.7  &  7.6 & 714  & 5319  & 53162 & 10.0 \\
-        344.3  & 26.5 & 1003 & 2117  & 18537 & 11.4 \\
-        411.12 & 02.2 & 1196 & 1051  &  1539 & 68.3 \\
-        443.96 & 03.1 & 1291 & 996   &  2168 & 45.9 \\
-        778.9  & 12.9 & 2262 & 938   &  9024 & 10.4 \\
-        964.08 & 14.6 & 2798 & 817   & 10213 &  8.0 \\
-        1085.9 & 10.2 & 3150 & 429   &  7135 &  6.0 \\
-        1112.1 & 13.6 & 3227 & 598   &  9513 &  6.3 \\
-        1408.0 & 21.0 & 4084 & 372   & 14690 &  2.5 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
 
 \subsection{Bestimmung einiger Detektoreigenschaften} % (fold)
 \label{sub:detektoreigenschaften}
