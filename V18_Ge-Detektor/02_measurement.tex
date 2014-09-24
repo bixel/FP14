@@ -344,6 +344,10 @@ Das Aufgenommene Spektrum ist in Abbildung \ref{fig:coal} dargestellt.
 Tabelle \ref{tab:coal} führt einige Maxima des Energiespektrums auf und weist
 diesen die Herkunft aus einem radioaktiven Nuklid zu.
 Dabei wird auf die \texttt{LARA Database} \cite{lara} zurückgegriffen.
+Um den Untergrundanteil zu bestimmen, wird an jeder Position eines Maximums
+auch in der Untergrundverteilung eine Gauß-Funktion angepasst.
+Dabei weisen lediglich zwei Peaks einen vom Untergrund signifikant verschiedenen
+Inhalt auf.
 Obwohl das Spektrum mehr als die drei aufgeführten Peaks beinhaltet, stellt es
 sich als äußerst schwierig heraus, für andere, als die aufgeführten Energien
 eindeutige Quell-Isotope zu finden, da stets etliche Isotope mit ähnlichen
@@ -368,15 +372,16 @@ Gamma-Energien gefunden werden können.
         S[table-format=4.1]%
         S[table-format=5.0]%
         l%
-        l%
         S[table-format=2.2]%
+        S[table-sign-mantissa]%
+        S[table-sign-mantissa]%
     }
         \toprule
-        {Peak [\si{keV}]}  & {Ereignisse} & Strahler   & Reihe      & {Emissionsw. [\si{\percent}]} \\
+        {Peak [\si{keV}]}  & {Ereignisse} & Strahler    & {Emissionsw. [\si{\percent}]} & {$N_\text{Sig}$} & {$N_\text{Bkg}$}\\
         \midrule
-         609.2             &  330         & $^{214}$Bi & $^{238}$U  & 45.49 \\
-         661.7             & 1862         & $^{137}$Cs &            & 84.99 \\
-        1461.6             &  565         & $^{40}$K   &            & 10.55 \\
+       % 609.2             &  330         & $^{214}$Bi  & 45.49                         &                  &                  \\
+         661.7             & 1862         & $^{137}$Cs  & 84.99                         & 2120(40)         & 260(16)          \\
+        1461.6             &  565         & $^{40}$K    & 10.55                         & 1510(40)         & 951(30)          \\
         \bottomrule
     \end{tabular}
 \end{table}

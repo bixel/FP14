@@ -2,15 +2,14 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
-from scipy.integrate import simps
+from scipy.integrate import simps, quad
 from scipy.stats import sem
 from uncertainties import ufloat, umath, unumpy
 # import peakdetect
 
 
 def gauss(x, A, mu, sigma, B):
-    return 0.5 * (np.sign(-B) + 1) \
-        + A * np.exp(- 0.5 * ((x-mu)/sigma)**2)
+    return B + A * np.exp(- 0.5 * ((x-mu)/sigma)**2)
 
 
 def sigma_delta(pos, arr, fit_width=30, plot='', calibration_func=lambda x: x):
@@ -44,7 +43,8 @@ def sigma_delta(pos, arr, fit_width=30, plot='', calibration_func=lambda x: x):
     return (
         simps(gauss(xs, coeff[0], coeff[1], coeff[2], 0), xs),
         coeff,
-        var_matrix
+        var_matrix,
+        quad(gauss, -fit_width, fit_width, args=(coeff[0], coeff[1], coeff[2], coeff[3]))
     )
 
 
@@ -148,7 +148,7 @@ heights, positions, bars = plt.hist(
 )
 for maximum in maxima:
     # calculate each error
-    events, coeff, var = sigma_delta(
+    events, coeff, var, foo = sigma_delta(
         maximum[0], europium_distribution, plot='foo'
     )
     errors = np.append(errors, var[1][1])
@@ -288,7 +288,7 @@ plt.savefig('05_efficiencies.pdf')
 plt.clf()
 
 cs_maxima = peaks(caesium_dist, n_max=1)
-cs_events, cs_coeff, cs_var = sigma_delta(
+cs_events, cs_coeff, cs_var, foo = sigma_delta(
     cs_maxima[0, 0],
     caesium_dist,
     plot='caesium_fit',
@@ -440,12 +440,14 @@ print('A_ges = {}'.format(a / ba_time))
 
 coal_dist = np.loadtxt('Kohle.txt', unpack=True)
 coal_time = 84292.0
-coal_dist -= coal_time / bkg_time * background_dist
-unbinned_coal = unbinned_array(coal_dist[0:5000], calibration_func=calibrated)
+# coal_dist -= coal_time / bkg_time * background_dist
+unbinned_coal = unbinned_array(coal_dist[0:5000],
+                               calibration_func=calibrated)
 
 coal_maxima = peaks(coal_dist, n_max=8)
 coal_maxima = np.array(sorted(coal_maxima, key=lambda x: x[0]))
 coal_events = []
+background_events = []
 for maximum in coal_maxima:
     coal_events.append(
         sigma_delta(
@@ -455,6 +457,12 @@ for maximum in coal_maxima:
             calibration_func=calibrated
         )[0]
     )
+    background_events.append(
+        sigma_delta(maximum[0],
+                    background_dist,
+                    plot='background-comp',
+                    calibration_func=calibrated)[0]
+    )
 
 plt.hist(unbinned_coal, bins=200, edgecolor='none')
 plt.ylabel('Ereignisse')
@@ -463,8 +471,11 @@ plt.savefig('08_coal.pdf')
 plt.clf()
 
 print('Wooden Coal\n===========')
-for m, e in zip(coal_maxima, coal_events):
-    print('E = {:g}\tN = {:g}'.format(calibrated(m[0]), e))
+for m, e, bkg in zip(coal_maxima, coal_events, background_events):
+    print('E = {:g}\tN = {:g}\tB = {:g}' \
+          .format(calibrated(m[0]),
+                  e,
+                  coal_time / bkg_time * bkg))
 
 a_bi = 330. / eff_function(609.2, *q_coeff) \
      * 1. / 0.47 / coal_time
