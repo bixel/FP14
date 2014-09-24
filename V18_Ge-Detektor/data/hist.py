@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
 from scipy.integrate import simps, quad
 from scipy.stats import sem
-from uncertainties import ufloat, umath, unumpy
+from uncertainties import ufloat, umath, unumpy as unp
 # import peakdetect
 
 
@@ -230,9 +230,9 @@ efficiencies = europium_events / (grand_total * eu_spectrum[:, 1])
 n_activity = ufloat(activity, np.std(activity))
 n_time = ufloat(eur_time, 1)
 n_grand_total = n_activity * n_time
-n_events = unumpy.uarray(europium_events, np.std(europium_events))
+n_events = unp.uarray(europium_events, np.std(europium_events))
 n_efficiencies = n_events / (n_grand_total * eu_spectrum[:, 1])
-print('grand_total: {}\neff_errors: {}\n'.format(n_grand_total, unumpy.std_devs(n_efficiencies)))
+print('grand_total: {}\neff_errors: {}\n'.format(n_grand_total, unp.std_devs(n_efficiencies)))
 
 # europium_events = unumpy.umatrix(europium_events, np.std(europium_events))
 # eur_time = ufloat(eur_time, 1)
@@ -264,7 +264,7 @@ q_coeff, q_var = cfit(
     efficiencies,
     p0=[1.0, 0.001],
     maxfev=10000,
-    sigma=unumpy.std_devs(n_efficiencies)
+    sigma=unp.std_devs(n_efficiencies)
 )
 print(q_coeff, np.sqrt(q_var))
 print(
@@ -279,7 +279,7 @@ print(
 )
 xs = np.arange(50, 1600)
 plt.plot(xs, eff_function(xs, *q_coeff))# , q_coeff[2], q_coeff[3]))
-plt.errorbar(eu_spectrum[:, 0], efficiencies, yerr=unumpy.std_devs(n_efficiencies), fmt='r+')
+plt.errorbar(eu_spectrum[:, 0], efficiencies, yerr=unp.std_devs(n_efficiencies), fmt='r+')
 plt.xlabel('Energie [keV]')
 plt.ylabel('Effizienz')
 plt.ylim(0, 1)
@@ -421,14 +421,19 @@ omega = 0.01575
 
 def ba_activity(x, a):
     return omega * a * x
-print(ba_maxima)
 fitx = np.array(eff_function(calibrated(ba_maxima[:, 0]), *q_coeff)) * ba_props
-ba_activity_coeff, ba_activity_var = cfit(ba_activity, fitx, ba_events)
-plt.plot(fitx, ba_events, 'rx')
-xs = np.linspace(0, 0.2, 100)
-plt.errorbar(xs, ba_activity(xs, ba_activity_coeff[0]))
+ba_activity_coeff, ba_activity_var = cfit(ba_activity,
+                                          fitx,
+                                          ba_events)
+ba_errors = np.sqrt(np.diag(ba_activity_var))
+a = ufloat(ba_activity_coeff[0], ba_errors[0])
+plt.errorbar(fitx, ba_events, yerr=np.sqrt(ba_events), fmt='r+')
+xs = np.linspace(0, 0.4)
+plt.plot(xs, unp.nominal_values(ba_activity(xs, a)))
 plt.xlabel(r'$W \cdot Q$')
 plt.ylabel('Peak-Ereignisse')
+plt.ylim(0, 15000)
+plt.xlim(0, 0.4)
 plt.savefig('07_barium_activity.pdf')
 plt.clf()
 
