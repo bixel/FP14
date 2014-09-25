@@ -6,23 +6,23 @@ Bei diesem Versuch werden zunächst die Leitungskonstanten drei verschiedener Ka
 Anschließend wird die Dämpfung des Signals untersucht, die Länge der Kabels bestimmt, die Leitungskonstanten auf andere Art und Weise berechnet, das Verhalten bei verschiedenen Abschlüssen untersucht und abschließend ein Impulsfahrplan einer Serienschaltung von verschiedenen Kabeln erstellt.
 
 Im Folgenden wird für den Wellenwiderstand
-\begin{equation}
+\begin{equation*}
 	Z = \SI{50}{\ohm}
-\end{equation}
+\end{equation*}
 angenommen.
 
 Alle Fehler wurden mithilfe Gaußscher Fehlerfortpflanzung errechnet.
-\begin{equation}
+\begin{equation*}
 	\Delta f(x_\text{1}\text{,...,}x_\text{n}) = \sqrt{\sum_\text{i=0}^\text{n} \left(\frac{\partial f}{\partial x_\text{i}} \Delta x_\text{i}\right)^2}
-\end{equation}
+\end{equation*}
 Dafür ist die Python Bibliothek \textit{uncertainties} benutzt worden.
 
 Fehler wenn nicht anders angegeben:
-\begin{eqnarray}
+\begin{eqnarray*}
 	U &=& +/-0.5\,[\text{mV}],\\
 	f &=& +/-0.5\,[\text{kHz}],\\
 	t &=& +/-5\,[\text{ns}].
-\end{eqnarray}
+\end{eqnarray*}
 
 \subsection{A: Leistungskonstanten verschiedener Kabel} % (fold)
 \label{sub:a_}
@@ -30,9 +30,9 @@ Fehler wenn nicht anders angegeben:
 
 Im ersten Teil werden die Leitungsparameter $R$, $L$, $C$ und $G$ der drei verschiedenen Kabel bestimmt.
 $R$, $L$ und $C$ werden über ein Messgerät direkt gemessen, während $G$ über die Gleichung
-\begin{equation}
+\begin{equation*}
 	G = \frac{R C}{L}
-\end{equation}
+\end{equation*}
 berechnet werden kann.
 Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entnehmen und die Leitungsparameter sind in Abhängigkeit der Frequenz in den Abbildungen \ref{fig_konst1} bis \ref{fig_konst4} dargestellt.
 
@@ -64,7 +64,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 10m RG 58C/U.}
 	\begin{tabular}{r r r r r}
-		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\nano\farad$] & G[$\SI{}{\milli\siemens}$]\\
+		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
 		\hline \hline
 		  1	&	13.60	&	8.0	&	1.866	&	3.17\\
 		  2	&	11.70	&	7.6	&	1.865	&	2.87\\
@@ -95,7 +95,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 20m RG 58C/U.}
 	\begin{tabular}{r r r r r}
-		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\nano\farad$] & G[$\SI{}{\milli\siemens}$]\\
+		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
 		\hline \hline
 			  1	 &	33.7	&	5.0	&	0.8688	&	5.86\\
 			  2	 &	34.2	&	5.0	&	0.8835	&	6.04\\
@@ -126,7 +126,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 100m M17/028 RG 058.}
 	\begin{tabular}{r r r r r}
-		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\nano\farad$] & G[$\SI{}{\milli\siemens}$]\\
+		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
 		\hline \hline
 			  1	&	21.38	&	28.00	&	8.488	&	6.48\\
 			  2	&	21.50	&	27.90	&	8.488	&	6.54\\
@@ -161,7 +161,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Dämpfungskonstanten des 100m M17/028 RG 058 Kabels.}
 	\begin{tabular}{r r r r}
-		f[$\SI{}{\kilo\hertz}$] & $U_0$[$\SI{}{\milli\volt}$] & $U_\text{ged}$[$\SI{}{\milli\volt}$] & $\alpha$\,[$\SI{}{\dezi\bel}$]\\
+		f[$\SI{}{\kilo\hertz}$] & $U_0$[$\SI{}{\milli\volt}$] & $U_\text{ged}$[$\SI{}{\milli\volt}$] & $\alpha$[$\SI{}{\decibel}$]\\
 		\hline \hline
 			79	&	92	&	89	&	0.66+/-0.16 \\
 			88	&	86	&	83	&	0.71+/-0.17 \\
@@ -192,9 +192,9 @@ In diesem Abschnitt werden die Dämpfungskonstanten eines 100m RG-58 C/U Kabels 
 Dazu wurde zunächst ein Signal auf ein kurzes Kabel gegeben und die Amplituden $U_0$ der Oberwellenanteile bestimmt.
 Anschließend wurde dasselbe Signal auf das lange Kabel gegeben um die Amplituden $U_\text{ged}$ der Oberwellen zu erhalten.
 Anschließend kann die Dämpfungskonstante über
-\begin{equation}
+\begin{equation*}
 	\alpha = -20 \log \left( \frac{U_0}{U_\text{ged}}\right)
-\end{equation}
+\end{equation*}
 berechnet werden.
 Das Ergebnis und die verwendeten Werte sind in Tabelle \ref{tab_daempf} angegeben und in den Abbildungen \ref{fig_daempf1} und \ref{fig_daempf2} graphisch dargestellt.
 
@@ -218,14 +218,14 @@ Das Ergebnis und die verwendeten Werte sind in Tabelle \ref{tab_daempf} angegebe
 Zur Bestimmung der Länge der verschiedenen Kabel wird auf die Laufzeit eines Strompulses zurückgegriffen.
 Anhand der Spannungsverläufe lassen sich die Punkte $t_1$ und $t_2$ ablesen, an denen der Anfangspuls und der reflektierte Strompuls beginnen.
 Zunächst wird die Differenz der beiden Zeiten gebildet, um daraus mithilfe der Gleichung
-\begin{equation}
+\begin{equation*}
 	l = \frac{v \Delta t}{2}
-\end{equation}
+\end{equation*}
 die Länge $l$ zu berechnen.
 Die Geschwindigkeit $v$ ist dabei zu
-\begin{equation}
+\begin{equation*}
 	v = c/\sqrt{\epsilon_r} \approx 2*10^{8}\,\frac{\text{m}}{\text{s}}
-\end{equation}
+\end{equation*}
 bestimmt worden.
 Die gemessenen und bestimmten Daten sind in Tabelle \ref{tab_zeit1} dargestellt.
 
@@ -255,64 +255,64 @@ Die gemessenen und bestimmten Daten sind in Tabelle \ref{tab_zeit1} dargestellt.
 
 Die Leitungskonstanten konnten nur Anhand des 100m Kabels mithilfe der Spannungsverläufe (Abbildungen \ref{fig_zeit1} bis \ref{fig_zeit3}) bestimmt werden, da ansonsten der induktive und kapazitive Anteil nicht zu erkennen ist.
 Zunächst wurde dafür aus der Abbildung die Spannung der drei sichtbaren Plateaus über Mittelung der Werte berechnet, woraus sich nach suptraktion der Nullspannung $U_0$ die Werte
-\begin{eqnarray}
+\begin{eqnarray*}
 	U_{0_\text{offen}} &=& \SI{-24.46(5)}{\volt},\\
 	U_{1_\text{offen}} &=& \SI{37.94(5)}{\volt},\\
 	U_{2_\text{offen}} &=& \SI{47.49(7)}{\volt},\\
 	U_{0_\text{gesch}} &=& \SI{-2.59(5)}{\volt},\\
 	U_{1_\text{gesch}} &=& \SI{25.01(6)}{\volt},\\
 	U_{2_\text{gesch}} &=& \SI{5.98(7)}{\volt}
-\end{eqnarray}
+\end{eqnarray*}
 ergaben.
 
 Der Reflexionsfaktor $\Gamma$ lässt sich daraus mithilfe der Gleichung
-\begin{equation}
+\begin{equation*}
 	U_1 (1+\Gamma) = U_2,
-\end{equation}
+\end{equation*}
  berechnen.
 Damit ergiebt sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	\Gamma_\text{offen} &=& \SI{0.2517(15)}{},\\
 	\Gamma_\text{gesch} &=& \SI{-0.7509(25)}{}.
-\end{eqnarray}
+\end{eqnarray*}
 
 Mithilfe des Reflexionsfaktors lässt sich mit $Z=\SI{50}{\ohm}$ aus der Gleichung
-\begin{equation}
+\begin{equation*}
 	\Gamma = \frac{R-Z}{R+Z}
-\end{equation}
+\end{equation*}
 der Widerstandsbelag $R$ berechnen.
 Damit ergiebt sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	R_\text{offen} &=& \SI{83.63(26)}{\ohm},\\
 	R_\text{gesch} &=& \SI{6.79(8)}{\ohm}.
-\end{eqnarray}
+\end{eqnarray*}
 
 Um den Induktivitätsbelag $L$ berechnen zu können wird angenommen, dass bei einem $RL$ Abschluss in Serienschaltung der reflektierte elektrische Puls einen exponentiellen Zusammenhang besitzt.
 Die Zeitkonstante der Funktion ist somit durch die Gleichung
-\begin{equation}
+\begin{equation*}
 	\tau_{RL} = \frac{L}{Z+R}
-\end{equation}
+\end{equation*}
 gegeben.
 Um an den negativen reziproken Wert der Zeitkonstanten zu gelangen, sind die Werte in diesem Bereich logarithmiert worden.
 Mithilfe einer linearen Regression mit $f(x)=mx+b$ (Abbildung \ref{fig_fit1})hat sich für die Steigung
-\begin{eqnarray}
+\begin{eqnarray*}
 	m_\text{offen} &=& \SI{-7.89(30)e5}{1\per\second},\\
 	m_\text{gesch} &=& \SI{-2.60(2)e7}{1\per\second},
-\end{eqnarray}
+\end{eqnarray*}
 ergeben und somit für den Induktivbelag
-\begin{eqnarray}
+\begin{eqnarray*}
 	L_\text{gesch} &=& \SI{169.00(6)}{\micro\henry}.
-\end{eqnarray}
+\end{eqnarray*}
 
 Mithilfe der Gleichung
-\begin{eqnarray}
+\begin{eqnarray*}
 	C = -\frac{1}{mZ}
-\end{eqnarray}
+\end{eqnarray*}
 kann zudem der Kapazitivbelag $C$ berechnet werden.
 Für diesen ergiebt sich somit
-\begin{eqnarray}
+\begin{eqnarray*}
 	C_\text{offen} &=& \SI{2.53(9)e-8}{\farad}.
-\end{eqnarray}
+\end{eqnarray*}
 
 \begin{figure}
 	\centering
@@ -348,69 +348,69 @@ Für diesen ergiebt sich somit
 \label{sub:bestimmung_der_kabellaenge_mithilfe_eines_smith_diagramms}
 
 Um die Kabellänge mit einem Smith-Diagramm bestimmen zu können, muss zunächst die transformierte Impedanz 
-\begin{equation}
+\begin{equation*}
 	Z_L = R + i 2 \pi f L
-\end{equation}
+\end{equation*}
 bekannt sein.
 Mithilfe der errechneten Werte aus Kapitel \ref{sub:bestimmung_der_kabellaenge_anhand_der_spannungsverlaeufe} und einer Frequenz von $\SI{1}{\kilo\hertz}$ ist diese
-\begin{eqnarray}
+\begin{eqnarray*}
 	Z_{L_\text{gesch}} &=& 6.79 + 0.01i.
-\end{eqnarray}
+\end{eqnarray*}
 
 Der Reflexionsfaktor $\Gamma_L$ lässt sich mithilfe der Gleichung
-\begin{equation}
+\begin{equation*}
 	\Gamma_L = \frac{Z_L-Z}{Z_L+Z}
-\end{equation}
+\end{equation*}
 bestimmen, womit sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	\Gamma_{L_\text{gesch}} &=& -0.7609 + 0.0004i
-\end{eqnarray}
+\end{eqnarray*}
 ergiebt.
 
 Der Winkel der komplexen Ebene zwischen dem Reflexionsfaktor $\Gamma_L$ und dem alten Reflexionsfaktor $\Gamma_A$ aus Kapitel \ref{sub:bestimmung_der_kabellaenge_anhand_der_spannungsverlaeufe} lässt sich durch
-\begin{equation}
+\begin{equation*}
 	\Theta = \arccos \left(\frac{\vec{\Gamma_L}\vec{\Gamma_L}}{|\vec{\Gamma_L}||\vec{\Gamma_L}|}\right)
-\end{equation}
+\end{equation*}
 bestimmen.
 Somit ergiebt sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	\Theta_\text{gesch} &\approx& 0.0056.
-\end{eqnarray}
+\end{eqnarray*}
 
 Daraus lässt sich gemäß der Gleichung
-\begin{equation}
+\begin{equation*}
 	l = \frac{c \Theta}{4 \pi f \sqrt{\epsilon_r}}
-\end{equation}
+\end{equation*}
 die Länge des Kabels errechnen.
 Es ergiebt sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	l_\text{gesch} &\approx& \SI{8.90}{\meter}.
-\end{eqnarray}
+\end{eqnarray*}
 
 Zudem kann die Länge über die Kapazität bestimmt werden mit
-\begin{equation}
+\begin{equation*}
 	Z_L = -\frac{i}{2 \pi f C}
-\end{equation}
+\end{equation*}
 und $\Gamma_A = 1$.
 Damit ergab sich nach analoger Rechnung für die Länge
-\begin{eqnarray}
+\begin{eqnarray*}
 	l_\text{offen} &\approx& \SI{253.47}{\meter}.
-\end{eqnarray}
+\end{eqnarray*}
 
 \FloatBarrier
 \subsection{D: Spannungsverlauf verschiedener Abschlusswiderstände} % (fold)
 \label{sub:spannungsverlauf_verschiedener_abschlusswiderstaende}
 
 Die relative Dielektrizitätskonstante $\epsilon_r$ berechnet sich aus dem Kapazitätsbelag $C$, dem Induktivbelages $L$ und dem inneren und äußeren Durchmesser des Koaxialkabels $d$ und $D$ durch
-\begin{equation}
+\begin{equation*}
 	\epsilon_r = \left(\frac{\sqrt{\frac{L}{C}}}{\log{\frac{D}{d}} \SI{60}{\ohm}}\right)^{-2}. \text{[koax]} 
-\end{equation}
+\end{equation*}
 
 Dabei ist über die erhaltenen Größen von $C$ gemittelt worden.
 Es ergab sich
-\begin{equation}
+\begin{equation*}
 	\epsilon_r = \SI{4.35(11)}{\farad\per\meter}.
-\end{equation}
+\end{equation*}
 
 \subsubsection{Abschluss 1} % (fold)
 \label{sub:abschluss_1}
@@ -508,28 +508,28 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 
 Um die Reflexionsfaktoren der Leitung zu erhalten, wird zunächst über die Spannungen jedes Plateaus gemittelt.
 Anschließend wird von jedem Wert die Nullspannung $U_0$ abgezogen wodurch sich die Werte
-\begin{eqnarray}
+\begin{eqnarray*}
 	U_0 &=& \SI{-23.32(5)}{\volt},\\
 	U_1 &=& \SI{22.93(6)}{\volt},\\
 	U_2 &=& \SI{28.87(6)}{\volt},\\
 	U_3 &=& \SI{49.34(6)}{\volt},\\
 	U_4 &=& \SI{46.76(7)}{\volt}
-\end{eqnarray}
+\end{eqnarray*}
 ergeben.
 
 Als Differenz zwischen zwei aufeinanderfolgenden Spannungen ergiebt sich
-\begin{eqnarray}
+\begin{eqnarray*}
 	\Delta U_1 = U_2 - U_1 &=& \SI{5.95(5)}{\volt},\\
 	\Delta U_2 = U_3 - U_2 &=& \SI{20.46(5)}{\volt},\\
 	\Delta U_3 = U_4 - U_3 &=& \SI{-2.58(6)}{\volt}.
-\end{eqnarray}
+\end{eqnarray*}
 
 Die Reflexionsfaktoren berechnen sich nach
-\begin{eqnarray}
+\begin{eqnarray*}
 	\Gamma_L = \frac{\Delta U_1}{U_1} &=& \SI{0.2594(22)}{},\\
 	\Gamma_E = \frac{\Delta U_3}{\Delta U_2} + \frac{\Delta U_2}{U_1(1-\Gamma_L)} &=& \SI{1.079(6)}{},\\
 	\Gamma_R = \frac{\Delta U_3}{\Delta U_2 \Gamma_E} &=& \SI{-0.1168(28)}{}.
-\end{eqnarray}
+\end{eqnarray*}
 
 \begin{figure}
 	\centering
