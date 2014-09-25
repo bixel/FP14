@@ -47,6 +47,10 @@ for i in range(len(thea1)):
 	theb[4][i] = theb[3][i]-thea[3][i]
 	thec[4][i] = thec[3][i]-thea[3][i]
 
+print(thea[4])
+print(theb[4])
+print(thec[4])
+
 for i in range(len(d)):
 	d2[i] = (d[i]*10**-6)**2
 
@@ -63,13 +67,27 @@ print(m1/me)
 print(m2/me)
 print((m1/me)/0.066)
 print((m2/me)/0.066)
-plt.plot(d,thea[3],"r-")
-plt.plot(d,theb[3],"b-")
-plt.plot(d,thec[3],"g-")
-plt.show()
-plt.plot(d2, mb*d2+bb,"r-")
-plt.plot(d2, mc*d2+bc,"b-")
-plt.plot(d2,theb[4],"rx")
-plt.plot(d2,thec[4],"bx")
-plt.show()
+fig = plt.figure()
+plt.plot(d,thea[3],"r-",label="Hochrein")
+plt.plot(d,theb[3],"b-", label="n-dotiert duenn")
+plt.plot(d,thec[3],"g-", label="n-dotiert dick")
+plt.ylabel("Drehwinkel/Dicke[rad/m]")
+plt.xlabel("Wellenlänge[µm]")
+plt.ylim([0,160])
+plt.legend()
+plt.savefig("theta.pdf")
+#plt.show()
+plt.close(fig)
+fig = plt.figure()
+plt.plot(d2, mb*d2+bb,"r-", label="Regression duenn")
+plt.plot(d2, mc*d2+bc,"b-", label="Regression dick")
+plt.plot(d2,theb[4],"rx", label="Messwerte duenn")
+plt.plot(d2,thec[4],"bx",label="Messwerte dick")
+plt.ylabel("Drehwinkel/Dicke[rad/m]")
+plt.xlabel("Wellenlänge^2[µm^2]")
+plt.ylim([0,140])
+plt.legend(loc=2)
+plt.savefig("fit.pdf")
+#plt.show()
+plt.close(fig)
 
