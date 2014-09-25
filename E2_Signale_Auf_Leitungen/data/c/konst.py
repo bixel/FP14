@@ -47,7 +47,7 @@ print("U0_g:"+str(U0_g))
 print("U1_g:" + str(U1_g))
 print("U2_g:" + str(U2_g))
 
-gamma_o = U1_o/U2_o - 1
+gamma_o = U2_o/U1_o - 1
 gamma_g = U2_g/U1_g - 1
 print("g_o:" + str(gamma_o))
 print("g_g:" + str(gamma_g))
@@ -104,15 +104,22 @@ C_o = -1/(m_o*Z)
 print("C_g:" + str(C_g))
 print("C_o:" + str(C_o))
 
-plt.plot(Ug_expr, val1[0]*Ug_expr+val1[1], "g-", label="Regression geschlossen")
+fig = plt.figure()
 plt.plot(Uo_expr, val2[0]*Uo_expr+val2[1], "k-", label="Regression offen")
-
 plt.plot(Uo_expr,Uo_r,"r.", label="Messpunkte offen")
+plt.xlabel("t[s]")
+plt.ylabel("ln(U[mV]/1[mV])")
+plt.legend()
+plt.savefig("Regression1.pdf")
+plt.close(fig)
+fig = plt.figure()
+plt.plot(Ug_expr, val1[0]*Ug_expr+val1[1], "g-", label="Regression geschlossen")
 plt.plot(Ug_expr,Ug_r,"b.", label="Messpunkte geschlossen")
 plt.xlabel("t[s]")
 plt.ylabel("ln(U[mV]/1[mV])")
 plt.legend()
-plt.savefig("Regression.pdf")
+plt.savefig("Regression2.pdf")
+plt.close(fig)
 ########### Smith Diagramm
 
 f = 1000 #kHz

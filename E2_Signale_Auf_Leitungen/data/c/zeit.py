@@ -30,4 +30,5 @@ for i in range(count):
 	lubar[i] = calc_v(tubar[i])
 	z+=2
 
+print(tubar)
 print(lubar)

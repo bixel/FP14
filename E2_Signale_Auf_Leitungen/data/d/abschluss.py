@@ -53,9 +53,9 @@ print("U2_b:" + str(U2_b))
 print("U1_c:" + str(U1_c))
 print("U2_c:" + str(U2_c))
 
-gamma_a = U1_a/U2_a - 1
+gamma_a = U2_a/U1_a - 1
 gamma_b = U2_b/U1_b - 1
-gamma_c = U1_c/U2_c - 1
+gamma_c = U2_c/U1_c - 1
 print("g_a:" + str(gamma_a))
 print("g_b:" + str(gamma_b))
 print("g_c:" + str(gamma_c))
@@ -126,32 +126,40 @@ print("L_a:" + str(L_a))
 print("L_b:" + str(L_b))
 print("L_c:" + str(L_c))
 
-C_a = -1/(m_a*Z)
-C_b = -1/(m_b*Z)
-C_c = -1/(m_c*Z)
+C_a = -1/(m_a*(Z+R_a))
+C_b = -1/(m_b*(Z+R_b))
+C_c = -1/(m_c*(Z+R_c))
 
 print("C_a:" + str(C_a))
 print("C_b:" + str(C_b))
 print("C_c:" + str(C_c))
-
+fig = plt.figure()
 plt.plot(Ua_expr, val1[0]*Ua_expr+val1[1], "r-", label="Regression geschlossen")
-plt.plot(Ub_expr, val2[0]*Ub_expr+val2[1], "b-", label="Regression offen")
-plt.plot(Uc_expr, val3[0]*Uc_expr+val3[1], "g-", label="Regression offen")
-
 plt.plot(Ua_expr,Ua_r,"r.", label="Messpunkte offen")
+plt.xlabel("t[s]")
+plt.ylabel("ln(U[mV]/1[mV])")
+plt.savefig("Regression1.pdf")
+plt.close(fig)
+fig = plt.figure()
 plt.plot(Ub_expr,Ub_r,"b.", label="Messpunkte geschlossen")
+plt.plot(Ub_expr, val2[0]*Ub_expr+val2[1], "b-", label="Regression offen")
+plt.xlabel("t[s]")
+plt.ylabel("ln(U[mV]/1[mV])")
+plt.savefig("Regression2.pdf")
+plt.close(fig)
+fig = plt.figure()
+plt.plot(Uc_expr, val3[0]*Uc_expr+val3[1], "g-", label="Regression offen")
 plt.plot(Uc_expr,Uc_r,"g.", label="Messpunkte geschlossen")
 plt.xlabel("t[s]")
 plt.ylabel("ln(U[mV]/1[mV])")
+plt.savefig("Regression3.pdf")
+plt.close(fig)
 
 d = 0.9*10**(-3)
 D = 2.95*10**(-3)
 
-epsilon_a = ( sqrt(L_a/C_a) / (log(D/d) * 60))**(-2)
-epsilon_b = ( sqrt(L_b/C_b) / (log(D/d) * 60))**(-2)
-epsilon_c = ( sqrt(L_c/C_c) / (log(D/d) * 60))**(-2)
-print("e_a:" + str(epsilon_a))
-print("e_b:" + str(epsilon_b))
-print("e_c:" + str(epsilon_c))
 
-plt.show()
+epsilon_b = ( sqrt(2*L_b/(C_c+C_a)) / (log(D/d) * 60))**(-2)
+
+
+print("e_b:" + str(epsilon_b))
