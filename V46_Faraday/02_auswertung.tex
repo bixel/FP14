@@ -1,10 +1,11 @@
+
 \section{Messung} % (fold)
 \label{sec:messung}
-
+\FloatBarrier
 Im Folgenden wird zunächst die Stärke des Magnetfeldes bestimmt. 
 Anschließend wird die Faraday-Rotation bestimmt und daraus die Masse der freien Elektronen.
 
-Aufgrund der Starken schwankungen der Messpunkte wird auf eine Fehlerrechnung verzichtet.
+Aufgrund der starken Schwankungen der Messpunkte wird auf eine Fehlerrechnung verzichtet.
 
 \subsection{Bestimmung der Magnetfeldstärke} % (fold)
 \label{sub:bestimmung_der_magnetfeldstärke}
@@ -12,18 +13,19 @@ Aufgrund der Starken schwankungen der Messpunkte wird auf eine Fehlerrechnung ve
 Die zur Bestimmung der Magnetfeldstärke verwendeten Daten sind in Tabelle \ref{tab_mag} dargestellt.
 Zur Bestimmung des Mittelpunktes der symmetrischen Kurve wurde sowohl eine Ausgleichrechung mithilfe einer Gauß-, als auch einer Lorentz-Funktion durchgeführt (Abbildung \ref{fig_mag}).
 Beide Funktionen haben ihren Mittelpunkt bei
-\begin{equation}
+\begin{equation*}
 	z_\text{max} \approx 29.74.
-\end{equation}
+\end{equation*}
 
 Somit bestimmt sich die Magnetfeldstärke zu
-\begin{equation}
+\begin{equation*}
 	B(z_\text{max}) \approx \SI{455}{\milli\tesla},
-\end{equation}
+\end{equation*}
 welche im weiteren Verlauf der Rechnung verwendet wird.
 
 \begin{figure}
-	\inncludegraphics[width = 7cm]{data/gauß.pdf}
+	\centering
+	\includegraphics[width = 14cm]{data/gauss.pdf}
 	\caption{Messpunkte und Ausgleichsrechnungen zur Bestimmung der Magnetfeldstärke.}
 	\label{fig_mag}
 \end{figure}
@@ -32,7 +34,7 @@ welche im weiteren Verlauf der Rechnung verwendet wird.
 	\centering
 	\caption[]{Zur Bestimmung der Magnetfeldstärke verwendete Messpunkte.}
 	\begin{tabular}{r r r r}
-		d\,[mm] & B\,[mT] & d\,[mm] & B\,[mT]\\
+		d[$\SI{}{\milli\meter}$] & B[$\SI{}{\milli\tesla}$] & d[$\SI{}{\milli\meter}$] & B[$\SI{}{\milli\tesla}$]\\
 		\hline\hline
 		 0	&	  0.80	&	30	&	455.00\\
 		 2	&	  1.28	&	31	&	454.00\\
@@ -62,36 +64,57 @@ welche im weiteren Verlauf der Rechnung verwendet wird.
 
 Die zur berechnung der Masse freier Elektronen verwendeten Daten sind in Tabelle \ref{tab_1} bis \ref{tab_2} dargestellt.
 Zunächst werden die Winkel in rad umgerechnet wobei
-\begin{eqnarray}
-	1 \text[Bs] = \frac{pi}{648000} \text[rad],\\
-	1 \text[°] = \frac{pi}{180} \text[rad]
-\end{eqnarray}
+\begin{eqnarray*}
+	1\SI{}{\arcsecond} &=& \frac{\pi}{648000}\SI{}{\radian},\\
+	1\SI{}{\degree} &=& \frac{\pi}{180}\SI{}{\radian}
+\end{eqnarray*}
 gilt.
 
 Anschließend wird der Winkel noch auf die Dicke $D$ der Probe normiert und die Winkel der hochreinen Probe von den Winkeln der anderen beiden Proben abgezogen.
 Somit ergeben sich die Winkel aus Tabelle \ref{wink1}
 
-Somit sollte nur der Anteil der n-dotierung übrig bleiben, welcher aus den zu untersuchenden freien Elektronen besteht.
+Mit dieser Methode sollte nur der Anteil der n-dotierung übrig bleiben, welcher aus den zu untersuchenden freien Elektronen besteht.
 Die Daten der Proben sind in Tabelle \ref{data} aufgeführt.
 
 Aus dem Winkel lässt sich mithilfe einer linearen Regression mit
-\begin{equation}
-	\Theta / D = m_\text{reg} \lambda^2 + b
-\end{equation}
-die Masse der Elektronen über
-\begin{equation}
-	m_\text{elek} = \sqrt{\frac{e^3 N B}{8 \pi^2 \epsilon_0 c^3 n m_\text{reg}}}
-\end{equation}
-bestimmen.
+\begin{equation*}
+	\frac{\Theta}{D} = m_\text{reg} \lambda^2 + b
+\end{equation*}
+die Masse der Elektronen über Gleichung \eqref{eqn:theta_final} bestimmt werden.
+In dieser Gleichung ist der frequenzabhängige Brechungsindex $n$ vorhanden. Da die frequenzabhängigkeit nicht berücksichtigt werden soll und sich die Werte von etwa $3.3-3.5$ (\cite{GeAs}) erstrecken wird ein Brechungsindex von 
+\begin{equation*}
+	n = 3.4
+\end{equation*}
+angenommen.
+Die Regression lieferte 
+\begin{eqnarray*}
+	m_\text{dünn} &=& \SI{2.17e13}{1\per\meter^3},\\
+	m_\text{dick} &=& \SI{-1.81e11}{1\per\meter^3}
+\end{eqnarray*}
+und ist in Abbildung \ref{fit} dargestellt.
 
-
-
+Daraus ergiebt sich für die Masse der freien Elektronen
+\begin{eqnarray*}
+	m_{\text{elek}_\text{dünn}} &=& \SI{6.14e-32}{\gram},\\
+	m_{\text{elek}_\text{dick}} &=& \SI{4.40e-31}{\gram}.
+\end{eqnarray*}
+Der Quotient aus errechneten Masse eines freien Elektrons und der Masse eines gebundenen ELektrons sollte nach Litartur $m/m_e \approx 0.66$ ergeben \cite{kittel}.
+In diesem Fall erreicht der Quotient die Werte
+\begin{eqnarray*}
+	\frac{m_{\text{elek}_\text{dünn}}}{m_\text{e}} &=& \SI{6.75e-5}{},\\
+	\frac{m_{\text{elek}_\text{dick}}}{m_\text{e}} &=& \SI{4.83e-4}{}.
+\end{eqnarray*}
+und damit sind die errechneten Werte etwa
+\begin{eqnarray*}
+	m_{\text{elek}_\text{dünn}} &\approx& 	978 \cdot m_{\text{elek}_\text{lit}},\\
+	m_{\text{elek}_\text{dick}} &\approx& 	136 \cdot m_{\text{elek}_\text{lit}}.
+\end{eqnarray*}
 
 \begin{table}
 	\centering
 	\caption{Daten der verwendeten Proben.}
 	\begin{tabular}{r r r}
-		Probe & D \,[mm]& N\,[e18 1/cm³]\\ 
+		Probe & D[$\SI{}{\milli\meter}$]& N[$\SI{e18}{1\per\centi\meter^3}$]\\ 
 		\hline	\hline
 		GeAs hochrein & 5.11 & 0\\
 		GeAs n-dotiert dünn & 1.296 & 2.8\\
@@ -99,13 +122,21 @@ bestimmen.
 	\end{tabular}
 \end{table}
 
+\begin{figure}
+\centering
+	\includegraphics[width = 14cm]{data/fit.pdf}
+	\caption{Lineare Ausgleichsrechnung.}
+	\label{fit}
+\end{figure}
 
 \begin{table}
 	\centering
 	\caption{Drehwinkel der n-dotierten Proben, nachdem der Winkel der hochreinen Probe abgezogen wurde.}
-	\begin{tabular}
+	\begin{tabular}{r r}
 		GeAs n-dotiert dünn & GeAs n-dotiert dick\\
-		\hline \hline
+		\hline 
+		$\Theta_\text{dünn}[\SI{}{\radian\per\meter}]$ & $\Theta_\text{dick}[\SI{}{\radian\per\meter}]$\\
+		\hline\hline
 		102.42	&	 26.04\\
 		 94.23	&	 50.89\\
 		107.44	&	 56.92\\
@@ -115,15 +146,16 @@ bestimmen.
 		 -7.11	&	 24.01\\
 		-35.89	&	 85.58\\
 		 14.30	&	 23.62\\
-
+		 \hline
 	\end{tabular}
+	\label{wink1}
 \end{table}
 
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der hochreinen Probe.}
-	\begin{tabular}{r r r r}
-		Filter\,[$\mu$m] & Polarisation & Winkel\,[°] & Winkel\,[Bs]\\
+	\begin{tabular}{r c r r }
+		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
 		\hline\hline
 		2.650	&	+	&	194	&	51\\
 				&	-	&	205	&	55\\
@@ -151,27 +183,27 @@ bestimmen.
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der dünnen Probe.}
-	\begin{tabular}{r r r r}
-		Filter\,[$\mu$m] & Polarisation & Winkel\,[°] & Winkel\,[Bs]\\
+	\begin{tabular}{r c r r }
+		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
 		\hline\hline
-		2.650	&	+	&	187	&	 2
-				&	-	&	205	&	 3
-		2.510	&	+	&	192	&	 1
-				&	-	&	207	&	39
-		2.340	&	+	&	191	&	57
-				&	-	&	209	&	 0
-		2.156	&	+	&	192	&	20
-				&	-	&	205	&	 3
-		1.960	&	+	&	193	&	 0
-				&	-	&	203	&	44
-		1.720	&	+	&	194	&	 7
-				&	-	&	205	&	10
-		1.450	&	+	&	194	&	13
-				&	-	&	197	&	30
-		1.200	&	+	&	195	&	50
-				&	-	&	194	&	11
-		1.060	&	+	&	192	&	38
-				&	-	&	203	&	54
+		2.650	&	+	&	187	&	 2\\
+				&	-	&	205	&	 3\\
+		2.510	&	+	&	192	&	 1\\
+				&	-	&	207	&	39\\
+		2.340	&	+	&	191	&	57\\
+				&	-	&	209	&	 0\\
+		2.156	&	+	&	192	&	20\\
+				&	-	&	205	&	 3\\
+		1.960	&	+	&	193	&	 0\\
+				&	-	&	203	&	44\\
+		1.720	&	+	&	194	&	 7\\
+				&	-	&	205	&	10\\
+		1.450	&	+	&	194	&	13\\
+				&	-	&	197	&	30\\
+		1.200	&	+	&	195	&	50\\
+				&	-	&	194	&	11\\
+		1.060	&	+	&	192	&	38\\
+				&	-	&	203	&	54\\
 		\hline
 	\end{tabular}
 	\label{tab_2}
@@ -180,8 +212,8 @@ bestimmen.
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der dicken Probe.}
-	\begin{tabular}{r r r r}
-		Filter\,[$\mu$m] & Polarisation & Winkel\,[°] & Winkel\,[Bs]\\
+	\begin{tabular}{r c r r }
+		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
 		\hline\hline
 		2.650	&	+	&	194	&	59\\
 				&	-	&	201	&	 7\\
