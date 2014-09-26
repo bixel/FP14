@@ -14,7 +14,7 @@ Die zur Bestimmung der Magnetfeldstärke verwendeten Daten sind in Tabelle \ref{
 Zur Bestimmung des Mittelpunktes der symmetrischen Kurve wurde sowohl eine Ausgleichrechung mithilfe einer Gauß-, als auch einer Lorentz-Funktion durchgeführt (Abbildung \ref{fig_mag}).
 Beide Funktionen haben ihren Mittelpunkt bei
 \begin{equation*}
-	z_\text{max} \approx 29.74.
+	z_\text{max} \approx \SI{29.74}{\milli\meter}.
 \end{equation*}
 
 Somit bestimmt sich die Magnetfeldstärke zu
@@ -95,20 +95,16 @@ und ist in Abbildung \ref{fit} dargestellt.
 
 Daraus ergiebt sich für die Masse der freien Elektronen
 \begin{eqnarray*}
-	m_{\text{elek}_\text{dünn}} &=& \SI{6.14e-32}{\gram},\\
-	m_{\text{elek}_\text{dick}} &=& \SI{4.40e-31}{\gram}.
+	m_{\text{elek}_\text{dünn}} &=& \SI{6.14e-32}{\kilogram},\\
+	m_{\text{elek}_\text{dick}} &=& \SI{4.40e-31}{\kilogram}.
 \end{eqnarray*}
-Der Quotient aus errechneten Masse eines freien Elektrons und der Masse eines gebundenen ELektrons sollte nach Litartur $m/m_e \approx 0.66$ ergeben \cite{kittel}.
+Der Quotient aus errechneten Masse eines freien Elektrons und der Masse eines gebundenen ELektrons ($m_e = \SI{9.11e-31}{\kilogram}$) sollte nach Litartur $m/m_e \approx 0.066$ ergeben \cite{kittel}.
 In diesem Fall erreicht der Quotient die Werte
 \begin{eqnarray*}
-	\frac{m_{\text{elek}_\text{dünn}}}{m_\text{e}} &=& \SI{6.75e-5}{},\\
-	\frac{m_{\text{elek}_\text{dick}}}{m_\text{e}} &=& \SI{4.83e-4}{}.
+	\frac{m_{\text{elek}_\text{dünn}}}{m_\text{e}} &=& \SI{0.0675}{},\\
+	\frac{m_{\text{elek}_\text{dick}}}{m_\text{e}} &=& \SI{0.4833}{}.
 \end{eqnarray*}
-und damit sind die errechneten Werte etwa
-\begin{eqnarray*}
-	m_{\text{elek}_\text{dünn}} &\approx& 	978 \cdot m_{\text{elek}_\text{lit}},\\
-	m_{\text{elek}_\text{dick}} &\approx& 	136 \cdot m_{\text{elek}_\text{lit}}.
-\end{eqnarray*}
+und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa $\SI{2.16}{\percent}$ und die Masse der Elektronen bei der dicken Probe $\SI{86.35}{\percent}$ ab.
 
 \begin{table}
 	\centering
@@ -237,3 +233,12 @@ und damit sind die errechneten Werte etwa
 	\end{tabular}
 	\label{tab_2}
 \end{table}
+
+\section{Diskussion} % (fold)
+\label{sec:diskussion}
+
+Alles in allem lässt sich sagen, dass die Apparatur dafür geeignet ist die Masse von freien Elektronen zu bestimmen.
+Es ist allerdings anzumerken, dass die Werte für die lineare Ausgleichsrechnung keine linearität vermuten lassen weshalb auch die Fehler nicht berücksichtigt worden sind.
+Es ist jedoch gelungen, die Masse der freie Elektronen relativ genau zu bestimmen.
+Bei der $\SI{1.296}{\milli\meter}$ dicken Probe konnte so ein Fehler auf die Masse von $\SI{2.16}{\percent}$ erreicht werden, während bei der $\SI{1.36}{\milli\meter}$ dicken Probe der Fehler bei $\SI{86.35}{\percent}$ liegt.
+Dominante Fehlerquellen sind die Vernachlässigung der Dispersion des Brechungsindices und dass die Apparatur nicht optimal jusitert werden konnte.

@@ -6,9 +6,8 @@ from scipy.optimize import curve_fit
 from scipy import stats
 
 c = 2.99792458*10**8
-f = 2.4*10**9
 B = 455*10**(-3)
-me = 9.10938291*10**(-31)*10**3
+me = 9.10938291*10**(-31)
 def calc_m(m,N,n):
 	epsilon_o = 8.854187817*10**(-12)
 	e = 1.6021765656*10**(-19)
@@ -67,8 +66,10 @@ print(m1)
 print(m2)
 print(m1/me)
 print(m2/me)
-print(0.066/(m1/me))
-print(0.066/(m2/me))
+print(1-0.066/(m1/me))
+print(1-0.066/(m2/me))
+print(1-0.066/(m1/me))
+print(1-0.066/(m2/me))
 fig = plt.figure()
 plt.plot(d,thea[3],"r-",label="Hochrein")
 plt.plot(d,theb[3],"b-", label="n-dotiert duenn")
