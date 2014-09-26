@@ -1,14 +1,25 @@
-00_main: 00_main.tex
-	mkdir -p ./build
-	lualatex --output-directory ./build $^
+all: build/00_main.pdf
 
-bib: 00_main.tex
-	mkdir -p ./build
-	lualatex --output-directory ./build $^
-	bibtex ./build/00_main
-	lualatex --output-directory ./build $^
-	lualatex --output-directory ./build $^
+build/00_main.pdf: 00_main.tex 01_theorie.tex 02_measurement.tex | build
+	lualatex --output-directory build 00_main.tex
 
+bib: build/00_main.pdf
+	bibtex ./build/00_main && \
+	lualatex --output-directory build 00_main.tex
+
+01_theorie.tex: pic/*.png
+
+02_measurement.tex: data/0*_*.pdf
+
+data/0*_*.pdf: data/*.txt data/coal.py data/hist.py data/halbwertsbreite.py
+	cd data; \
+	python hist.py; \
+	python coal.py; \
+	python halbwertsbreite.py
+
+build:
+	mkdir -p build
 
 clean:
-	rm -rf ./build
+	rm -r ./build; \
+	rm data/0*_*.pdf
