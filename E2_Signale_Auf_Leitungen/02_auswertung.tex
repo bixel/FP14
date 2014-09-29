@@ -10,7 +10,6 @@ Im Folgenden wird für den Wellenwiderstand
 	Z = \SI{50}{\ohm}
 \end{equation*}
 angenommen.
-
 Alle Fehler wurden mithilfe Gaußscher Fehlerfortpflanzung errechnet.
 \begin{equation*}
 	\Delta f(x_\text{1}\text{,...,}x_\text{n}) = \sqrt{\sum_\text{i=0}^\text{n} \left(\frac{\partial f}{\partial x_\text{i}} \Delta x_\text{i}\right)^2}
@@ -64,8 +63,9 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 10m RG 58C/U.}
 	\begin{tabular}{r r r r r}
+		\toprule
 		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
-		\hline \hline
+		\midrule
 		  1	&	13.60	&	8.0	&	1.866	&	3.17\\
 		  2	&	11.70	&	7.6	&	1.865	&	2.87\\
 		  3	&	12.80	&	7.8	&	1.865	&	3.06\\
@@ -86,7 +86,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 		 18	&	10.60	&	7.4	&	1.865	&	2.67\\
 		 19	&	11.00	&	7.4	&	1.865	&	2.77\\
 		 20	&	11.50	&	7.4	&	1.865	&	2.90\\
-			\hline
+		\bottomrule
 	\end{tabular}
 	\label{tab_konst1}
 \end{table}
@@ -95,8 +95,9 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 20m RG 58C/U.}
 	\begin{tabular}{r r r r r}
+	\toprule
 		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
-		\hline \hline
+		\midrule
 			  1	 &	33.7	&	5.0	&	0.8688	&	5.86\\
 			  2	 &	34.2	&	5.0	&	0.8835	&	6.04\\
 			  3	 &	34.4	&	4.9	&	0.8833	&	6.20\\
@@ -117,7 +118,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 			 18	 &	34.3	&	4.8	&	0.8250	&	5.90\\
 			 19	 &	34.7	&	4.8	&	0.8210	&	5.94\\
 			 20	 &	34.9	&	4.8	&	0.8205	&	5.97\\
-			\hline
+			\bottomrule
 	\end{tabular}
 	\label{tab_konst2}
 \end{table}
@@ -126,8 +127,9 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Leitungskonstanten des 100m M17/028 RG 058.}
 	\begin{tabular}{r r r r r}
+	\toprule
 		f[$\SI{}{\kilo\hertz}$] & R[$\SI{}{\ohm}$] & L[$\SI{}{\micro\henry}$] & C[$\SI{}{\nano \farad}$] & G[$\SI{}{\milli\siemens}$]\\
-		\hline \hline
+		\midrule
 			  1	&	21.38	&	28.00	&	8.488	&	6.48\\
 			  2	&	21.50	&	27.90	&	8.488	&	6.54\\
 			  3	&	19.30	&	27.67	&	8.772	&	6.12\\
@@ -148,7 +150,7 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 			 18	&	24.50	&	27.50	&	8.498	&	7.57\\
 			 19	&	28.20	&	27.50	&	8.498	&	8.71\\
 			 20	&	30.01	&	27.50	&	8.500	&	9.28\\
-			\hline
+			\bottomrule
 	\end{tabular}
 	\label{tab_konst3}
 \end{table}
@@ -161,29 +163,30 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \centering
 	\caption[]{Dämpfungskonstanten des 100m M17/028 RG 058 Kabels.}
 	\begin{tabular}{r r r r}
+	\toprule
 		f[$\SI{}{\kilo\hertz}$] & $U_0$[$\SI{}{\milli\volt}$] & $U_\text{ged}$[$\SI{}{\milli\volt}$] & $\alpha$[$\SI{}{\decibel}$]\\
-		\hline \hline
-			79	&	92	&	89	&	0.66+/-0.16 \\
-			88	&	86	&	83	&	0.71+/-0.17 \\
-			96	&	80	&	77	&	0.76+/-0.18 \\
-			106	&	74	&	71	&	0.83+/-0.20 \\
-			115	&	67	&	64	&	0.92+/-0.22 \\
-			124	&	60	&	59	&	0.34+/-0.24 \\
-			133	&	56	&	54	&	0.73+/-0.26 \\
-			143	&	52	&	50	&	0.78+/-0.28 \\
-			151	&	49	&	47	&	0.83+/-0.29 \\
-			160	&	45	&	44	&	0.45+/-0.32 \\
-			170	&	41	&	41	&	0.00+/-0.34 \\
-			179	&	40	&	39	&	0.50+/-0.40 \\
-			188	&	38	&	37	&	0.50+/-0.40 \\
-			196	&	36	&	35	&	0.60+/-0.40 \\
-			205	&	35	&	33	&	1.20+/-0.40 \\
-			214	&	33	&	32	&	0.60+/-0.40 \\
-			224	&	32	&	30	&	1.30+/-0.50 \\
-			233	&	31	&	29	&	1.30+/-0.50 \\
-			241	&	30	&	28	&	1.40+/-0.50 \\
-			251	&	28	&	27	&	0.70+/-0.50\\
-			\hline
+		\midrule
+			79	&	92	&	89	&	$\SI{0.66(16)}{}$ \\
+			88	&	86	&	83	&	$\SI{0.71(17)}{}$ \\
+			96	&	80	&	77	&	$\SI{0.76(18)}{}$ \\
+			106	&	74	&	71	&	$\SI{0.83(20)}{}$ \\
+			115	&	67	&	64	&	$\SI{0.92(22)}{}$ \\
+			124	&	60	&	59	&	$\SI{0.34(24)}{}$ \\
+			133	&	56	&	54	&	$\SI{0.73(26)}{}$ \\
+			143	&	52	&	50	&	$\SI{0.78(28)}{}$ \\
+			151	&	49	&	47	&	$\SI{0.83(29)}{}$ \\
+			160	&	45	&	44	&	$\SI{0.45(32)}{}$ \\
+			170	&	41	&	41	&	$\SI{0.00(34)}{}$ \\
+			179	&	40	&	39	&	$\SI{0.50(40)}{}$ \\
+			188	&	38	&	37	&	$\SI{0.50(40)}{}$ \\
+			196	&	36	&	35	&	$\SI{0.60(40)}{}$ \\
+			205	&	35	&	33	&	$\SI{1.20(40)}{}$ \\
+			214	&	33	&	32	&	$\SI{0.60(40)}{}$ \\
+			224	&	32	&	30	&	$\SI{1.30(50)}{}$ \\
+			233	&	31	&	29	&	$\SI{1.30(50)}{}$ \\
+			241	&	30	&	28	&	$\SI{1.40(50)}{}$ \\
+			251	&	28	&	27	&	$\SI{0.70(50)}{}$ \\
+			\bottomrule
 	\end{tabular}
 	\label{tab_daempf}
 \end{table}
@@ -234,8 +237,9 @@ Die gemessenen und bestimmten Daten sind in Tabelle \ref{tab_zeit1} dargestellt.
 \centering
 	\caption[]{Zur Längenbestimmung genutzte Zeiten und die resultierenden Ergebnisse.}
 	\begin{tabular}{r r r r r}
+	\toprule
 		Kabeltyp & $t_1$[$\SI{}{\nano\second}$] & $t_2$[$\SI{}{\nano\second}$] & $\Delta t$[$\SI{100}{\nano\second}$] & l[$\SI{}{\meter}$]\\
-		\hline \hline
+		\midrule
 		 RG 58C/U & & & & \\
 		 offen & 	  25.4	&   -85.0	&	 1.10+/-0.07 &	 10.93+/-0.70\\
 		geschlossen	& 125.1	&     0.1	&	 1.25+/-0.07 &	 12.38+/-0.70\\
@@ -245,7 +249,7 @@ Die gemessenen und bestimmten Daten sind in Tabelle \ref{tab_zeit1} dargestellt.
 		M17/028 RG 058&&&&\\
 		offen 	 & 19.0	&   209.0	&	 1.90+/-0.07 &	 18.81+/-0.70\\
 		geschlossen	 & -12.6	&   195.6	&	 2.08+/-0.07 &	 20.61+/-0.70\\
-			\hline
+		\bottomrule
 	\end{tabular}
 	\label{tab_zeit1}
 \end{table}
@@ -264,7 +268,6 @@ Zunächst wurde dafür aus der Abbildung die Spannung der drei sichtbaren Platea
 	U_{2_\text{gesch}} &=& \SI{5.98(7)}{\volt}
 \end{eqnarray*}
 ergaben.
-
 Der Reflexionsfaktor $\Gamma$ lässt sich daraus mithilfe der Gleichung
 \begin{equation*}
 	U_1 (1+\Gamma) = U_2,
@@ -275,7 +278,6 @@ Damit ergiebt sich
 	\Gamma_\text{offen} &=& \SI{0.2517(15)}{},\\
 	\Gamma_\text{gesch} &=& \SI{-0.7509(25)}{}.
 \end{eqnarray*}
-
 Mithilfe des Reflexionsfaktors lässt sich mit $Z=\SI{50}{\ohm}$ aus der Gleichung
 \begin{equation*}
 	\Gamma = \frac{R-Z}{R+Z}
@@ -303,7 +305,6 @@ ergeben und somit für den Induktivbelag
 \begin{eqnarray*}
 	L_\text{gesch} &=& \SI{169.00(6)}{\micro\henry}.
 \end{eqnarray*}
-
 Mithilfe der Gleichung
 \begin{eqnarray*}
 	C = -\frac{1}{mZ}
@@ -356,7 +357,6 @@ Mithilfe der errechneten Werte aus Kapitel \ref{sub:bestimmung_der_kabellaenge_a
 \begin{eqnarray*}
 	Z_{L_\text{gesch}} &=& 6.79 + 0.01i.
 \end{eqnarray*}
-
 Der Reflexionsfaktor $\Gamma_L$ lässt sich mithilfe der Gleichung
 \begin{equation*}
 	\Gamma_L = \frac{Z_L-Z}{Z_L+Z}
@@ -376,7 +376,6 @@ Somit ergiebt sich
 \begin{eqnarray*}
 	\Theta_\text{gesch} &\approx& 0.0056.
 \end{eqnarray*}
-
 Daraus lässt sich gemäß der Gleichung
 \begin{equation*}
 	l = \frac{c \Theta}{4 \pi f \sqrt{\epsilon_r}}
@@ -403,9 +402,8 @@ Damit ergab sich nach analoger Rechnung für die Länge
 
 Die relative Dielektrizitätskonstante $\epsilon_r$ berechnet sich aus dem Kapazitätsbelag $C$, dem Induktivbelages $L$ und dem inneren und äußeren Durchmesser des Koaxialkabels $d$ und $D$ durch
 \begin{equation*}
-	\epsilon_r = \left(\frac{\sqrt{\frac{L}{C}}}{\log{\frac{D}{d}} \SI{60}{\ohm}}\right)^{-2}. \text{[koax]} 
+	\epsilon_r = \left(\frac{\sqrt{\frac{L}{C}}}{\log{\frac{D}{d}} \SI{60}{\ohm}}\right)^{-2}. \text{\cite{koax}}
 \end{equation*}
-
 Dabei ist über die erhaltenen Größen von $C$ gemittelt worden.
 Es ergab sich
 \begin{equation*}
@@ -423,7 +421,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 \centering
 	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 1.}
 	\begin{tabular}{r|r}
-		\hline\hline
+	\toprule
 		$U_0$    & $\SI{-24.22(5)}{\volt}$\\
 		$U_1$    & $\SI{25.83(5)}{\volt}$\\
 		$U_2$    & $\SI{46.81(5)}{\volt}$\\
@@ -431,6 +429,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 		$R$    & $\SI{482.7(151)}{\ohm}$\\
 		m      & $\SI{-3.67(4)e4}{1\per\second}$\\
 		$C$    & $\SI{5.12(16)e-8}{\farad}$\\
+		\bottomrule
 	\end{tabular}
 \end{table}
 
@@ -453,7 +452,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 \centering
 	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 4.}
 	\begin{tabular}{r|r}
-		\hline\hline
+		\toprule
 		$U_0$    & $\SI{-3.33(5)}{\volt}$\\
 		$U_1$    & $\SI{25.89(6)}{\volt}$\\
 		$U_2$    & $\SI{6.86(7)}{\volt}$\\
@@ -461,6 +460,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 		$R$    & $\SI{7.64(8)}{\ohm}$\\
 		m      & $\SI{-6.576(34)e5}{1\per\second}$\\
 		$L$    & $\SI{8.76(5)e-5}{\henry}$\\
+		\bottomrule
 	\end{tabular}
 \end{table}
 
@@ -482,7 +482,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 \centering
 	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 10.}
 	\begin{tabular}{r|r}
-		\hline\hline
+		\toprule
 		$U_0$    & $\SI{-18.16(5)}{\volt}$\\
 		$U_1$    & $\SI{25.96(5)}{\volt}$\\
 		$U_2$    & $\SI{34.69(7)}{\volt}$\\
@@ -490,6 +490,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 		$R$    & $\SI{100.7(5)}{\ohm}$\\
 		m      & $\SI{-6.69(23)e4}{1\per\second}$\\
 		$C$    & $\SI{9.92(34)e-8}{\farad}$\\
+		\bottomrule
 	\end{tabular}
 \end{table}
 
@@ -516,14 +517,12 @@ Anschließend wird von jedem Wert die Nullspannung $U_0$ abgezogen wodurch sich 
 	U_4 &=& \SI{46.76(7)}{\volt}
 \end{eqnarray*}
 ergeben.
-
 Als Differenz zwischen zwei aufeinanderfolgenden Spannungen ergiebt sich
 \begin{eqnarray*}
 	\Delta U_1 = U_2 - U_1 &=& \SI{5.95(5)}{\volt},\\
 	\Delta U_2 = U_3 - U_2 &=& \SI{20.46(5)}{\volt},\\
 	\Delta U_3 = U_4 - U_3 &=& \SI{-2.58(6)}{\volt}.
 \end{eqnarray*}
-
 Die Reflexionsfaktoren berechnen sich nach
 \begin{eqnarray*}
 	\Gamma_L = \frac{\Delta U_1}{U_1} &=& \SI{0.2594(22)}{},\\
@@ -561,13 +560,3 @@ Zudem ist es aus dem Spannungsverlauf möglich gewesen auf die Leitungskonstante
 Abschließend konnte mithilfe des Spannungsverlaufs von in Reihe geschalteter Kabel ein Impulsfahrplan erzeugt werden.
 Es lässt darauf schließen, dass mindestens eins der Kabel von seiner vorgegebenen Impedanz abweicht, da die Reflexionsfaktoren $\Gamma_L$ und $\Gamma_R$ betragsmäßig ungleich $0.2$ sind.
 
-\section{Quellen} % (fold)
-\label{sub:quellen}
-
-[E02], author = Physikalisches Praktikum TU Dortmund,
-  title = Versuch E2: Signale auf Leitungen, 
-  howpublished = \url{http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/FP/SKRIPT/Signale_E2.pdf},
-  aufgerufen 2.7.2014
-
-[koax], url{http://www.microwaves101.com/,
-    aufgerufen September 2014
