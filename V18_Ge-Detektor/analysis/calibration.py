@@ -76,6 +76,6 @@ if __name__ == "__main__":
     plt.ylim(ymin=0)
     plt.savefig('../build/plots/calibration.pdf')
 
-    # store calibration values
+    # store calibration values for code and latex
     np.savetxt('../build/data/calibration.txt', np.array([coeff, errs]).T,
             header='coeff\terr')
