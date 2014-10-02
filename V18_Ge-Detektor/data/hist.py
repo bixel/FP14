@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#! /usr/bin/evn python3
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit as cfit
