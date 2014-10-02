@@ -13,9 +13,9 @@ bib: build/00_main.pdf
 
 data/0*_*.pdf: data/*.txt data/coal.py data/hist.py data/halbwertsbreite.py
 	cd data; \
-	python hist.py; \
-	python coal.py; \
-	python halbwertsbreite.py
+	python3 hist.py; \
+	python3 coal.py; \
+	python3 halbwertsbreite.py
 
 build:
 	mkdir -p build
