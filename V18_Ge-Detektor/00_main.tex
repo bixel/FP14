@@ -1,88 +1,20 @@
-%\nonstopmode
-\documentclass[%
-    a4paper,%
-    twoside,%
-    BCOR12mm,%
-    DIV13,%
-    %cleardoubleplain,%
-    bibtotoc,%
-    openany,%
-    captions=tableheading,
-]{scrartcl}
-	\usepackage[ngerman]{babel}
-    \usepackage[german]{isodate}
-    \usepackage{fontspec}
+\input{../head.tex}
+\input{../math-commands.tex}
+\title{%
+    V18 -- Der Reinst-Germanium-Detektor als Instrument der Gamma-Spektroskopie
+}
+\author{%
+    Kevin Heinicke\\
+    \texttt{kevin.heinicke@udo.edu}
+    \and
+    Markus Stabrin\\
+    \texttt{markus.stabrin@udo.edu}
+}
 
-    \KOMAoptions{draft=on}
-
-    \usepackage[font=footnotesize]{subcaption}
-
-	\usepackage{siunitx}
-	\sisetup{
-	    locale=DE,
-	    separate-uncertainty=true,
-        per-mode=symbol,
-        range-phrase=%
-             \ifmmode\mathbin{-}
-             \else%
-             { bis }%
-             \fi,%
-        math-micro=\text{µ},
-        text-micro=µ,
-        table-unit-alignment=left,
-        table-text-alignment=center,
-        table-number-alignment=right,
-	}
-    \DeclareSIUnit\clight{\ensuremath{c}}
-
-    \usepackage{amsmath}
-    \usepackage{unicode-math}
-
-    \usepackage{xfrac}
-
-    \usepackage{booktabs}
-
-    \usepackage{hyperref}
-    \hypersetup{
-        colorlinks,
-        citecolor=black,
-        filecolor=black,
-        linkcolor=black,
-        urlcolor=black
-    }
-
-    \usepackage{indentfirst}
-	% Texteinzug vor Absatz
-	\parindent 12pt
-    % Schönere Captions
-    \usepackage[font=footnotesize,labelfont=bf]{caption}
-    \setcapindent{10pt}
-
-    \usepackage[olines]{scrpage2}
-    \pagestyle{scrheadings}
-    \clearscrheadfoot
-    \ofoot[\pagemark]{\pagemark}
-
-    \usepackage{cite}
-
-    \usepackage[]{placeins}
-    \usepackage{wrapfig}
-
-    \title{%
-        V18 -- Der Reinst-Germanium-Detektor als Instrument der Gamma-Spektroskopie
-    }
-    \author{%
-        Kevin Heinicke\\
-        \texttt{kevin.heinicke@udo.edu}
-        \and
-        Markus Stabrin\\
-        \texttt{markus.stabrin@udo.edu}
-    }
-
-    \date{
-        16. Juni 2014\\
-        {\small 2. Abgabe} 24. September 2014
-    }
+\date{
+    16. Juni 2014\\
+    {\small 3. Abgabe} 04. Oktober 2014
+}
 \begin{document}
     \maketitle%
     \tableofcontents
