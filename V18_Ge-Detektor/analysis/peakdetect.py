@@ -30,7 +30,7 @@ def fit_gauss(x, y, pos_x, fit_width=30, yerr=0, ax=None):
         xs = np.linspace(min(x), max(x), 200)
         ax.plot(xs, gauss(xs, *coeff), label='Gaußscher Fit')
         ax.errorbar(x, y, yerr=yerr, fmt='+', label='Datenpunkte')
-    return mu, sigma, A / (np.sqrt(2) * sigma)
+    return mu, sigma, A
 
 
 def get_maxima(dist, n_max=10, vetos=[]):
