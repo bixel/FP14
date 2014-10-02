@@ -9,7 +9,11 @@ bib: build/00_main.pdf
 
 01_theorie.tex: pic/*.png
 
-02_measurement.tex: data/0*_*.pdf
+02_measurement.tex: build/plots/eu_dist.pdf build/plots/calibration.pdf
+
+build/plots/eu_dist.pdf build/plots/calibration.pdf build/data/calibration.txt build/data/calibration-maxima.txt: analysis/calibration.py analysis/matplotlibrc analysis/peakdetect.py data/Europium.txt data/eu_spectrum_lit.txt | build
+	cd analysis; \
+	python3 calibration.py
 
 data/0*_*.pdf: data/*.txt data/coal.py data/hist.py data/halbwertsbreite.py
 	cd data; \
@@ -18,7 +22,7 @@ data/0*_*.pdf: data/*.txt data/coal.py data/hist.py data/halbwertsbreite.py
 	python3 halbwertsbreite.py
 
 build:
-	mkdir -p build
+	mkdir -p build build/plots build/data
 
 clean:
 	rm -r ./build; \
