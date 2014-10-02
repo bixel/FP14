@@ -7,19 +7,19 @@ bib: build/00_main.pdf
 	biber ./build/00_main && \
 	lualatex --interaction=nonstopmode --halt-on-error --output-directory=build 00_main.tex
 
+00_main.tex: ../head.tex ../math-commands.tex
+
 01_theorie.tex: pic/*.png
 
-02_measurement.tex: build/plots/eu_dist.pdf build/plots/calibration.pdf
+02_measurement.tex: build/plots/comparison.pdf build/plots/eu_dist.pdf build/plots/calibration.pdf
 
 build/plots/eu_dist.pdf build/plots/calibration.pdf build/data/calibration.txt build/data/calibration-maxima.txt: analysis/calibration.py analysis/matplotlibrc analysis/peakdetect.py data/Europium.txt data/eu_spectrum_lit.txt | build
 	cd analysis; \
 	python3 calibration.py
 
-data/0*_*.pdf: data/*.txt data/coal.py data/hist.py data/halbwertsbreite.py
-	cd data; \
-	python3 hist.py; \
-	python3 coal.py; \
-	python3 halbwertsbreite.py
+build/plots/comparison.pdf: analysis/eu_compare.py data/Europium.txt data/Europium_proof.txt
+	cd analysis; \
+	python3 eu_compare.py
 
 build:
 	mkdir -p build build/plots build/data
