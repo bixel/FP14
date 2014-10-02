@@ -36,7 +36,7 @@ def sigma_delta(pos, arr, fit_width=30, plot='', calibration_func=lambda x: x):
             plt.xticks(xticks, xlabels)
         plt.ylabel('Anzahl Ereignisse')
         plt.xlabel('Energie [keV]')
-        plt.legend(["Gaußscher Fit", "Datenpunkte"], loc='best')
+        plt.legend(['Gaußscher Fit', 'Datenpunkte'], loc='best')
         plt.savefig('{}-{}.pdf'.format(plot, pos))
         plt.clf()
     # return the integral = number of events in peak (without offset)
@@ -240,6 +240,7 @@ print('grand_total: {}\neff_errors: {}\n'.format(n_grand_total, unp.std_devs(n_e
 # grand_total = eur_time * activity
 # efficiencies = europium_events / (grand_total * eu_spectrum[:,1])
 
+print("Efficiencies:\n=============")
 for measured, expected, efficiency in zip(
     europium_events,
     grand_total * eu_spectrum[:, 1],
