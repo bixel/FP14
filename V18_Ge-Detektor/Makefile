@@ -1,11 +1,11 @@
 all: build/00_main.pdf
 
 build/00_main.pdf: 00_main.tex 01_theorie.tex 02_measurement.tex | build
-	lualatex --output-directory build 00_main.tex
+	lualatex --interaction=nonstopmode --halt-on-error --output-directory build 00_main.tex
 
 bib: build/00_main.pdf
 	bibtex ./build/00_main && \
-	lualatex --output-directory build 00_main.tex
+	lualatex --interaction=nonstopmode --halt-on-error --output-directory build 00_main.tex
 
 01_theorie.tex: pic/*.png
 
