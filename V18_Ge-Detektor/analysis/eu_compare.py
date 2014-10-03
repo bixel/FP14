@@ -18,9 +18,9 @@ ax2.hist(unbinned_array(eu_2), bins=bins, histtype='stepfilled',
 
 ax.set_yticks([])
 ax.set_xticks([])
-ax1.set_yticks([])
-ax1.set_xticks([])
-ax2.set_yticks([])
+ax1.set_yticklabels([])
+ax1.set_xticklabels([])
+ax2.set_yticklabels([])
 
 ax2.set_xlabel('Kanal')
 ax.set_ylabel('Ereignisse')
