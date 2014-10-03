@@ -1,23 +1,22 @@
 \section{Grundlagen} % (fold)
 \label{sec:grundlagen}
 In diesem Versuch soll die effektive Masse von Elektronen in Halbleitern
-besitmmt werden.
-Dabei wird die Faraday-Rotation zu Nutzen gemacht, die eine Drehung
-der Polarisationsebene von Licht in, von einem Magnetfeld umgebenen,
-Material beschreibt.
+bestimmt werden.
+Hierfür wird die Faraday-Rotation von polarisiertem Licht gemessen.
 Zunächst werden einige physikalische Grundlagen erläutert, um anschließend
-die Vorgehensweise und danach zur Messung zu kommen.
+das Messverfahren zu skizzieren und die Ergebnisse darzustellen.
 
 \subsection{Effektive Massen in Halbleitern} % (fold)
 \label{sub:effektive_masse}
 Halbleiter zeichnen sich durch eine schmale Bandlücke zwischen Leitungs-
 und Valenzband aus.
 Während die genaue Struktur der Energiebänder komplex ist, reicht meist
-eine vereinfachte Betrachtung aus, um physikalische Verhaltensweisen zu
+eine näherungsweise Betrachtung aus, um physikalische Verhaltensweisen zu
 beschreiben.
-Hierfür lässt sich die Funktion der Elektronenenergie in Abhängigkeit des
-Wellenvektors $\vec{k}$ im Phasenraum
-$\epsilon(\vec{k})$ als Taylorreihe bis zum Term zweiter Ordnung entwickeln:
+Hierfür lässt sich die Funktion der Elektronenenergie
+$\epsilon\left(\vec{k}\right)$ in Abhängigkeit des Wellenvektors $\vec{k}$
+im Phasenraum $\epsilon(\vec{k})$ als Taylorreihe bis zum Term zweiter Ordnung
+entwickeln:
 \begin{equation}
     \label{eqn:energie}
     \epsilon\left(\vec{k}\right) = \epsilon(0) + \frac{1}{2}\sum_{i=1}^{3}\frac{\partial^2\epsilon}{\partial k_i^2}\cdot k_i^2 + \dots\,.
@@ -31,7 +30,7 @@ mit
     m_i^* = \frac{\hbar^2}{\left.\frac{\partial^2\epsilon}{\partial k_i^2}\right|_{k=0}}
 \end{equation}
 identifiziert werden kann. Der große Vorteil dieser Betrachtung ist die
-Möglichkeit der Behandlung der Elektronen als Freie Quantenmechanische
+Möglichkeit der Behandlung der Elektronen als freie Quantenmechanische
 Teilchen.
 \begin{figure}[h]
     \centering
@@ -42,7 +41,7 @@ Teilchen.
     }
     \label{fig:band}
 \end{figure}
-In Einem symmetrischen Kristall sind die Ausprägungen vom $m_i^*$ in allen
+In einem symmetrischen Kristall sind die Ausprägungen vom $m_i^*$ in allen
 Raumrichtungen identisch und die Funktion \eqref{eqn:energie} lässt sich
 vereinfachen zu
 \begin{equation}
@@ -57,8 +56,8 @@ fällt damit weg und der Hamiltonoperator vereinfacht sich zu
     \quad\Rightarrow\quad
     \frac{\hbar^2}{2m^*}\mathrm{\Delta}\,.
 \end{equation*}
-Für kleine äußere Felder lässt sich das verhalten der Teilchen sogar
-klassisch betrachten und kann durch die Newtonschen Gesetzte beschrieben
+Für kleine äußere Felder lässt sich das Verhalten der Teilchen sogar
+klassisch betrachten und kann durch die Newtonschen Gesetze beschrieben
 werden.
 % subsection effektive_masse (end)
 
@@ -81,10 +80,12 @@ $k_\text{R}$ zerlegt und die Größen
     \text{und}\qquad\theta &= \frac{L}{2}\left(k_\text{R}-k_\text{L}\right)\\
 \end{align*}
 eingeführt.
-Die Größe $\theta$ kann zudem mit Hilfe der Phasengeschwindigkeit
-$v_\text{Ph} = \omega/k$ oder dem Brechungsindex $n=c/v_\text{Ph}$ darstellen,
-wobei die Größen wiederum bezüglich der zirkularen Polarisationsrichtungen
-$R$ und $L$ betrachtet werden:
+Mit Hilfe der Phasengeschwindigkeit $v_\text{Ph} = \omega/k$, oder dem
+Brechungsindex $n=c/v_\text{Ph}$ lässt sich $\theta$ darstellen als:
+% Die Größe $\theta$ kann zudem mit Hilfe der Phasengeschwindigkeit
+% $v_\text{Ph} = \omega/k$ oder dem Brechungsindex $n=c/v_\text{Ph}$ darstellen,
+% wobei die Größen wiederum bezüglich der zirkularen Polarisationsrichtungen
+% $R$ und $L$ betrachtet werden:
 \begin{equation}
     \label{eqn:theta}
     \theta = \frac{L\omega}{2}
@@ -93,6 +94,9 @@ $R$ und $L$ betrachtet werden:
     \right)
     = \frac{L\omega}{2c}\left(n_\text{R}-n_\text{L}\right)\,.
 \end{equation}
+Dabei werden die Größen getrennt für die zirkularen Polarisationsrichtungen
+$R$ und $L$ für rechts- und links-zirkulares Licht betrachtet.
+
 Im Kristall bilden die Elektronen mit den Atomrümpfen Dipolmomente aus,
 die durch die einfallende Lichtwelle angeregt werden und diese weiter
 übertragen können.
@@ -103,11 +107,12 @@ Suszeptibilität $\chi$ gilt
     \label{eqn:polarisation}
     \vec{P} = \epsilon_0\chi\vec{E}\,.
 \end{equation}
-Die Suszeptibilität ist dabei in isotropen Materialien eine skalare Größe,
-wird allgemein jedoch als oft symmetrischer Tensor betrachtet:
+In isotropen Materialien entspricht die Suszeptibilität einer skalaren Größe.
+Im Allgemeinen ist diese Größe jedoch richtungsabhängig und wird oft
+durch einen symmetrischer Tensor beschrieben:
 \begin{equation}
     \label{eqn:suszeptibilitaet_inaktiv}
-    \mathbf{\chi} =
+    \mathbf{\chi}_\text{i} =
     \left(\begin{array}{ccc}
         \chi_{xx} & 0 & 0 \\
         0 & \chi_{yy} & 0 \\
@@ -119,7 +124,7 @@ die Nebendiagonalelemente $\chi_{xy}$ nicht alle verschwinden, sondern der
 Tensor die Gestalt
 \begin{equation}
     \label{eqn:suszeptibilitaet_aktiv}
-    \mathbf{\chi} =
+    \mathbf{\chi}_\text{a} =
     \left(\begin{array}{ccc}
         \chi_{xx}    & \i\chi_{xy} & 0 \\
         -\i\chi_{xy} & \chi_{yy}   & 0 \\
@@ -150,14 +155,26 @@ des Materials auch ausgedrückt werden kann mit
 Der Faraday-Effekt beschreibt nun prinzipiell die Erzeugung doppelt brechender
 Eigenschaften eines eigentlich optisch inaktiven Materials mit Hilfe eines
 äußeren Magnetfeldes.
-Ein Kristall, der von einem Suszeptibilitätstensor der Form
-\eqref{eqn:suszeptibilitaet_inaktiv} beschrieben wird gelangt in einem
-Magnetfeld somit zu einer Form wie \eqref{eqn:suszeptibilitaet_aktiv}.
-Dabei werden effektiv die schwingenden Elektronen, die als Dipole vom
-einfallenden Licht angeregt werden, vom äußeren Magenetfeld in ihrer
-Bahn beeinflusst.
-Der Polarisationswinkel $\theta$ wird nun abhängig vom Magnetfeld
-$B$ und der Ladungsträgerdichte $N$.
+In einem Kristall, der sich in einem äußeren Magnetfeld befindet,
+findet somit der Übergang
+\begin{equation}
+\label{eq:inaktiv_to_aktiv}
+    \mathbf{\chi}_\text{i} \quad \to \quad \mathbf{\chi}_\text{a}
+\end{equation}
+statt.
+% Ein Kristall, der von einem Suszeptibilitätstensor der Form
+% \eqref{eqn:suszeptibilitaet_inaktiv} beschrieben wird gelangt in einem
+% Magnetfeld somit zu einer Form wie \eqref{eqn:suszeptibilitaet_aktiv}.
+Die Elektronen des Kristalls lassen sich dabei als Dipole beschreiben,
+die um ihre Ruhelage ausgelenkt werden.
+Diese Dipole werden vom einfallenden Licht angeregt und vom äußeren Magnetfeld
+in ihrer Bahn beeinflusst.
+%
+% Dabei werden effektiv die schwingenden Elektronen, die als Dipole vom
+% einfallenden Licht angeregt werden, vom äußeren Magenetfeld in ihrer
+% Bahn beeinflusst.
+Der Polarisationswinkel $\theta$ erfährt dadurch eine Abhängigkeit
+von der Magnetfeldstärke $B$ und der Ladungsträgerdichte $N$.
 Schließlich kann somit eine Näherung für quasifreie Ladungsträger,
 also die Elektronen im Leitungsband aufgestellt werden:
 \begin{equation}
@@ -176,7 +193,7 @@ einfallenden Lichtes auf.
 \label{sec:messung}
 In der hier durchgeführten Messung kann die Masse $m$ in der oben genannten
 Gleichung \eqref{eqn:theta_final} mit der effektiven Masse $m^*$ der
-Elektronen identifieziert werden.
+Elektronen identifiziert werden.
 Somit ermöglicht die Bestimmung des Polarisationswinkels $\theta$ eine Messung
 der effektiven Masse $m^*$.
 
@@ -191,13 +208,16 @@ der effektiven Masse $m^*$.
 Der Versuchsaufbau ist in Abbildung \ref{fig:aufbau} schematisch dargestellt.
 Der zu untersuchende Halbleiterkristall kann in einen Elektromagneten
 eingebracht werden,
-dessen Magnetfeldrichtung umpolbar sind, um den Winkel $\theta$
+dessen Magnetfeldrichtung umpolbar ist, um den Winkel $\theta$
 effektiv verdoppeln zu können.
-Als Lichtquelle dient eine Halogen-Lampe, deren Licht zunächst mit Hilfe eines
-Interferenzfilters monochromatisiert und Anschließend mit einem
-drehbaren Glan-Thompson-Primsa polarisiert wird.
-Zudem ist ein Lichtzerhacker hinter der Lampe angebracht, der mit einem
-Selektivverstärker gekoppelt wird, um Rauschen zu unterdrücken.
+Als Lichtquelle dient eine Halogen-Lampe, die überwiegend infrarotes Licht
+emittiert.
+Ein Lichtzerhacker, der hinter der Lampe angebracht ist und mit einem
+Selektivverstärker gekoppelt wird ermöglicht eine effektive
+Rauschunterdrückung.
+Das Licht wird zunächst mit einem Glan-Thompson-Prisma polarisiert, welches
+durch ein Goniometer gedreht werden kann.
+Anschließend durchleuchtet der Lichtstrahl die Probe.
 Das Licht wird hinter der Probe durch ein weiteres Glan-Thompson-Primsa in
 zwei, senkrecht zueinander stehende Polarisationsebenen aufgeteilt, deren
 Intensität jeweils mittels Photowiderständen in ein Spannungssignal
@@ -206,19 +226,19 @@ Ein Differenzverstärker gibt schließlich das Differenzsignal der
 Photospannungen auf ein Oszilloskop, dessen Amplitude dann proportional zur
 Drehung der Polarisationsebene des ausfallenden Lichtes ist.
 
-Nachdem die Apparatur justiert ist und das Signal auf dem Oszilloskop
-ohne Probe und ohne Magnetfeld tatsächlich keine Intensität anzeigt,
-kann eine Probe in den Elektromagneten eingebracht und das Magnetfeld
-hochgefahren werden.
-Das polarisiert Licht aus dem ersten Glan-Thompson-Primsa wird nun in der
-Probe gedreht, wobei das Signal wächst.
+Zur Justage der Apparatur muss zunächst geprüft werden, dass das Signal ohne
+eingelegte Probe und ohne eingeschaltetes Magnetfeld auf Null sinkt.
+Anschließend, kann eine Probe in den Elektromagneten eingebracht und
+das Magnetfeld eingeschaltet werden.
+Die Polarisationsrichtung des Lichts aus dem ersten Glan-Thompson-Prisma wird
+nun in der Probe gedreht, wodurch die Signalspannung steigt.
 Durch Einstellen des maximalen Signals bei beiden Magnetfeldrichtungen
-lässt sich nun der Rotationswinkel $\theta$ bestimmen:
+lässt sich anschließend der Rotationswinkel $\theta$ bestimmen:
 \begin{equation}
     \label{eqn:theta_messung}
     \theta = \frac{1}{2}\left(\theta_1-\theta_2\right)\,.
 \end{equation}
 Hierbei bezeichnen $\theta_1$ und $\theta_2$ die beiden Stellungen des ersten
-Glan-Thompson-Primsas.
+Glan-Thompson-Prismas.
 
 % section messung (end)
