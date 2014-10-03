@@ -20,6 +20,10 @@ build/plots/efficiency.pdf: analysis/efficiency.py build/data/calibration-maxima
 	cd analysis; \
 	python3 efficiency.py
 
+build/plots/caesium_gauss.pdf: analysis/caesium.py build/data/calibration.txt data/Caesium.txt | build
+	cd analysis; \
+	python3 caesium.py
+
 build:
 	mkdir -p build build/plots build/data
 
