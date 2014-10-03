@@ -24,6 +24,10 @@ build/plots/caesium_gauss.pdf: analysis/caesium.py build/data/calibration.txt da
 	cd analysis; \
 	python3 caesium.py
 
+build/plots/ba_activity.pdf build/data/ba_activity_peaks.txt build/data/ba_activity-params.txt build/data/ba_activity.txt: analysis/baactivity.py data/ba_spectrum_lit.txt build/data/efficiency-params.txt build/data/calibration.txt data/Barium.txt
+	cd analysis; \
+	python3 baactivity.py
+
 build:
 	mkdir -p build build/plots build/data
 
