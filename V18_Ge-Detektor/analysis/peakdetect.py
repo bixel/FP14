@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.optimize import curve_fit
-from uncertainties import ufloat
+from uncertainties import ufloat, umath, unumpy as unp
 
 def gauss(x, A, mu, sigma, B):
     """ define gaussian with mean mu and width sigma
@@ -29,7 +29,7 @@ def fit_gauss(x, y, pos_x, fit_width=30, yerr=0, ax=None):
     if ax is not None:
         xs = np.linspace(min(x), max(x), 200)
         ax.plot(xs, gauss(xs, *coeff), label='Gaußscher Fit')
-        ax.errorbar(x, y, yerr=yerr, fmt='+', label='Datenpunkte')
+        ax.errorbar(x, y, yerr=np.sqrt(y), fmt='+', label='Datenpunkte')
     return mu, sigma, A
 
 

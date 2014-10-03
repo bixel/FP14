@@ -1,3 +1,5 @@
+""" Detector-Properties
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 from peakdetect import get_maxima, fit_gauss
@@ -14,7 +16,8 @@ if __name__ == '__main__':
     # maximum-detection and fit of gaussian
     maxima = get_maxima(cs_dist, n_max=1)
     fig, ax = plt.subplots(1, 1)
-    mu, sigma, A = fit_gauss(xs, cs_dist, xs[maxima[0, 0]], ax=ax, fit_width=5)
+    mu, sigma, A = fit_gauss(xs, cs_dist, xs[maxima[0, 0]], ax=ax, fit_width=5,
+            yerr=np.sqrt(cs_dist))
     ax.set_xlabel('Energie / keV')
     ax.set_ylabel('Ereignisse')
     ax.legend(loc='best')
