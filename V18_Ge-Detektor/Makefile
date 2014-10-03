@@ -1,6 +1,6 @@
 all: build/00_main.pdf
 
-build/00_main.pdf: 00_main.tex 01_theorie.tex 02_measurement.tex build/plots/eu_dist.pdf build/plots/calibration.pdf build/plots/comparison.pdf build/plots/efficiency.pdf pic/*.png | build
+build/00_main.pdf: 00_main.tex 01_theorie.tex 02_measurement.tex build/plots/eu_dist.pdf build/plots/calibration.pdf build/plots/comparison.pdf build/plots/efficiency.pdf build/plots/caesium_gauss.pdf build/plots/ba_activity.pdf pic/*.png | build
 	lualatex --interaction=nonstopmode --halt-on-error --output-directory=build 00_main.tex
 
 bib: build/00_main.pdf
