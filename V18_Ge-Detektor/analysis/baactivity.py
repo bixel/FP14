@@ -39,7 +39,6 @@ if __name__ == '__main__':
         fig.savefig('../build/plots/ba_gauss-'+str(maximum[0])+'.pdf')
         fig.clf()
     ba_events = np.array(ba_events)
-    print(ba_events)
 
     # efficiency-parameters
     ba_energies, ba_props = np.genfromtxt('../data/ba_spectrum_lit.txt',
