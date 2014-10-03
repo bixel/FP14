@@ -72,11 +72,13 @@ end = 2200
 Ua_exp = np.array([ufloat(0,0) for i in range(end-start)])
 Ua_expr = np.linspace(0, end-start, end-start)
 Ua_r = np.array([0.0 for i in range(end-start)])
+Ua_expr2 = np.array([0.0 for i in range(end-start)])
 
 for i in range(end-start):
 	Ua_exp[i] = log(abs(Ua[i+start]-U2_a))
 	Ua_r[i] = Ua_exp[i].nominal_value
 	Ua_expr[i] = Xa[i+start]
+	Ua_expr2[i] = Xa[i+start] * 10**(9)
 
 start = 500
 end = 1450
@@ -84,11 +86,13 @@ end = 1450
 Ub_exp = np.array([ufloat(0,0) for i in range(end-start)])
 Ub_expr = np.linspace(0,end-start,end-start)
 Ub_r = np.array([0.0 for i in range(end-start)])
+Ub_expr2 = np.array([0.0 for i in range(end-start)])
 
 for i in range(end-start):
 	Ub_exp[i] = log(abs(Ub[i+start]-U2_b))
 	Ub_r[i] = Ub_exp[i].nominal_value
 	Ub_expr[i] = Xb[i+start]
+	Ub_expr2[i] = Xb[i+start] * 10**(9)
 
 start = 1600
 end = 2200
@@ -134,16 +138,16 @@ print("C_a:" + str(C_a))
 print("C_b:" + str(C_b))
 print("C_c:" + str(C_c))
 fig = plt.figure()
-plt.plot(Ua_expr, val1[0]*Ua_expr+val1[1], "r-", label="Regression geschlossen")
-plt.plot(Ua_expr,Ua_r,"r.", label="Messpunkte offen")
-plt.xlabel("t[s]")
+plt.plot(Ua_expr2, val1[0]*Ua_expr+val1[1], "r-", label="Regression geschlossen")
+plt.plot(Ua_expr2,Ua_r,"r.", label="Messpunkte offen")
+plt.xlabel("t[ns]")
 plt.ylabel("ln(U[mV]/1[mV])")
 plt.savefig("Regression1.pdf")
 plt.close(fig)
 fig = plt.figure()
-plt.plot(Ub_expr,Ub_r,"b.", label="Messpunkte geschlossen")
-plt.plot(Ub_expr, val2[0]*Ub_expr+val2[1], "b-", label="Regression offen")
-plt.xlabel("t[s]")
+plt.plot(Ub_expr2,Ub_r,"b.", label="Messpunkte geschlossen")
+plt.plot(Ub_expr2, val2[0]*Ub_expr+val2[1], "b-", label="Regression offen")
+plt.xlabel("t[ns]")
 plt.ylabel("ln(U[mV]/1[mV])")
 plt.savefig("Regression2.pdf")
 plt.close(fig)

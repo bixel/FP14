@@ -33,9 +33,9 @@ welche im weiteren Verlauf der Rechnung verwendet wird.
 \begin{table}
 	\centering
 	\caption[]{Zur Bestimmung der Magnetfeldstärke verwendete Messpunkte.}
-	\begin{tabular}{r r r r}
+	\begin{tabular}{S[table-format=2] S[table-format=3.2] S[table-format=2] S[table-format=3.2]}
 		\toprule
-		d[$\SI{}{\milli\meter}$] & B[$\SI{}{\milli\tesla}$] & d[$\SI{}{\milli\meter}$] & B[$\SI{}{\milli\tesla}$]\\
+		{d[$\SI{}{\milli\meter}$]} & {B[$\SI{}{\milli\tesla}$]} & {d[$\SI{}{\milli\meter}$]} & {B[$\SI{}{\milli\tesla}$]}\\
 		\midrule
 		 0	&	  0.80	&	30	&	455.00\\
 		 2	&	  1.28	&	31	&	454.00\\
@@ -63,66 +63,71 @@ welche im weiteren Verlauf der Rechnung verwendet wird.
 \subsection{Bestimmung der Masse von freien Elektronen} % (fold)
 \label{sub:bestimmung_der_masse_von_freien_elektronen}
 
-Die zur berechnung der Masse freier Elektronen verwendeten Daten sind in Tabelle \ref{tab_1} bis \ref{tab_2} dargestellt.
+Die zur Berechnung der Masse freier Elektronen verwendeten Daten sind in Tabelle \ref{tab_1} bis \ref{tab_2} dargestellt.
 Zunächst werden die Winkel in rad umgerechnet wobei
 \begin{eqnarray*}
-	1\SI{}{\arcsecond} &=& \frac{\pi}{648000}\SI{}{\radian},\\
+	1\SI{}{\arcminute} &=& \frac{\pi}{10800}\SI{}{\radian},\\
 	1\SI{}{\degree} &=& \frac{\pi}{180}\SI{}{\radian}
 \end{eqnarray*}
 gilt.
 
 Anschließend wird der Winkel noch auf die Dicke $D$ der Probe normiert und die Winkel der hochreinen Probe von den Winkeln der anderen beiden Proben abgezogen.
-Somit ergeben sich die Winkel aus Tabelle \ref{wink1}
+Somit ergeben sich die Winkel aus Tabelle \ref{wink1}, welche in Abbildung \ref{theta} dargestellt sind.
 
 Mit dieser Methode sollte nur der Anteil der n-dotierung übrig bleiben, welcher aus den zu untersuchenden freien Elektronen besteht.
 Die Daten der Proben sind in Tabelle \ref{data} aufgeführt.
 
-Aus dem Winkel lässt sich mithilfe einer linearen Regression mit
+Aus dem Winkel lässt sich mithilfe einer linearen Regression über Gleichung \eqref{eqn:theta_final} die Masse der Elektronen durch
 \begin{equation*}
 	\frac{\Theta}{D} = m_\text{reg} \lambda^2 + b
 \end{equation*}
-die Masse der Elektronen über Gleichung \eqref{eqn:theta_final} bestimmt werden.
-In dieser Gleichung ist der frequenzabhängige Brechungsindex $n$ vorhanden. Da die frequenzabhängigkeit nicht berücksichtigt werden soll und sich die Werte von etwa $3.3-3.5$ (\cite{GeAs}) erstrecken wird ein Brechungsindex von 
+bestimmt werden.
+In dieser Gleichung ist der frequenzabhängige Brechungsindex $n$ vorhanden. Da die Frequenzabhängigkeit nicht berücksichtigt werden soll und sich die Werte von etwa $3.3-3.5$ \cite{GeAs} erstrecken wird ein Brechungsindex von 
 \begin{equation*}
 	n = 3.4
 \end{equation*}
 angenommen.
 Die Regression lieferte 
 \begin{eqnarray*}
-	m_\text{dünn} &=& \SI{2.17e13}{1\per\meter^3},\\
-	m_\text{dick} &=& \SI{-1.81e11}{1\per\meter^3}
+	m_\text{dünn} &=& \SI{2.1198e13}{1\per\meter^3},\\
+	m_\text{dick} &=& \SI{-4.7136e11}{1\per\meter^3}
 \end{eqnarray*}
 und ist in Abbildung \ref{fit} dargestellt.
 
 Daraus ergiebt sich für die Masse der freien Elektronen
 \begin{eqnarray*}
-	m_{\text{elek}_\text{dünn}} &=& \SI{6.14e-32}{\kilogram},\\
-	m_{\text{elek}_\text{dick}} &=& \SI{4.40e-31}{\kilogram}.
+	m_{\text{elek}_\text{dünn}} &=& \SI{6.2124e-32}{\kilogram},\\
+	m_{\text{elek}_\text{dick}} &=& \SI{2.7274e-31}{\kilogram}.
 \end{eqnarray*}
 Der Quotient aus errechneten Masse eines freien Elektrons und der Masse eines gebundenen ELektrons ($m_e = \SI{9.11e-31}{\kilogram}$) sollte nach Litartur $m/m_e \approx 0.066$ ergeben \cite{kittel}.
 In diesem Fall erreicht der Quotient die Werte
 \begin{eqnarray*}
-	\frac{m_{\text{elek}_\text{dünn}}}{m_\text{e}} &=& \SI{0.0675}{},\\
-	\frac{m_{\text{elek}_\text{dick}}}{m_\text{e}} &=& \SI{0.4833}{}.
+	\frac{m_{\text{elek}_\text{dünn}}}{m_\text{e}} &=& \SI{0.0682}{},\\
+	\frac{m_{\text{elek}_\text{dick}}}{m_\text{e}} &=& \SI{0.2994}{}.
 \end{eqnarray*}
-und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa $\SI{2.16}{\percent}$ und die Masse der Elektronen bei der dicken Probe $\SI{86.35}{\percent}$ ab.
+und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa $\SI{3.23}{\percent}$ und die Masse der Elektronen bei der dicken Probe $\SI{77.96}{\percent}$ ab.
 
 \begin{table}
 	\centering
 	\caption{Daten der verwendeten Proben.}
-	\begin{tabular}{r r r}
+	\begin{tabular}{l S[table-format=1.3] S[table-format=1.1]}
 	\toprule
-		Probe & D[$\SI{}{\milli\meter}$]& N[$\SI{e18}{1\per\centi\meter^3}$]\\ 
+		Probe & {D[$\SI{}{\milli\meter}$]} & {N[$\SI{e18}{1\per\centi\meter^3}$]}\\ 
 		\midrule
 		GeAs hochrein & 5.11 & 0\\
 		GeAs n-dotiert dünn & 1.296 & 2.8\\
-		GeAs n-dotiert dick & 1.460 & 1.2\\
+		GeAs n-dotiert dick & 1.360 & 1.2\\
+		\bottomrule
 	\end{tabular}
+	\label{data}
 \end{table}
 
 \begin{figure}
 \centering
-	\includegraphics[width = 14cm]{data/fit.pdf}
+	\includegraphics[width = 10cm]{data/theta.pdf}
+	\caption{Normierter Winkel $\Theta$ in Abhängigkeit der Wellenänge.}
+	\label{theta}
+	\includegraphics[width = 10cm]{data/fit.pdf}
 	\caption{Lineare Ausgleichsrechnung.}
 	\label{fit}
 \end{figure}
@@ -130,21 +135,22 @@ und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa 
 \begin{table}
 	\centering
 	\caption{Drehwinkel der n-dotierten Proben, nachdem der Winkel der hochreinen Probe abgezogen wurde.}
-	\begin{tabular}{r r}
-		GeAs n-dotiert dünn & GeAs n-dotiert dick\\
-		\hline 
-		$\Theta_\text{dünn}[\SI{}{\radian\per\meter}]$ & $\Theta_\text{dick}[\SI{}{\radian\per\meter}]$\\
-		\hline\hline
-		102.42	&	 26.04\\
-		 94.23	&	 50.89\\
-		107.44	&	 56.92\\
-		 75.55	&	 26.51\\
-		 46.94	&	 43.68\\
-		 53.59	&	  5.16\\
-		 -7.11	&	 24.01\\
-		-35.89	&	 85.58\\
-		 14.30	&	 23.62\\
-		 \hline
+	\begin{tabular}{S[table-format=1.3] S[table-format=3.4] S[table-format=2.4]}
+		\toprule
+		{} & {GeAs n-dotiert dünn} & {GeAs n-dotiert dick}\\
+		\midrule
+		{$\lambda[\si{\micro\meter}]$} & {$\Theta_\text{dünn}[\SI{}{\radian\per\meter}]$} & {$\Theta_\text{dick}[\SI{}{\radian\per\meter}]$}\\
+		\midrule
+			2.650	&	102.4165	&	 20.4567\\
+			2.510	&	 97.6964	&	 49.3232\\
+			2.340	&	101.1730	&	 56.6287\\
+			2.156	&	 73.9583	&	 24.5844\\
+			1.960	&	 52.4916	&	 44.1711\\
+			1.720	&	 54.6808	&	  4.2309\\
+			1.450	&	 -6.2973	&	 24.1039\\
+			1.290	&	-31.5552	&	 82.3523\\
+			1.060	&	 14.6697	&	 22.1148\\
+		 \bottomrule
 	\end{tabular}
 	\label{wink1}
 \end{table}
@@ -152,28 +158,32 @@ und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa 
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der hochreinen Probe.}
-	\begin{tabular}{r c r r }
-		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
-		\hline\hline
-		2.650	&	+	&	194	&	51\\
-				&	-	&	205	&	55\\
-		2.510	&	+	&	197	&	33\\
-				&	-	&	201	&	59\\
-		2.340	&	+	&	194	&	 3\\
-				&	-	&	202	&	 2\\
-		2.156	&	+	&	194	&	52\\
-				&	-	&	201	&	42\\
-		1.960	&	+	&	192	&	40\\
-				&	-	&	204	&	15\\
-		1.720	&	+	&	192	&	58\\
-				&	-	&	204	&	31\\
-		1.450	&	+	&	191	&	 4\\
-				&	-	&	207	&	42\\
-		1.200	&	+	&	184	&	36\\
-				&	-	&	209	&	35\\
-		1.060	&	+	&	179	&	 5\\
-				&	-	&	214	&	55\\
-		\hline
+	\begin{tabular}{S[table-format=1.3] c S[table-format=3] S[table-format=2] S[table-format=1.4] S[table-format=2.4]}
+		\toprule
+		{Filter[$\SI{}{\micro\meter}$]} & 
+		{Polarisation} & 
+		{Winkel[$\SI{}{\degree}$]} & 
+		{Winkel[$\SI{}{\arcminute}$]} & {Winkel[$\si{\radian}$]} & {Winkel[$\si{\radian\per\meter}$]}\\
+		\midrule
+		2.650	&	+	&	194	&	51	&	0.0966  &	18.8992\\
+		     	&	-	&	205	&	55	&	        &	       \\
+		2.510	&	+	&	197	&	33	&	0.0387  &	 7.5711\\
+		     	&	-	&	201	&	59	&	        &	       \\
+		2.340	&	+	&	194	&	 3	&	0.0697  &	13.6336\\
+		     	&	-	&	202	&	 2	&	        &	       \\
+		2.156	&	+	&	194	&	52	&	0.0596  &	11.6697\\
+		     	&	-	&	201	&	42	&	        &	       \\
+		1.960	&	+	&	192	&	40	&	0.1011  &	19.7815\\
+		     	&	-	&	204	&	15	&	        &	       \\
+		1.720	&	+	&	192	&	58	&	0.1008  &	19.7246\\
+		     	&	-	&	204	&	31	&	        &	       \\
+		1.450	&	+	&	191	&	 4	&	0.1452  &	28.4057\\
+		     	&	-	&	207	&	42	&	        &	       \\
+		1.290	&	+	&	184	&	36	&	0.2180  &	42.6655\\
+		     	&	-	&	209	&	35	&	        &	       \\
+		1.060	&	+	&	179	&	 5	&	0.3127  &	61.1947\\
+		     	&	-	&	214	&	55	&	        &	       \\
+		\bottomrule
 	\end{tabular}
 	\label{tab_1}
 \end{table}
@@ -181,28 +191,29 @@ und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa 
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der dünnen Probe.}
-	\begin{tabular}{r c r r }
-		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
-		\hline\hline
-		2.650	&	+	&	187	&	 2\\
-				&	-	&	205	&	 3\\
-		2.510	&	+	&	192	&	 1\\
-				&	-	&	207	&	39\\
-		2.340	&	+	&	191	&	57\\
-				&	-	&	209	&	 0\\
-		2.156	&	+	&	192	&	20\\
-				&	-	&	205	&	 3\\
-		1.960	&	+	&	193	&	 0\\
-				&	-	&	203	&	44\\
-		1.720	&	+	&	194	&	 7\\
-				&	-	&	205	&	10\\
-		1.450	&	+	&	194	&	13\\
-				&	-	&	197	&	30\\
-		1.200	&	+	&	195	&	50\\
-				&	-	&	194	&	11\\
-		1.060	&	+	&	192	&	38\\
-				&	-	&	203	&	54\\
-		\hline
+	\begin{tabular}{S[table-format=1.3] c S[table-format=3] S[table-format=2] S[table-format=1.4] S[table-format=3.4]}
+	\toprule
+		{Filter[$\SI{}{\micro\meter}$]} & {Polarisation} & {Winkel[$\SI{}{\degree}$]} & {Winkel[$\SI{}{\arcminute}$]} & {Winkel[$\si{\radian}$]} & {Winkel[$\si{\radian\per\meter}$]}\\
+		\midrule
+		2.650	&	+	&	187	&	 2 &	0.1572  &	121.3156\\
+				&	-	&	205	&	 3 &	        &	        \\
+		2.510	&	+	&	192	&	 1 &	0.1364  &	105.2674\\
+				&	-	&	207	&	39 &	        &	        \\
+		2.340	&	+	&	191	&	57 &	0.1488  &	114.8066\\
+				&	-	&	209	&	 0 &	        &	        \\
+		2.156	&	+	&	192	&	20 &	0.1110  &	 85.6280\\
+				&	-	&	205	&	 3 &	        &	        \\
+		1.960	&	+	&	193	&	 0 &	0.0937  &	 72.2732\\
+				&	-	&	203	&	44 &	        &	        \\
+		1.720	&	+	&	194	&	 7 &	0.0964  &	 74.4054\\
+				&	-	&	205	&	10 &	        &	        \\
+		1.450	&	+	&	194	&	13 &	0.0287  &	 22.1084\\
+				&	-	&	197	&	30 &	        &	        \\
+		1.290	&	+	&	195	&	50 &	0.0144  &	 11.1103\\
+				&	-	&	194	&	11 &	        &	        \\
+		1.060	&	+	&	192	&	38 &	0.0983  &	 75.8644\\
+				&	-	&	203	&	54 &	        &	        \\
+		\bottomrule
 	\end{tabular}
 	\label{tab_2}
 \end{table}
@@ -210,37 +221,38 @@ und weicht der Wert für die Masse der Elektronen bei der dünnen Probe um etwa 
 \begin{table}
 	\centering
 	\caption[]{Drehwinkel der dicken Probe.}
-	\begin{tabular}{r c r r }
-		Filter[$\SI{}{\micro\meter}$] & Polarisation & Winkel[$\SI{}{\degree}$] & Winkel[$\SI{}{\arcsecond}$]\\
-		\hline\hline
-		2.650	&	+	&	194	&	59\\
-				&	-	&	201	&	 7\\
-		2.510	&	+	&	193	&	40\\
-				&	-	&	202	&	32\\
-		2.340	&	+	&	195	&	49\\
-				&	-	&	206	&	46\\
-		2.156	&	+	&	195	&	27\\
-				&	-	&	201	&	 6\\
-		1.960	&	+	&	193	&	 4\\
-				&	-	&	203	&	 2\\
-		1.720	&	+	&	196	&	54\\
-				&	-	&	200	&	38\\
-		1.450	&	+	&	195	&	14\\
-				&	-	&	203	&	25\\
-		1.200	&	+	&	184	&	46\\
-				&	-	&	204	&	15\\
-		1.060	&	+	&	191	&	32\\
-				&	-	&	204	&	31\\
-		\hline
+	\begin{tabular}{S[table-format=1.3] c S[table-format=3] S[table-format=2] S[table-format=1.4] S[table-format=3.4]}
+		\toprule
+		{Filter[$\SI{}{\micro\meter}$]} & {Polarisation} & {Winkel[$\SI{}{\degree}$]} & {Winkel[$\SI{}{\arcminute}$]} & {Winkel[$\si{\radian}$]} & {Winkel[$\si{\radian\per\meter}$]}\\
+		\midrule
+		2.650	&	+	&	194	&	59 &	0.0535  &	 39.3555\\
+				&	-	&	201	&	 7 &	        &	        \\
+		2.510	&	+	&	193	&	40 &	0.0774  &	 56.8943\\
+				&	-	&	202	&	32 &	        &	        \\
+		2.340	&	+	&	195	&	49 &	0.0956  &	 70.2623\\
+				&	-	&	206	&	46 &	        &	        \\
+		2.156	&	+	&	195	&	27 &	0.0493  &	 36.2541\\
+				&	-	&	201	&	 6 &	        &	        \\
+		1.960	&	+	&	193	&	 4 &	0.0870  &	 63.9526\\
+				&	-	&	203	&	 2 &	        &	        \\
+		1.720	&	+	&	196	&	54 &	0.0326  &	 23.9555\\
+				&	-	&	200	&	38 &	        &	        \\
+		1.450	&	+	&	195	&	14 &	0.0714  &	 52.5096\\
+				&	-	&	203	&	25 &	        &	        \\
+		1.290	&	+	&	184	&	46 &	0.1700  &	125.0178\\
+				&	-	&	204	&	15 &	        &	        \\
+		1.060	&	+	&	191	&	32 &	0.1133  &	 83.3095\\
+				&	-	&	204	&	31 &	        &	        \\
+		\bottomrule
 	\end{tabular}
 	\label{tab_2}
 \end{table}
-
+ 
 \section{Diskussion} % (fold)
 \label{sec:diskussion}
 
 Alles in allem lässt sich sagen, dass die Apparatur dafür geeignet ist die Masse von freien Elektronen zu bestimmen.
 Es ist allerdings anzumerken, dass die Werte für die lineare Ausgleichsrechnung keine linearität vermuten lassen weshalb auch die Fehler nicht berücksichtigt worden sind.
 Es ist jedoch gelungen, die Masse der freie Elektronen relativ genau zu bestimmen.
-Bei der $\SI{1.296}{\milli\meter}$ dicken Probe konnte so ein Fehler auf die Masse von $\SI{2.16}{\percent}$ erreicht werden, während bei der $\SI{1.36}{\milli\meter}$ dicken Probe der Fehler bei $\SI{86.35}{\percent}$ liegt.
+Bei der $\SI{1.296}{\milli\meter}$ dicken Probe konnte so ein Fehler auf die Masse von $\SI{3.23}{\percent}$ erreicht werden, während bei der $\SI{1.36}{\milli\meter}$ dicken Probe der Fehler bei $\SI{77.96}{\percent}$ liegt.
 Dominante Fehlerquellen sind die Vernachlässigung der Dispersion des Brechungsindices und dass die Apparatur nicht optimal jusitert werden konnte.

@@ -18,9 +18,9 @@ Dafür ist die Python Bibliothek \textit{uncertainties} benutzt worden.
 
 Fehler wenn nicht anders angegeben:
 \begin{align*}
-    \Delta U &= \SI{+-0.5}{mV}\,, \\
-    \Delta f &= \SI{+-0.5}{kHz}\,,\\
-	\Delta t &= \SI{+-5}{ns}\,.
+    \Delta U &= \SI{+-0.5}{\milli\volt}\,, \\
+    \Delta f &= \SI{+-0.5}{\kilo\hertz}\,,\\
+	\Delta t &= \SI{+-5}{\nano\second}\,.
 \end{align*}
 
 \subsection{A: Leistungskonstanten verschiedener Kabel} % (fold)
@@ -162,30 +162,30 @@ Die Ergebnisse sind den Tabellen \ref{tab_konst1} bis \ref{tab_konst3} zu entneh
 \begin{table}
 \centering
 	\caption[]{Dämpfungskonstanten des 100m M17/028 RG 058 Kabels.}
-    \begin{tabular}{S[table-format=3.0] S[table-format=2.0] S[table-format=2.0] S[table-format=1.2(2)]}
+    \begin{tabular}{S[table-format=3.0] S[table-format=2.0] S[table-format=2.0] S[table-format=1.4(4)]}
 	\toprule
     {$f[\si{\kilo\hertz}]$} & {$U_0[\si{\milli\volt}]$} & {$U_\text{ged}[\si{\milli\volt}]$} & {$\alpha[\si{\decibel}]$} \\
 		\midrule
-			79	&	92	&	89	& 0.66(16) \\
-			88	&	86	&	83	& 0.71(17) \\
-			96	&	80	&	77	& 0.76(18) \\
-			106	&	74	&	71	& 0.83(20) \\
-			115	&	67	&	64	& 0.92(22) \\
-			124	&	60	&	59	& 0.34(24) \\
-			133	&	56	&	54	& 0.73(26) \\
-			143	&	52	&	50	& 0.78(28) \\
-			151	&	49	&	47	& 0.83(29) \\
-			160	&	45	&	44	& 0.45(32) \\
-			170	&	41	&	41	& 0.00(34) \\
-			179	&	40	&	39	& 0.50(40) \\
-			188	&	38	&	37	& 0.50(40) \\
-			196	&	36	&	35	& 0.60(40) \\
-			205	&	35	&	33	& 1.20(40) \\
-			214	&	33	&	32	& 0.60(40) \\
-			224	&	32	&	30	& 1.30(50) \\
-			233	&	31	&	29	& 1.30(50) \\
-			241	&	30	&	28	& 1.40(50) \\
-			251	&	28	&	27	& 0.70(50) \\
+			79	&	92	&	89	& 0.6630(1563) \\
+			88	&	86	&	83	& 0.7101(1674) \\
+			96	&	80	&	77	& 0.7644(1803) \\
+			106	&	74	&	71	& 0.8277(1952) \\
+			115	&	67	&	64	& 0.9162(2161) \\
+			124	&	60	&	59	& 0.3361(2377) \\
+			133	&	56	&	54	& 0.7274(2573) \\
+			143	&	52	&	50	& 0.7844(2775) \\
+			151	&	49	&	47	& 0.8335(2948) \\
+			160	&	45	&	44	& 0.4496(3179) \\
+			170	&	41	&	41	& 0.0000(3449) \\
+			179	&	40	&	39	& 0.5064(3581) \\
+			188	&	38	&	37	& 0.5334(3772) \\
+			196	&	36	&	35	& 0.5634(3985) \\
+			205	&	35	&	33	& 1.1768(4165) \\
+			214	&	33	&	32	& 0.6154(4353) \\
+			224	&	32	&	30	& 1.2908(4569) \\
+			233	&	31	&	29	& 1.3338(4722) \\
+			241	&	30	&	28	& 1.3799(4885) \\
+			251	&	28	&	27	& 0.7274(5145) \\
 			\bottomrule
 	\end{tabular}
 	\label{tab_daempf}
@@ -200,6 +200,12 @@ Anschließend kann die Dämpfungskonstante über
 \end{equation*}
 berechnet werden.
 Das Ergebnis und die verwendeten Werte sind in Tabelle \ref{tab_daempf} angegeben und in den Abbildungen \ref{fig_daempf1} und \ref{fig_daempf2} graphisch dargestellt.
+
+Der Fehler ist über
+\begin{equation*}
+	\Delta \alpha = \sqrt{\left(|-\frac{20}{U_0}|\cdot \Delta U_0\right)^2 + \left(|\frac{20}{U_\text{ged}}|\cdot \Delta U_\text{ged}\right)^2}
+\end{equation*}
+mit $\Delta U_0 = \Delta U_\text{ged} = \SI{0.5}{\milli\volt}$ berechnet worden.
 
 \begin{figure}
 	\centering
@@ -227,10 +233,19 @@ Zunächst wird die Differenz der beiden Zeiten gebildet, um daraus mithilfe der 
 die Länge $l$ zu berechnen.
 Die Geschwindigkeit $v$ ist dabei zu
 \begin{equation*}
-	v = c/\sqrt{\epsilon_r} \approx 2*10^{8}\,\frac{\text{m}}{\text{s}}
+	v = \frac{c}{\epsilon_r} \approx \SI{2e8}{\meter\per\second}
 \end{equation*}
 bestimmt worden.
 Die gemessenen und bestimmten Daten sind in Tabelle \ref{tab_zeit1} dargestellt.
+
+Der Fehler für $\Delta t$ ist über
+\begin{equation*}
+	\Delta (\Delta t) = \sqrt{\left(\Delta t_1 \right)^2 + \left(\Delta t_2 \right)^2}
+\end{equation*}
+mit $\Delta t_1 = \Delta t_2 = \SI{5}{\nano\second}$ berechnet worden. Daraus folgt der Fehler für l mit
+\begin{equation*}
+	\Delta l = \frac{v}{2} \cdot \Delta (\Delta t)\,.
+\end{equation*}
 
 
 \begin{table}
@@ -289,28 +304,33 @@ Damit ergiebt sich
 	R_\text{gesch} &=& \SI{6.79(8)}{\ohm}.
 \end{eqnarray*}
 
-Um den Induktivitätsbelag $L$ berechnen zu können wird angenommen, dass bei einem $RL$ Abschluss in Serienschaltung der reflektierte elektrische Puls einen exponentiellen Zusammenhang besitzt.
-Die Zeitkonstante der Funktion ist somit durch die Gleichung
-\begin{equation*}
-	\tau_{RL} = \frac{L}{Z+R}
-\end{equation*}
-gegeben.
-Um an den negativen reziproken Wert der Zeitkonstanten zu gelangen, sind die Werte in diesem Bereich logarithmiert worden.
-Mithilfe einer linearen Regression mit $f(x)=mx+b$ (Abbildung \ref{fig_fit1})hat sich für die Steigung
+Um die Beläge $C$ und $L$ auszurechnen kann ausgenutzt werden, dass der reflektierte Puls einen exponentiellen Zusammenhang besitzt.
+Der Induktivitätsbelag $L$ kann über das geschlossene Kabel berechnet werden, da dies einem $RL$ Abschluss in Serienschaltung entspricht.
+Der Kapazitivbelag $C$ hingegen wird über das offene Kabel bestimmt.
+Für die Zeitkonstanten solcher Anordnungen gilt
 \begin{eqnarray*}
-	m_\text{offen} &=& \SI{-7.89(30)e5}{1\per\second},\\
-	m_\text{gesch} &=& \SI{-2.60(2)e7}{1\per\second},
+	\tau_L &=& \frac{L}{Z+R} = -\frac{1}{m_\text{gesch}}\,, \\
+	\tau_C &=& (Z_0 + R) C = -\frac{1}{m_\text{offen}}\,.
 \end{eqnarray*}
+Damit sind die Beläge durch
+\begin{eqnarray*}
+	L = -\frac{Z_0 + R}{m_\text{gesch}} \,,\\
+	C = -\frac{1}{m_\text{offen} (Z_0 + R)}
+\end{eqnarray*}
+gegeben.
+
+Um an den negativen reziproken Wert der Zeitkonstanten zu gelangen, sind die Werte in diesem Bereich logarithmiert worden.
+Mithilfe einer linearen Regression mit $f(x)=mx+b$ (Abbildung \ref{fig_fit1}) hat sich für die Steigung
+\begin{eqnarray*}
+	m_\text{gesch} &=& \SI{-2.60(2)e7}{1\per\second}\,,\\
+	m_\text{offen} &=& \SI{-7.89(30)e5}{1\per\second}
+	\end{eqnarray*}
 ergeben und somit für den Induktivbelag
 \begin{eqnarray*}
 	L_\text{gesch} &=& \SI{169.00(6)}{\micro\henry}.
 \end{eqnarray*}
-Mithilfe der Gleichung
-\begin{eqnarray*}
-	C = -\frac{1}{mZ}
-\end{eqnarray*}
-kann zudem der Kapazitivbelag $C$ berechnet werden.
-Für diesen ergiebt sich somit
+
+Für den Kapazitivbelag ergiebt sich
 \begin{eqnarray*}
 	C_\text{offen} &=& \SI{2.53(9)e-8}{\farad}.
 \end{eqnarray*}
@@ -319,7 +339,7 @@ Für diesen ergiebt sich somit
 	\centering
 	\includegraphics[width = 14cm]{data/c/Regression1.pdf}
 	\includegraphics[width = 14cm]{data/c/Regression2.pdf}
-	\caption{Lineare Ausgleichsrechnungen zur Bestimmung des Induktivbelages und des Kapazitivbelags.}
+	\caption{Lineare Ausgleichsrechnungen zur Bestimmung des Induktivbelages (unten) und des Kapazitivbelags (oben).}
 	\label{fig_fit1}
 \end{figure}
 \begin{figure}
@@ -449,7 +469,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 
 \begin{table}
 \centering
-	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 1.}
+	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 4.}
 	\begin{tabular}{r|S[table-format=2.4(4)] r}
 	\toprule
 		$U_0$    & -3.3300(500) & \si{\volt}\\
@@ -479,7 +499,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 
 \begin{table}
 \centering
-	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 1.}
+	\caption[]{Ergebnisse der Leitungskonstanten von Abschluss 10.}
 	\begin{tabular}{r|S[table-format=3.4(4)] r}
 	\toprule
 		$U_0$    & -18.1600(500)   & \si{\volt}\\
@@ -507,6 +527,7 @@ Anhand der der Anleitung beigelegten Spannungsverläufe handelt es sich hierbei 
 \subsection{E: Impulsfahrplan} % (fold)
 \label{sub:subsection_name}
 
+Zum Erstellen eines Impulsfahrplans werden zwei gleich lange Kabel verwendet, wobei das Erste einen $\SI{50}{\ohm}$ und das Zweite einen $\SI{75}{\ohm}$ Widerstand besitzt.
 Um die Reflexionsfaktoren der Leitung zu erhalten, wird zunächst über die Spannungen jedes Plateaus gemittelt.
 Anschließend wird von jedem Wert die Nullspannung $U_0$ abgezogen wodurch sich die Werte
 \begin{eqnarray*}
@@ -519,16 +540,32 @@ Anschließend wird von jedem Wert die Nullspannung $U_0$ abgezogen wodurch sich 
 ergeben.
 Als Differenz zwischen zwei aufeinanderfolgenden Spannungen ergiebt sich
 \begin{eqnarray*}
-	\Delta U_1 = U_2 - U_1 &=& \SI{5.95(5)}{\volt},\\
-	\Delta U_2 = U_3 - U_2 &=& \SI{20.46(5)}{\volt},\\
-	\Delta U_3 = U_4 - U_3 &=& \SI{-2.58(6)}{\volt}.
+	\text{d} U_1 = U_2 - U_1 &=& \SI{5.95(5)}{\volt},\\
+	\text{d} U_2 = U_3 - U_2 &=& \SI{20.46(5)}{\volt},\\
+	\text{d} U_3 = U_4 - U_3 &=& \SI{-2.58(6)}{\volt}.
 \end{eqnarray*}
 Die Reflexionsfaktoren berechnen sich nach
 \begin{eqnarray*}
-	\Gamma_L = \frac{\Delta U_1}{U_1} &=& \SI{0.2594(22)}{},\\
-	\Gamma_E = \frac{\Delta U_3}{\Delta U_2} + \frac{\Delta U_2}{U_1(1-\Gamma_L)} &=& \SI{1.079(6)}{},\\
-	\Gamma_R = \frac{\Delta U_3}{\Delta U_2 \Gamma_E} &=& \SI{-0.1168(28)}{}.
+	\Gamma_L = \frac{\text{d} U_1}{U_1} &=& \SI{0.2594(22)}{},\\
+	\Gamma_E = \frac{\text{d} U_3}{\text{d} U_2} + \frac{\text{d} U_2}{U_1(1-\Gamma_L)} &=& \SI{1.079(6)}{},\\
+	\Gamma_R = \frac{\text{d} U_3}{\text{d} U_2 \Gamma_E} &=& \SI{-0.1168(28)}{}.
 \end{eqnarray*}
+
+Unter der Annahme, dass die Kabel bis auf den inneren Widerstand keine weiteren Verluste besitzt ergiebt sich für die Reflexionskoeffizienten
+\begin{eqnarray*}
+	\Gamma_L &=& \frac{\SI{75}{\ohm}-\SI{50}{\ohm}}{\SI{75}{\ohm}+\SI{50}{\ohm}} = \SI{0.2}{},\\
+	\Gamma_E &=& \frac{\SI{75}{\ohm}}{\SI{75}{\ohm}} = \SI{1}{},\\
+	\Gamma_R &=& \frac{\SI{50}{\ohm}-\SI{75}{\ohm}}{\SI{75}{\ohm}+\SI{50}{\ohm}} = \SI{-0.2}{}.
+\end{eqnarray*}
+
+Die Fehler berechnen sich durch
+\begin{align*}
+	\Delta U_x &= \sum_0^N \cdot \Delta U_{x,einzel} , \Delta U_{x,einzel} = \SI{0.5}{\volt}\\
+	\Delta (\text{d} U_x) &= \sqrt{\Delta U_x^2 + \Delta U_{x+1}^2}\\
+	\Delta \Gamma_L &= \sqrt{\left(|\frac{1}{U_1}|\cdot\Delta(\text{d}U_1)\right)^2 + \left(|-\frac{\text{d}U_1}{U_1^2}| \cdot \Delta U_1 \right)^2}\\
+	\Delta \Gamma_E &= \sqrt{\left(|\frac{1}{\text{d}U_2}| \cdot \Delta (\text{d}U_3) \right)^2  + \left(|\frac{1}{U_1(1-\Gamma_L)}-\frac{\text{d}U_1}{\text{d}U_2^2}| \cdot \Delta (\text{d}U_2) \right)^2 + \left(|\frac{\text{d}U_2}{U_1(\Gamma_L-1)^2}| \cdot \Delta \Gamma_L\right)^2}\\
+	\Delta \Gamma_R &= \sqrt{\left(|\frac{1}{U_1\Gamma_E}|\cdot\Delta(\text{d}U_3)\right)^2 + \left(|-\frac{\text{d}U_3}{\text{d}U_2^2 \Gamma_E}| \cdot \Delta(\text{d}U_2) \right)^2 + \left(|-\frac{\text{d}U_3}{\text{d}U_2 \Gamma_E^2}| \cdot \Delta(\Gamma_E) \right)^2}
+\end{align*}
 
 \begin{figure}
 	\centering
@@ -558,5 +595,5 @@ Abschnitt D zeigte, dass es möglich ist nur mithilfe der Spannungsverläufe auf
 Zudem ist es aus dem Spannungsverlauf möglich gewesen auf die Leitungskonstanten zurückzuschließen.
 
 Abschließend konnte mithilfe des Spannungsverlaufs von in Reihe geschalteter Kabel ein Impulsfahrplan erzeugt werden.
-Es lässt darauf schließen, dass mindestens eins der Kabel von seiner vorgegebenen Impedanz abweicht, da die Reflexionsfaktoren $\Gamma_L$ und $\Gamma_R$ betragsmäßig ungleich $0.2$ sind.
+Es lässt darauf schließen, dass mindestens eins der Kabel von seiner vorgegebenen Impedanz abweicht, da die Reflexionsfaktoren $\Gamma_L$ und $\Gamma_R$ betragsmäßig ungleich $0.2$ sind und $\Gamma_E$ ungleich $1$.
 

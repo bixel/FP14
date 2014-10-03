@@ -20,7 +20,7 @@ Dc = 1.36*10**(-3)
 Nb = 2.8*10**18/10**(-6)
 Nc = 1.2*10**18/10**(-6)
 
-convert1 = np.pi/648000
+convert1 = np.pi/10800
 convert2 = np.pi/180
 
 d, thea1, thea1s, thea2, thea2s, theb1, theb1s, theb2, theb2s, thec1, thec1s, thec2, thec2s = np.loadtxt("b.txt", comments="%" ,unpack=True)
@@ -45,10 +45,27 @@ for i in range(len(thea1)):
 	thea[4][i] = thea[3][i]-thea[3][i]
 	theb[4][i] = theb[3][i]-thea[3][i]
 	thec[4][i] = thec[3][i]-thea[3][i]
-
+print("Winkel:")
+print(thea[2])
+print("\n")
+print(theb[2])
+print("\n")
+print(thec[2])
+print("\n")
+print("Winkel normiert:")
+print(thea[3])
+print("\n")
+print(theb[3])
+print("\n")
+print(thec[3])
+print("\n")
+print("Winkel abgezogen:")
 print(thea[4])
+print("\n")
 print(theb[4])
+print("\n")
 print(thec[4])
+print("\n")
 
 for i in range(len(d)):
 	d2[i] = (d[i]*10**-6)**2
@@ -60,14 +77,12 @@ n=3.4
 
 m1 = calc_m(mb,Nb,n)
 m2 = calc_m(mc,Nc,n)
-print(mb)
-print(mc)
-print(m1)
-print(m2)
-print(m1/me)
-print(m2/me)
-print(1-0.066/(m1/me))
-print(1-0.066/(m2/me))
+print("Steigung duenn:" + str(mb))
+print("Steigung dick:" + str(mc))
+print("Masse duenn:" + str(m1))
+print("Masse dick:" +str(m2))
+print("Verhaeltnis duenn:" + str(m1/me))
+print("Verhältnis dick:" + str(m2/me))
 print(1-0.066/(m1/me))
 print(1-0.066/(m2/me))
 fig = plt.figure()
@@ -77,7 +92,7 @@ plt.plot(d,thec[3],"g-")
 plt.plot(d,thea[3],"rx",label="Hochrein")
 plt.plot(d,theb[3],"bx", label="n-dotiert duenn")
 plt.plot(d,thec[3],"gx", label="n-dotiert dick")
-plt.ylabel("\Theta/D$[rad/m]")
+plt.ylabel("$\Theta$/D[rad/m]")
 plt.xlabel("$\lambda$[µm]")
 plt.ylim([0,160])
 plt.legend()
@@ -89,8 +104,8 @@ plt.plot(d2, mb*d2+bb,"r-", label="Regression duenn")
 plt.plot(d2, mc*d2+bc,"b-", label="Regression dick")
 plt.plot(d2,theb[4],"rx", label="Messwerte duenn")
 plt.plot(d2,thec[4],"bx",label="Messwerte dick")
-plt.ylabel("Drehwinkel/Dicke[rad/m]")
-plt.xlabel("Wellenlänge^2[µm^2]")
+plt.ylabel("$\Theta$/D[rad/m]")
+plt.xlabel("$\lambda$²[µm²]")
 plt.ylim([0,140])
 plt.legend(loc=2)
 plt.savefig("fit.pdf")
