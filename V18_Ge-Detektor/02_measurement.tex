@@ -33,6 +33,7 @@ von dem Spektrum des $^{152}$Eu-Strahlers abgezogen.
         \caption{
             Energiespektrum des $^{152}$Eu-Strahlers. Die zur Kalibration
             genutzten Maxima sind durch eine gestrichelte Linie markiert.
+            Messdauert $t = \SI{2970}{s}$.
         }
         \label{fig:eu_uncalibrated}
     \end{subfigure}%
@@ -80,6 +81,9 @@ dargestellt. Es ergeben sich die Koeffizienten
     \centering
     \caption{
         Die für die Kalibration des Ge-Detektors verwendeten Maxima des $^{152}$Eu-Spektrums.
+        In den rechten Spalten sind die Literaturwerte aufgeführt, die zur Kalibration
+        genutzt werden. In der Spalte \enquote{erwartet} sind die nach Aktivitätsbestimmung
+        erwarteten Ereignisse aufgeführt.
     }
     \label{tab:maxima}
     \begin{tabular}{%
@@ -128,7 +132,8 @@ t = \SI{5006}{d}$ zu
 \begin{align*}
     A_\text{ges} = \SI{1500+-22}{\becquerel}\,.
 \end{align*}
-Für die Aktivität $A$, die im Detektor gemessen werden kann, gilt schließlich
+Für die Aktivität $A$, die im Detektor gemessen werden kann und mit Berücksichtigung
+der Messdauer $t = \SI{2964}{\second}$, gilt schließlich
 \begin{align*}
     A &= \frac{\Omega}{4\pi}\cdot A_\text{ges}\,\\
     \Rightarrow \quad A &= \SI{23.6+-0.4}{\becquerel}\,.
@@ -174,6 +179,7 @@ Das Spektrum des Stahlers ist in Abbildung \ref{fig:cs_spektrum} dargestellt.
         \includegraphics[width=1.0\linewidth]{img/06_caesium.pdf}
         \caption{
             Spektrum des $^{137}$Cs-Strahlers.
+            Messdauert $t = \SI{2962}{s}$.
         }
         \label{fig:cs_spektrum}
     \end{subfigure}
@@ -295,7 +301,7 @@ der Quelle als Parameter einer linearen Ausgleichsrechnung bestimmt werden.
 Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung
 \ref{fig:barium_aktivitaet} dargestellt und liefert
 \begin{align*}
-    A_\text{ges} = \SI{970+-190}{\becquerel}\,.
+    A_\text{ges} = \SI{393+-21}{\becquerel}\,.
 \end{align*}
 \begin{figure}
     \centering
@@ -303,11 +309,12 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung
         \includegraphics[width=1.\linewidth]{img/07_barium.pdf}
         \caption{
             Spektrum einer $^{133}$Ba-Probe.
+            Messdauert $t = \SI{3551}{s}$.
         }
         \label{fig:ba_spektrum}
     \end{subfigure}
     \begin{subfigure}{0.49\linewidth}
-        \includegraphics[width=1.\linewidth]{img/07_barium_activity.pdf}
+        \includegraphics[width=1.\linewidth]{build/plots/ba_activity.pdf}
         \caption{
             Fit zur Aktivitätsbestimmung der $^{133}$Ba-Probe.
         }
@@ -328,18 +335,18 @@ Der Fit für die Bestimmung von $A_\text{ges}$ ist in Abbildung
     }
     \label{tab:barium}
     \begin{tabular}{%
-        S[table-format=3.1]%
-        S[table-format=5.0]%
+        S[table-format=3.2(2)]%
+        S[table-format=4.0(3)]%
         S[table-format=2.1]%
     }
         \toprule
-        {Peak [\si{keV}]}  & {Ereignisse} & {Emissionsw.} \\
+        {Peak\:/\:\si{keV}}  & {Ereignisse} & {Emissionsw.\:/\:\si{\percent}\cite{V18}} \\
         \midrule
-         81.0 & 11797 & 34.1 \\
-        160.7 &   274 &  0.6 \\
-        303.0 &  4099 & 18.3 \\
-        356.1 & 11660 & 62.1 \\
-        384.1 &  1567 &  8.9 \\
+         81.12(1) & 3940(140) & 34.1 \\
+        160.74(4) &    97(11) &  0.6 \\
+        302.49(1) &  1413(14) & 18.3 \\
+        356.09(1) &  4040(50) & 62.1 \\
+        383.92(1) &    540(8) &  8.9 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -358,6 +365,9 @@ Um den Untergrundanteil zu bestimmen, wird an jeder Position eines Maximums
 auch in der Untergrundverteilung eine Gauß-Funktion angepasst.
 Dabei weisen lediglich zwei Peaks einen vom Untergrund signifikant verschiedenen
 Inhalt auf.
+Die Anzahl der Untergrundereignisse aus dem Fit werden dann von der Zahl der
+Signalkandidaten abgezogen, sodass ingsesamt die in der Tabelle aufgeführte
+Anzahl von Ereignissen mit Kandidaten des jeweiligen Strahlers identifizert werden.
 Obwohl das Spektrum mehr als die drei aufgeführten Peaks beinhaltet, stellt es
 sich als äußerst schwierig heraus, für andere, als die aufgeführten Energien
 eindeutige Quell-Isotope zu finden, da stets etliche Isotope mit ähnlichen
@@ -367,6 +377,7 @@ Gamma-Energien gefunden werden können.
     \includegraphics[width=0.7\linewidth]{img/08_coal.pdf}
     \caption{
         Spektrum von etwa \SI{500}{g} Holzkohle-Brikkets, Marke Kaufland.
+        Messdauert $t \approx \SI{23}{h}$.
     }
     \label{fig:coal}
 \end{figure}
