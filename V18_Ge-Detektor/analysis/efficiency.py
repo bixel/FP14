@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     # p0 = [0.5, 1, -0.1, 0.1]
     p0 = [0.5, 0.01, 0.1]
-    coeff, covar = curve_fit(eff, xs, ys, p0=p0, sigma=y_errs)
+    coeff, covar = curve_fit(eff, noms(peaks), noms(efficiency), p0=p0, sigma=y_errs)
     errs = np.sqrt(np.diag(covar))
     x = np.linspace(0.1, 1500, 200)
     plt.plot(x, eff(x, *coeff), label='Fit')
@@ -58,3 +58,10 @@ if __name__ == '__main__':
 
     # store fit parameter
     np.savetxt('../build/data/efficiency-params.txt', np.array([coeff, errs]).T)
+    np.savetxt('../build/data/efficiencies.txt',
+            np.array([
+                noms(expected),
+                stds(expected),
+                noms(efficiency),
+                stds(efficiency)
+            ]).T, header='n_exp\texp_err\teff\teff_err', fmt='%5.3f')
