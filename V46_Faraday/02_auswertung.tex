@@ -81,6 +81,10 @@ Aus dem Winkel lässt sich mithilfe einer linearen Regression über Gleichung \e
 \begin{equation*}
 	\frac{\Theta}{D} = m_\text{reg} \lambda^2 + b
 \end{equation*}
+mit
+\begin{equation*}
+	m_\text{effektiv} = \sqrt{\frac{e_0^3 N B}{8 \pi^2 \epsilon_0 c^3 m_\text{reg}}}
+\end{equation*}
 bestimmt werden.
 In dieser Gleichung ist der frequenzabhängige Brechungsindex $n$ vorhanden. Da die Frequenzabhängigkeit nicht berücksichtigt werden soll und sich die Werte von etwa $3.3-3.5$ \cite{GeAs} erstrecken wird ein Brechungsindex von 
 \begin{equation*}
@@ -93,7 +97,7 @@ Die Regression lieferte
 	m_\text{dick} &=& \SI{-4.7136e11}{1\per\meter^3}
 \end{eqnarray*}
 und ist in Abbildung \ref{fit} dargestellt.
-Dabei wurden die negativen Werte bei $\lambda = \num{1.29}$ und $\lambda = \num{1.45}$ nicht berücksichtigt.
+Dabei wurden die negativen Werte bei $\lambda = \SI{1.29}{\micro\meter}$ und $\lambda = \SI{1.45}{\micro\meter}$ der dünnen Probe nicht berücksichtigt.
 Auch ist eine negative Steigung unphysikalisch, weshalb die effektive Masse nur für die dünne Probe berechnet wurde.
 
 Daraus ergiebt sich für die Masse der freien Elektronen
@@ -254,5 +258,6 @@ und der Wert für die Masse der Elektronen bei der dünnen Probe weicht um etwa 
 Alles in allem lässt sich sagen, dass die Apparatur dafür geeignet ist die Masse von freien Elektronen zu bestimmen.
 Es ist allerdings anzumerken, dass die Werte für die lineare Ausgleichsrechnung keine linearität vermuten lassen weshalb auch die Fehler nicht berücksichtigt worden sind.
 Es ist jedoch gelungen, die Masse der freie Elektronen relativ genau zu bestimmen.
-Bei der $\SI{1.296}{\milli\meter}$ dicken Probe konnte so ein Fehler auf die Masse von $\SI{3.23}{\percent}$ erreicht werden, während bei der $\SI{1.36}{\milli\meter}$ dicken Probe der Fehler bei $\SI{77.96}{\percent}$ liegt.
+Bei der $\SI{1.296}{\milli\meter}$ dünnen Probe konnte so ein Fehler auf die Masse von $\SI{3.23}{\percent}$ erreicht werden. Bei der dicken Probe kam es hingegen zu unphysikalischen Ergebnissen, weshalb eine Auswertung der Daten nicht möglich war.
+Es ist daher sinnvoll eine stärker dotierte Probe zur Bestimmung der effektiven Masse zu benutzen.
 Dominante Fehlerquellen sind die Vernachlässigung der Dispersion des Brechungsindices und dass die Apparatur nicht optimal jusitert werden konnte.
