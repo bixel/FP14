@@ -2,7 +2,7 @@ from numpy import *
 from uncertainties import ufloat
 
 a = ufloat(22.860,0.046)
-c = 3*10**11
+c = 2.99792458*10**11
 
 d1 = ufloat(114.2,0.005)
 d2 = ufloat(89.6,0.005)
