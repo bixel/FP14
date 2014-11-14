@@ -1,4 +1,4 @@
-build/polarisation.pdf: polarisation.py data/polarisation.txt | build
+build/polarisation*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
 
 build:
