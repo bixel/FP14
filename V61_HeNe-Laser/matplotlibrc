@@ -1,0 +1,5 @@
+# Nice plots
+# text.usetex           : True
+# text.latex.unicode    : True
+# pgf.texsystem         : lualatex
+# text.latex.preamble   : \usepackage{siunitx}
