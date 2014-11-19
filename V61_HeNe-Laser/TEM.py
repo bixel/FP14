@@ -22,19 +22,76 @@ print('omega: {:g}'.format(omega))
 
 theory_xs = np.linspace(2, 7, 200)
 theory_ys = gauss(theory_xs, *coeff)
-plt.plot(theory_xs, theory_ys, 'r-')
-plt.errorbar(x_00, I_00, yerr=0.05*I_00, fmt='b+')
+plt.plot(theory_xs, theory_ys, 'r-', label='Fit')
+plt.errorbar(x_00, I_00, yerr=0.05*I_00, fmt='b+', label='Messwerte')
+plt.xlabel('$x/\mathrm{mm}$')
+plt.ylabel('$I/\mathrm{mA}$')
+plt.legend(loc='best')
 plt.savefig('build/TEM_00.pdf')
 plt.clf()
 
 
 # TEM-01 Mode
 
+def linear(x, a, b):
+    return a * x + b
+
 def tem01(r, off, I_0, omega):
-    return I_0 * ((r - off)/omega)**2 * gauss(r, off I_0, omega)
+    x = r - off
+    return I_0 * (x/omega)**2 * gauss(r, off, I_0, omega)
+
+def tem01_improved(r, off, I_0, omega, a, b):
+    x = r - off
+    return linear(x, a, b) * tem01(r, off, I_0, omega)
+
 
 x_01, I_01 = np.genfromtxt('data/TEM_01.txt', unpack=True)
 
-plt.errorbar(x_01, I_01, yerr=0.05*I_01, fmt='b+')
+coeff_01_imp, covar_01_imp = curve_fit(tem01_improved, x_01, I_01, p0=[17, 0.3, 1, -1, 1])
+errs_01_imp = np.diag(np.sqrt(covar_01_imp))
+offset = ufloat(coeff_01_imp[0], errs_01_imp[0])
+I_0 = ufloat(coeff_01_imp[1], errs_01_imp[1])
+omega  = ufloat(coeff_01_imp[2], errs_01_imp[2])
+a = ufloat(coeff_01_imp[3], errs_01_imp[3])
+b = ufloat(coeff_01_imp[4], errs_01_imp[4])
+
+theory_xs = np.linspace(0, 35, 200)
+theory_ys = tem01_improved(theory_xs, *coeff_01_imp)
+plt.plot(theory_xs, theory_ys, 'r-', label='Fit')
+plt.errorbar(x_01, I_01, yerr=0.05*I_01, fmt='b+',
+        label='Messwerte')
+plt.legend(loc='best')
+plt.xlabel('$x/\mathrm{mm}$')
+plt.ylabel('$I/\mathrm{mA}$')
+plt.savefig('build/TEM_01_improved.pdf')
+plt.clf()
+
+print("""\
+offset = {}
+I_0    = {}
+omega  = {}
+a      = {}
+b      = {}
+""".format(offset, I_0, omega, a, b))
+
+coeff_01, covar_01 = curve_fit(tem01, x_01, I_01, p0=[17, 1, 1])
+errs_01 = np.diag(np.sqrt(covar_01))
+offset = ufloat(coeff_01[0], errs_01[0])
+I_0 = ufloat(coeff_01[1], errs_01[1])
+omega  = ufloat(coeff_01[2], errs_01[2])
+print("""\
+offset = {}
+I_0    = {}
+omega  = {}
+""".format(offset, I_0, omega, a, b))
+
+theory_xs = np.linspace(0, 35, 200)
+theory_ys = tem01(theory_xs, *coeff_01)
+plt.plot(theory_xs, theory_ys, 'r-', label='Fit')
+plt.errorbar(x_01, I_01, yerr=0.05*I_01, fmt='b+',
+        label='Messwerte')
+plt.legend(loc='best')
+plt.xlabel('$x/\mathrm{mm}$')
+plt.ylabel('$I/\mathrm{mA}$')
 plt.savefig('build/TEM_01.pdf')
 plt.clf()
