@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
+from codecs import open
 
 # TEM-00 Mode
 x_00, I_00 = np.genfromtxt('data/TEM_00.txt', unpack=True)
@@ -19,6 +20,16 @@ omega = ufloat(coeff[2], coeff_errs[2])
 print('offset: {:g}'.format(offset))
 print('I_0: {:g}'.format(I_0))
 print('omega: {:g}'.format(omega))
+(open('build/tem00_x.tex', 'w', 'utf-8').
+        write(r'\SI{{{:L}}}{{\milli\meter}}'.
+        format(offset)))
+(open('build/tem00_i.tex', 'w', 'utf-8').
+        write(r'\SI{{{:L}}}{{\milli\ampere}}'.
+        format(I_0)))
+(open('build/tem00_omega.tex', 'w', 'utf-8').
+        write(r'\SI{{{:L}}}{{\milli\meter}}'.
+        format(omega)))
+
 
 theory_xs = np.linspace(2, 7, 200)
 theory_ys = gauss(theory_xs, *coeff)

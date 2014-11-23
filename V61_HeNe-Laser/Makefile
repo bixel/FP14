@@ -6,7 +6,8 @@ TEXHEADERS = ../head.tex \
 			 ../math-commands.tex
 
 TEXCONTENT = 01_theorie.tex \
-			 02_auswertung.tex
+			 02_auswertung.tex \
+			 build/tem00_*.tex
 
 PLOTS = build/polarisation_*.pdf \
 		build/TEM_*.pdf \
@@ -27,7 +28,7 @@ build/00_main.bbl: build/00_main.bcf
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
 
-build/TEM_*.pdf: TEM.py data/TEM_*.txt | build
+build/TEM_*.pdf build/tem00_*.tex: TEM.py data/TEM_*.txt | build
 	python3 TEM.py
 
 build:
