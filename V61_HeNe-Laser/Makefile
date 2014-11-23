@@ -1,4 +1,21 @@
-all: build/polarisation_*.pdf build/TEM_*.pdf
+TEXOPTIONS = --output-directory=build \
+			 --interaction-mode=nonstopmode \
+			 --halt-on-error
+
+TEXHEADERS = ../head.tex \
+			 ../math-commands.tex
+
+TEXCONTENT = 01_theorie.tex \
+			 02_auswertung.tex
+
+PLOTS = build/polarisation_*.pdf \
+		build/TEM_*.pdf
+
+all: build/00_main.pdf
+
+build/00_main.pdf: $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
+	lualatex $(TEXOPTIONS) 00_main.tex && \
+	lualatex $(TEXOPTIONS) 00_main.tex
 
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
