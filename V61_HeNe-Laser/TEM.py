@@ -21,13 +21,13 @@ print('offset: {:g}'.format(offset))
 print('I_0: {:g}'.format(I_0))
 print('omega: {:g}'.format(omega))
 (open('build/tem00_x.tex', 'w', 'utf-8').
-        write(r'\SI{{{:L}}}{{\milli\meter}}'.
+        write(r'$x_0 = \SI{{{:L}}}{{\milli\meter}}$'.
         format(offset)))
 (open('build/tem00_i.tex', 'w', 'utf-8').
-        write(r'\SI{{{:L}}}{{\milli\ampere}}'.
+        write(r'$I_0 = \SI{{{:L}}}{{\milli\ampere}}$'.
         format(I_0)))
 (open('build/tem00_omega.tex', 'w', 'utf-8').
-        write(r'\SI{{{:L}}}{{\milli\meter}}'.
+        write(r'\omega = \SI{{{:L}}}{{\milli\meter}}'.
         format(omega)))
 
 
@@ -49,7 +49,7 @@ def linear(x, a, b):
 
 def tem01(r, off, I_0, omega):
     x = r - off
-    return I_0 * (x/omega)**2 * gauss(r, off, I_0, omega)
+    return I_0 * (x/omega)**2 * np.exp(-2 * x**2/omega**2)
 
 def tem01_improved(r, off, I_0, omega, a, b):
     x = r - off
@@ -95,6 +95,15 @@ offset = {}
 I_0    = {}
 omega  = {}
 """.format(offset, I_0, omega, a, b))
+(open('build/tem01_x.tex', 'w', 'utf-8').
+        write(r'$x_0 = \SI{{{:L}}}{{\milli\meter}}$'.
+        format(offset)))
+(open('build/tem01_i.tex', 'w', 'utf-8').
+        write(r'$I_0 = \SI{{{:L}}}{{\milli\ampere}}$'.
+        format(I_0)))
+(open('build/tem01_omega.tex', 'w', 'utf-8').
+        write(r'\omega = \SI{{{:L}}}{{\milli\meter}}'.
+        format(omega)))
 
 theory_xs = np.linspace(0, 35, 200)
 theory_ys = tem01(theory_xs, *coeff_01)
