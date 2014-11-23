@@ -9,13 +9,20 @@ TEXCONTENT = 01_theorie.tex \
 			 02_auswertung.tex
 
 PLOTS = build/polarisation_*.pdf \
-		build/TEM_*.pdf
+		build/TEM_*.pdf \
+		img/laser.jpg
 
 all: build/00_main.pdf
 
-build/00_main.pdf: $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
+build/00_main.pdf: build/00_main.bcf build/00_main.bbl
+	lualatex $(TEXOPTIONS) 00_main.tex
+
+build/00_main.bcf: $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
 	lualatex $(TEXOPTIONS) 00_main.tex && \
 	lualatex $(TEXOPTIONS) 00_main.tex
+
+build/00_main.bbl: build/00_main.bcf
+	biber build/00_main.bcf
 
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
