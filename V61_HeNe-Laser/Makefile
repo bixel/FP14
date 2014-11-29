@@ -1,5 +1,5 @@
 TEXOPTIONS = --output-directory=build \
-			 --interaction-mode=nonstopmode \
+			 --interaction=nonstopmode \
 			 --halt-on-error
 
 TEXHEADERS = ../head.tex \
