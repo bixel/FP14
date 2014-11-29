@@ -27,7 +27,7 @@ print('omega: {:g}'.format(omega))
         write(r'$I_0 = \SI{{{:L}}}{{\milli\ampere}}$'.
         format(I_0)))
 (open('build/tem00_omega.tex', 'w', 'utf-8').
-        write(r'\omega = \SI{{{:L}}}{{\milli\meter}}'.
+        write(r'$\omega = \SI{{{:L}}}{{\milli\meter}}$'.
         format(omega)))
 
 
@@ -58,7 +58,8 @@ def tem01_improved(r, off, I_0, omega, a, b):
 
 x_01, I_01 = np.genfromtxt('data/TEM_01.txt', unpack=True)
 
-coeff_01_imp, covar_01_imp = curve_fit(tem01_improved, x_01, I_01, p0=[17, 0.3, 1, -1, 1])
+coeff_01_imp, covar_01_imp = curve_fit(tem01_improved, x_01, I_01,
+        p0=[17, 0.3, 1, -1, 1])
 errs_01_imp = np.diag(np.sqrt(covar_01_imp))
 offset = ufloat(coeff_01_imp[0], errs_01_imp[0])
 I_0 = ufloat(coeff_01_imp[1], errs_01_imp[1])
@@ -102,7 +103,7 @@ omega  = {}
         write(r'$I_0 = \SI{{{:L}}}{{\milli\ampere}}$'.
         format(I_0)))
 (open('build/tem01_omega.tex', 'w', 'utf-8').
-        write(r'\omega = \SI{{{:L}}}{{\milli\meter}}'.
+        write(r'$\omega = \SI{{{:L}}}{{\milli\meter}}$'.
         format(omega)))
 
 theory_xs = np.linspace(0, 35, 200)
