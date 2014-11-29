@@ -37,7 +37,7 @@ Die Messwerte sind in Tabelle \ref{tab:tem00} aufgeführt. In Abbildung \ref{fig
     \label{eqn:gauss}
     I_{00}(x) = I_0 \exp\left[-2 \frac{\left(x-x_0\right)^2}{\omega^2}\right]\,.
 \end{equation}
-Der Fit liefert für die Verschiebung \input{build/tem00_x.tex}, die Maximalintensität \input{build/tem00_i.tex} und für den Strahlradius \input{build/tem00_omega.tex}.
+Der Fit liefert für die Verschiebung \input{build/tem00_x.tex}\unskip, die Maximalintensität \input{build/tem00_i.tex} und für den Strahlradius \input{build/tem00_omega.tex}\unskip.
 Die Fehler der Messwerte werden mit \SI{5}{\percent} abgeschätzt.
 \begin{table}
     \centering
@@ -78,7 +78,7 @@ Als Funktion wird hierbei
     I_{01}(x) = I_0 \left(\frac{x-x_0}{\omega}\right)^2 \exp \left[-2 \frac{\left(x-x_0\right)^2}{\omega^2}\right]
 \end{equation}
 genutzt \cite{Wiki_TEM}.
-Der Fit liefert hierbei \input{build/tem01_x.tex}, \input{build/tem01_i.tex} und \input{build/tem01_omega.tex}.
+Der Fit liefert hierbei \input{build/tem01_x.tex}\unskip, \input{build/tem01_i.tex} und \input{build/tem01_omega.tex}\unskip.
 In den Messwerten ist eine Abweichung der Peakhöhen zu erkennen, die möglicherweise auf Neigung der Photodiode zurückzuführen ist.
 Auch hier werden die Fehler mit \SI{5}{\percent} abgeschätzt.
 \begin{table}
@@ -147,3 +147,28 @@ Auch hier werden die Fehler mit \SI{5}{\percent} abgeschätzt.
     \caption{Fit der Funktion \eqref{eqn:tem01} durch die Messpunkte der $\text{TEM}_{01}$-Mode des HeNe-Lasers.}
     \label{fig:tem01}
 \end{figure}
+
+\subsection{Wellenlängenbestimmung}
+\label{subsec:wellenlänge}
+Mit einer Vermessung verschiedener Beugungsmuster wird nun die Wellenlänge des
+Lasers bestimmt.
+Dabei wird zunächst ein Spalt mit der Breite $s = \SI{0.5}{\milli\meter}$ in den Lichtweg eingebracht.
+Anschließend werden mit Hilfe der Photodiode die Positionen $x_i$ der Minima des Musters ermittelt.
+Der Abstand zwischen Spalt und Ebene der Photodiode beträgt $d = \SI{64.5}{\centi\meter}$.
+Die Messwerte sind in Tabelle \ref{tab:spalt} aufgeführt und ergeben mit der Beziehung
+\begin{equation}
+    \label{eq:spalt}
+    \lambda_i = \frac{s}{i}\sin\alpha_i \approx \frac{s}{i}\frac{x_i}{d}
+\end{equation}
+den Mittelwert $\overline{\lambda}_\text{Spalt} = \SI{832}{\nano\meter}$.
+Hierbei bezeichnet $\alpha$ den Winkel, unter dem das Minimum einfällt.
+
+Zusätzlich wird die Wellenlänge durch Austausch des Spaltes gegen ein Gitter mit Gitterkonstante $g = \SI{10}{\micro\meter}$ bestimmt.
+Statt der Minima werden hier die Hauptmaxima des Beugungsmusters vermessen und die Wellenlänge mit
+\begin{equation}
+\label{eq:gitter}
+    \lambda_i = \frac{a}{b}
+\end{equation}
+bestimmt.
+Bei einem Durchgang wird dabei die Photodiode im Abstand von $d = \SI{13.2}{\centi\meter}$ zur Detektion der Maxima genutzt während bei einem zweiten Durchgang die Maxima auf einem Schirm im Abstand von $d = \SI{98}{\centi\meter}$ ausgemessen werden.
+Die entsprechenden Messwerte sind in Tabelle \ref{tab:gitter} aufgeführt und liefern $\overline{\lambda}_\text{Gitter} = \SI{612}{\nano\meter}$.
