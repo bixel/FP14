@@ -7,7 +7,7 @@ import uncertainties.unumpy as unp
 
 # slot
 d = ufloat(645, 5)
-s = ufloat(0.05, 0.05)
+s = ufloat(0.05, 0.01)
 offset = ufloat(5.8, 0.58)
 
 left, right = np.genfromtxt('data/slot.txt', unpack=True)
@@ -26,13 +26,18 @@ lambdas_right = unp.uarray([lam(x, n=n+1).n for n, x in enumerate(right)],
                            [lam(x, n=n+1).s for n, x in enumerate(right)])
 lambdas = np.append(np.abs(lambdas_left), np.abs(lambdas_right))
 
-print(1e6 * lambdas)
-
 (open('build/lambda_slot.tex', 'w', 'utf-8')
  .write(r'$\overline{{\lambda}}_\text{{Spalt}}'
         r'= \SI{{{:.0f}+-{:.0f}}}{{\nano\meter}}$'
         .format(unp.nominal_values(lambdas).mean() * 1e6,
                 unp.std_devs(lambdas).mean() * 1e6)))
+
+for ls, xs, name in [[lambdas_right, right, 'mm_r'],
+                     [lambdas_left, left, 'mm_l']]:
+    f = open('build/lambdas_slot_' + name + '.tex', 'w', 'utf-8')
+    for l, x in zip(ls, xs):
+        f.write((r'{:.1f} & {} \\' '\n').format(x, l*1e6))
+    f.close()
 
 
 # grid
@@ -47,15 +52,27 @@ offset = 5.0
 xs2_right -= offset
 xs2_left -= offset
 
-lambdas = np.array([lam(x, n=n+1, s=s, d=d) for n, x in enumerate(xs1)])
+lambdas1 = np.array([lam(x, n=n+1, s=s, d=d) for n, x in enumerate(xs1)])
 
 d = ufloat(132, 5)
-lambdas = np.append(
-    lambdas, np.array([lam(x, n=n+1, s=s, d=d)
-                       for n, x in enumerate(np.abs(xs2_right))]))
-lambdas = np.append(
-    lambdas, np.array([lam(x, n=n+1, s=s, d=d)
-                       for n, x in enumerate(np.abs(xs2_left))]))
+lambdas2_right = np.array([lam(x, n=n+1, s=s, d=d)
+                           for n, x in enumerate(np.abs(xs2_right))])
+lambdas2_left = np.array([lam(x, n=n+1, s=s, d=d)
+                          for n, x in enumerate(np.abs(xs2_left))])
 
-print(unp.nominal_values(lambdas).mean() * 1e6,
-      unp.std_devs(lambdas).mean() * 1e6)
+lambdas = np.append(lambdas1, lambdas2_right)
+lambdas = np.append(lambdas, lambdas2_left)
+
+(open('build/lambda_grid.tex', 'w', 'utf-8')
+ .write(r'$\overline{{\lambda}}_\text{{Gitter}}'
+        r'= \SI{{{:.0f}+-{:.0f}}}{{\nano\meter}}$'
+        .format(unp.nominal_values(lambdas).mean() * 1e6,
+                unp.std_devs(lambdas).mean() * 1e6)))
+
+for ls, xs, name in [[lambdas1, xs1, 'cm'],
+                     [lambdas2_right, xs2_right, 'mm_r'],
+                     [lambdas2_left, xs2_left, 'mm_l']]:
+    f = open('build/lambdas_grid_' + name + '.tex', 'w', 'utf-8')
+    for l, x in zip(ls, xs):
+        f.write((r'{} & {} \\' '\n').format(x, l*1e6))
+    f.close()
