@@ -15,6 +15,7 @@ left, right = np.genfromtxt('data/slot.txt', unpack=True)
 
 left -= offset.n
 right -= offset.n
+right = np.round(right, decimals=1)
 
 
 def lam(x, n=1, s=s, d=d):
@@ -35,11 +36,11 @@ lambdas = np.append(np.abs(lambdas_left), np.abs(lambdas_right))
 
 f = open('build/lambdas_slot_mm_l.tex', 'w', 'utf-8')
 f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
-              [left, lambdas_left*1e3]))
+              [left, lambdas_left*1e6]))
 f.close()
 f = open('build/lambdas_slot_mm_r.tex', 'w', 'utf-8')
 f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
-              [left, lambdas_right*1e3]))
+              [right, lambdas_right*1e6]))
 f.close()
 
 

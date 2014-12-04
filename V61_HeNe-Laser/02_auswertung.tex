@@ -167,14 +167,56 @@ Zusätzlich wird die Wellenlänge durch Austausch des Spaltes gegen ein Gitter m
 Statt der Minima werden hier die Hauptmaxima des Beugungsmusters vermessen und die Wellenlänge mit
 \begin{equation}
 \label{eq:gitter}
-    \lambda_i = \frac{a}{b}
+    \lambda_n = \frac{g}{n}\sin\!\left(\arctan\frac{x_n}{d}\right)
 \end{equation}
 bestimmt.
 Bei einem Durchgang wird dabei die Photodiode im Abstand von $d = \SI{13.2}{\centi\meter}$ zur Detektion der Maxima genutzt während bei einem zweiten Durchgang die Maxima auf einem Schirm im Abstand von $d = \SI{98}{\centi\meter}$ ausgemessen werden.
-Die entsprechenden Messwerte sind in Tabelle \ref{tab:gitter} aufgeführt und liefern \input{build/lambda_grid.tex}\unskip.
+Die entsprechenden Messwerte sind in Tabelle \ref{tab:grid} aufgeführt und liefern \input{build/lambda_grid.tex}\unskip.
+% Bei allen mit der Photodiode aufgenommenen Messwerten wurde jeweils die Mittelposition $x_0$ bestimmt und abgezogen.
+% Diese betrug für den Spalt $x_{0,\text{Spalt}}=\SI{5.8}{\milli\meter}$ und für das Gitter $x_{0,\text{gitter}}=\SI{5.0}{\milli\meter}$.
 \begin{table}
     \centering
-    \caption{Bla}
+    \caption{Messwerte, aufgenommen mit Hilfe eines optischen Spaltes.}
     \label{tab:spalt}
-    \input{build/lambdas_slot_mm_l.tex}
+    \begin{subtable}{0.49\linewidth}
+        \centering
+        \caption{Linke Messwerte}
+        \label{tab:spalt_links}
+        \input{build/lambdas_slot_mm_l.tex}
+    \end{subtable}
+    \begin{subtable}{0.49\linewidth}
+        \centering
+        \caption{Rechte Messwerte}
+        \label{tab:spalt_rechts}
+        \input{build/lambdas_slot_mm_r.tex}
+    \end{subtable}
+\end{table}
+\begin{table}
+    \centering
+    \caption{
+        Messwerte, aufgenommen mit Hilfe eines optischen Gitters.
+        Die Werte in \ref{tab:grid_gross} wurde dabei mit Hilfe eines
+        Maßbandes in großem Abstand vom Gitter genommen, während die übrigen
+        Werte mit Hilfe der Photodiode in geringerem Abstand vom Gitter
+        aufgenommen wurde.
+    }
+    \label{tab:grid}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Großer Aufbau.}
+        \label{tab:grid_gross}
+        \input{build/lambdas_grid_cm.tex}
+    \end{subtable}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Kleiner Aufbau, links.}
+        \label{tab:grid_links}
+        \input{build/lambdas_grid_mm_l.tex}
+    \end{subtable}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Kleiner Aufbau, rechts.}
+        \label{tab:grid_rechts}
+        \input{build/lambdas_grid_mm_r.tex}
+    \end{subtable}
 \end{table}
