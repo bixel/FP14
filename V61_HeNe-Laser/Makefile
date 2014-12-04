@@ -1,4 +1,5 @@
-TEXOPTIONS = --output-directory=build \
+TEXOPTIONS = -lualatex \
+			 --output-directory=build \
 			 --interaction=nonstopmode \
 			 --halt-on-error
 
@@ -23,15 +24,8 @@ WAVELENGTH = build/lambdas_grid_cm.tex \
 
 all: build/00_main.pdf
 
-build/00_main.pdf: build/00_main.bcf build/00_main.bbl
-	lualatex $(TEXOPTIONS) 00_main.tex
-
-build/00_main.bcf: $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
-	lualatex $(TEXOPTIONS) 00_main.tex && \
-	lualatex $(TEXOPTIONS) 00_main.tex
-
-build/00_main.bbl: build/00_main.bcf
-	biber build/00_main.bcf
+build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
+	latexmk $(TEXOPTIONS) 00_main.tex
 
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
