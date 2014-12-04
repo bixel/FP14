@@ -160,7 +160,7 @@ Die Messwerte sind in Tabelle \ref{tab:spalt} aufgeführt und ergeben mit der Be
     \label{eq:spalt}
     \lambda_n = \frac{s}{n}\sin\!\left(\alpha_n\right) = \frac{s}{n}\sin\!\left(\arctan\frac{x_n}{d}\right)
 \end{equation}
-den Mittelwert $\overline{\lambda}_\text{Spalt} = \SI{832}{\nano\meter}$.
+den Mittelwert \input{build/lambda_slot.tex}\unskip.
 Hierbei bezeichnet $\alpha$ den Winkel, unter dem das Minimum einfällt.
 
 Zusätzlich wird die Wellenlänge durch Austausch des Spaltes gegen ein Gitter mit Gitterkonstante $g = \SI{10}{\micro\meter}$ bestimmt.
@@ -171,4 +171,10 @@ Statt der Minima werden hier die Hauptmaxima des Beugungsmusters vermessen und d
 \end{equation}
 bestimmt.
 Bei einem Durchgang wird dabei die Photodiode im Abstand von $d = \SI{13.2}{\centi\meter}$ zur Detektion der Maxima genutzt während bei einem zweiten Durchgang die Maxima auf einem Schirm im Abstand von $d = \SI{98}{\centi\meter}$ ausgemessen werden.
-Die entsprechenden Messwerte sind in Tabelle \ref{tab:gitter} aufgeführt und liefern $\overline{\lambda}_\text{Gitter} = \SI{612}{\nano\meter}$.
+Die entsprechenden Messwerte sind in Tabelle \ref{tab:gitter} aufgeführt und liefern \input{build/lambda_grid.tex}\unskip.
+\begin{table}
+    \centering
+    \caption{Bla}
+    \label{tab:spalt}
+    \input{build/lambdas_slot_mm_l.tex}
+\end{table}

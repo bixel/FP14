@@ -24,7 +24,7 @@ WAVELENGTH = build/lambdas_grid_cm.tex \
 
 all: build/00_main.pdf
 
-build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
+build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) $(WAVELENGTH) | build
 	latexmk $(TEXOPTIONS) 00_main.tex
 
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build

@@ -4,6 +4,7 @@ import numpy as np
 from codecs import open
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
+from textable import table
 
 # slot
 d = ufloat(645, 5)
@@ -32,12 +33,14 @@ lambdas = np.append(np.abs(lambdas_left), np.abs(lambdas_right))
         .format(unp.nominal_values(lambdas).mean() * 1e6,
                 unp.std_devs(lambdas).mean() * 1e6)))
 
-for ls, xs, name in [[lambdas_right, right, 'mm_r'],
-                     [lambdas_left, left, 'mm_l']]:
-    f = open('build/lambdas_slot_' + name + '.tex', 'w', 'utf-8')
-    for l, x in zip(ls, xs):
-        f.write((r'{:.1f} & {} \\' '\n').format(x, l*1e6))
-    f.close()
+f = open('build/lambdas_slot_mm_l.tex', 'w', 'utf-8')
+f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
+              [left, lambdas_left*1e3]))
+f.close()
+f = open('build/lambdas_slot_mm_r.tex', 'w', 'utf-8')
+f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
+              [left, lambdas_right*1e3]))
+f.close()
 
 
 # grid
@@ -53,12 +56,25 @@ xs2_right -= offset
 xs2_left -= offset
 
 lambdas1 = np.array([lam(x, n=n+1, s=s, d=d) for n, x in enumerate(xs1)])
+f = open('build/lambdas_grid_cm.tex', 'w', 'utf-8')
+f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
+              [xs1, lambdas1*1e6]))
+f.close()
 
 d = ufloat(132, 5)
 lambdas2_right = np.array([lam(x, n=n+1, s=s, d=d)
                            for n, x in enumerate(np.abs(xs2_right))])
+f = open('build/lambdas_grid_mm_r.tex', 'w', 'utf-8')
+f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
+              [xs2_right, lambdas2_right*1e6]))
+f.close()
+
 lambdas2_left = np.array([lam(x, n=n+1, s=s, d=d)
                           for n, x in enumerate(np.abs(xs2_left))])
+f = open('build/lambdas_grid_mm_l.tex', 'w', 'utf-8')
+f.write(table([r'$x/\si{\milli\meter}$', r'$\lambda/\si{\nano\meter}$'],
+              [xs2_left, lambdas2_left*1e6]))
+f.close()
 
 lambdas = np.append(lambdas1, lambdas2_right)
 lambdas = np.append(lambdas, lambdas2_left)
@@ -68,11 +84,3 @@ lambdas = np.append(lambdas, lambdas2_left)
         r'= \SI{{{:.0f}+-{:.0f}}}{{\nano\meter}}$'
         .format(unp.nominal_values(lambdas).mean() * 1e6,
                 unp.std_devs(lambdas).mean() * 1e6)))
-
-for ls, xs, name in [[lambdas1, xs1, 'cm'],
-                     [lambdas2_right, xs2_right, 'mm_r'],
-                     [lambdas2_left, xs2_left, 'mm_l']]:
-    f = open('build/lambdas_grid_' + name + '.tex', 'w', 'utf-8')
-    for l, x in zip(ls, xs):
-        f.write((r'{} & {} \\' '\n').format(x, l*1e6))
-    f.close()
