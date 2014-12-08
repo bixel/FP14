@@ -11,7 +11,7 @@ def numplaces(num, uncert=False):
         return len(a), len(b), len(d)
     else:
         # TODO temporary hack
-        a, b = '{:.1f}'.format(num).split('.')
+        a, b = '{}'.format(num).split('.')
         return len(a), len(b)
 
 

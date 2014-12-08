@@ -22,11 +22,16 @@ WAVELENGTH = build/lambdas_grid_cm.tex \
 			 build/lambda_grid.tex \
 			 build/lambda_slot.tex
 
+POLARISATION = build/polarisation_I0.tex \
+			   build/polarisation_phi.tex \
+			   build/polarisation_tab.tex
+
 all: build/00_main.pdf
 
-build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) $(WAVELENGTH) | build
+build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) $(WAVELENGTH) $(POLARISATION) | build
 	latexmk $(TEXOPTIONS) 00_main.tex
 
+$(POLARISATION) \
 build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 	python3 polarisation.py
 
