@@ -148,6 +148,40 @@ Auch hier werden die Fehler mit \SI{5}{\percent} abgeschätzt.
     \label{fig:tem01}
 \end{figure}
 
+\subsection{Polarisationsmessung}
+\label{subsec:polarisation}
+Mit Hilfe eines Polarisators wird die Polarisationsrichtung des Laserstrahls  
+vermessen.
+Dazu wird die Intensität des Lichts in Abhängigkeit zur Drehung des
+Polarisators gemessen.
+Diese sollte einer Sinuskurve mit Amplitude $I_0$ und Offset $\varphi$ folgen:
+\begin{equation*}
+    I(\theta) = I_0 \sin\!\left(\theta-\varphi\right)\,.
+\end{equation*}
+Die für den Fit genutzten Messwerte sind in Tabelle \ref{tab:polarisation}
+aufgeführt. Abbildungen \ref{fig:polarisation} und \ref{fig:polarisation_polar}
+Zeigen den Intensitätsverlauf.
+Der Fit liefert \input{build/polarisation_I0.tex} und
+\input{build/polarisation_phi.tex}\unskip.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/polarisation_lin.pdf}
+    \caption{Intensitätsverlauf hinter Polarisator.}
+    \label{fig:polarisation}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/polarisation_polar.pdf}
+    \caption{Intensitätsverlauf hinter Polarisator -- Polar dargestellt.}
+    \label{fig:polarisation_polar}
+\end{figure}
+\begin{table}
+    \centering
+    \caption{Messwerte zur Polarisationsmessung des Lasers.}
+    \label{tab:polarisation}
+    \input{build/polarisation_tab.tex}
+\end{table}
+
 \subsection{Wellenlängenbestimmung}
 \label{subsec:wellenlänge}
 Mit einer Vermessung verschiedener Beugungsmuster wird nun die Wellenlänge des
@@ -219,38 +253,4 @@ Die entsprechenden Messwerte sind in Tabelle \ref{tab:grid} aufgeführt und lief
         \label{tab:grid_rechts}
         \input{build/lambdas_grid_mm_r.tex}
     \end{subtable}
-\end{table}
-
-\subsection{Polarisationsmessung}
-\label{subsec:polarisation}
-Mit Hilfe eines Polarisators wird die Polarisationsrichtung des Laserstrahls  
-vermessen.
-Dazu wird die Intensität des Lichts in Abhängigkeit zur Drehung des
-Polarisators gemessen.
-Diese sollte einer Sinuskurve mit Amplitude $I_0$ und Offset $\varphi$ folgen:
-\begin{equation*}
-    I(\theta) = I_0 \sin\!\left(\theta-\varphi\right)\,.
-\end{equation*}
-Die für den Fit genutzten Messwerte sind in Tabelle \ref{tab:polarisation}
-aufgeführt. Abbildungen \ref{fig:polarisation} und \ref{fig:polarisation_polar}
-Zeigen den Intensitätsverlauf.
-Der Fit liefert \input{build/polarisation_I0.tex} und
-\input{build/polarisation_phi.tex}\unskip.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{build/polarisation_lin.pdf}
-    \caption{Intensitätsverlauf hinter Polarisator.}
-    \label{fig:polarisation}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{build/polarisation_polar.pdf}
-    \caption{Intensitätsverlauf hinter Polarisator -- Polar dargestellt.}
-    \label{fig:polarisation_polar}
-\end{figure}
-\begin{table}
-    \centering
-    \caption{Messwerte zur Polarisationsmessung des Lasers.}
-    \label{tab:polarisation}
-    \input{build/polarisation_tab.tex}
 \end{table}
