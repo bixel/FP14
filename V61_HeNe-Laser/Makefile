@@ -12,7 +12,8 @@ TEXCONTENT = 01_theorie.tex \
 
 PLOTS = build/polarisation_*.pdf \
 		build/TEM_*.pdf \
-		img/laser.jpg
+		img/laser.jpg \
+		build/gauß.pdf
 
 WAVELENGTH = build/lambdas_grid_cm.tex \
 			 build/lambdas_grid_mm_l.tex \
@@ -37,6 +38,9 @@ build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
 
 build/TEM_*.pdf build/tem00_*.tex: TEM.py data/TEM_*.txt | build
 	python3 TEM.py
+
+build/gauß.pdf: gauß.py | build
+	python3 gauß.py
 
 $(WAVELENGTH): wavelength.py data/grid*.txt data/slot.txt | build
 	python3 wavelength.py

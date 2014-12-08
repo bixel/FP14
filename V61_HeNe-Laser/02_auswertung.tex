@@ -254,3 +254,37 @@ Die entsprechenden Messwerte sind in Tabelle \ref{tab:grid} aufgeführt und lief
         \input{build/lambdas_grid_mm_r.tex}
     \end{subtable}
 \end{table}
+
+\subsection{Gaußverbreiterung beim HeNe-Laser}
+\label{subsec:gauß_diskussion}
+Die in \ref{subsec:gaußverbreiterung} beschriebene Gaußverbreiterung wird im
+Folgenden exemplarisch behandelt.
+Es wird geklärt, wie viele Schwingungsmoden in diesem Profil erhalten sind.
+Um die Breite des Gaußprofiles zu bestimmen, wird die Temperatur mit 
+$T = \SI{300}{\kelvin}$ geschätzt. Die Frequenz des Lasers beträgt etwa
+$f_0 = \SI{500}{\tera\hertz}$ und die Molekülmasse wird mit einigen
+Protonmassen genähert.
+Damit ergibt sich eine Breite des Gaußprofiles von $\sigma_f \
+\approx \SI{0.5}{\giga\hertz}$.
+
+Für eine Resonanz muss die Wellenlänge der Strahlung zudem einem Vielfachen
+der Resonatorlänge $L\approx \SI{1.5}{\meter}$ entsprechen, woraus folgt, dass
+\begin{equation*}
+    f_n = n \frac{\mathrm{c}}{2L}\,.
+\end{equation*}
+Der Abstand $\Delta f_n$ der einzelnen Schwingungsmoden beträgt damit 
+$\Delta f_n \approx \SI{100}{\mega\hertz}$.
+
+Als Richtwert für die Zahl der enthaltenen Moden im Spektrum wird das
+Verhältnis von Modenabstand $\Delta f_n$ und Halbwertsbreite des Gaußprofiles
+$2\sqrt{2\ln2} \sigma_f$ gebildet.
+Nach dieser Abschätzung enthält das Spektrum etwa \num{10} Schwingungsmoden
+des Lasers.
+Abbildung \ref{fig:gauß} veranschaulicht diesen Effekt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/gauß.pdf}
+    \caption{Näherungswerte für Gaußprofil und Schwingungsmoden des
+    HeNe-Lasers}
+    \label{fig:gauß}
+\end{figure}
