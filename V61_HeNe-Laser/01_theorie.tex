@@ -43,13 +43,20 @@ Um 1) zu erreichen muss dem Lasermedium über die Pumpquelle kontinuierlich Ener
 Beim Helium-Neon Laser werden die Helium Atome in Metastabile Zustände angeregt.
 Diese regen über Stöße zweiter Art die Neon Atome an, welche über spontane Emission die ersten Photonen emittieren.
 
-Damit die Verstärkung größer ist als die Verluste, werden die emittierten Photonen mithilfe eines Resonators viele male durch das Lasermedium gelenkt, wodurch die Verstärkung exponentiell mit der Länge des Laufweges im aktiven Lasermedium ansteigt.
+Damit die Verstärkung größer wird als die Verluste, werden die emittierten Photonen mithilfe eines Resonators viele male durch das Lasermedium gelenkt, wodurch die Verstärkung exponentiell mit der Länge des Laufweges im aktiven Lasermedium ansteigt.
 Der Resonator besteht aus sich gegenüberliegenden Spiegeln.
 Damit der Laser ausgekoppelt werden kann, ist einer davon zu einem geringen Teil durchlässig, während der andere optimalerweise nicht durchlässig sein sollte.
-Der Stabilitätsparamter beschreibt dabei, ob die Verstärkung die Verluste ausgleichen kann oder nicht. 
+Der Stabilitätsparameter beschreibt dabei, ob die Verstärkung die Verluste ausgleichen kann oder nicht. 
 Er ist durch 
 \begin{equation*}
-	g_1 g_2 = (1-L/r_1)(1-L/r_2)
+	0 <= g_1 g_2 = (1-L/r_1)(1-L/r_2) < 1
 \end{equation*}
 gegeben.
 Dabei ist $r_i$ der Krümmungsradius des Spiegels und $L$ die Länge des Resonators.
+Abbildung \ref{resonator} zeigt den schematischen Aufbau eines Lasers.
+\begin{figure}[h!]
+	\includegraphics[width = 12cm]{pic/laser_schem.png}
+\end{figure}
+
+In die Resonatorlänge des Lasers, passen stehende Wellen verschiedener Wellenlänge.
+Diese erfüllen die Resonanzbedingung und die Anzahl der Wellenlängen im Resonator wird mit $q$ bezeichnet.
