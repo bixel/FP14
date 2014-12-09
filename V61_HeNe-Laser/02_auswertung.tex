@@ -148,6 +148,40 @@ Auch hier werden die Fehler mit \SI{5}{\percent} abgeschätzt.
     \label{fig:tem01}
 \end{figure}
 
+\subsection{Polarisationsmessung}
+\label{subsec:polarisation}
+Mit Hilfe eines Polarisators wird die Polarisationsrichtung des Laserstrahls  
+vermessen.
+Dazu wird die Intensität des Lichts in Abhängigkeit zur Drehung des
+Polarisators gemessen.
+Diese sollte einer Sinuskurve mit Amplitude $I_0$ und Offset $\varphi$ folgen:
+\begin{equation*}
+    I(\theta) = I_0 \sin\!\left(\theta-\varphi\right)\,.
+\end{equation*}
+Die für den Fit genutzten Messwerte sind in Tabelle \ref{tab:polarisation}
+aufgeführt. Abbildungen \ref{fig:polarisation} und \ref{fig:polarisation_polar}
+Zeigen den Intensitätsverlauf.
+Der Fit liefert \input{build/polarisation_I0.tex} und
+\input{build/polarisation_phi.tex}\unskip.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/polarisation_lin.pdf}
+    \caption{Intensitätsverlauf hinter Polarisator.}
+    \label{fig:polarisation}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/polarisation_polar.pdf}
+    \caption{Intensitätsverlauf hinter Polarisator -- Polar dargestellt.}
+    \label{fig:polarisation_polar}
+\end{figure}
+\begin{table}
+    \centering
+    \caption{Messwerte zur Polarisationsmessung des Lasers.}
+    \label{tab:polarisation}
+    \input{build/polarisation_tab.tex}
+\end{table}
+
 \subsection{Wellenlängenbestimmung}
 \label{subsec:wellenlänge}
 Mit einer Vermessung verschiedener Beugungsmuster wird nun die Wellenlänge des
@@ -158,17 +192,119 @@ Der Abstand zwischen Spalt und Ebene der Photodiode beträgt $d = \SI{64.5}{\cen
 Die Messwerte sind in Tabelle \ref{tab:spalt} aufgeführt und ergeben mit der Beziehung
 \begin{equation}
     \label{eq:spalt}
-    \lambda_i = \frac{s}{i}\sin\alpha_i \approx \frac{s}{i}\frac{x_i}{d}
+    \lambda_n = \frac{s}{n}\sin\!\left(\alpha_n\right) = \frac{s}{n}\sin\!\left(\arctan\frac{x_n}{d}\right)
 \end{equation}
-den Mittelwert $\overline{\lambda}_\text{Spalt} = \SI{832}{\nano\meter}$.
+den Mittelwert \input{build/lambda_slot.tex}\unskip.
 Hierbei bezeichnet $\alpha$ den Winkel, unter dem das Minimum einfällt.
 
 Zusätzlich wird die Wellenlänge durch Austausch des Spaltes gegen ein Gitter mit Gitterkonstante $g = \SI{10}{\micro\meter}$ bestimmt.
 Statt der Minima werden hier die Hauptmaxima des Beugungsmusters vermessen und die Wellenlänge mit
 \begin{equation}
 \label{eq:gitter}
-    \lambda_i = \frac{a}{b}
+    \lambda_n = \frac{g}{n}\sin\!\left(\arctan\frac{x_n}{d}\right)
 \end{equation}
 bestimmt.
 Bei einem Durchgang wird dabei die Photodiode im Abstand von $d = \SI{13.2}{\centi\meter}$ zur Detektion der Maxima genutzt während bei einem zweiten Durchgang die Maxima auf einem Schirm im Abstand von $d = \SI{98}{\centi\meter}$ ausgemessen werden.
-Die entsprechenden Messwerte sind in Tabelle \ref{tab:gitter} aufgeführt und liefern $\overline{\lambda}_\text{Gitter} = \SI{612}{\nano\meter}$.
+Die entsprechenden Messwerte sind in Tabelle \ref{tab:grid} aufgeführt und liefern \input{build/lambda_grid.tex}\unskip.
+% Bei allen mit der Photodiode aufgenommenen Messwerten wurde jeweils die Mittelposition $x_0$ bestimmt und abgezogen.
+% Diese betrug für den Spalt $x_{0,\text{Spalt}}=\SI{5.8}{\milli\meter}$ und für das Gitter $x_{0,\text{gitter}}=\SI{5.0}{\milli\meter}$.
+\begin{table}
+    \centering
+    \caption{Messwerte, aufgenommen mit Hilfe eines optischen Spaltes.}
+    \label{tab:spalt}
+    \begin{subtable}{0.49\linewidth}
+        \centering
+        \caption{Linke Messwerte}
+        \label{tab:spalt_links}
+        \input{build/lambdas_slot_mm_l.tex}
+    \end{subtable}
+    \begin{subtable}{0.49\linewidth}
+        \centering
+        \caption{Rechte Messwerte}
+        \label{tab:spalt_rechts}
+        \input{build/lambdas_slot_mm_r.tex}
+    \end{subtable}
+\end{table}
+\begin{table}
+    \centering
+    \caption{
+        Messwerte, aufgenommen mit Hilfe eines optischen Gitters.
+        Die Werte in \ref{tab:grid_gross} wurde dabei mit Hilfe eines
+        Maßbandes in großem Abstand vom Gitter genommen, während die übrigen
+        Werte mit Hilfe der Photodiode in geringerem Abstand vom Gitter
+        aufgenommen wurde.
+    }
+    \label{tab:grid}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Großer Aufbau.}
+        \label{tab:grid_gross}
+        \input{build/lambdas_grid_cm.tex}
+    \end{subtable}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Kleiner Aufbau, links.}
+        \label{tab:grid_links}
+        \input{build/lambdas_grid_mm_l.tex}
+    \end{subtable}
+    \begin{subtable}[t]{0.32\linewidth}
+        \centering
+        \caption{Kleiner Aufbau, rechts.}
+        \label{tab:grid_rechts}
+        \input{build/lambdas_grid_mm_r.tex}
+    \end{subtable}
+\end{table}
+
+\subsection{Überprüfung der Stabilitätsbedingungen}
+\label{subsec:stabilitätsbedingungen}
+Zur Prüfung der Stabilitätsbedingungen werden die Resonatorspiegel schließlich
+langsam auseinandergeschoben.
+Dabei erlischt der Laser immer wieder, kann jedoch durch Nachkalibrierung
+etliche Male erneut aktiviert werden.
+Mit dieser Methode wurde der Maximale Abstand $d_\text{max}$,
+unter dem der Laser arbeitet
+für einen planen Spiegel und einen konvexen Spiegel mit Krümmungsradius
+$r = \SI{1}{\meter}$ bestimmt:
+\begin{align*}
+    d_\text{max,plan} = \SI{80\pm0.5}{\centi\meter} \qquad
+    d_\text{max,konvex} = \SI{98\pm0.5}{\centi\meter}\,.
+\end{align*}
+Bei dem konvexen Spiegel gelint es in einem Abstand von
+$d=\SI{142\pm0.5}{\centi\meter}$ den Laser zu reaktivieren, wobei dieser Aufbau
+auf kleinste Stöße am Tisch reagiert und der Laser erlischt.
+
+\subsection{Gaußverbreiterung beim HeNe-Laser}
+\label{subsec:gauß_diskussion}
+Die in \ref{subsec:gaußverbreiterung} beschriebene Gaußverbreiterung wird im
+Folgenden exemplarisch behandelt.
+Es wird geklärt, wie viele Schwingungsmoden in diesem Profil erhalten sind.
+Um die Breite des Gaußprofiles zu bestimmen, wird die Temperatur mit 
+$T = \SI{300}{\kelvin}$ geschätzt. Die Frequenz des Lasers beträgt etwa
+$f_0 = \SI{500}{\tera\hertz}$ und die Molekülmasse wird mit einigen
+Protonmassen genähert.
+Damit ergibt sich eine Breite des Gaußprofiles von $\sigma_f \
+\approx \SI{0.5}{\giga\hertz}$.
+
+Für eine Resonanz muss die Wellenlänge der Strahlung zudem einem Vielfachen
+der Resonatorlänge $L\approx \SI{1.5}{\meter}$ entsprechen, woraus folgt, dass
+\begin{equation*}
+    f_n = n \frac{\mathrm{c}}{2L}\,.
+\end{equation*}
+Der Abstand $\Delta f_n$ der einzelnen Schwingungsmoden beträgt damit 
+$\Delta f_n \approx \SI{100}{\mega\hertz}$.
+
+Als Richtwert für die Zahl der enthaltenen Moden im Spektrum wird das
+Verhältnis von Modenabstand $\Delta f_n$ und Halbwertsbreite des Gaußprofiles
+$2\sqrt{2\ln2} \sigma_f$ gebildet.
+Nach dieser Abschätzung enthält das Spektrum etwa \num{10} Schwingungsmoden
+des Lasers.
+Abbildung \ref{fig:gauß} veranschaulicht diesen Effekt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/gauß.pdf}
+    \caption{
+        Veranschaulichung des Gaußprofiles und der natürlichen Linienbreite
+        des HeNe-Lasers.
+    }
+    \label{fig:gauß}
+\end{figure}
