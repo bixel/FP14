@@ -53,6 +53,7 @@ Er ist durch
 \end{equation*}
 gegeben.
 Dabei ist $r_i$ der Krümmungsradius des Spiegels und $L$ die Länge des Resonators.
+
 Abbildung \ref{resonator} zeigt den schematischen Aufbau eines Lasers.
 \begin{figure}[h!]
 	\includegraphics[width = 12cm]{pic/laser_schem.png}
@@ -60,3 +61,22 @@ Abbildung \ref{resonator} zeigt den schematischen Aufbau eines Lasers.
 
 In die Resonatorlänge des Lasers, passen stehende Wellen verschiedener Wellenlänge.
 Diese erfüllen die Resonanzbedingung und die Anzahl der Wellenlängen im Resonator wird mit $q$ bezeichnet.
+
+
+\subsection{Gaußverbreiterung}
+\label{subsec:gaußverbreiterung}
+Ein unwillkommener Effekt für Anwendung von Gaslasern in der Spektroskopie ist
+die Gaußverbreiterung.
+Neben der natürlichen Linienbreite wird das Frequenzspektrum des Laserlichtes
+von dieser überlagert.
+Auf Grund der statistisch verteilten, relativen Bewegungsrichtung der
+Gasmoleküle im HeNe-Plasma, erscheinen die Schwingungsfrequenzen $f$ dieser
+Moleküle verschoben.
+Die Geschwindigkeitsverteilung ist dabei durch die Maxwell-Boltzmann-Verteilung
+gegeben. Die Breite dieser Verteilung beträgt
+\begin{equation}
+\label{eq:sigma_maxwell_boltzmann}
+    \sigma_f = \frac{f_0}{\mathrm{c}}\sqrt{\frac{\mathrm{k}_\text{B}T}{m}}\,,
+\end{equation}
+wobei $f_0$ die Grundfrequenz bezeichnet und $m$ die Masse des Moleküls.
+
