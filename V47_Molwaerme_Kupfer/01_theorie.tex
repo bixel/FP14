@@ -79,3 +79,44 @@ Näherung.
 
 \subsection{Das Debye-Modell}
 \label{subsec:debye}
+Das oben beschriebene Einstein-Modell wird im Debye-Modell um eine spektrale
+Verteilung $Z(\omega)$ der Frequenzen aller Oszillatoren des Kristalltes
+ergänzt.
+Unter der Annahme eines isotropen und dispersionsfreien Mediums lässt sich
+$Z(\omega)$ durch Abzählen aller Eigenschwingungen in einem Würfel
+der Kantenlänge $L$ im Frequenzintervall von $\omega$ bis
+$\omega+\mathup{d}\omega$ bestimmen:
+\begin{equation}
+    \label{eqn:z}
+    Z(\omega)\mathup{d}\omega = \frac{3L^3}{2\pi^2 v^3} \mathup{d}\omega\,,
+\end{equation}
+wobei $v$ die Phasengeschwindigkeit im Kristall bezeichnet.
+Über die Anzahl $3N$ der Eigenschwingungen eines Kristalls aus $N$ Atomen
+lässt sich eine obere Grenzfrequenz -- die Debye-Frequenz -- bestimmen zu
+\begin{equation}
+    \label{eqn:omega_debye}
+    \omega_D^3 = \frac{6\pi^2 v^3 N}{L^3}\,.
+\end{equation}
+Mit den Abkürzungen $x = \hbar\omega/\kb T$ und der Debye-Temperatur
+$\theta_\text{D}$ mit $\theta_\text{D}/T = \hbar\omega_D/\kb T$ folgt
+für die Molwärme im Debye-Modell
+\begin{equation}
+    \label{eqn:cv_debye}
+    c_{V,\text{Debye}} =
+    9\mathup{R}\left(\frac{T}{\theta_\text{D}}\right)^3
+    \int_0^{\frac{T}{\theta_\text{D}}}
+    \frac{x^4\e^x}{\left(\e^x-1\right)^2}\mathup{d}x\,.
+\end{equation}
+Die Debye-Temperatur stellt eine Materialkonstante dar und entspricht der
+Größenordnung, ab derer ein klassisches Verhalten der Molwärme eintritt.
+Die Funktion $c_V = f(\theta_\text{D}/T)$ beschreibt dann einen universellen
+Zusammenhang. Für hohe Temperaturen $x \ll \num{1}$ zeigt auch sie das
+asymptotische Verhalten $c_V\to 3\mathup{R}$.
+Bei tiefen Temperaturen liefert das Debye-Modell jedoch eine wesentlich
+bessere Näherung, als das Einstein-Modell.
+Für eine Exakte Beschreibung der Molwärme müsste schließlich die Dispersion,
+sowie der Beitrag der Leitungselektronen im Kristall betrachtet werden.
+Für diesen Versuch ist die Nutzung des Debye-Modells dennoch ausreichend.
+
+\section{Durchführung}
+\label{sec:durchführung}
