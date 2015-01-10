@@ -1,7 +1,8 @@
 \section{Theoretische Grundlagen}
 \label{sec:theorie}
-In diesem Versuch soll die Molwärme $c_V$ bei konstantem Volumen in
-Abhängigkeit von tiefen Temperaturen untersucht werden.
+In diesem Versuch soll aus der Untersuchung der Molwärme $\c_V$
+die materialspezifische Debye-Temperatur $\theta_\text{D}$ von Kupfer
+bestimmt werden.
 Während eine klassische Betrachtung eine konstanten Wert für $c_V$
 liefert, erhält man mit Einbeziehung quantenmechanischer Effekte eine
 Temperaturabhängigkeit, die im Folgenden beschrieben und schließlich 
@@ -33,8 +34,48 @@ die bekannte, temperatur- und materialunabhängige Größe
     c_V = \left.\frac{\partial U}{\partial T}\right|_V = 3 \mathup{R}\,.
 \end{equation}
 
-\subsection{Quantenmechanisch: Das Einstein-Modell}
+\subsection{Das Einstein-Modell}
 \label{subsec:einstein}
+Für gebräuchliche Temperaturen von $T \approx \SI{300}{\kelvin}$ und mehr
+stimmt die klassische Betrachtung gut mit Messungen überein.
+Bei tieferen Temperaturen wird die Molwärme von Stoffen jedoch
+temperaturabhängig.
+Das Einstein-Modell erweitert die klassische Betracthgun deshalb um die
+Quanteneigenschaften der Atome. Dazu fordert es, dass die Energieüberträge
+der Oszillatoren ein ganzzahliges Vielfaches von $\hbar\omega$ -- mit
+der Kreisfrequenz $\omega$ der schwingenden Atome und der
+Feinstrukturkonstante $\hbar$ -- betragen müssen.
+Die Besetzung der Energiezustände $n = 0,1,2,\dots$ ist dann Boltzmann-verteilt
+und es gilt für die Wahrscheinlichkeit $W$, dass ein solcher Zustand besetzt
+ist:
+\begin{equation}
+    \label{eqn:boltzmann}
+    W(n) = \exp\left[-\frac{n\hbar\omega}{\kb T}\right]\,.
+\end{equation}
+Durch Summation und Normierung über alle möglichen Zustände eines Atoms
+lässt sich dann die mittlere Energie dieses Atoms bestimmen zu
+\begin{equation}
+    \label{eqn:u_einstein}
+    \left<u\right>_\text{Einstein} =
+    \frac{\hbar\omega}{\exp[\frac{\hbar\omega}{\kb T}] - 1}\,.
+\end{equation}
+Daraus folgt die Molwärme im Einstein-Modell:
+\begin{equation}
+    \label{eqn:cv_einstein}
+    c_{V,\text{Einstein}} =
+    3\mathup{R}\left(\frac{\hbar\omega}{\kb T}\right)^2
+    \frac{
+        \exp[\frac{\hbar\omega}{\kb T}]
+    }{
+        \left(\exp[\frac{\hbar\omega}{\kb T}] - 1\right)^2
+    }\,,
+\end{equation}
+was im Limes für große Temperaturen gegen den klassischen Wert
+$c_V = 3\mathup{R}$ strebt.
+Diese Form beschreibt die Temperaturabhängigkeit der Molwärme besser, als
+die klassische Annahme. Weil jedoch die Kreisfrequenzen der Atome im Festkörper
+nicht homogen verteilt sind, beinhaltet diese Betrachtung noch immer eine grobe
+Näherung.
 
-\subsection{Quantenmechanisch: Das Debye-Modell}
+\subsection{Das Debye-Modell}
 \label{subsec:debye}
