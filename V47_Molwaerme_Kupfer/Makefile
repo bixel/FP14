@@ -8,42 +8,17 @@ TEXHEADERS = ../head.tex \
 
 TEXCONTENT = 01_theorie.tex \
 			 02_auswertung.tex \
-			 build/tem00_*.tex
+			 03_diskussion.tex
 
-PLOTS = build/polarisation_*.pdf \
-		build/TEM_*.pdf \
-		img/laser.jpg \
-		build/gauss.pdf
-
-WAVELENGTH = build/lambdas_grid_cm.tex \
-			 build/lambdas_grid_mm_l.tex \
-			 build/lambdas_grid_mm_r.tex \
-			 build/lambdas_slot_mm_l.tex \
-			 build/lambdas_slot_mm_r.tex \
-			 build/lambda_grid.tex \
-			 build/lambda_slot.tex
-
-POLARISATION = build/polarisation_I0.tex \
-			   build/polarisation_phi.tex \
-			   build/polarisation_tab.tex
+PLOTS = build/Cv_*.pdf 
 
 all: build/00_main.pdf
 
-build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) $(WAVELENGTH) $(POLARISATION) | build
+build/00_main.pdf: 00_main.tex $(TEXHEADERS) 00_main.tex $(TEXCONTENT) $(PLOTS) | build
 	latexmk $(TEXOPTIONS) 00_main.tex
 
-$(POLARISATION) \
-build/polarisation_*.pdf: polarisation.py data/polarisation.txt | build
-	python3 polarisation.py
-
-build/TEM_*.pdf build/tem00_*.tex: TEM.py data/TEM_*.txt | build
-	python3 TEM.py
-
-build/gauss.pdf: gauss.py | build
-	python3 gauss.py
-
-$(WAVELENGTH): wavelength.py data/grid*.txt data/slot.txt | build
-	python3 wavelength.py
+build/Cv_*.pdf: Cv.py data/daten.txt data/temp.txt | build
+	python3 Cv.py
 
 build:
 	mkdir -p build
