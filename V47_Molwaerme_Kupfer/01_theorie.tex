@@ -120,3 +120,40 @@ Für diesen Versuch ist die Nutzung des Debye-Modells dennoch ausreichend.
 
 \section{Durchführung}
 \label{sec:durchführung}
+Um die Debye-Temperatur $\theta_\text{D}$ von Kupfer zu bestimmen, wird
+eine Kupferprobe elektrisch von $T \approx \SI{80}{\kelvin}$ auf etwa
+$T \approx \SI{300}{\kelvin}$ erwärmt.
+Dabei wird die zugeführte Energie, sowie die Temperatur der Probe gemessen,
+woraus die Wärmekapazität bei konstantem Druck $c_p$ bestimmt werden kann.
+Der Zusammenhang zur Molwärme $c_V$ lautet:
+\begin{equation}
+    \label{eqn:cp_cv}
+    c_p - c_V = 9\alpha^2\kappa V_0 T\,
+\end{equation}
+mit dem linearen Ausdehnungskoeffizienten $\alpha$, dem Kompressionsmodul
+$\kappa$ und dem Molvolumen $V_0$.
+
+Die Probe befindet sich in einem Gehäuse, welches in einem Dewargefäß
+mit flüssigem Stickstoff auf etwa $T=\SI{80}{\kelvin}$ gekühlt wird.
+Das Gehäuse wird zuerst mit Helium geflutet und evakuiert, sobald sich
+Gehäuse- und Probentemperatur angeglichen haben.
+Durch das Vakuum ist die Probe thermisch isoliert.
+Erwärmung oder Abkühlen durch Wärmestrahlung wird mit Hilfe einer Heizung
+im Gehäuse verhindert, welche den Temperaturunterschied zwischen diesem und
+der Probe möglichst gering halten soll.
+Abbildung \ref{fig:aufbau} skizziert den Versuchsaufbau.
+Die Temperatur von Gehäuse und Probe wird jeweils mit einem Ohmschen Widerstand
+bestimmt.
+Die zugeführte Energie entspricht der elektrischen Leistung über die Zeit
+der Probenheizung.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{img/aufbau.png}
+    \caption{
+        Versuchsaufbau \cite{V47}, bestehend aus Dewargefäß, in das ein beheizbares
+        Gehäuse mit ebenfalls beheizbarer Probe eingelassen wird.
+        Das Gefäß ist mit flüssigem Stickstoff befüllt und das Gehäuse
+        evakuiert.
+    }
+    \label{fig:aufbau}
+\end{figure}
