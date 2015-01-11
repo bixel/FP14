@@ -1,0 +1,78 @@
+\newpage
+\section{Auswertung} % (fold)
+\label{sec:auswertung}
+
+Für die nachfolgende Auswertung wurden die Eigenschaften von Kupfer aus Tabelle \ref{Eigenschaften} verwendet.
+
+\begin{table}{!h}
+	\centering
+	\caption[]{Eigenschaften von Kupfer \cite{kupfer1}\cite{kupfer2}.}
+	\begin{tabular}{rrrrr}
+		\toprule
+		Masse/$\si{\gram}$ & Molmasse/$\si{\gram\per\mol}$ & $\rho \cdot 10^6/\si{\gram\per\meter^3}$ & $\Kappa \cdot 10^9/\si{\pascal}$ & $V_0 \cdot 10^{-6}/\si{\meter^3\per\mol}$\\
+		\midrule
+		342 & 63.546 & 8.92 & 7.11 & 140\\
+		\bottomrule
+	\end{tabular}
+	\label{Eigenschaften}
+\end{table}
+
+\FloatBarrier
+\subsection{Bestimmung von $C_\mathrm{V}$} % (fold)
+\label{sub:bestimmung_von_c__mathrm}
+
+\begin{table}[!h]
+	\caption[]{Ergebnisse bei der Bestimmung von $C_\mathrm{V}$.}
+	\centering
+	\input{build/Cv.tex}
+	\label{Cv}
+\end{table}
+
+\begin{table}[!h]
+	\centering
+	\caption[]{Werte zur Bestimmung von $C_\mathrm{P}$.}
+	\input{build/data.tex}
+	\label{Daten}
+\end{table}
+
+Die Ergebnisse zur Bestimmung von $C_\mathrm{V}$ sind in Tabelle \ref{Cv} dargestellt.
+$C_\mathrm{P}$ konnte über
+\begin{equation*}
+	C_\mathrm{P} = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
+\end{equation*}
+berechnet werden (\ref{Daten}).
+
+Die Temperatur in Kelvin ist aus dem Widerstand mithilfe der Gleichung
+\begin{equation*}
+	T(R) = (0.0013658089 \pm 0.0000000011) \cdot R^2 + (2.293180 \pm 0.000019) \cdot R + (30.194 \pm 0.017)
+\end{equation*}
+berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Temperatur} gewonnen worden ist.
+
+\begin{figure}[!h]
+	\centering
+	\caption[]{Temperatur in Abhängigkeit des Widerstandes \cite{V47}.}
+	\includegraphics[width = 10cm]{img/temperatur.png}	
+	\label{Temperatur}
+\end{figure}
+
+$C_\mathrm{V}$ lässt sich nun aus Gleichung \eqref{eqn:cp_cv} 
+berechnen.
+Dazu wurde für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet.
+Der lineare Ausdehnungskoeffizient ist aus der Temperatur mithilfe der Gleichung
+\begin{eqnarray*}
+	\alpha(T) = 
+	(4.412940810572491657\pm0.000000000000000004)10^{-17} &\cdot& T^5 +\\
+	(-4.898243378402790\pm0.000000000000004)10^{-14} &\cdot& T^4 + \\
+	(2.1799009653562\pm0.0000000000005)10^{-11} &\cdot& T^3 + \\
+	(-4.93625747976\pm0.00000000013)10^{-9} &\cdot& T^2 + \\
+	(5.958111139\pm0.000000009)10^{-7} &\cdot& T^1 + \\
+	(-1.68738899\pm0.00000008)10^{-5} &&
+\end{eqnarray*}
+berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Alpha} gewonnen worden ist.
+
+\begin{figure}[!h]
+	\centering
+	\caption[]{$\alpha$ in Abhängigkeit der Temperatur \cite{V47}.}
+	\includegraphics[width = 10cm]{img/alpha.png}	
+	\label{Alpha}
+\end{figure}

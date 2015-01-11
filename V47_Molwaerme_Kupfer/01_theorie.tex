@@ -1,9 +1,9 @@
 \section{Theoretische Grundlagen}
 \label{sec:theorie}
-In diesem Versuch soll aus der Untersuchung der Molwärme $\c_V$
+In diesem Versuch soll aus der Untersuchung der Molwärme $C_V$
 die materialspezifische Debye-Temperatur $\theta_\text{D}$ von Kupfer
 bestimmt werden.
-Während eine klassische Betrachtung eine konstanten Wert für $c_V$
+Während eine klassische Betrachtung eine konstanten Wert für $C_V$
 liefert, erhält man mit Einbeziehung quantenmechanischer Effekte eine
 Temperaturabhängigkeit, die im Folgenden beschrieben und schließlich 
 gemessen wird.
@@ -31,7 +31,7 @@ der Temperatur bei konstantem Volumen definiert. Es folgt damit
 die bekannte, temperatur- und materialunabhängige Größe
 \begin{equation}
     \label{eqn:cv_klassisch}
-    c_V = \left.\frac{\partial U}{\partial T}\right|_V = 3 \mathup{R}\,.
+    C_V = \left.\frac{\partial U}{\partial T}\right|_V = 3 \mathup{R}\,.
 \end{equation}
 
 \subsection{Das Einstein-Modell}
@@ -62,7 +62,7 @@ lässt sich dann die mittlere Energie dieses Atoms bestimmen zu
 Daraus folgt die Molwärme im Einstein-Modell:
 \begin{equation}
     \label{eqn:cv_einstein}
-    c_{V,\text{Einstein}} =
+    C_{V,\text{Einstein}} =
     3\mathup{R}\left(\frac{\hbar\omega}{\kb T}\right)^2
     \frac{
         \exp[\frac{\hbar\omega}{\kb T}]
@@ -71,7 +71,7 @@ Daraus folgt die Molwärme im Einstein-Modell:
     }\,,
 \end{equation}
 was im Limes für große Temperaturen gegen den klassischen Wert
-$c_V = 3\mathup{R}$ strebt.
+$C_V = 3\mathup{R}$ strebt.
 Diese Form beschreibt die Temperaturabhängigkeit der Molwärme besser, als
 die klassische Annahme. Weil jedoch die Kreisfrequenzen der Atome im Festkörper
 nicht homogen verteilt sind, beinhaltet diese Betrachtung noch immer eine grobe
@@ -102,16 +102,16 @@ $\theta_\text{D}$ mit $\theta_\text{D}/T = \hbar\omega_D/\kb T$ folgt
 für die Molwärme im Debye-Modell
 \begin{equation}
     \label{eqn:cv_debye}
-    c_{V,\text{Debye}} =
+    C_{V,\text{Debye}} =
     9\mathup{R}\left(\frac{T}{\theta_\text{D}}\right)^3
-    \int_0^{\frac{T}{\theta_\text{D}}}
+    \int_0^{\frac{\theta_\text{D}}{T}}
     \frac{x^4\e^x}{\left(\e^x-1\right)^2}\mathup{d}x\,.
 \end{equation}
 Die Debye-Temperatur stellt eine Materialkonstante dar und entspricht der
 Größenordnung, ab derer ein klassisches Verhalten der Molwärme eintritt.
-Die Funktion $c_V = f(\theta_\text{D}/T)$ beschreibt dann einen universellen
+Die Funktion $C_V = f(\theta_\text{D}/T)$ beschreibt dann einen universellen
 Zusammenhang. Für hohe Temperaturen $x \ll \num{1}$ zeigt auch sie das
-asymptotische Verhalten $c_V\to 3\mathup{R}$.
+asymptotische Verhalten $C_V\to 3\mathup{R}$.
 Bei tiefen Temperaturen liefert das Debye-Modell jedoch eine wesentlich
 bessere Näherung, als das Einstein-Modell.
 Für eine Exakte Beschreibung der Molwärme müsste schließlich die Dispersion,
@@ -124,11 +124,11 @@ Um die Debye-Temperatur $\theta_\text{D}$ von Kupfer zu bestimmen, wird
 eine Kupferprobe elektrisch von $T \approx \SI{80}{\kelvin}$ auf etwa
 $T \approx \SI{300}{\kelvin}$ erwärmt.
 Dabei wird die zugeführte Energie, sowie die Temperatur der Probe gemessen,
-woraus die Wärmekapazität bei konstantem Druck $c_p$ bestimmt werden kann.
-Der Zusammenhang zur Molwärme $c_V$ lautet:
+woraus die Wärmekapazität bei konstantem Druck $C_p$ bestimmt werden kann.
+Der Zusammenhang zur Molwärme $C_V$ lautet:
 \begin{equation}
     \label{eqn:cp_cv}
-    c_p - c_V = 9\alpha^2\kappa V_0 T\,
+    C_p - C_V = 9\alpha^2\kappa V_0 T\,
 \end{equation}
 mit dem linearen Ausdehnungskoeffizienten $\alpha$, dem Kompressionsmodul
 $\kappa$ und dem Molvolumen $V_0$.
