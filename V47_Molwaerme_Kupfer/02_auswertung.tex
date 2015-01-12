@@ -2,7 +2,7 @@
 \section{Auswertung} % (fold)
 \label{sec:auswertung}
 
-Für die nachfolgende Auswertung wurden die Eigenschaften von Kupfer aus Tabelle \ref{Eigenschaften} verwendet.
+Für die nachfolgende Auswertung werden die Eigenschaften von Kupfer aus Tabelle \ref{Eigenschaften} verwendet.
 
 \begin{table}{!h}
 	\centering
@@ -18,7 +18,7 @@ Für die nachfolgende Auswertung wurden die Eigenschaften von Kupfer aus Tabelle
 \end{table}
 
 \FloatBarrier
-\subsection{Bestimmung von $C_\mathrm{V}$} % (fold)
+\subsection{Bestimmung der Molwärme $C_\mathrm{V}$} % (fold)
 \label{sub:bestimmung_von_c__mathrm}
 
 \begin{table}[!h]
@@ -40,7 +40,7 @@ $C_\mathrm{P}$ konnte über
 \begin{equation*}
 	C_\mathrm{P} = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
 \end{equation*}
-berechnet werden (\ref{Daten}).
+berechnet werden \ref{Daten}.
 
 Die Temperatur in Kelvin ist aus dem Widerstand mithilfe der Gleichung
 \begin{equation*}
@@ -78,7 +78,7 @@ berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Method
 \end{figure}
 
 Die Ergebnisse sind Graphisch in Abbildung \ref{Cv_gra} dargestellt.
-Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewert von $\Theta_D = \SI{345}{\kelvin}$ \cite{kupfer3}errechnet und der Abbildung hinzugefügt worden.
+Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewert von $\Theta_D = \SI{345}{\kelvin}$ \cite{kupfer3} errechnet und der Abbildung hinzugefügt worden.
 
 \begin{figure}
 	\centering
@@ -87,7 +87,18 @@ Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewe
 	\label{Cv_gra}
 \end{figure}
 
-\subsection{Bestimmung der Debye Temperatur $\Theta_\mathrm{D}$} % (fold)
+\begin{figure}
+	\begin{minipage}{8cm}
+		\includegraphics[width = 8cm]{build/Cv_Temperatur.pdf}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{8cm}
+		\includegraphics[width = 8cm]{build/Cv_alpha.pdf}
+	\end{minipage}
+	\caption[]{Werte zur Bestimmung der Funktion zur Berechnung der Temperatur $T$ und dem linearen Ausdehnungskoeffizienten $\alpha$ und den dazugehörigen Fit-Funktionen.}
+\end{figure}
+
+\subsection{Bestimmung der Debye-Temperatur $\Theta_\mathrm{D}$} % (fold)
 \label{sub:bestimmung_der_debye_temperatur_theta_mathrm}
 
 \begin{table}[!h]
@@ -100,25 +111,25 @@ Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewe
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width = 14cm]{img/theta.png}
-	\caption[]{Werte der Universellen Debye-Funktion für $C_\mathrm{V}$ zur Bestimmung der Debye Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
+	\caption[]{Werte der Universellen Debye-Funktion für $C_\mathrm{V}$ zur Bestimmung der Debye-Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
 	\label{Cv_global}
 \end{figure}
 
 Beim Vergleich der errechneten Werte von $C_\mathrm{V}$ bis zur Temperatur $T_\text{max} = \SI{170}{\kelvin}$ mit der Debye-Funktion aus Tabelle \ref{Cv_global} haben sich die in Tabelle \ref{Theta_Debye} dargestellten Werte für $\Theta_\text{D} / T$ ergeben.
-Zudem hat ist es möglich durch Multiplikation mit der Temperatur auf den Wert für $\Theta_\text{D}$ zu schließen.
+Zudem ist es möglich durch Multiplikation mit der Temperatur auf den Wert für $\Theta_\text{D}$ zu schließen.
 
-Durch Bilden des Mittelwertes der Debye Temperaturen konnte der Wert \input{build/theta_D.tex} errechnet werden.
+Durch Bilden des Mittelwertes der Debye-Temperaturen konnte der Wert \input{build/theta_D.tex} errechnet werden.
 \FloatBarrier
 \subsection{Theoretische Berechnung von $\omega_\mathrm{D}$ und $\Theta_\mathrm{D}$} % (fold)
 \label{sub:theoretische_berechnung_von_omega_mathrm}
 
-Mithilfe der Gleichung \eqref{eqn:omega_debye}, den Geschwindigkeiten $v_\text{l}=\SI{4.7}{\kilo\meter\per\second}$ und $v_\text{l}=\SI{2.26}{\kilo\meter\per\second}$ und dem Zusammenhang
-\begin{equation}
+Mithilfe der Gleichung \eqref{eqn:omega_debye}, den Geschwindigkeiten $v_\text{l}=\SI{4.7}{\kilo\meter\per\second}$ und $v_\text{tr}=\SI{2.26}{\kilo\meter\per\second}$ und dem Zusammenhang
+\begin{equation*}
 	N = N_\text{A} \frac{m}{M}
-\end{equation}
+\end{equation*}
 ergiebt sich \input{omega_D_theo.tex}.
 Daraus errechnet sich mithilfe der Gleichung
-\begin{equation}
+\begin{equation*}
 	\Theta_\text{D} = \frac{\hbar \omega_\text{D}}{\kb}
-\end{equation}
+\end{equation*}
 zu \input{theta_D_theo.tex}.
