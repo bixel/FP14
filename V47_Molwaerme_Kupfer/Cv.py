@@ -18,15 +18,15 @@ Kompressionsmodul = 140*10**9
 
 
 # Einlesen der Daten
-R0_r, DR0_r, t_r, Dt_r, U_r, DU_r, I_r, DI_r, R1_r, DR1_r = np.genfromtxt('data/daten.txt', unpack=True)
+R0_r, DR0_r, t_r, Dt_r, U_r, DU_r, I_raw, DI_raw, R1_r, DR1_r = np.genfromtxt('data/daten.txt', unpack=True)
 Tt0, Rt, alpha = np.genfromtxt('data/temp.txt', unpack=True)
 
 #Umrechnung in Kelvin und ergänzung der 10^-6 zur Bestimmung der Gleichungen
 Tt = Tt0 + 273.15
 Talpha = Tt0 + 270
 alpha = alpha*10**-6
-I_r = I_r * 10**-3
-DI_r = DI_r * 10**-3
+I_r = I_raw * 10**-3
+DI_r = DI_raw * 10**-3
 
 #Funktionen
 def func_alpha(x,a,b,c,d,e,f):
@@ -50,6 +50,7 @@ R1 = unp.uarray(R1_r, DR1_r)
 t = unp.uarray(t_r, Dt_r)
 U = unp.uarray(U_r, DU_r)
 I = unp.uarray(I_r, DI_r)
+I_naklar = unp.uarray(I_raw,DI_raw)
 
 #Fits
 popt_temp1, pcov_temp = curve_fit(quadratische_funktion, Rt, Tt)
@@ -149,7 +150,7 @@ f = open('build/data.tex', 'w', 'utf-8')
 f.write(table([r'$R_0/\si{\ohm}$', r'$R_1/\si{\ohm}$',
                r'$t/\si{\second}$', r'$U/\si{\ohm}$',
                r'$I/\si{\milli\ampere}$'],
-              [R0,R1,t,U,I]))
+              [R0,R1,t,U,I_naklar]))
 f.close()
 
 #Plots

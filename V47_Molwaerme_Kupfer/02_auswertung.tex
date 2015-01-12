@@ -4,7 +4,7 @@
 
 Für die nachfolgende Auswertung werden die Eigenschaften von Kupfer aus Tabelle \ref{Eigenschaften} verwendet.
 
-\begin{table}{!h}
+\begin{table}[!h]
 	\centering
 	\caption[]{Eigenschaften von Kupfer \cite{kupfer1}\cite{kupfer2}.}
 	\begin{tabular}{rrrrr}
@@ -41,6 +41,10 @@ $C_\mathrm{P}$ konnte über
 	C_\mathrm{P} = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
 \end{equation*}
 berechnet werden \ref{Daten}.
+Dabei ist der Fehler durch
+\begin{equation*}
+	\Delta C_\mathrm{P} = \sqrt{\left(|\frac{\partial C_\mathrm{P}}{\partial t}|\cdot \Delta t \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial U}|\cdot \Delta U \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial I}|\cdot \Delta I \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial \Delta T}|\cdot \Delta (\Delta T) \right)^2}
+\end{equation*}
 
 Die Temperatur in Kelvin ist aus dem Widerstand mithilfe der Gleichung
 \begin{equation*}
@@ -57,6 +61,10 @@ berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Method
 
 $C_\mathrm{V}$ lässt sich nun aus Gleichung \eqref{eqn:cp_cv} 
 berechnen.
+Dabei ist der Fehler durch
+\begin{equation*}
+	\Delta C_\mathrm{V} = \sqrt{\left(|\frac{\partial C_\mathrm{V}}{\partial C_\mathrm{P}}|\cdot \Delta C_\mathrm{P} \right)^2 + \left(|\frac{\partial C_\mathrm{V}}{\partial \alpha}|\cdot \Delta \alpha \right)^2 + \left(|\frac{\partial C_\mathrm{V}}{\partial T}|\cdot \Delta T \right)^2}
+\end{equation*}
 Dazu ist für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet worden.
 Der lineare Ausdehnungskoeffizient ist aus der Temperatur mithilfe der Gleichung
 \begin{eqnarray*}
