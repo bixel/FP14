@@ -148,7 +148,7 @@ f.close()
 
 f = open('build/data.tex', 'w', 'utf-8')
 f.write(table([r'$R_0/\si{\ohm}$', r'$R_1/\si{\ohm}$',
-               r'$t/\si{\second}$', r'$U/\si{\ohm}$',
+               r'$t/\si{\second}$', r'$U/\si{\volt}$',
                r'$I/\si{\milli\ampere}$'],
               [R0,R1,t,U,I_naklar]))
 f.close()

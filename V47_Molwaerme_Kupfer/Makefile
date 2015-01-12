@@ -13,11 +13,12 @@ TEXCONTENT = 01_theorie.tex \
 PLOTS = build/Cv*.pdf \
 		build/Theta.tex \
 		build/omega_D_theo.tex \
-		build/Fits.tex \
 		build/theta_D.tex \
 		build/theta_D_T.tex \
 		build/theta_D_theo.tex \
-		build/data.tex
+		build/data.tex \
+		build/Cv.tex \
+		build/Fit.txt
 
 all: build/00_main.pdf
 
