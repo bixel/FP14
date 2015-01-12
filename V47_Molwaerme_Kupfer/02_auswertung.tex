@@ -57,7 +57,7 @@ berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Method
 
 $C_\mathrm{V}$ lässt sich nun aus Gleichung \eqref{eqn:cp_cv} 
 berechnen.
-Dazu wurde für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet.
+Dazu ist für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet worden.
 Der lineare Ausdehnungskoeffizient ist aus der Temperatur mithilfe der Gleichung
 \begin{eqnarray*}
 	\alpha(T) = 
@@ -76,3 +76,49 @@ berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Method
 	\includegraphics[width = 10cm]{img/alpha.png}	
 	\label{Alpha}
 \end{figure}
+
+Die Ergebnisse sind Graphisch in Abbildung \ref{Cv_gra} dargestellt.
+Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewert von $\Theta_D = \SI{345}{\kelvin}$ \cite{kupfer3}errechnet und der Abbildung hinzugefügt worden.
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 14cm]{build/Cv_Cv.pdf}
+	\caption[]{Graphische Darstellung der Ergebnisse von $C_\mathrm{V}$ und der dazugehörigen Theoriekurve.}
+	\label{Cv_gra}
+\end{figure}
+
+\subsection{Bestimmung der Debye Temperatur $\Theta_\mathrm{D}$} % (fold)
+\label{sub:bestimmung_der_debye_temperatur_theta_mathrm}
+
+\begin{table}[!h]
+	\centering
+	\caption[]{Ergebnisse der Berechnung der Debye-Temperatur.}
+	\input{build/Theta.tex}
+	\label{Theta_Debye}
+\end{table}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width = 14cm]{img/theta.png}
+	\caption[]{Werte der Universellen Debye-Funktion für $C_\mathrm{V}$ zur Bestimmung der Debye Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
+	\label{Cv_global}
+\end{figure}
+
+Beim Vergleich der errechneten Werte von $C_\mathrm{V}$ bis zur Temperatur $T_\text{max} = \SI{170}{\kelvin}$ mit der Debye-Funktion aus Tabelle \ref{Cv_global} haben sich die in Tabelle \ref{Theta_Debye} dargestellten Werte für $\Theta_\text{D} / T$ ergeben.
+Zudem hat ist es möglich durch Multiplikation mit der Temperatur auf den Wert für $\Theta_\text{D}$ zu schließen.
+
+Durch Bilden des Mittelwertes der Debye Temperaturen konnte der Wert \input{build/theta_D.tex} errechnet werden.
+\FloatBarrier
+\subsection{Theoretische Berechnung von $\omega_\mathrm{D}$ und $\Theta_\mathrm{D}$} % (fold)
+\label{sub:theoretische_berechnung_von_omega_mathrm}
+
+Mithilfe der Gleichung \eqref{eqn:omega_debye}, den Geschwindigkeiten $v_\text{l}=\SI{4.7}{\kilo\meter\per\second}$ und $v_\text{l}=\SI{2.26}{\kilo\meter\per\second}$ und dem Zusammenhang
+\begin{equation}
+	N = N_\text{A} \frac{m}{M}
+\end{equation}
+ergiebt sich \input{omega_D_theo.tex}.
+Daraus errechnet sich mithilfe der Gleichung
+\begin{equation}
+	\Theta_\text{D} = \frac{\hbar \omega_\text{D}}{\kb}
+\end{equation}
+zu \input{theta_D_theo.tex}.
