@@ -8,7 +8,7 @@ from textable import table
 
 
 def sin(x, A, phi):
-    return A * np.sin(x - phi)**2
+    return A * np.sin(x - phi) ** 2
 
 
 theta, I = np.genfromtxt('data/polarisation.txt', unpack=True)
@@ -18,12 +18,12 @@ theta = np.append(theta, 360)
 I = np.append(I, I[0])
 
 coeffs, covar = curve_fit(sin, theta * (np.pi / 180), I,
-                          p0=[0.1, 150*np.pi/180])
+                          p0=[0.1, 150 * np.pi / 180])
 errs = np.sqrt(np.diag(covar))
 I0 = ufloat(coeffs[0], errs[0])
 phi = ufloat(coeffs[1], errs[1])
 xs = np.linspace(0, np.max(theta), 200)
-ys = sin(xs*(np.pi/180), *coeffs)
+ys = sin(xs * (np.pi / 180), *coeffs)
 
 plt.polar(xs * np.pi / 180, ys, 'r-')
 plt.polar(theta * np.pi / 180, I, 'bo--')
@@ -41,7 +41,7 @@ plt.plot(xs, ys, 'r-', label='Fit')
 
 theta = theta[:-1]
 I = I[:-1]
-plt.errorbar(theta, I, yerr=0.05*I, fmt='bo', label='Messpunkte')
+plt.errorbar(theta, I, yerr=0.05 * I, fmt='bo', label='Messpunkte')
 plt.xlabel(r'$\theta/^\circ$')
 plt.ylabel(r'$I/\mathrm{mA}$')
 plt.xlim(-10, 360)
