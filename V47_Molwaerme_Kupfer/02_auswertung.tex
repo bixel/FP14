@@ -11,87 +11,89 @@ Für die nachfolgende Auswertung werden die Eigenschaften von Kupfer aus Tabelle
 		\toprule
 		Masse/$\si{\gram}$ & Molmasse/$\si{\gram\per\mol}$ & $\rho \cdot 10^6/\si{\gram\per\meter^3}$ & $\Kappa \cdot 10^9/\si{\pascal}$ & $V_0 \cdot 10^{-6}/\si{\meter^3\per\mol}$\\
 		\midrule
-		342 & 63.546 & 8.92 & 7.11 & 140\\
+		342 & 63,546 & 8,92 & 7,11 & 140\\
 		\bottomrule
 	\end{tabular}
 	\label{Eigenschaften}
 \end{table}
 
 \FloatBarrier
-\subsection{Bestimmung der Molwärme $C_\mathrm{V}$} % (fold)
+\subsection{Bestimmung der Molwärme $C_V$} % (fold)
 \label{sub:bestimmung_von_c__mathrm}
 
 \begin{table}[!h]
-	\caption[]{Ergebnisse bei der Bestimmung von $C_\mathrm{V}$.}
+	\caption[]{Ergebnisse bei der Bestimmung von $C_V$.}
 	\centering
-	\input{build/Cv.tex}
+	\input{Cv_abgabe.tex}
 	\label{Cv}
 \end{table}
 
 \begin{table}[!h]
 	\centering
-	\caption[]{Werte zur Bestimmung von $C_\mathrm{P}$.}
-	\input{build/data.tex}
+	\caption[]{Werte zur Bestimmung von $C_p$.}
+	\input{data_abgabe.tex}
 	\label{Daten}
 \end{table}
 
-Die Ergebnisse zur Bestimmung von $C_\mathrm{V}$ sind in Tabelle \ref{Cv} dargestellt.
-$C_\mathrm{P}$ konnte über
+Die Ergebnisse zur Bestimmung von $C_V$ sind in Tabelle \ref{Cv} dargestellt.
+$C_p$ konnte über
 \begin{equation*}
-	C_\mathrm{P} = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
+	C_p = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
 \end{equation*}
 berechnet werden \ref{Daten}.
 Dabei ist der Fehler durch
 \begin{equation*}
-	\Delta C_\mathrm{P} = \sqrt{\left(|\frac{\partial C_\mathrm{P}}{\partial t}|\cdot \Delta t \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial U}|\cdot \Delta U \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial I}|\cdot \Delta I \right)^2 + \left(|\frac{\partial C_\mathrm{P}}{\partial \Delta T}|\cdot \Delta (\Delta T) \right)^2}
+	\Delta C_p = \sqrt{\left(|\frac{\partial C_p}{\partial t}|\cdot \Delta t \right)^2 + \left(|\frac{\partial C_p}{\partial U}|\cdot \Delta U \right)^2 + \left(|\frac{\partial C_p}{\partial I}|\cdot \Delta I \right)^2 + \left(|\frac{\partial C_p}{\partial \Delta T}|\cdot \Delta (\Delta T) \right)^2}
 \end{equation*}
 
 Die Temperatur in Kelvin ist aus dem Widerstand mithilfe der Gleichung
 \begin{equation*}
-	T(R) = (0.0013658089 \pm 0.0000000011) \cdot R^2 + (2.293180 \pm 0.000019) \cdot R + (30.194 \pm 0.017)
+	T(R) = \SI{0.00137}{\kelvin\per\ohm^2} \cdot R^2 + \SI{2.296}{\kelvin\per\ohm} \cdot R + \SI{30.194 \pm 0.017}{\kelvin}
 \end{equation*}
 berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Temperatur} gewonnen worden ist.
+Die Vorfaktore von $R^2$ und $R$ haben dabei vernachlässigbar kleine Fehler.
 
-\begin{figure}[!h]
+\begin{table}[!h]
 	\centering
 	\caption[]{Temperatur in Abhängigkeit des Widerstandes \cite{V47}.}
-	\includegraphics[width = 10cm]{img/temperatur.png}	
+	\input{Berechnung_Temperatur_abgabe.tex}
 	\label{Temperatur}
-\end{figure}
+\end{table}
 
-$C_\mathrm{V}$ lässt sich nun aus Gleichung \eqref{eqn:cp_cv} 
+$C_V$ lässt sich nun aus Gleichung \eqref{eqn:cp_cv} 
 berechnen.
 Dabei ist der Fehler durch
 \begin{equation*}
-	\Delta C_\mathrm{V} = \sqrt{\left(|\frac{\partial C_\mathrm{V}}{\partial C_\mathrm{P}}|\cdot \Delta C_\mathrm{P} \right)^2 + \left(|\frac{\partial C_\mathrm{V}}{\partial \alpha}|\cdot \Delta \alpha \right)^2 + \left(|\frac{\partial C_\mathrm{V}}{\partial T}|\cdot \Delta T \right)^2}
+	\Delta C_V = \sqrt{\left(|\frac{\partial C_V}{\partial C_p}|\cdot \Delta C_p \right)^2 + \left(|\frac{\partial C_V}{\partial \alpha}|\cdot \Delta \alpha \right)^2 + \left(|\frac{\partial C_V}{\partial T}|\cdot \Delta T \right)^2}
 \end{equation*}
 Dazu ist für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet worden.
 Der lineare Ausdehnungskoeffizient ist aus der Temperatur mithilfe der Gleichung
 \begin{eqnarray*}
 	\alpha(T) = 
-	(4.412940810572491657\pm0.000000000000000004)10^{-17} &\cdot& T^5 +\\
-	(-4.898243378402790\pm0.000000000000004)10^{-14} &\cdot& T^4 + \\
-	(2.1799009653562\pm0.0000000000005)10^{-11} &\cdot& T^3 + \\
-	(-4.93625747976\pm0.00000000013)10^{-9} &\cdot& T^2 + \\
-	(5.958111139\pm0.000000009)10^{-7} &\cdot& T^1 + \\
-	(-1.68738899\pm0.00000008)10^{-5} &&
+	\SI{4.413 e-17}{1\per\kelvin^6} \cdot T^5 +
+	\SI{-4.898 e-14}{1\per\kelvin^5} \cdot T^4 + 
+	\SI{2.180 e-11}{1\per\kelvin^4} \cdot T^3 +\\ 
+	\SI{-4.936 e-9}{1\per\kelvin^3}\cdot T^2 + 
+	\SI{5.958 e-7}{1\per\kelvin^2} \cdot T^1 + 
+	\SI{-1.687 e-5}{1\per\kelvin} 
 \end{eqnarray*}
 berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Alpha} gewonnen worden ist.
+Die Fehler sind vernachlässigbar.
 
-\begin{figure}[!h]
+\begin{table}[!h]
 	\centering
 	\caption[]{$\alpha$ in Abhängigkeit der Temperatur \cite{V47}.}
-	\includegraphics[width = 10cm]{img/alpha.png}	
+	\input{Berechnung_Alpha_abgabe.tex}
 	\label{Alpha}
-\end{figure}
+\end{table}
 
-Die Ergebnisse sind Graphisch in Abbildung \ref{Cv_gra} dargestellt.
+Die Ergebnisse sind graphisch in Abbildung \ref{Cv_gra} dargestellt.
 Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewert von $\Theta_D = \SI{345}{\kelvin}$ \cite{kupfer3} errechnet und der Abbildung hinzugefügt worden.
 
 \begin{figure}
 	\centering
 	\includegraphics[width = 14cm]{build/Cv_Cv.pdf}
-	\caption[]{Graphische Darstellung der Ergebnisse von $C_\mathrm{V}$ und der dazugehörigen Theoriekurve.}
+	\caption[]{Graphische Darstellung der Ergebnisse von $C_V$ und der dazugehörigen Theoriekurve.}
 	\label{Cv_gra}
 \end{figure}
 
@@ -119,14 +121,15 @@ Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewe
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width = 14cm]{img/theta.png}
-	\caption[]{Werte der Universellen Debye-Funktion für $C_\mathrm{V}$ zur Bestimmung der Debye-Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
+	\caption[]{Werte der Universellen Debye-Funktion für $C_V$ zur Bestimmung der Debye-Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
 	\label{Cv_global}
 \end{figure}
 
-Beim Vergleich der errechneten Werte von $C_\mathrm{V}$ bis zur Temperatur $T_\text{max} = \SI{170}{\kelvin}$ mit der Debye-Funktion aus Tabelle \ref{Cv_global} haben sich die in Tabelle \ref{Theta_Debye} dargestellten Werte für $\Theta_\text{D} / T$ ergeben.
+Beim Vergleich der errechneten Werte von $C_V$ bis zur Temperatur $T_\text{max} = \SI{170}{\kelvin}$ mit der Debye-Funktion aus Tabelle \ref{Cv_global} haben sich die in Tabelle \ref{Theta_Debye} dargestellten Werte für $\Theta_\text{D} / T$ ergeben.
 Zudem ist es möglich durch Multiplikation mit der Temperatur auf den Wert für $\Theta_\text{D}$ zu schließen.
 
-Durch Bilden des Mittelwertes der Debye-Temperaturen konnte der Wert \input{build/theta_D.tex} errechnet werden.
+Durch Bilden des Mittelwertes der Debye-Temperaturen konnte der Wert \input{
+theta_D_abgabe.tex} errechnet werden.
 \FloatBarrier
 \subsection{Theoretische Berechnung von $\omega_\mathrm{D}$ und $\Theta_\mathrm{D}$} % (fold)
 \label{sub:theoretische_berechnung_von_omega_mathrm}

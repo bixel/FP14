@@ -133,6 +133,21 @@ for i in range(len(popt_alpha)):
 	f.write(str(popt_alpha[i])+"\n")
 f.close()
 
+f = open('build/Berechnung_Alpha.tex', 'w', 'utf-8')
+f.write(table([r'$T/\si{\kelvin}$', r'$\alpha \cdot 10^{-6}/\si{1\per\kelvin}$',
+               r'$T/\si{\kelvin}$', r'$\alpha \cdot 10^{-6}/\si{1\per\kelvin}$',],
+              [Talpha[:12], alpha_plot[:12],
+               Talpha[12:23], alpha_plot[12:23]]))
+f.close()
+
+f = open('build/Berechnung_Temperatur.tex', 'w', 'utf-8')
+f.write(table([r'$T/\si{\kelvin}$', r'$R/\si{\ohm}$',
+               r'$T/\si{\kelvin}$', r'$R/\si{\ohm}$',],
+              [Tt[:12], Rt[:12],
+               Tt[12:24], Rt[12:24]]))
+f.close()
+
+
 f = open('build/Theta.tex', 'w', 'utf-8')
 f.write(table([r'$T/\si{\kelvin}$', r'$C_\mathrm{{V}}/\si{\joule\per\mol\per\kelvin}$',
                r'$\frac{\Theta_\mathrm{{D}}}{T}/\si{}$', r'$\Theta_\mathrm{{D}}/\si{\kelvin}$',],
@@ -152,6 +167,7 @@ f.write(table([r'$R_0/\si{\ohm}$', r'$R_1/\si{\ohm}$',
                r'$I/\si{\milli\ampere}$'],
               [R0,R1,t,U,I_naklar]))
 f.close()
+
 
 #Plots
 fig = plt.figure()
