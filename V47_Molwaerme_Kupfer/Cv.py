@@ -149,15 +149,15 @@ f.close()
 
 
 f = open('build/Theta.tex', 'w', 'utf-8')
-f.write(table([r'$T/\si{\kelvin}$', r'$C_\mathrm{{V}}/\si{\joule\per\mol\per\kelvin}$',
+f.write(table([r'$T/\si{\kelvin}$', r'$C_V/\si{\joule\per\mol\per\kelvin}$',
                r'$\frac{\Theta_\mathrm{{D}}}{T}/\si{}$', r'$\Theta_\mathrm{{D}}/\si{\kelvin}$',],
               [T_Cv[:11],Cv[:11],
                Theta_t[:11], Theta_arr[:11]]))
 f.close()
 
 f = open('build/Cv.tex', 'w', 'utf-8')
-f.write(table([r'$T/\si{\kelvin}$', r'$C_\mathrm{{P}}/\si{\joule\per\mol\per\kelvin}$',
-               r'$\alpha \cdot 10^{-6}/\si{1\per\kelvin}$', r'$C_\mathrm{{V}}/\si{\joule\per\mol\per\kelvin}$',],
+f.write(table([r'$T/\si{\kelvin}$', r'$C_p/\si{\joule\per\mol\per\kelvin}$',
+               r'$\alpha \cdot 10^{-6}/\si{1\per\kelvin}$', r'$C_V/\si{\joule\per\mol\per\kelvin}$',],
               [T_Cv,Cp,alpha_show,Cv]))
 f.close()
 
@@ -195,7 +195,7 @@ x = np.linspace(65,310)
 plt.plot(unp.nominal_values(T_Cv), unp.nominal_values(Cv),"+",label="Cv")
 plt.plot(rules,result2,"-",label="Theorie")
 plt.xlabel(r"T/K")
-plt.ylabel(r"$C_\mathrm{V} \cdot K \mathrm{mol} / J$  ")
+plt.ylabel(r"$C_V \cdot K \mathrm{mol} / J$  ")
 plt.legend(loc=2)
 plt.errorbar(unp.nominal_values(T_Cv), unp.nominal_values(Cv), yerr=unp.std_devs(Cv), xerr=unp.std_devs(T_Cv), fmt='b+', label='Messwerte')
 plt.savefig("build/Cv_Cv.pdf")

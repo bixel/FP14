@@ -41,17 +41,19 @@ $C_p$ konnte über
 	C_p = \frac{M Q}{m \Delta T} = \frac{M t U I}{m \Delta T}
 \end{equation*}
 berechnet werden \ref{Daten}.
+$M$ beschreibt dabei die Molmasse des Kupfers, $m$ die Masse des Kupfers, $Q$ die zugeführte Wärme, $\Delta T$ den Temperaturunterschied der Probe, $t$ die Heizdauer, $U$ die Heizspannung und $I$ den Heizstrom.
 Dabei ist der Fehler durch
 \begin{equation*}
 	\Delta C_p = \sqrt{\left(|\frac{\partial C_p}{\partial t}|\cdot \Delta t \right)^2 + \left(|\frac{\partial C_p}{\partial U}|\cdot \Delta U \right)^2 + \left(|\frac{\partial C_p}{\partial I}|\cdot \Delta I \right)^2 + \left(|\frac{\partial C_p}{\partial \Delta T}|\cdot \Delta (\Delta T) \right)^2}
 \end{equation*}
+gegeben.
 
 Die Temperatur in Kelvin ist aus dem Widerstand mithilfe der Gleichung
 \begin{equation*}
 	T(R) = \SI{0.00137}{\kelvin\per\ohm^2} \cdot R^2 + \SI{2.296}{\kelvin\per\ohm} \cdot R + \SI{30.194 \pm 0.017}{\kelvin}
 \end{equation*}
 berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Temperatur} gewonnen worden ist.
-Die Vorfaktore von $R^2$ und $R$ haben dabei vernachlässigbar kleine Fehler.
+Die Vorfaktore von $R^2$ und $R$ besitzen vernachlässigbar kleine Fehler.
 
 \begin{table}[!h]
 	\centering
@@ -67,15 +69,16 @@ Dabei ist der Fehler durch
 	\Delta C_V = \sqrt{\left(|\frac{\partial C_V}{\partial C_p}|\cdot \Delta C_p \right)^2 + \left(|\frac{\partial C_V}{\partial \alpha}|\cdot \Delta \alpha \right)^2 + \left(|\frac{\partial C_V}{\partial T}|\cdot \Delta T \right)^2}
 \end{equation*}
 Dazu ist für die Temperatur der Mittelwert aus Anfangs- und Endwiderstand verwendet worden.
+
 Der lineare Ausdehnungskoeffizient ist aus der Temperatur mithilfe der Gleichung
 \begin{eqnarray*}
 	\alpha(T) = 
-	\SI{4.413 e-17}{1\per\kelvin^6} \cdot T^5 +
-	\SI{-4.898 e-14}{1\per\kelvin^5} \cdot T^4 + 
-	\SI{2.180 e-11}{1\per\kelvin^4} \cdot T^3 +\\ 
-	\SI{-4.936 e-9}{1\per\kelvin^3}\cdot T^2 + 
-	\SI{5.958 e-7}{1\per\kelvin^2} \cdot T^1 + 
-	\SI{-1.687 e-5}{1\per\kelvin} 
+	&\SI{4.413 e-17}{1\per\kelvin^6}& \cdot T^5 -
+	\SI{4.898 e-14}{1\per\kelvin^5} \cdot T^4 + 
+	\SI{2.180 e-11}{1\per\kelvin^4} \cdot T^3 -\\ 
+	&\SI{4.936 e-9}{1\per\kelvin^3}& \cdot T^2 + 
+	\SI{5.958 e-7}{1\per\kelvin^2} \cdot T^1 - 
+	\SI{1.687 e-5}{1\per\kelvin} 
 \end{eqnarray*}
 berechnet worden, welche aus einer nicht-linearen Regression mithilfe der Methode der kleinsten Quadrate der Werte aus Tabelle \ref{Alpha} gewonnen worden ist.
 Die Fehler sind vernachlässigbar.
@@ -118,12 +121,12 @@ Zudem ist die Theoriekurve nach Gleichung \eqref{eqn:cv_debye} mit dem Theoriewe
 	\label{Theta_Debye}
 \end{table}
 
-\begin{figure}[!h]
+\begin{table}[!h]
 	\centering
-	\includegraphics[width = 14cm]{img/theta.png}
 	\caption[]{Werte der Universellen Debye-Funktion für $C_V$ zur Bestimmung der Debye-Temperatur $\Theta_\mathrm{D}$ \cite{V47}.}
+	\input{f_Cv.tex}
 	\label{Cv_global}
-\end{figure}
+\end{table}
 
 Beim Vergleich der errechneten Werte von $C_V$ bis zur Temperatur $T_\text{max} = \SI{170}{\kelvin}$ mit der Debye-Funktion aus Tabelle \ref{Cv_global} haben sich die in Tabelle \ref{Theta_Debye} dargestellten Werte für $\Theta_\text{D} / T$ ergeben.
 Zudem ist es möglich durch Multiplikation mit der Temperatur auf den Wert für $\Theta_\text{D}$ zu schließen.
