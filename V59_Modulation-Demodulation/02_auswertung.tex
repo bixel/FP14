@@ -18,13 +18,13 @@ Das entsprechende Frequenzspektrum wird in Abbildung \ref{fig:am-spektrum}
 gezeigt.
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{images/am-signal.png}
+    \includegraphics[width=0.8\linewidth]{images/am-signal.png}
     \caption{Amplitudenmoduliertes Signal.}
     \label{fig:am-signal}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{images/am-spektrum.jpg}
+    \includegraphics[width=0.8\linewidth]{images/am-spektrum.jpg}
     \caption{
         Frequenzspektrum des AM-Signals im Bereich um die
         Trägerfrequenz.
@@ -37,23 +37,35 @@ gezeigt.
 Die Amplitudenmodulation mit Hilfe einer Diode liefert das in Abbildung
 \ref{fig:am-diode-signal}, beziehungsweise \ref{fig:am-diode-spektrum}
 dargestellte Signal und Spektrum. Die Oberwellen der Trägerfrequenz bei
-$2\omega_\text{T} = \SI{10}{\mega\hertz}$ und
-$3\omega_\text{T} = \SI{15}{\mega\hertz}$ treten auf, weil XXX.
+$2\omega_\text{T} = \SI{10.34}{\mega\hertz}$ und
+$3\omega_\text{T} = \SI{15.53}{\mega\hertz}$ treten auf, weil XXX.
 Sie sind in Abbildung \ref{fig:am-diode-oberwellen}
 
-Der Modulationsgrad $m$ beträgt nach Gleichung XXX
+Der Modulationsgrad $m$ beträgt mit einer maximalen Schwebungsamplitude
+von $U_\text{T}(1+m)=\SI{99.5}{\milli\volt}$ und einer minimalen Amplitude
+von $U_\text{T}(1-m)=\SI{50.0}{\milli\volt}$
 \begin{equation*}
-    m = \num{1}\,.
+    m_1 = \input{build/m1.tex}\,.
+\end{equation*}
+Mit Betrachtung des Frequenzspektrums ergibt sich bei einer Trägerfrequenz
+$\omega_\text{T} = \SI{5.207}{\mega\hertz}$ und Seitenfrequenzen bei
+$\omega_\text{T} + \omega_\text{M} = \SI{5.338}{\mega\hertz}$ und
+$\omega_\text{T} - \omega_\text{M} = \SI{5.074}{\mega\hertz}$, sowie
+entsprechenden Amplituden von $U_\text{T} = \SI{4.7+-0.1}{\milli\volt}$,
+$U_1 = \SI{1.57+-0.01}{\milli\volt}$ und $U_2 = \SI{1.56+-0.01}{\milli\volt}$
+der Modulationsgrad
+\begin{equation*}
+    m_2 = \input{build/m2.tex}\,.
 \end{equation*}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{images/am-diode-signal.png}
+    \includegraphics[width=0.8\linewidth]{images/am-diode-signal.png}
     \caption{Mit Hilfe einer Diode moduliertes Signal.}
     \label{fig:am-diode-signal}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{images/am-diode-spektrum.jpg}
+    \includegraphics[width=0.8\linewidth]{images/am-diode-spektrum.jpg}
     \caption{
         Frequenzspektrum des mit Hilfe einer Diode erzeugten AM-Signals im
         Bereich um die Trägerfrequenz.
@@ -62,9 +74,13 @@ Der Modulationsgrad $m$ beträgt nach Gleichung XXX
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{images/am-diode-oberwellen.jpg}
+    \includegraphics[width=0.8\linewidth]{images/am-diode-oberwellen.jpg}
     \caption{
         Oberwellen des AM-Singals.
     }
     \label{fig:am-diode-oberwellen}
 \end{figure}
+
+\subsubsection{Demodulation mit Ringmodulator}
+\label{subsubsec:am-demodulation-ring}
+
