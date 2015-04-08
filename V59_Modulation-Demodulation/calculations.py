@@ -40,7 +40,7 @@ def func(x, a, b, c, d):
 
 popt, pocov = cf(func, T, U, p0=[150, 0.01, -1, 0])
 
-# plt.plot(T, U, 'r+', label='Messpunkte')
+plt.plot(T, U, 'r+', label='Messpunkte')
 # plt.errorbar(T, U, yerr=0.1, label='Messpunkte', fmt='r+')
 ts = np.linspace(np.amin(T), np.amax(T), 200)
 plt.plot(ts, func(ts, *popt), label='Fit')
