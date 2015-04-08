@@ -136,14 +136,81 @@ Frequenzen.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{images/am-demoduliert.png}
-    \caption{Reines (grün) und demoduliertes (gelb) Sinus-Signal nach
+    \caption{Demodulation mit Ringmodulator. Reines (grün) und demoduliertes (gelb) Sinus-Signal nach
     Ringmodulator.}
     \label{fig:am-demoduliert}
 \end{figure}
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{images/am-kein-tp.png}
-    \caption{Reines (grün) und demoduliertes (gelb) Sinus-Signal hinter
+    \caption{Demodulation mit Ringmodulator. Reines (grün) und demoduliertes (gelb) Sinus-Signal hinter
     Ringmodulator ohne Tiefpass.}
     \label{fig:am-kein-tp}
+\end{figure}
+
+\subsubsection{Demodulation mit Gleichrichterdiode}
+\label{subsubsec:gleichrichterdiode}
+Mit Hilfe einer Gleichrichterdiode in einer Schaltung wie Abbildung
+\ref{fig:dioden-schaltung} lassen sich AM-Signale ebenfalls demodulieren.
+Auch hier steigert ein Tiefpass die Reinheit des Signals erheblich, wie
+im Vergleich von Abbildungen \ref{fig:am-diode} und \ref{fig:am-diode-tp}
+zu sehen ist.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/am-diode.png}
+    \caption{
+        Demodulation mit Gleichrichterdiode.
+        Demoduliertes Signal, genommen hinter Diode (gelb).
+        Eingangssignal zum Vergleich (grün).
+    }
+    \label{fig:am-diode}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/am-diode-tp.png}
+    \caption{
+        Demodulation mit Gleichrichterdiode.
+        Demoduliertes Signal, genommen hinter Tiefpass (gelb).
+        Eingangssignal zum Vergleich (grün).
+    }
+    \label{fig:am-diode-tp}
+\end{figure}
+
+\subsection{Untersuchung an frequenzmodulierten Schwingungen}
+\label{subsec:fm-auswertung}
+In diesem Abschnitt wird eine frequenzmodulierte Schwingung erzeugt.
+Dabei werden Frequenzhub und Modulationsgrad $m$ bestimmt, sowie
+das Frequenzspektrum aufgenommen.
+
+\subsubsection{Erzeugung einer frequenzmodulierten Schwingung}
+\label{subsubsec:fm-erzeugung}
+Zur Erzeugung einer FM-Schwingung wird hier die in Abbildung
+\ref{fig:fm-erzeugung} Schaltung genutzt.
+Um einen Phasenversatz von $\varphi = \pi/2$ zwischen Trägerspannung
+$U_\text{T}$ und Ausgangssignal $U_3$ zu erlangen, muss die
+Trägerfrequenz $\omega_\text{T}$ justiert werden.
+Die beiden Spannungssignale ergeben bei richtiger Justage einen Kreis,
+schließt man sie an X- und Y-Eingang eines Oszilloskopen an.
+Das in Abbildung \ref{fig:fm-kreis} dargestellt Bild ergibt sich
+bei einer Frequenz
+\begin{equation*}
+    \omega_\text{T} = \SI{0.999}{\mega\hertz}\,.
+\end{equation*}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/fm-kreis.png}
+        \caption{Lissajou-Figur von Trägerspannung $U_\text{T}$ und
+        Ausgangsspannung $U_3$. Die Kreisform deutet auf eine Phase von
+        $\varphi=\pi/2$ hin.}
+        \label{fig:fm-kreis}
+\end{figure}
+
+Nachdem die Trägerfrequenz eingestellt ist, wird eine Modulationsspannung
+hinzugeschaltet.  Die Zeitabhängigkeit der modulierten Schwingung ist in
+Abbildung \ref{fig:fm-zeitabh} dargestellt.
+\begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/fm-zeitabh.png}
+        \caption{Frequenzmodulierte Spannung.}
+        \label{fig:fm-zeitabh}
 \end{figure}
