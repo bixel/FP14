@@ -90,7 +90,8 @@ von der Phasendifferenz beider Eingangssignale untersucht. Dabei wird lediglich
 eine Sinusspannung unterschiedlicher Laufzeit auf beide Eingänge gegeben.
 Die Entsprechenden Messwerte sind in Tabelle \ref{tab:demodulation-cosinus}
 aufgeführt und werden mitsamt einer Cosinus-Ausgleichsgerade in Abbildung
-\ref{fig:demodulation-cosinus} dargestellt.
+\ref{fig:demodulation-cosinus} dargestellt. Die Cosinus-Abhängigkeit ist
+deutlich zu erkennen.
 \begin{table}
     \centering
     \caption{Messwerte zur Bestimmung der Phasenabhängigkeit eines
@@ -112,7 +113,6 @@ aufgeführt und werden mitsamt einer Cosinus-Ausgleichsgerade in Abbildung
         36 & -136 & 84 &  96 \\
         40 & -103 & 88 &  62 \\
         44 &  -70 & 92 &  30 \\
-        
         \bottomrule
     \end{tabular}
 \end{table}
@@ -121,4 +121,29 @@ aufgeführt und werden mitsamt einer Cosinus-Ausgleichsgerade in Abbildung
     \includegraphics[width=0.9\linewidth]{build/demodulation-cosinus.pdf}
     \caption{Phasenabhängigkeit eines Ringmodulators.}
     \label{fig:demodulation-cosinus}
+\end{figure}
+
+Wird anstelle eines Voltmeters ein Oszilloskop an den Ausgang des
+Ringmodulators angeschlossen, kann das Eingangssignal fast unverändert
+wiedererkannt werden.
+Abbildung \ref{fig:am-demoduliert} stellt das Eingangssignal und das
+demodulierte Signal nach einem Tiefpass in einem Bild dar.
+Es ist zu erkennen, dass sich die Signale lediglich in einer Phase
+und der Amplitude unterscheiden.
+Das demodulierte Signal ohne Tiefpass ist in Abbildung \ref{fig:am-kein-tp}
+dargestellt. Über die Cosinus-Schwingung legen sich hier einige höhere
+Frequenzen.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/am-demoduliert.png}
+    \caption{Reines (grün) und demoduliertes (gelb) Sinus-Signal nach
+    Ringmodulator.}
+    \label{fig:am-demoduliert}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/am-kein-tp.png}
+    \caption{Reines (grün) und demoduliertes (gelb) Sinus-Signal hinter
+    Ringmodulator ohne Tiefpass.}
+    \label{fig:am-kein-tp}
 \end{figure}
