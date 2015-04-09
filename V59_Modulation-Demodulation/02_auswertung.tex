@@ -222,7 +222,31 @@ modulierte Signal periodisch.
 Der Frequenzhub $\Delta f$ der Modulation lässt sich durch die Verbreiterung
 der Periodendauern bestimmen.
 Die Verbreiterung ist maximal nach drei Perioden und beträgt im Mittel
-$\Delta T = \input{build/delta_t.tex}$. Mit der Periodendauer der
-Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich eine
-Frequenzverbreiterung von $\Delta f = \input{build/delta_f.tex}$ und
+$\Delta T = \input{build/delta_t.tex}$ pro Periode. Mit der Periodendauer der
+Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich ein
+Frequenzhub von $\Delta f = \input{build/delta_f.tex}$ und
 damit der Modulationsgrad $m = \input{build/m.tex}$.
+Die hierfür verwendeten Messwerte sind in Tabelle \ref{tab:delta_ts}
+aufgeführt.
+Abbildung \ref{fig:fm-spektrum} zeigt das Frequenzspektrum des Modulierten
+Signals.
+\begin{table}
+        \centering
+        \caption{Messwerte zur bestimmung des Frequenzhubs.}
+        \label{tab:delta_ts}
+        \begin{tabular}{S[table-format=1.0] S[table-format=4.0(1)] S[table-format=4.0(1)]}
+                \toprule
+                {Periode} & {$T_1 / \si{\nano\second}$} & {$T_2 / \si{\nano\second}$} \\
+                \midrule
+                1 &  960(5) & 1090(5) \\
+                2 & 1940(5) & 2150(5) \\
+                3 & 2940(5) & 3175(5) \\
+                \bottomrule
+        \end{tabular}
+\end{table}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/fm-spektrum.jpg}
+        \caption{Spektrum einer frequenzmodulierten Sinus-Schwingung.}
+        \label{fig:fm-spektrum}
+\end{figure}
