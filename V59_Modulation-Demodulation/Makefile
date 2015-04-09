@@ -16,7 +16,10 @@ TEXHEADERS = ../head.tex \
 			 ../math-commands.tex
 
 CALCS = build/m1.tex \
-		build/m2.tex
+		build/m2.tex \
+		build/t_t.tex \
+		build/delta_f.tex \
+		build/delta_t.tex
 
 PLOTS = build/demodulation-cosinus.pdf
 

@@ -192,10 +192,8 @@ Trägerfrequenz $\omega_\text{T}$ justiert werden.
 Die beiden Spannungssignale ergeben bei richtiger Justage einen Kreis,
 schließt man sie an X- und Y-Eingang eines Oszilloskopen an.
 Das in Abbildung \ref{fig:fm-kreis} dargestellt Bild ergibt sich
-bei einer Frequenz
-\begin{equation*}
-    \omega_\text{T} = \SI{0.999}{\mega\hertz}\,.
-\end{equation*}
+bei einer Frequenz $\omega_\text{T} = \SI{0.981(1)}{\mega\hertz}$.
+Die Trägerspannung beträgt dabei $U_\text{T} = \SI{4.50(3)}{\volt}$.
 \begin{figure}
         \centering
         \includegraphics[width=0.8\linewidth]{images/fm-kreis.png}
@@ -206,11 +204,25 @@ bei einer Frequenz
 \end{figure}
 
 Nachdem die Trägerfrequenz eingestellt ist, wird eine Modulationsspannung
-hinzugeschaltet.  Die Zeitabhängigkeit der modulierten Schwingung ist in
+hinzugeschaltet. Die Zeitabhängigkeit der modulierten Schwingung ist in
 Abbildung \ref{fig:fm-zeitabh} dargestellt.
+Die Modulationsfrequenz beträgt $\omega_\text{m} = \SI{164.6(5)}{\kilo\hertz}$,
+die Spannung $U_\text{m} = \SI{2.94(3)}{\volt}$.
 \begin{figure}
         \centering
         \includegraphics[width=0.8\linewidth]{images/fm-zeitabh.png}
         \caption{Frequenzmodulierte Spannung.}
         \label{fig:fm-zeitabh}
 \end{figure}
+
+\subsubsection{Frequenzhub und Modulationsgrad einer FM-Schwingung}
+\label{subsubsec:fm-modulationsgrad}
+Wie in Abbildung \ref{fig:fm-zeitabh} zu erkennen ist, verschmiert das
+modulierte Signal periodisch.
+Der Frequenzhub $\Delta f$ der Modulation lässt sich durch die Verbreiterung
+der Periodendauern bestimmen.
+Die Verbreiterung ist maximal nach drei Perioden und beträgt im Mittel
+$\Delta T = \input{build/delta_t.tex}$. Mit der Periodendauer der
+Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich eine
+Frequenzverbreiterung von $\Delta f = \input{build/delta_f.tex}$ und
+damit der Modulationsgrad $m = \input{build/m.tex}$.
