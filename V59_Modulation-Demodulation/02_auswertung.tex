@@ -38,8 +38,9 @@ Die Amplitudenmodulation mit Hilfe einer Diode liefert das in Abbildung
 \ref{fig:am-diode-signal}, beziehungsweise \ref{fig:am-diode-spektrum}
 dargestellte Signal und Spektrum. Die Oberwellen der Trägerfrequenz bei
 $2\omega_\text{T} = \SI{10.34}{\mega\hertz}$ und
-$3\omega_\text{T} = \SI{15.53}{\mega\hertz}$ treten auf, weil XXX.
-Sie sind in Abbildung \ref{fig:am-diode-oberwellen}
+$3\omega_\text{T} = \SI{15.53}{\mega\hertz}$ treten auf, da -- anders als in
+einem Ringmodulator -- Reflexionen im Leiter auftreten können.
+Sie sind in Abbildung \ref{fig:am-diode-oberwellen} dargestellt.
 
 Der Modulationsgrad $m$ beträgt mit einer maximalen Schwebungsamplitude
 von $U_\text{T}(1+m)=\SI{99.5}{\milli\volt}$ und einer minimalen Amplitude
@@ -83,7 +84,8 @@ der Modulationsgrad
 
 \subsubsection{Demodulation mit Ringmodulator}
 \label{subsubsec:am-demodulation-ring}
-Mit der in Abbildung XXX dargestellten Schaltung können AM-Signale mit
+Mit der in Abbildung \ref{fig:am-schaltung-demodulation} dargestellten
+Schaltung können AM-Signale mit
 Kenntnis der Trägerspannung mit einem Ringmodulator demoduliert werden.
 Zunächst wird die Abhängigkeit der Ausgangsspannung eines Ringmodulators
 von der Phasendifferenz beider Eingangssignale untersucht. Dabei wird lediglich
@@ -222,7 +224,31 @@ modulierte Signal periodisch.
 Der Frequenzhub $\Delta f$ der Modulation lässt sich durch die Verbreiterung
 der Periodendauern bestimmen.
 Die Verbreiterung ist maximal nach drei Perioden und beträgt im Mittel
-$\Delta T = \input{build/delta_t.tex}$. Mit der Periodendauer der
-Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich eine
-Frequenzverbreiterung von $\Delta f = \input{build/delta_f.tex}$ und
+$\Delta T = \input{build/delta_t.tex}$ pro Periode. Mit der Periodendauer der
+Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich ein
+Frequenzhub von $\Delta f = \input{build/delta_f.tex}$ und
 damit der Modulationsgrad $m = \input{build/m.tex}$.
+Die hierfür verwendeten Messwerte sind in Tabelle \ref{tab:delta_ts}
+aufgeführt.
+Abbildung \ref{fig:fm-spektrum} zeigt das Frequenzspektrum des Modulierten
+Signals.
+\begin{table}
+        \centering
+        \caption{Messwerte zur bestimmung des Frequenzhubs.}
+        \label{tab:delta_ts}
+        \begin{tabular}{S[table-format=1.0] S[table-format=4.0(1)] S[table-format=4.0(1)]}
+                \toprule
+                {Periode} & {$T_1 / \si{\nano\second}$} & {$T_2 / \si{\nano\second}$} \\
+                \midrule
+                1 &  960(5) & 1090(5) \\
+                2 & 1940(5) & 2150(5) \\
+                3 & 2940(5) & 3175(5) \\
+                \bottomrule
+        \end{tabular}
+\end{table}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/fm-spektrum.jpg}
+        \caption{Spektrum einer frequenzmodulierten Sinus-Schwingung.}
+        \label{fig:fm-spektrum}
+\end{figure}
