@@ -11,15 +11,81 @@ Da aus dem modulierten Signal die Informationen wieder rekonstruiert werden müs
 
 Wird die einfachste Form der Amplitudenmodulation betrachtet, so führt die Amplitude einer Hochfrequenten Trägerschwingung $U_\text{T}(t)$ Schwankungen im Rhythmus eines niederfrequenten Modulationssignals $U_\text{M}(t)$ aus.
 Mit den dazugehörigen Kreisfrequenzen $\omega_\text{T}$ und $\omega_\text{M}$ und Amplituden $U_\text{0,T}$ und $U_\text{0,M}$ ergibt sich für die Schwingungen
-
 \begin{eqnarray*}
-    U_\text{T}(t) &=& U_\text{0,T} \cos{\omega_\text{T} t} \\
-    U_\text{M}(t) &=& U_\text{0,M} \cos{\omega_\text{M} t}
+    U_\text{T}(t) &=& U_\text{0,T} \cos{\omega_\text{T} t}\, , \\
+    U_\text{M}(t) &=& U_\text{0,M} \cos{\omega_\text{M} t}\, .
 \end{eqnarray*}
+Damit ergibt sich die amplitudenmodulierte Schwingung 
+\begin{equation}
+    U_\text{mod}(t) = U_\text{0,T} ( 1 + m \cos{\omega_\text{M} t} ) \cos{\omega_\text{T} t} \label{am:formel1}
+\end{equation}
+mit dem Modulationsgrad
+\begin{equation}
+    m = \gamma U_\text{0,M}
+\end{equation}
+welche einen Wert zwischen 0 und 1 annehmen kann.
+Zudem liegt die Amplitude der Schwingung somit zwischen den Extremwerten
+\begin{equation}
+    U_\text{0,T} (1 \pm m)\,.
+\end{equation}
+Eine schematische Darstellung der Schwingung ist in Abbildung \ref{am:formel2} dargestellt.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=14cm]{images/am-amplitude.png}
+    \caption{Zeitabhängigkeit der Momentanspannung $U_\text{mod}(t)$.}
+    \label{am:amplitude}
+\end{figure}
+
+Mithilfe trigonometrischer Umformulierung ergibt sich aus Gleichung \eqref{am:formel1} 
+\begin{equation}
+     U_\text{mod}(t) = U_\text{0,T} \left( \cos{\omega_\text{T} t} + \frac{m}{2}\cos{(\omega_\text{T} + \omega_\text{M}) t} + \frac{m}{2}\cos{(\omega_\text{T} - \omega_\text{M}) t}\right) \,. \label{am:formel2}
+\end{equation}
+
+Daraus ist zu erkennen, dass das Frequenzspektrum einer in dieser Art und Weise modelierten Schwingung aus 3 Linien mit den Kreisfrequenzen $\omega_\text{T} + \omega_\text{M}$, $\omega_\text{T} - \omega_\text{M}$ und $\omega_\text{T}$ besteht.
+$\omega_\text{T}$ überträgt dabei keinerlei Informationen, da sie nicht von der Modulationsamplitude $U_\text{0,M}$ abhängt.
+In der Praxis wird daher versucht diese zu unterdrücken, da diese mit einem unnötigen Energieverbrauch verbunden ist.
+Da die gesamte Information bereits in einem Seitenband steckt - bei mehreren Frequenzen in der Modulationsspannung verbreitern sich die äußeren Linien zu Frequenzbändern - kann mithilfe eines geeigneten Bandpassfilters bereits im Modulationsprozess eine Seite unterdrückt werden.
+
+Nachteile der Amplitudenmodulation sind die geringe Störsicherheit und die geringe Verzerrungsfreiheit.
 
 \subsection{Frequenzmodulation}
 \label{subsec:einstein}
 
+Eine frequenzmodulierte Schwingung kann durch Gleichung
+\begin{equation*}
+    U(t) = U_\text{0} \sin{\left( \omega_\text{T} t + m \frac{\omega_\text{T}}{\omega_\text{M}} \cos{\omega_\text{M} t} \right)}
+\end{equation*}
+dargestellt werden.
+Die Momentanfrequenz $f$ ergibt sich durch Ableiten des Arguments der Sinusfunktion zu
+\begin{equation*}
+    f(t) = \frac{\omega_\text{T}}{2 \pi} ( 1 - m \sin{\omega_\text{M} t}) \,.
+\end{equation*}
+Der Vorfaktor der Sinusfunktion $\frac{m \omega_\text{T}}{2 \pi}$ wird als Frequenzhub bezeichnet und gibt die Variationsbreite der Schwingungsfrequenz an.
+Im folgenden soll nur der Fall der Schmalband-Frequenzmodulation (niedriger Frequenzhub) betrachtet werden, also 
+\begin{equation*}
+    m \frac{\omega_\text{T}}{\omega_\text{M}} \ll 1\,.
+\end{equation*}
+Ein Beispiel für eine frequenzmodulierte Schwingung ist in Abbildung \ref{fm:modulation} dargestellt.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width = 14cm]{images/fm-modulation.png}
+    \caption{Zeitlicher Verlauf einer sinusförmig frequenzmodulierten Schwingung}
+    \label{fm:modulation}
+\end{figure}
+
+Auch hier ist das Frequenzspektrum recht einfach was an der umgeformten Gleichung 
+\begin{equation*}
+    U(t) = U_\text{0} \left( \sin{\omega_\text{T} t}\cos{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\omega_\text{M} t}\right)} + \cos{\omega_\text{T} t}\sin{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\omega_\text{M} t}\right)} \right)\,.
+\end{equation*}
+
+Für eine schwach frequenzmodulierte Schwingung ergibt sich somit näherungsweise
+\begin{equation*}
+    U(t) \approx U_\text{0} \left( \sin{\omega_\text{T} t} + \frac{m \omega_\text{T}}{2 \omega_\text{M}} \cos{(\omega_\text{T} + \omega_\text{M}) t} + \frac{m \omega_\text{T}}{2 \omega_\text{M}} \cos{(\omega_\text{T} - \omega_\text{M}) t}\right) \,,
+\end{equation*}
+woraus sich wieder drei Teilschwingungen wie bei der amplitudenmodulierten Schwingung ergeben.
+Der Unterschied liegt darin, dass die Trägerschwingung gegen die beiden Seitenlinien um $\frac{\pi}{2}$ verschoben ist.
 
 \subsection{Modulationsschaltungen}
 \label{subsec:debye}
