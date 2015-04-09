@@ -3,7 +3,8 @@ TEXOPTIONS = -lualatex \
 			 --interaction=nonstopmode \
 			 --halt-on-error
 
-TEXCONTENT = 02_auswertung.tex
+TEXCONTENT = 02_auswertung.tex \
+			 01_theorie.tex
 
 IMAGES = images/am-diode-oberwellen.jpg \
 		 images/am-diode-signal.png \
