@@ -4,7 +4,8 @@ TEXOPTIONS = -lualatex \
 			 --halt-on-error
 
 TEXCONTENT = 02_auswertung.tex \
-			 01_theorie.tex
+			 01_theorie.tex \
+			 03_diskussion.tex
 
 IMAGES = images/am-diode-oberwellen.jpg \
 		 images/am-diode-signal.png \
