@@ -9,13 +9,13 @@ Da aus dem modulierten Signal die Informationen wieder rekonstruiert werden müs
 \subsection{Amplitudenmodulation}
 \label{subsec:klassisch}
 
-Wird die einfachste Form der Amplitudenmodulation betrachtet, so führt die Amplitude einer Hochfrequenten Trägerschwingung $U_\text{T}(t)$ Schwankungen im Rhythmus eines niederfrequenten Modulationssignals $U_\text{M}(t)$ aus.
+Wird die einfachste Form der Amplitudenmodulation betrachtet, so führt die Amplitude einer hochfrequenten Trägerschwingung $U_\text{T}(t)$ Schwankungen im Rhythmus eines niederfrequenten Modulationssignals $U_\text{M}(t)$ aus.
 Mit den dazugehörigen Kreisfrequenzen $\omega_\text{T}$ und $\omega_\text{M}$ und Amplituden $U_\text{0,T}$ und $U_\text{0,M}$ ergibt sich für die Schwingungen
 \begin{eqnarray*}
     U_\text{T}(t) &=& U_\text{0,T} \cos{\left(\omega_\text{T} t\right)}\, , \\
     U_\text{M}(t) &=& U_\text{0,M} \cos{\left(\omega_\text{M} t \right)}\, .
 \end{eqnarray*}
-Damit ergibt sich die amplitudenmodulierte Schwingung 
+Damit ergibt sich die amplitudenmodulierte Schwingung zu
 \begin{equation}
     U_\text{mod}(t) = U_\text{0,T} ( 1 + m \cos{\left( \omega_\text{M} t \right)} ) \cos{\left(\omega_\text{T} t\right)} \label{am:formel1}
 \end{equation}
@@ -23,17 +23,17 @@ mit dem Modulationsgrad
 \begin{equation}
     m = \gamma U_\text{0,M}
 \end{equation}
-welche einen Wert zwischen 0 und 1 annehmen kann.
+welcher einen Wert zwischen 0 und 1 annehmen kann.
 Zudem liegt die Amplitude der Schwingung somit zwischen den Extremwerten
 \begin{equation}
-    U_\text{0,T} (1 \pm m)\,.
+    U_\text{0,T} \cdot (1 \pm m)\,.
 \end{equation}
 Eine schematische Darstellung der Schwingung ist in Abbildung \ref{am:formel2} dargestellt.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=14cm]{images/am-amplitude.png}
-    \caption{Zeitabhängigkeit der Momentanspannung $U_\text{mod}(t)$.}
+    \caption{Zeitabhängigkeit der Momentanspannung $U_\text{mod}(t)$ \cite{V59}.}
     \label{am:amplitude}
 \end{figure}
 
@@ -44,8 +44,8 @@ Mithilfe trigonometrischer Umformulierung ergibt sich aus Gleichung \eqref{am:fo
 
 Daraus ist zu erkennen, dass das Frequenzspektrum einer in dieser Art und Weise modelierten Schwingung aus 3 Linien mit den Kreisfrequenzen $\omega_\text{T} + \omega_\text{M}$, $\omega_\text{T} - \omega_\text{M}$ und $\omega_\text{T}$ besteht.
 $\omega_\text{T}$ überträgt dabei keinerlei Informationen, da sie nicht von der Modulationsamplitude $U_\text{0,M}$ abhängt.
-In der Praxis wird daher versucht diese zu unterdrücken, da diese mit einem unnötigen Energieverbrauch verbunden ist.
-Da die gesamte Information bereits in einem Seitenband steckt - bei mehreren Frequenzen in der Modulationsspannung verbreitern sich die äußeren Linien zu Frequenzbändern - kann mithilfe eines geeigneten Bandpassfilters bereits im Modulationsprozess eine Seite unterdrückt werden.
+In der Praxis wird daher versucht diese zu unterdrücken, da sie mit einem unnötigen Energieverbrauch verbunden ist.
+Die gesamte Information ist zudem bereits in einem Seitenband enthalten - bei mehreren Frequenzen in der Modulationsspannung verbreitern sich die äußeren Linien zu Frequenzbändern - und somit kann mithilfe eines geeigneten Bandpassfilters bereits im Modulationsprozess eine Seite unterdrückt werden.
 
 Nachteile der Amplitudenmodulation sind die geringe Störsicherheit und die geringe Verzerrungsfreiheit.
 
@@ -71,14 +71,15 @@ Ein Beispiel für eine frequenzmodulierte Schwingung ist in Abbildung \ref{fm:mo
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/fm-modulation.png}
-    \caption{Zeitlicher Verlauf einer sinusförmig frequenzmodulierten Schwingung}
+    \caption{Zeitlicher Verlauf einer sinusförmig frequenzmodulierten Schwingung \cite{V59}.}
     \label{fm:modulation}
 \end{figure}
 
-Auch hier ist das Frequenzspektrum recht einfach was an der umgeformten Gleichung 
+Auch hier ist das Frequenzspektrum recht einfach was an der umgeformten Gleichung
 \begin{equation*}
-    U(t) = U_\text{0} \left( \sin{\left( \omega_\text{T} t \right) }\cos{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\left(\omega_\text{M} t\right)}\right)} + \cos{\left(\omega_\text{T} t\right)}\sin{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\left(\omega_\text{M} t\right)}\right)} \right)\,.
+    U(t) = U_\text{0} \left( \sin{\left( \omega_\text{T} t \right) }\cos{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\left(\omega_\text{M} t\right)}\right)} + \cos{\left(\omega_\text{T} t\right)}\sin{\left(m\frac{\omega_\text{T}}{\omega_\text{M}} \cos{\left(\omega_\text{M} t\right)}\right)} \right)
 \end{equation*}
+zu erkennen ist.
 
 Für eine schwach frequenzmodulierte Schwingung ergibt sich somit näherungsweise
 \begin{equation}
@@ -97,7 +98,7 @@ Beispielsweise ist dafür eine Diode geeignet, prinzipiell kann jedoch jedes Bau
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/modulationsschaltung.png}
-    \caption{Primitive Modulationsschaltung.}
+    \caption{Primitive Modulationsschaltung \cite{V59}.}
     \label{modulationsschaltung_einfach}
 \end{figure}
 
@@ -109,16 +110,16 @@ und setzt die Summe aus Träger- und Modulationsspannung ein
 \begin{equation*}
     I ( U_\text{T} + U_\text{M} ) = a_0 + a_1 ( U_\text{T} + U_\text{M} ) + a_2 ( U_\text{T}^2 + U_\text{M}^2 ) + 2 a_2 U_\text{T} U_\text{M} + \dots \,,
 \end{equation*}
-So ist zu erkennen, dass neben dem gewünschten Glied $U_\text{T} U_\text{M}$ auch störende Terme auftreten.
+so ist zu erkennen, dass neben dem gewünschten Glied $U_\text{T} U_\text{M}$ auch störende Terme auftreten.
 Deren Frequenzen liegen jedoch weit außerhalb des zu übertragenden Frequenzbereichs, sodass der Einsatz eines Bandpassfilters diese unterdrückt.
 
-Eine alternative Schaltung, welche diese Störenden Terme gar nicht erst erzeugt, ist der sogenannte Ringmodulator nach Abbildung \ref{ringmodulator}.
+Eine alternative Schaltung, welche diese störenden Terme gar nicht erst erzeugt, ist der sogenannte Ringmodulator nach Abbildung \ref{am:ringmodulator}.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/ringmodulator.png}
-    \caption{Schaltbild eines Ringmodulators.}
-    \label{ringmodulator}
+    \caption{Schaltbild eines Ringmodulators \cite{V59}.}
+    \label{am:ringmodulator}
 \end{figure}
 
 Die Diodenzweige A und B sowie C und D stellen je einen Spannungsteiler für die Trägerspannung $U_\text{T}$ dar, welche über den Eingang L eingespeist wird.
@@ -142,14 +143,14 @@ ergibt sich
 Es treten also nur die Seitenlinien auf.
 
 \paragraph{Frequenzmodulation}
-Wir betrachten ein Schaltungsbeispiel für einen Frequenzmodulator mit geringem Frequenzhub, sodass Gleichung \eqref{fm:kleiner_hub} ihre Gültigkeit hat (Abb.\ref{fm:schaltbild}).
+Wir betrachten ein Schaltungsbeispiel für einen Frequenzmodulator mit geringem Frequenzhub, sodass Gleichung \eqref{fm:kleiner_hub} ihre Gültigkeit hat (Abb.\ref{fig:fm-erzeugung}).
 Da bei einem Ringmodulator nur die beiden Seitenbänder auftreten, ist es möglich durch addieren einer um $90^\circ$ in der Phase verschobenen Trägerspannung $U_\text{T}$ an den Ausgang R eine Frequenzmodulation zu erzeugen.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/fm_schaltbild.png}
-    \caption{Schaltbild für einen Frequenzmodulator mit einem geringen Frequenzhub.}
-    \label{fm:schaltbild}
+    \caption{Schaltbild für einen Frequenzmodulator mit einem geringen Frequenzhub \cite{V59}.}
+    \label{fig:fm-erzeugung}
 \end{figure}
 
 \subsection{Demodulator - Schaltungen}
@@ -161,22 +162,22 @@ Das modulierte Signal wird auf den Eingang R gegeben und besteht bekannterweise 
 Wird nun auf den Eingang L eine Spannung mit der Frequenz $\omega_\text{T}$ gelegt, so erhält man am Ausgang X eine Spannung mit den Frequenzen $\omega_\text{M}$, $2\omega_\text{T} - \omega_\text{M}$ und $2\omega_\text{T} + \omega_\text{M}$.
 Da $\omega_\text{T}$ meist sehr viel größer ist als $\omega_{M}$, bleibt nach verwenden eines Tiefpassfilters nur noch die gewünschte Spannung mit der Modulationsfrequenz $\omega_\text{M}$ übrig.
 In der Praxis ist es nötig Phasenregelkreise zu verwenden, um eine phasenstarre Trägerfrequenz $U_\text{T}$ zu erzeugen.
-In Abbildung \ref{adm:ringmodulator} ist das Schaltbild einer solchen Schaltung dargestellt.
+In Abbildung \ref{fig:adm_ringmodulator} ist das Schaltbild einer solchen Schaltung dargestellt.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/adm_ringmodulator.png}
-    \caption{Demodulator-Schaltung mit einem Ringmodulator.}
-    \label{adm:ringmodulator}
+    \caption{Demodulator-Schaltung mit einem Ringmodulator \cite{V59}.}
+    \label{fig:adm_ringmodulator}
 \end{figure}
 
-Um das Problem einer festen Phasenbeziehung zwischen der Signal- und der Referenzspannung zu vermeiden, kann eine Demodulatorschaltung nach Abbildung \ref{adm:diode} verwendet werden.
+Um das Problem einer festen Phasenbeziehung zwischen der Signal- und der Referenzspannung zu vermeiden, kann eine Demodulatorschaltung nach Abbildung \ref{fig:dioden-schaltung} verwendet werden.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/adm_diode.png}
-    \caption{Demodulator-Schaltung mit einer Diode.}
-    \label{adm:diode}
+    \caption{Demodulator-Schaltung mit einer Diode \cite{V59}.}
+    \label{fig:dioden-schaltung}
 \end{figure}
 
 Die Diode schneidet alle negativen Halbwellen ab, sodass eine Spannung übrig bleibt, welche in Abbildung \ref{adm:spannung} dargestellt ist.
@@ -184,7 +185,7 @@ Die Diode schneidet alle negativen Halbwellen ab, sodass eine Spannung übrig bl
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/adm_spannung.png}
-    \caption{\textbf{links:} Gleichgerichtete modulierte Hochfrequenz-Spannung. \textbf{rechts:} Ausgangsspannung hinter dem Tiefpass.}
+    \caption{\textbf{links:} Gleichgerichtete modulierte Hochfrequenz-Spannung. \textbf{rechts:} Ausgangsspannung hinter dem Tiefpass \cite{V59}.}
     \label{adm:spannung}
 \end{figure}
 
@@ -197,23 +198,67 @@ Dieser besteht aus einem einfachen Schwingkreis, bei dem die Frequenzabhängigke
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/fdm_schaltung.png}
-    \caption{Beispiel einer Demodulatorschaltung für frequenzmodulierte Schwingungen.}
+    \caption{Beispiel einer Demodulatorschaltung für frequenzmodulierte Schwingungen \cite{V59}.}
     \label{fdm:schaltung}
 \end{figure}
 
-Die Resonanzfrequenz des Schwingkreises wird dabei so eingestellt, dass die Trägerfrequenz $\omega_\text{T}$ mitten in der steilen Flanke der Resonanzkurve liegt (Abb. \ref{fdm:resonanz}.
+Die Resonanzfrequenz des Schwingkreises wird dabei so eingestellt, dass die Trägerfrequenz $\omega_\text{T}$ mitten in der steilen Flanke der Resonanzkurve liegt (Abb. \ref{fdm:resonanz}).
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width = 14cm]{images/fdm_resonanz.png}
-    \caption{Resonanzkurve des Schwingkreises im Flankenmodulator.}
+    \caption{Resonanzkurve des Schwingkreises im Flankenmodulator \cite{V59}.}
     \label{fdm:resonanz}
 \end{figure}
 
 Dieses Verfahren überführt die Frequenzmodulation in eine Amplitudenmodulation, indem eine hochfrequente Spannung am Ausgang erzeugt wird, deren Amplitude im Rhythmus der Modulation schwankt.
-Diese kann durch das zuvor beschriebene Verfahren demosuliert werden.
+Diese kann durch das zuvor beschriebene Verfahren demoduliert werden.
 Eine besonders unverzerrte Demodulation erhält man, wenn man den Frequenzhub möglichst klein wählt.
-Zudem kann eine Gegentaktschaltung eine verbesserte Linearität der Demodulations-Kennlinie erreicht werden.
+Zudem kann durch eine Gegentaktschaltung eine verbesserte Linearität der Demodulations-Kennlinie erreicht werden.
 
 \section{Durchführung}
 \label{sec:durchführung}
+
+\paragraph{a)}
+Mithilfe eines Ringmodulators soll eine amplitudenmodulierte Schwingung mit Trägerunterdrückung erzeugt werden.
+Die dabei entstehende Schwebung soll mithilfe eines Oszilloskops visualisiert werden.
+
+\paragraph{b)}
+Unter zuhilfenahme eines Frequenzanalysators wird das Frequenzspektrum der amplitudenmodulierten Schwingung untersucht.
+Der Modulationsgrad $m$ kann daraus bestimmt werden.
+
+\paragraph{c)}
+Analog zu Aufgabenteil a und b wird nun eine Diode zur Modulation verwendet.
+Es werden dieselben Eigenschaften untersucht, doch wird insbesondere gezeigt, dass auch Oberwellen von $\omega_\text{T}$ auftreten.
+
+\paragraph{d)}
+\label{par:d_}
+Zur Demodulation einer modulierten Schwingung wird ein Ringmodulator verwendet.
+Mithilfe einer Schaltung nach Abbildung \ref{fig:am-schaltung-demodulation} wird zunächst die proportionalität der anliegenden Gleichspannung am Ausgang X mit dem Cosinus der Phase $\varphi$ zwischen den beiden Eingängen R und L gezeigt.
+Dazu wird die Schaltung nach Abbildung \ref{fig:am-schaltung-demodulation} verwendet.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width = 14cm]{images/adm_ringmodulator.png}
+    \caption{Demodulator-Schaltung mit einem Ringmodulator \cite{V59}.}
+    \label{fig:am-schaltung-demodulation}
+\end{figure}
+
+\paragraph{e)} 
+\label{par:e_}
+Statt eines Spannungsmessgeräts wird ein Oszillograph an den Ausgang X des Ringmodulators angeschlossen, sodass es möglich ist die Modulationsspannung praktisch unverzehrt zurückzuerhalten.
+
+\paragraph{f)} % (fold)
+\label{par:g}
+Mithilfe einer Gleichrichterdiode wird eine amplitudenmodulierte Schwingung demoduliert.
+Dabei wird die Zeitabhängigkeit vor dem Tiefpass und hinter dem Tiefpass dargestellt.
+
+\paragraph{g)} % (fold)
+\label{par:g_}
+Es soll eine frequenzmodulierte Schwingung erzeugt werden und die Zeitabhängigkeit der modulierten Schwingung auf dem Schwirm des Oszillographen dargestellt werden.
+Aus dem erzeugten Bild lässt sich der Frequenzhub und der Modulationsgrad ermitteln.
+Zudem soll das Frequenzspektrum untersucht werden.
+
+\paragraph{h)} % (fold)
+\label{par:h_}
+Im letzten Abschnitt wird eine frequenzmodulierte Spannung demoduliert und das Ergebnis auf den Oszillographen gegeben.
