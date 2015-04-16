@@ -10,8 +10,11 @@ IMAGES = images/am-diode-oberwellen.jpg \
 		 images/am-diode-signal.png \
 		 images/am-diode-spektrum.jpg \
 		 images/am-signal.png \
-		 images/am-spektrum.jpg
-
+		 images/am-spektrum.jpg \
+		 images/am-amplitude.png \
+		 images/modulationsschaltung.png \
+		 images/ringmodulator.png
+		 
 TEXHEADERS = ../head.tex \
 			 ../math-commands.tex
 
