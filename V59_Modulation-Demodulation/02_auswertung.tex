@@ -42,22 +42,35 @@ $3\omega_\text{T} = \SI{15.53}{\mega\hertz}$ treten auf, da -- anders als in
 einem Ringmodulator -- Reflexionen im Leiter auftreten können.
 Sie sind in Abbildung \ref{fig:am-diode-oberwellen} dargestellt.
 
-Der Modulationsgrad $m$ beträgt mit einer maximalen Schwebungsamplitude
-von $U_\text{T}(1+m)=\SI{99.5}{\milli\volt}$ und einer minimalen Amplitude
-von $U_\text{T}(1-m)=\SI{50.0}{\milli\volt}$
+Der Modulationsgrad $m$ kann mit Kenntnis der minimalen und maximalen
+Amplituden $U_\text{min} = U_\text{T}(1-m)$ beziehungsweise
+$U_\text{max} = U_\text{T}(1+m)$ bestimmt werden:
+\begin{equation}
+\label{eq:}
+    m_1 = \frac{U_\text{max}-U_\text{min}}{U_\text{max}+U_\text{min}}\,.
+\end{equation}
+Er beträgt mit einer maximalen Schwebungsamplitude
+von $U_\text{max}=\input{build/UtPlusM.tex}$ und einer minimalen Amplitude
+von $U_\text{min}=\input{build/UtMinusM.tex}$
 \begin{equation*}
     m_1 = \input{build/m1.tex}\,.
 \end{equation*}
-Mit Betrachtung des Frequenzspektrums ergibt sich bei einer Trägerfrequenz
+Mit Betrachtung des Frequenzspektrums lässt sich $m$ ausdrücken als
+\begin{equation}
+\label{eq:}
+    m_2 = \frac{U_1+U_2}{U_\text{T}}\,,
+\end{equation}
+wobei sich bei einer Trägerfrequenz
 $\omega_\text{T} = \SI{5.207}{\mega\hertz}$ und Seitenfrequenzen bei
 $\omega_\text{T} + \omega_\text{M} = \SI{5.338}{\mega\hertz}$ und
-$\omega_\text{T} - \omega_\text{M} = \SI{5.074}{\mega\hertz}$, sowie
-entsprechenden Amplituden von $U_\text{T} = \SI{4.7+-0.1}{\milli\volt}$,
-$U_1 = \SI{1.57+-0.01}{\milli\volt}$ und $U_2 = \SI{1.56+-0.01}{\milli\volt}$
+$\omega_\text{T} - \omega_\text{M} = \SI{5.074}{\mega\hertz}$, sowie den
+entsprechenden Amplituden von $U_\text{T} = \input{build/UT.tex}$,
+$U_1 = \input{build/U1.tex}$ und $U_2 = \input{build/U2.tex}$
 der Modulationsgrad
 \begin{equation*}
-    m_2 = \input{build/m2.tex}\,.
+    m_2 = \input{build/m2.tex}
 \end{equation*}
+ergibt.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{images/am-diode-signal.png}
@@ -91,7 +104,7 @@ Zunächst wird die Abhängigkeit der Ausgangsspannung eines Ringmodulators
 von der Phasendifferenz beider Eingangssignale untersucht. Dabei wird lediglich
 eine Sinusspannung unterschiedlicher Laufzeit auf beide Eingänge gegeben.
 Die Entsprechenden Messwerte sind in Tabelle \ref{tab:demodulation-cosinus}
-aufgeführt und werden mitsamt einer Cosinus-Ausgleichsgerade in Abbildung
+aufgeführt und werden mitsamt einer Cosinus-Ausgleichsfunktion in Abbildung
 \ref{fig:demodulation-cosinus} dargestellt. Die Cosinus-Abhängigkeit ist
 deutlich zu erkennen.
 \begin{table}
@@ -222,14 +235,33 @@ die Spannung $U_\text{m} = \SI{2.94(3)}{\volt}$.
 Wie in Abbildung \ref{fig:fm-zeitabh} zu erkennen ist, verschmiert das
 modulierte Signal periodisch.
 Der Frequenzhub $\Delta f$ der Modulation lässt sich durch die Verbreiterung
-der Periodendauern bestimmen.
+der Periodendauern bestimmen und führt über
+\begin{equation}
+\label{eq:}
+    m = \frac{\Delta f}{f_\text{T}}
+\end{equation}
+auf den Modulationsgrad $m$, wobei $f_\text{T}$ die Trägerfrequenz darstellt.
 Die Verbreiterung ist maximal nach drei Perioden und beträgt im Mittel
-$\Delta T = \input{build/delta_t.tex}$ pro Periode. Mit der Periodendauer der
-Trägerfrequenz $T_\text{T} = \input{build/t_t.tex}$ ergibt sich ein
-Frequenzhub von $\Delta f = \input{build/delta_f.tex}$ und
-damit der Modulationsgrad $m = \input{build/m.tex}$.
+$\Delta T = \input{build/delta_t.tex}$ pro Periode.
 Die hierfür verwendeten Messwerte sind in Tabelle \ref{tab:delta_ts}
 aufgeführt.
+Die Trägerfrequenz beträgt $f_\text{T} = \input{build/omega_t.tex}$, woraus
+die Periodendauer $T_\text{T} = 1 / f_\text{T} = \input{build/t_t.tex}$
+folgt.
+Mit
+\begin{equation}
+\label{eq:}
+\Delta f = \frac{1}{2}
+           \left(\frac{1}{T_\text{T} - \Delta T}
+                 - \frac{1}{T_\text{T} + \Delta T}
+           \right)
+\end{equation}
+ergibt sich ein
+Frequenzhub von $\Delta f = \input{build/delta_f.tex}$ und
+damit der Modulationsgrad
+\begin{equation*}
+    m = \input{build/m.tex}\,.
+\end{equation*}
 Abbildung \ref{fig:fm-spektrum} zeigt das Frequenzspektrum des Modulierten
 Signals.
 \begin{table}

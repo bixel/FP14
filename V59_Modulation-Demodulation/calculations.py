@@ -9,11 +9,14 @@ from scipy.optimize import curve_fit as cf
 # Teil c)
 # Momentanspannung
 offset = ufloat(16, 0.1)
-U1 = ufloat(83.5, 0.1) + offset
-U2 = ufloat(34, 0.1) + offset
+UtPlusM = ufloat(83.5, 0.1) + offset
+UtMinusM = ufloat(34, 0.1) + offset
+with open('build/UtPlusM.tex', 'w') as f:
+    f.write(r'\num{{{:L}}}'.format(UtPlusM))
+with open('build/UtMinusM.tex', 'w') as f:
+    f.write(r'\num{{{:L}}}'.format(UtMinusM))
 
-m1 = (U1 - U2) / (U1 + U2)
-print(m1)
+m1 = (UtPlusM - UtMinusM) / (UtPlusM + UtMinusM)
 with open('build/m1.tex', 'w') as f:
     f.write(r'\num{{{:L}}}'.format(m1))
 
@@ -21,6 +24,12 @@ with open('build/m1.tex', 'w') as f:
 UT = ufloat(4.7, 0.1)
 U1 = ufloat(1.57, 0.01)
 U2 = ufloat(1.56, 0.01)
+with open('build/UT.tex', 'w') as f:
+    f.write(r'\SI{{{:L}}}{{\milli\volt}}'.format(UT))
+with open('build/U1.tex', 'w') as f:
+    f.write(r'\SI{{{:L}}}{{\milli\volt}}'.format(U1))
+with open('build/U2.tex', 'w') as f:
+    f.write(r'\SI{{{:L}}}{{\milli\volt}}'.format(U2))
 
 m2 = (U1 + U2) / UT
 print(m2)
@@ -44,6 +53,9 @@ fmin = 1 / tmax
 fmax = 1 / tmin
 delta_f = (fmax - fmin) / 2
 m = delta_f / omega_t
+
+with open('build/omega_t.tex', 'w') as f:
+    f.write(r'\SI{{{:L}}}{{\kilo\hertz}}'.format(omega_t * 1e-3))
 
 with open('build/t_t.tex', 'w') as f:
     f.write(r'\SI{{{:L}}}{{\nano\second}}'.format(t_t * 1e9))
