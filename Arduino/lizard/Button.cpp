@@ -9,3 +9,4 @@ Button::Button(int pin) {
 bool Button::isPressed() {
     return digitalRead(_pin) == LOW;
 }
+

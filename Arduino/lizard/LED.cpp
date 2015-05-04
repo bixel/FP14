@@ -19,3 +19,4 @@ void LED::off() {
 int LED::getStatus() {
     return _status;
 }
+

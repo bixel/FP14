@@ -18,3 +18,4 @@ void Relay::switchStatus() {
     _status = _status == RED ? YELLOW : RED;
     digitalWrite(_pin, _status);
 }
+

@@ -10,3 +10,4 @@ Player::Player(int color, const Button& button) :
 int Player::getColor() {
     return _color;
 }
+
