@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "Player.h"
 #include "GameStart.h"
+#include "GameDefense.h"
 
 LED LED1(13);
 LED LED2(10);
@@ -18,6 +19,7 @@ Player p1(0, button1);
 Player p2(1, button2);
 
 GameStart gameStart(relay, p1, p2, LED1, LED2, LED3);
+GameDefense gameDefense(relay, p1, p2, LED1, LED2, LED3);
 
 void setup() {
     Serial.begin(9600);
@@ -28,5 +30,7 @@ void loop() {
     if(gameStart.isRunning()){
         gameStart.step();
     }
+
     delay(1);
 }
+
