@@ -17,8 +17,8 @@ Relay relay(2);
 Button button1(11);
 Button button2(12);
 
-Player p1(0, button1);
-Player p2(1, button2);
+Player p1(1, button1);
+Player p2(0, button2);
 
 // GamePhase-Objects run the game
 GameStart gameStart(&relay, &p1, &p2, &LED1, &LED2, &LED3, &LED4);

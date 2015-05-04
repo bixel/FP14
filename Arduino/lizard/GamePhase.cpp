@@ -15,6 +15,7 @@ GamePhase::GamePhase(Relay* relay,
     _l1(l1),
     _l2(l2),
     _l3(l3),
+    _l4(l4),
     _currentLED(NULL)
 {}
 

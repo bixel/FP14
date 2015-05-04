@@ -21,6 +21,8 @@ class GameDisplay : public GamePhase {
         bool _draw;
         Player* _winner;
         void reset();
+        void showPlayerSelection();
+        void flash(LED* led);
 };
 
 #endif

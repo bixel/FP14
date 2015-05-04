@@ -42,11 +42,13 @@ void GameStart::step() {
     if (_p1->button.isPressed() && _relay->getStatus() == _p1->getColor()) {
         _nextPhase->run(_currentLED, _p1);
         _p1->selectedLED = _currentLED;
+        Serial.println(_p1->selectedLED->getRank());
         reset();
     }
     if (_p2->button.isPressed() && _relay->getStatus() == _p2->getColor()) {
         _nextPhase->run(_currentLED, _p2);
         _p2->selectedLED = _currentLED;
+        Serial.println(_p2->selectedLED->getRank());
         reset();
     }
     if (_timer > _switchRelayTime) {

@@ -16,13 +16,13 @@ void GameDefense::run(LED* currentLED, Player* currentPlayer) {
     _currentLED = currentLED;
     _currentPlayer = currentPlayer == _p1 ? _p2 : _p1;
     _running = true;
-    delay(200);
+    delay(400);
     _currentLED->off();
-    delay(200);
+    delay(400);
     _currentLED->on();
-    delay(200);
+    delay(400);
     _currentLED->off();
-    delay(200);
+    delay(400);
     _currentLED->on();
     _relay->switchStatus();
 }
@@ -35,7 +35,7 @@ void GameDefense::reset() {
 }
 
 void GameDefense::shuffle() {
-    if (_timer % 50 == 0) {
+    if (_timer % 100 == 0) {
         _currentLED->off();
         int rnd;
         rnd = random(900);
@@ -64,9 +64,12 @@ void GameDefense::step() {
     }
     if(_currentPlayer->button.isPressed()){
         _currentPlayer->selectedLED = _currentLED;
-        Serial.println(_currentPlayer->selectedLED == _currentLED);
-        Serial.println(_currentPlayer == _p1);
-        Serial.println(_currentPlayer == _p2);
+        Serial.print("Player 1: ");
+        Serial.print(_p1->selectedLED->getRank());
+        Serial.print("\n");
+        Serial.print("Player 2: ");
+        Serial.print(_p2->selectedLED->getRank());
+        Serial.print("\n");
         _nextPhase->run();
         reset();
     }
