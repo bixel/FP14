@@ -9,7 +9,7 @@ class Player {
     public:
         Player(int color, const Button& button);
         Button button;
-        LED selectedLED;
+        LED* selectedLED;
         int getColor();
     private:
         int _color;

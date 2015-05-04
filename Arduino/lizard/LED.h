@@ -5,12 +5,14 @@
 
 class LED {
     public:
-        LED(int pin);
+        LED(int pin, int rank=0);
         void on();
         void off();
         int getStatus();
+        int getRank();
     private:
         int _pin;
+        int _rank;
         int _status;
 };
 

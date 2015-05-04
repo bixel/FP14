@@ -7,6 +7,11 @@ Button::Button(int pin) {
 }
 
 bool Button::isPressed() {
-    return digitalRead(_pin) == LOW;
+    bool v = digitalRead(_pin) == LOW;
+    if (v) {
+        Serial.println("isPressed()");
+        delay(150);
+    }
+    return v;
 }
 
