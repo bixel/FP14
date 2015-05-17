@@ -16,3 +16,5 @@
 *.bcf
 *.run.xml
 *.pdf
+
+Arduino/lizard.key/
