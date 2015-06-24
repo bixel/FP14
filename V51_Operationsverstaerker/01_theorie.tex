@@ -61,4 +61,42 @@ Dabei bezeichnen $\Delta U_\text{A}$ die Differenz der Ausgangsspannung zu
 Eingangsspannungen.
 
 Die auf Grund endlicher Eingangswiderstände $r_\text{e}$ auftretenden
-Eingangsströme werden mit $I_\text{p}$ und $I_\text{N}$ bezeichnet.
+Eingangsströme werden mit $I_\text{p}$ und $I_\text{N}$, deren
+Mittelwert,
+\begin{equation}
+\label{eq:eingangsruhestrom}
+    I_\text{B} = \frac{1}{2}\left(I_\text{p} + I_\text{N}\right)\,,
+\end{equation}
+als Eingangsruhestrom und die Differenz
+\begin{equation}
+\label{eq:offsetstrom}
+    I_\text{B} = \frac{1}{2}\left(I_\text{p} + I_\text{N}\right)\,,
+\end{equation}
+als Offsetstrom bezeichnet.
+Ähnlich zum Offsetstrom, verschwindet auch die Spannung häufig nicht.
+Für die Offsetspannung $U_0$ gilt daher bei $U_\text{A} = 0$
+\begin{equation}
+\label{eq:offsetspannung}
+    U_0 = U_\text{t} - U_\text{N}\,.
+\end{equation}
+Sie ist abhängig von Temperatur, Zeit und Betriebsspannungen. Die totale
+Ableitung wird mit Offsetspannungsdrift bezeichnet.
+
+
+\section{Schaltungsbeispiele}
+\label{sec:schaltungsbeispiele}
+Im Folgenden werden einige Schaltbeispiele für Operationsverstärker
+dargestellt. Das Verhalten des Verstärkers hängt dabei meist nur von der
+äußeren Schaltung ab und kann damit als annähernd ideal angenommen werden.
+
+\subsection{Linearverstärker}
+\label{subsec:linearverstärker}
+Der relativ kleine Arbeitsbereich des Operationsverstärkers ist in der
+Anwendung oft nicht praktikabel. Um diesen Bereich zu verbreitern, wird die
+Verstärkung reduziert, indem ein Teil der Ausgangsspannung auf den
+invertierenden Eingang gegeben wird.
+Der Anteil der zurückgeführten Spannung kann dabei mit Hilfe der Widerstände
+$R_1$ und $R_\text{N}$ bestimmt werden. Für den Fall $R_\text{N}/R_1 \ll V$
+lässt sich zeigen, dass die Verstärkung $V^\prime$ nur noch vom Verhältnis
+dieser beiden Widerstände abhängt.
+
