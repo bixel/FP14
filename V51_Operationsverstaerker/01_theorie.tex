@@ -15,7 +15,14 @@ Differenz der Eingangsspannungen $U_\text{p}$ und $U_\text{N}$:
 \label{eq:proportionalität}
     U_\text{A} = V(U_\text{p} - U_\text{N})\,,
 \end{equation}
-wobei $V$ die Verstärkungsspannung bezeichnet.
+wobei $V$ die Leerlaufverstärkung bezeichnet.
+Diese Beziehung gilt in einem Spannungsbereich
+$-U_\text{B} < U_\text{A} < U_\text{B}$, der durch die Betriebsspannung
+$U_\text{B}$ bestimmt ist. Ausserhalb dieses Bereichs läuft die
+Ausgangsspannung in eine Sättigung.
+Die Eingangsspannung $U_\text{p}$ wird nicht invertiert, während die Spannung
+$U_\text{N}$ invertiert wird -- der Verstärker besitzt also einen
+nicht-invertierenden und einen invertierenden Eingang.
 
 Aus technischer Sicht entspricht der Operationsverstärker einem
 gleichstromgekoppeltem Differenzverstärker. Er ist in Abbildung
@@ -30,3 +37,12 @@ gleichstromgekoppeltem Differenzverstärker. Er ist in Abbildung
     }
     \label{fig:op}
 \end{figure}
+Neben der meist frequenzabhängigen Leerlaufverstärkung $V$ besitzt der
+Operationsverstärker weitere Kenngrößen, wie die Eingangswiderstände,
+$r_\text{e,p}$ und $r_\text{e,N}$, sowie 
+einen Ausgangswiderstand $r_\text{a}$.
+Um Rechnungen zu Vereinfachen gilt für einen idealen Operationsverstärker
+\begin{equation}
+\label{eq:id-verstärker}
+    V = \infty\,,\qquad r_\text{e} = \infty\,,\qquad r_\text{a} = 0\,.
+\end{equation}
