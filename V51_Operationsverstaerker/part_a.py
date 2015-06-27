@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from uncertainties import ufloat
 from uncertainties import unumpy as unp
 from scipy.optimize import curve_fit
+from codecs import open
+from textable import table
 
 R_N_1 = 1e6
 R_N_2 = 120e3
@@ -46,6 +48,16 @@ popt_1, pcov_1 = curve_fit(func,nu_1_log,unp.nominal_values(V_1_log))
 popt_2, pcov_2 = curve_fit(func,nu_2_log[6:14],unp.nominal_values(V_2_log[6:14]))
 popt_3, pcov_3 = curve_fit(func,nu_3_log[12:18],unp.nominal_values(V_3_log[12:18]))
 popt_4, pcov_4 = curve_fit(func,nu_4_log[11:18],unp.nominal_values(V_4_log[11:18]))
+
+m = np.array([ufloat(popt_1[0],pcov_1[0][0]),
+				ufloat(popt_2[0],pcov_2[0][0]),
+				ufloat(popt_3[0],pcov_3[0][0]),
+				ufloat(popt_4[0],pcov_4[0][0])])
+
+b = np.array([ufloat(popt_1[1],pcov_1[1][1]),
+				ufloat(popt_2[1],pcov_2[1][1]),
+				ufloat(popt_3[1],pcov_3[1][1]),
+				ufloat(popt_4[1],pcov_4[1][1])])
 
 # Calcs
 
