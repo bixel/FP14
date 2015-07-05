@@ -60,7 +60,7 @@ ax.set_title(r'Eingangswiderstand und Leerlaufverstärkung des Operationsverstä
 ax.set_xlabel(r'$\log(\nu/\mathrm{Hz})$')
 ax.set_ylabel(r'$\log(R_e/\mathrm{\Omega})$')
 ax2.set_ylabel(r'$\log(V)$')
-plt.savefig('build/plot_c.pdf')
+plt.savefig('build/c_plot.pdf')
 plt.close(fig)
 
 fig = plt.figure()
@@ -78,5 +78,5 @@ ax.set_title(r'Eingangswiderstand und Leerlaufverstärkung des Operationsverstä
 ax.set_xlabel(r'$\log(\nu/\mathrm{Hz})$')
 ax.set_ylabel(r'$\log(R_e/\mathrm{\Omega})$')
 ax2.set_ylabel(r'$\log(V)$')
-plt.savefig('build/plot_c_full.pdf')
+plt.savefig('build/c_plot_full.pdf')
 plt.close(fig)

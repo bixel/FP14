@@ -24,11 +24,33 @@ R_1_2 += R_in
 R_1_3 += R_in
 R_1_4 += R_in
 
+print(R_1_1)
+print(R_1_2)
+print(R_1_3)
+print(R_1_4)
+
 # Import Data
 nu_1, U_1, dU_1 = np.genfromtxt("data/data_a_1.txt",unpack=True)
 nu_2, U_2, dU_2 = np.genfromtxt("data/data_a_2.txt",unpack=True)
 nu_3, U_3, dU_3 = np.genfromtxt("data/data_a_3.txt",unpack=True)
 nu_4, U_4, dU_4 = np.genfromtxt("data/data_a_4.txt",unpack=True)
+
+with open('build/a_data_1.tex', 'w') as f:
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_1, unp.uarray(U_1, dU_1)]
+		))
+with open('build/a_data_2.tex', 'w') as f:
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_2, unp.uarray(U_2, dU_2)]
+		))
+with open('build/a_data_3.tex', 'w') as f:
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_3, unp.uarray(U_3, dU_3)]
+		))
+with open('build/a_data_4.tex', 'w') as f:
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_4, unp.uarray(U_4, dU_4)]
+		))
 
 V_1 = unp.uarray(U_1,dU_1) / U_ein
 V_2 = unp.uarray(U_2,dU_2) / U_ein
@@ -58,11 +80,13 @@ b = np.array([ufloat(popt_1[1],pcov_1[1][1]),
 				ufloat(popt_2[1],pcov_2[1][1]),
 				ufloat(popt_3[1],pcov_3[1][1]),
 				ufloat(popt_4[1],pcov_4[1][1])])
+print(m)
+print(b)
 
 # Calcs
 
 def verstaerkung(v,r_1,r_N):
-	return ( r_1 / r_N - 1 / v )**-1
+	return ( - r_1 / r_N + 1 / v )**-1
 
 V_grenz_1 = V_1[0] / np.sqrt(2)
 V_grenz_2 = V_2[0] / np.sqrt(2)
@@ -161,7 +185,7 @@ plt.legend(loc='best')
 plt.grid()
 plt.xlabel(r'$\log(\nu/\mathrm{Hz})$')
 plt.ylabel(r'$\log(\overline{V})$')
-plt.savefig('build/plot_a_1.pdf')
+plt.savefig('build/a_plot_1.pdf')
 plt.clf()
 
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
@@ -176,7 +200,7 @@ plt.legend(loc='best')
 plt.grid()
 plt.xlabel(r'$\log(\nu/\mathrm{Hz})$')
 plt.ylabel(r'$\log(\overline{V})$')
-plt.savefig('build/plot_a_2.pdf')
+plt.savefig('build/a_plot_2.pdf')
 plt.clf()
 
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
@@ -191,7 +215,7 @@ plt.legend(loc='best')
 plt.grid()
 plt.xlabel(r'$\log(\nu/\mathrm{Hz})$')
 plt.ylabel(r'$\log(\overline{V})$')
-plt.savefig('build/plot_a_3.pdf')
+plt.savefig('build/a_plot_3.pdf')
 plt.clf()
 
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
@@ -206,5 +230,5 @@ plt.legend(loc='best')
 plt.grid()
 plt.xlabel(r'$\log(\nu/\mathrm{Hz})$')
 plt.ylabel(r'$\log(\overline{V})$')
-plt.savefig('build/plot_a_4.pdf')
+plt.savefig('build/a_plot_4.pdf')
 plt.clf()

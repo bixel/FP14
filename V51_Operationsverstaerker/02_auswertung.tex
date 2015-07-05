@@ -4,3 +4,155 @@ Im Folgenden werden alle Fehler mit Hilfe der \texttt{python}-Bibliothek
 \texttt{uncertainties}\cite{py-uncertainties} berechnet, die eine Gaußsche
 Fehlerfortpflanzung implementiert.
 
+\subsection{Frequenzgang eines gegenkekoppelten Verstärkers} % (fold)
+
+Im folgenden wird der Frequenzgang eines gegengekoppelten Verstärkers bei vier verschiedenen Verstärkungsgraden $V'$.
+Bei allen Messungen wurde eine Eingangsspannung von $\SI{15}{\milli\ohm}$ verwendet.
+Zudem ist auf den Widerstand $R_1$ noch der Innenwiderstand der Spannungsquelle mit $R_i = \SI{50}{\ohm}$ aufaddiert worden.
+
+\paragraph{Verstärungsgrad 1 $\frac{\SI{1}{\mega\ohm}}{\SI{100}{\ohm}}$}
+
+\begin{table}
+\centering
+\caption{Messwerte zum Verstärkungsgrad 1.}
+    \label{tab:a_messwerte_1}
+    \input{build/a_data_1.tex}
+\end{table}
+
+In Grafik \ref{fig:a_plot_1} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_1} halblogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_1(x)=m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+Es ergibt sich
+\begin{equation*}
+	f_1(x) = (-0.9480\pm0.0001) \cdot x + (13.0129\pm0.0111)\,.
+\end{equation*}
+Die Grenzfrequenz $\nu'_{g,1}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_1}{\sqrt{2}}$ abgefallen ist - kann bei dieser Verstärkung nicht bestimmt werden, da kein Plateau bei geringen Frequenzen erkennbar ist.
+Somit kann auch keine Leerlaufverstärkung $V_1$ abgeschätzt werden.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/a_plot_1.pdf}
+    \caption{Frequenzgang eine gegengekoppelten Verstärkers mit einer Verstärkung von $10\,\mathrm{k}$.}
+    \label{fig:a_plot_1}
+\end{figure}
+
+\paragraph{Verstärungsgrad 2 $\frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}}$}
+
+\begin{table}
+\centering
+\caption{Messwerte zum Verstärkungsgrad 2.}
+    \label{tab:a_messwerte_2}
+    \input{build/a_data_2.tex}
+\end{table}
+
+In Grafik \ref{fig:a_plot_2} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_2} halblogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_2(x)=m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+Es ergibt sich
+\begin{equation*}
+	f_2(x) = (-0.9652\pm0.0002) \cdot x + (13.0827\pm0.0191)\,.
+\end{equation*}
+Die Grenzfrequenz $\nu'_{g,2}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_2}{\sqrt{2}}$ abgefallen ist - ist zu $\nu'_{g,2} = \SI{1567.4(193)}{\hertz}$ bestimmt worden.
+Der Wert für die Verstärkung $V'_2$ lässt sich aus dem Wert des Plateaus zu $V'=560.0\pm6.7$ bestimmen.
+Die ideale Verstärkung 
+\begin{equation*}
+    V'_{2,\text{ideal}} = \frac{R_N}{R_1} \approx 800.0
+\end{equation*}
+weicht somit um etwa $\SI{30}{\percent}$ von der gemessenen ab.
+Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_2$ zu
+\begin{equation*}
+	V_2 = \frac{1}{V'_2} - \frac{R_1}{R_N} = \frac{1}{560.0\pm6.7} - \frac{\SI{150}{\ohm}}{\SI{120}{\kilo\ohm}} \approx 
+    \num{1.87(7)e3}
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/a_plot_2.pdf}
+    \caption{Frequenzgang eine gegengekoppelten Verstärkers mit einer Verstärkung von $1200$.}
+    \label{fig:a_plot_2}
+\end{figure}
+
+\paragraph{Verstärungsgrad 3 $\frac{\SI{4.7}{\kilo\ohm}}{\SI{100}{\ohm}}$}
+
+\begin{table}
+\centering
+\caption{Messwerte zum Verstärkungsgrad 3.}
+    \label{tab:a_messwerte_3}
+    \input{build/a_data_3.tex}
+\end{table}
+
+In Grafik \ref{fig:a_plot_3} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_3} halblogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_3(x)=m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+Es ergibt sich
+\begin{equation*}
+    f_3(x) = (-0.7991\pm0.0001) \cdot x + (11.0282\pm0.0187)\,.
+\end{equation*}
+Die Grenzfrequenz $\nu'_{g,3}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_3}{\sqrt{3}}$ abgefallen ist - ist zu $\nu'_{g,3} = \SI{3.060(6)e4}{\hertz}$ bestimmt worden.
+Der Wert für die Verstärkung $V'_3$ lässt sich aus dem Wert des Plateaus zu $V'=22.667\pm0.033$ bestimmen.
+Die ideale Verstärkung 
+\begin{equation*}
+    V'_{3,\text{ideal}} = \frac{R_N}{R_1} \approx 31.33
+\end{equation*}
+weicht somit um etwa $\SI{27}{\percent}$ von der gemessenen ab.
+Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_3$ zu
+\begin{equation*}
+    V_3 = \frac{1}{V'_3} - \frac{R_1}{R_N} = \frac{1}{22.667\pm0.033} - \frac{\SI{150}{\ohm}}{\SI{4.7}{\kilo\ohm}} \approx \num{81.9\pm0.4}
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/a_plot_3.pdf}
+    \caption{Frequenzgang eine gegengekoppelten Verstärkers mit einer Verstärkung von $47$.}
+    \label{fig:a_plot_3}
+\end{figure}
+
+\paragraph{Verstärungsgrad 4 $\frac{\SI{1}{\mega\ohm}}{\SI{4.7}{\kilo\ohm}}$}
+
+\begin{table}
+\centering
+\caption{Messwerte zum Verstärkungsgrad 4.}
+    \label{tab:a_messwerte_4}
+    \input{build/a_data_4.tex}
+\end{table}
+
+In Grafik \ref{fig:a_plot_4} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_4} halblogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_4(x)=m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+Es ergibt sich
+\begin{equation*}
+    f_4(x) = (-0.8821\pm0.0002) \cdot x + (12.1148\pm0.0217)\,.
+\end{equation*}
+Die Grenzfrequenz $\nu'_{g,4}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_4}{\sqrt{4}}$ abgefallen ist - ist zu $\nu'_{g,4} = \SI{4.57(11)e3}{\hertz}$ bestimmt worden.
+Der Wert für die Verstärkung $V'$ lässt sich aus dem Wert des Plateaus zu $V'_4=152.7\pm3.3$ bestimmen.
+Die ideale Verstärkung 
+\begin{equation*}
+    V'_{4,\text{ideal}} = \frac{R_N}{R_1} \approx 210.53
+\end{equation*}
+weicht somit um etwa $\SI{27}{\percent}$ von der gemessenen ab.
+Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
+\begin{equation*}
+    V_4 = \frac{1}{V'_4} - \frac{R_1}{R_N} = \frac{1}{152.7\pm3.3} - \frac{\SI{4.75}{\kilo\ohm}}{\SI{1}{\mega\ohm}} \approx \num{560\pm40}
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/a_plot_4.pdf}
+    \caption{Frequenzgang eine gegengekoppelten Verstärkers mit einer Verstärkungsgrad von $212.77$.}
+    \label{fig:a_plot_4}
+\end{figure}
+
+\paragraph{Grenzfrequenz - Verstärkugnsgrad Produkt}
+
+Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgerführt.
+\begin{table}
+\centering
+\caption{Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ der Messaufbauten 2 bis 4.}
+    \label{tab:a_nu_v}
+    \begin{tabular}{S[table-format=3.3(3)] S[table-format=3.3(2)] S[table-format=1.4(2)]}
+            \toprule
+            {Grenzfrequenz $\nu'_{g,i}/\si{\hertz}$} & {Verstärkung $V'_i$} & {$V'_i\cdot\nu'_{g,i}/\SI{e5}{\hertz}$}\\
+            \midrule
+            1567.4(193) & 560.0(67)  & 8.8032(20) \\
+            30600(60)  & 22.667(33) & 6.9354(26)    \\
+            4570(110)  & 152.7(33)  & 6.973(20)    \\
+            \bottomrule
+    \end{tabular}    
+\end{table}
+Es ist zu erkennen, dass die Größenordnung des Produktes dieselbe ist und die Werte maximal um etwa $\SI{20}{\percent}$ voneinander abweichen.
