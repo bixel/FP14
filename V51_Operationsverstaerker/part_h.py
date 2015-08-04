@@ -48,4 +48,4 @@ x1 = np.linspace(val_x[0],val_x[len(val_x)-1],1e4)
 plt.plot(x,func(x,*popt),'g-')
 plt.plot(val_x[5:32],val_log[5:32],'rx')
 
-plt.savefig('lol.pdf')
+plt.savefig('build/h_plot.pdf')
