@@ -89,8 +89,10 @@ Im Folgenden werden einige Schaltbeispiele für Operationsverstärker
 dargestellt. Das Verhalten des Verstärkers hängt dabei meist nur von der
 äußeren Schaltung ab und kann damit als annähernd ideal angenommen werden.
 
-\subsection{Rückgekoppelter Linearverstärker}
-\label{subsec:rueck-linearverstärker}
+\subsection{Arten von Operationsverstärkern}
+
+\subsubsection{Rückgekoppelter Linearverstärker}
+\label{subsubsec:rueck-linearverstärker}
 Der relativ kleine Arbeitsbereich des Operationsverstärkers ist in der
 Anwendung oft nicht praktikabel. Um diesen Bereich zu verbreitern, wird die
 Verstärkung reduziert, indem ein Teil der Ausgangsspannung auf den
@@ -112,14 +114,21 @@ hochohmigen Spannungsquellen möglicherweise nachteilig aus. Im nächsten
 Abschnitt wird daher ein Linearverstärker vorgestellt, der diesen Nachteil
 umgeht.
 
-\subsection{Elektrometerverstärker}
-\label{subsec:elektrometerverstärker}
+\subsubsection{Elektrometerverstärker}
+\label{subsubsec:elektrometerverstärker}
 Wie in Abbildung \ref{fig:elektrometer} deutlich wird, wird auch bei diesem
 Verstärker ein Teil der Ausgangsspannung $U_\text{A}$ zum gegengekoppelten
 Eingang zurückgeführt. Dabei sind die Widerstände $R_1$ und $R_\text{N}$ auf
 eine andere Art und Weise verschaltet, sodass der Eingangswiderstand in der
 Größenordnung des Gleichtakteingangwiderstandes
-($r_\text{Gl} \approx \SI{10}{\giga\ohm}$) liegt.
+($r_\text{Gl} \approx \SI{10}{\giga\ohm}$) liegt, hier tritt das eventuelle
+Problem des zu geringen Eingangswiderstandes als nicht auf.
+Störend bei dieser Schaltung kann sich jedoch ein Eingangsruhestrom
+$I_\text{B}$.
+Die Verstärkung $V^\prime$ des Elektrometerverstärkers beträgt
+\begin{equation*}
+    V^\prime = \frac{U_\text{A}}{U_1} = \frac{R_\text{N} + R_1}{R_1}\,.
+\end{equation*}
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{img/elektrometer.pdf}
@@ -127,14 +136,94 @@ Größenordnung des Gleichtakteingangwiderstandes
     \label{fig:elektrometer}
 \end{figure}
 
-\subsection{Umkehr-Integrator}
-\label{subsec:umkehr_integrator}
+\subsubsection{OP mit geringem Eingangswiderstand $R_\text{e}$ (Ampèremeter)}
+\label{subsubsec:amperemeter}
+Im Gegensatz zum grossen Eingangswiderstand $R_\text{e}$ eines 
+Elektrometerverstärkers lässt sich, wie in Abbildung
+\ref{fig:amperemeter} dargestellt, ein Linearverstärker mit 
+besonders geringem Eingangswiderstand konstruieren.
+Somit können zum Beispiel Ströme in einem Ampèremeter gemessen werden, wobei
+der dazu nötige Spannungsabfall $\Delta U$ besonders gering ist.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/amperemeter.pdf}
+    \caption{Schaltbild eines Elektrometerverstärkers \cite{V51}.}
+    \label{fig:amperemeter}
+\end{figure}
 
-\subsection{Umkehr-Differentiator}
-\label{subsec:umkehr_differentiator}
+\subsection{Umkehr-Integrator und -Differentiator}
+\label{subsec:integrator}
+Mit Hilfe eines zusätzlichen Kondensators mit Kapazität $C$ in der Schaltung
+eines Linearverstärkers lässt sich entweder ein Integrations- oder eine
+Differentiationsglied bauen.
+Für die Ausgangsspannungen $U_\text{A,I}$ des Integrators und $U_\text{A,D}$
+des Differentiators gilt dann
+\begin{align*}
+    U_\text{A,I} &= - \frac{1}{RC} \int U_1\!(t) \mathup{d}t\,,\\
+    \text{und} \qquad U_\text{A,D} &= - RC \frac{\mathup{d}U_1}{\mathup{d}t}\,,
+\end{align*}
+wobei $R$ den Widerstand bezeichnet und Integrator und Differentiator sich
+nur durch Position des Widerstandes und Kondensators unterscheiden.
+Die entsprechenden Schaltungen sind in Abbildung \ref{fig:integrator}
+dargestellt.
+\begin{figure}
+    \begin{subfigure}{.49\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{img/integrator.pdf}
+        \caption{Schaltbild eines Umkehr-Integrators \cite{V51}.}
+        \label{fig:integrator-integrator}
+    \end{subfigure}
+    \begin{subfigure}{.49\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{img/differentiator.pdf}
+        \caption{Schaltbild eines Umkehr-Differentiators \cite{V51}.}
+        \label{fig:integrator-differentiator}
+    \end{subfigure}
+    \caption{Linearverstärker mit Kondensator.}
+    \label{fig:integrator}
+\end{figure}
+
+\subsection{Logarithmierer und Exponentialgenerator}
+\label{subsec:log_expo}
+Neben Differential- und Integral-Operationen können auch Exponentierung nud
+Logarithmierung mit Hilfe des Operationsverstärkers umgesetzt werden.
+Dabei wird statt eines Kondensators eine Diode eingebaut.
+Dabei gilt für die entsprechenden Ausgangssignale $U_\text{A,E}$ und 
+$U_\text{A,L}$
+\begin{align*}
+    U_\text{A,L} &= R I \exp\left(\frac{e_0}{k_\text{B}T} U_\text{e}\right)\,,\\
+    \text{und} \qquad U_\text{A,E} &= \frac{k_\text{B}T}{e_0}\ln \frac{U_\text{e}}{R I}\,,
+\end{align*}
+mit der absoluten Temperatur $T$, der Boltzmannkonstante $k_\text{B}$ und
+der Elementarladung $e_0$.
 
 \subsection{Schmitt-Trigger}
 \label{subsec:schmitt_trigger}
+Der Operationsverstärker kann als Schalter genutzt werden. Statt, wie bisher
+einen Teil der Ausgangsspannung auf einen gegengekoppelten Eingang zu geben,
+wird dieser Anteil auf einen mitgekoppelten (invertierenden) Eingang gegeben.
+Damit wird das eigene Ausgangssignal verstärkt, bis der Operationsverstärker
+in eine Sättigung läuft.
+Dabei beträgt das Ausgangssignal $U_\text{A}$ gerade
+\begin{align*}
+    U_\text{A} = 
+    \begin{cases}
+        +U_\text{B} &: U_1 > \frac{R_1}{R_\text{P}}U_\text{B} \\
+        -U_\text{B} &: U_1 < -\frac{R_1}{R_\text{P}}U_\text{B}\,,
+    \end{cases}
+\end{align*}
+mit der Betriebsspannugn $U_\text{B}$.
+Die entsprechende Schaltung ist in Abbildung \ref{fig:schmitt_trigger}
+dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/schmitt_trigger.pdf}
+    \caption{
+        Schaltbild eines Operationsverstärker, der als Schmitt-Trigger
+        genutzt wird.
+    }
+    \label{fig:schmitt_trigger}
+\end{figure}
 
 \subsection{Signalgenerator}
 \label{subsec:signalgenerator}
@@ -142,5 +231,3 @@ Größenordnung des Gleichtakteingangwiderstandes
 \subsubsection{Erzeugung von Sinusschwingungen}
 \label{subsubsec:sinusschwingungen}
 
-\subsection{Logarithmierer und Exponentialgenerator}
-\label{subsec:log_expo}
