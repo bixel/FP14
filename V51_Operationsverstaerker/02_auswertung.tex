@@ -141,7 +141,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
 \paragraph{Grenzfrequenz - Verstärkugnsgrad Produkt}
 
 Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgerführt.
-\begin{table}
+\begin{table}[h!]
 \centering
 \caption{Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ der Messaufbauten 2 bis 4.}
     \label{tab:a_nu_v}
@@ -156,3 +156,86 @@ Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung 
     \end{tabular}    
 \end{table}
 Es ist zu erkennen, dass die Größenordnung des Produktes dieselbe ist und die Werte maximal um etwa $\SI{20}{\percent}$ voneinander abweichen.
+
+\subsection{Klemmenspannung eines speziellen NF-Generators}
+\label{sub:klemmenspannung_eines_speziellen_nf_generators}
+
+In den Schaltungen wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
+Die Ergebnisse der Ausgangsspannungen sind in Tabelle \ref{tab:b_volt}
+Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Eingangswiderstände der Schaltungen erklären lassen.
+
+\begin{table}[h!]
+    \centering
+    \caption{Vergleich der Klemmenspannung eines speziellen NF-Generators mithilfe einer gegengekoppelten und einer Elektrometer-Verstärkerschaltung mit etwa der gleichen Verstärkung $V'$.}
+    \label{tab:b_volt}
+    \begin{tabular}{S[table-format=3.0] S[table-format=1.1(1)] S[table-format=2.1(1)]}
+        \toprule
+        {$\nu/\si{\hertz}$} & {$U_\mathrm{Gg}/\si{\volt}$} & {$U_\mathrm{Elek}/\si{\volt}$}\\
+        \midrule
+         50 & 8.4(1) & 12.5(1) \\
+        100 & 8.4(1) & 12.5(1) \\
+        150 & 8.4(1) & 12.3(1) \\
+        200 & 8.3(1) & 12.1(1) \\
+        250 & 8.3(1) & 11.9(1) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Messung des Eingangswiderstandes $R_e$ und der Leerlaufverstärkung $V$} % (fold)
+\label{sub:}
+
+Für die Berechnung des Eingangswiderstandes wurde die Generatorspannung $U_g = \SI{1.0(1)}{\volt}$, der Generatorwiderstand $R_v = \SI{10}{\kilo\ohm}$ und der Widerstand $R_N = \SI{100}{\kilo\ohm}$ gewählt.
+Die Ergebnisse sind in Tabelle \ref{tab:c_ergebnisse} aufgeführt. Das Ergebnis in dem Frequenzbereich von $\SIrange{100}{1600}{\hertz}$ ist in der doppellogarithmischen Grafik \ref{fig:c_plot} dargestellt. Zudem ist in der doppellogarithmischen Grafik \ref{fig:c_plot_full} der Frequenzbereiches von $\SIrange{100}{100000}{\hertz}$ abgebildet.
+
+Mithilfe der Gleichung
+\begin{equation*}
+    I = \frac{U_g}{R_v}
+\end{equation*}
+berechnet sich $I = \input{build/c_I.tex}$.
+Mithilfe von $I$ ergibt sich nun der Eingangswiderstand $R_e$ aus dem Zusammenhang
+\begin{equation*}
+    R_e = \frac{U_e}{I}\,.
+\end{equation*}
+$U_a$ berechnet sich somit zu
+\begin{equation*}
+    U_a = R_N \cdot I = \input{c_U_a.tex} \,.
+\end{equation*}
+Die Ergebnis der Messung bis $\SI{20}{\kilo\hertz}$ liegen somit innerhalb des Fehlers des berechneten Wertes.
+Die Leerlaufverstärkung $V$ lässt sich mithilfe von 
+\begin{equation*}
+    V = \frac{R_N}{R_e}
+\end{equation*}
+berechnen.
+
+Mithilfe einer linearen Regression der Form $f_{c,R}(x) = m \cdot x + b$ ergeben sich für die linearen Bereiche die Geradengleichungen 
+\begin{eqnarray*}
+    f_{c,R,1}(x) &=& (\num{1.04525(7)}) \cdot x + (\num{-3.4633(24)}) \,, \\
+    f_{c,V,1}(x) &=& (\num{-1.04525(7)}) \cdot x + (\num{14.9763(24)}) \,, \\
+    f_{c,R,2}(x) &=& (\num{1.0493(1)}) \cdot x + (\num{-3.495(5)}) \,, \\
+    f_{c,V,2}(x) &=& (\num{-1.0493(1)}) \cdot x + ( ) \,.
+\end{eqnarray*}
+Da die Steigungen im Bereich kleiner Freqeunzen bis auf die dritte Nachkommastelle mit denen größerer Frequenzen übereinstimmt, bestimmt sich der Frequenzbereich, in dem der Operationsverstärker einwandfrei arbeitet, zu $\SIrange{100}{20000}{\hertz}$.
+Somit ist die Grenzfrequenz $\nu_g \approx \SI{20}{\kilo\hertz}$.
+In den Messwerten ist dies gerade durch den Wert für die Frequenz $\nu$ erkennbar, an dem die Ausgangsspannung $U_a$ aufhört konstant zu bleiben.
+Dies ist somit auch der Bereich, indem nicht mehr $R_v \gg R_e$ gilt und somit auch der Strom $I$ nicht mehr als konstant angenommen werden darf.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/c_plot.pdf}
+    \caption{Doppellogarithmische Darstellung des Widerstands $R_e$ und der Leerlaufverstärkung $V$ in Abhängigkeit der Frequenz $\nu$ im Bereich $\SIrange{100}{1600}{\hertz}$.}
+    \label{fig:c_plot}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/c_plot_full.pdf}
+    \caption{Doppellogarithmische Darstellung des Widerstands $R_e$ und der Leerlaufverstärkung $V$ in Abhängigkeit der Frequenz $\nu$ im Bereich $\SIrange{100}{100000}{\hertz}$.}
+    \label{fig:c_plot_full}
+\end{figure}
+
+\begin{table}[h!]
+    \centering
+    \caption{Ergebnisse für den Eingangswiderstand $R_e$, die Leerlaufverstärkung $V$, die Eingangsspannung $U_e$ und die Ausgangsspannung $U_a$ bei verschiedenen Frequenzen $\nu$.}
+    \label{tab:c_ergebnisse}
+    \input{build/c_table.tex}
+\end{table}
