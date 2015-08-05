@@ -162,7 +162,7 @@ Es ist zu erkennen, dass die Größenordnung des Produktes dieselbe ist und die 
 \label{sub:klemmenspannung_eines_speziellen_nf_generators}
 
 In den Schaltungen \ref{fig:linear} und \ref{fig:elektrometer} wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
-Die Ergebnisse der Ausgangsspannungen sind in Tabelle \ref{tab:b_volt}
+Die Ergebnisse der Ausgangsspannungen sind in Tabelle \ref{tab:b_volt} aufgelistet.
 Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Eingangswiderstände der Schaltungen erklären lassen.
 
 \begin{table}[h!]
@@ -213,7 +213,7 @@ Mithilfe einer linearen Regression der Form $f_{c,R}(x) = m \cdot x + b$ ergeben
     f_{c,R,1}(x) &=& (\num{1.0452}) \cdot x + (\num{-3.4633(24)}) \,, \\
     f_{c,V,1}(x) &=& (\num{-1.0452}) \cdot x + (\num{14.9763(24)}) \,, \\
     f_{c,R,2}(x) &=& (\num{1.0493(1)}) \cdot x + (\num{-3.495(5)}) \,, \\
-    f_{c,V,2}(x) &=& (\num{-1.0493(1)}) \cdot x + ( ) \,.
+    f_{c,V,2}(x) &=& (\num{-1.0493(1)}) \cdot x + (\num{15.008(5)}) \,.
 \end{eqnarray*}
 Da die Steigungen im Bereich kleiner Freqeunzen bis auf die dritte Nachkommastelle mit denen größerer Frequenzen übereinstimmt, bestimmt sich der Frequenzbereich, in dem der Operationsverstärker einwandfrei arbeitet, zu $\SIrange{100}{20000}{\hertz}$.
 Somit ist die Grenzfrequenz $\nu_g \approx \SI{20}{\kilo\hertz}$.
@@ -248,7 +248,7 @@ Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt si
 \begin{equation*}
     f_{d}(x) = (\num{-0.9059}) \cdot x + (\num{5.2428(10)})\,.
 \end{equation*}
-Damit weicht der Exponent um etwa $\SI{10}{\percent}$ von der Beziehung $\approx \SI{1}{\nu}$ ab.
+Damit weicht der Exponent um etwa $\SI{10}{\percent}$ von der Beziehung $U_a \approx \frac{1}{\nu}$ ab.
 Somit ist der Frequenzbereich, in dem der Umkehr-Integrator arbeitet, $\SIrange{10}{640}{\hertz}$.
 In Abbildung \ref{fig:int_sinus} ist eine integrierte Sinus-, in Abbildung \ref{fig:int_rechteck} eine integrierte Rechteck- und in Abbildung \ref{fig:int_dreieck} eine integrierte Dreieckspannung dargestellt.
 
@@ -313,21 +313,16 @@ In Abbildung \ref{fig:dif_sinus} ist eine differentierte Sinus-, in Abbildung \r
     \centering
     \caption{Aufgenommene Ausgangsspannungen $U_a$ einer Sinusspannung in Abhängigkeit der Frequenz $\nu$ mit einem Umkehr-Differentiator.}
     \label{tab:e_dif_table}
-    \begin{tabular}{S[table-format=5.0] S[table-format=1.3(2)]}
+    \begin{tabular}{S[table-format=3.0] S[table-format=1.3(2)] S[table-format=5.0] S[table-format=1.3(2)]}
     \toprule 
-        \multicolumn{1}{c}{$\nu/\si{\hertz}$} & \multicolumn{1}{c}{$U/\si{\volt}$} \\
+        \multicolumn{1}{c}{$\nu/\si{\hertz}$} & \multicolumn{1}{c}{$U/\si{\volt}$} & \multicolumn{1}{c}{$\nu/\si{\hertz}$} & \multicolumn{1}{c}{$U/\si{\volt}$} \\
     \midrule
-           10   0.012(01) \\
-           20   0.015(01) \\
-           40   0.023(01) \\
-          100   0.041(01) \\
-          200   0.076(01) \\
-          400   0.143(01) \\
-          800   0.272(01) \\
-         1600   0.555(01) \\
-         3200   1.100(10) \\
-         6400   2.290(10) \\
-        10000   4.220(10) \\
+           10 &  0.012(01) &   800 &  0.272(01)\\
+           20 &  0.015(01) &  1600 &  0.555(01)\\
+           40 &  0.023(01) &  3200 &  1.100(10)\\
+          100 &  0.041(01) &  6400 &  2.290(10)\\
+          200 &  0.076(01) & 10000 &  4.220(10)\\
+          400 &  0.143(01) &&\\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -420,11 +415,11 @@ Die Amplituden der gedämpften Schwingung wurden der Grafik entnommen und sind i
 Zudem sind die Daten in der halblogarithmischen Grafik \ref{fig:ged_schwing} dargestellt.
 Mithilfe einer linearen Regression der Form $f_{d}(x) = x / \tau + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
-    f_h(x) = \frac{x}{\num{-0.0046}} + (\num{-9.7(26)})\,.
+    f_h(x) = -\frac{x}{\SI{0.0046}{\second}} + (\num{-9.7(26)})\,.
 \end{equation*}
 Damit ergibt sich für die Abklingdauer $\tau \approx \num{-0.0046}$ und weicht somit von dem Theoriewert
 \begin{equation*}
-    \tau = 20 \cdot R \cdot C = 0.004
+    \tau = 20 \cdot R C = 0.004
 \end{equation*}
 um etwa $\SI{15}{\percent}$ ab.
 
@@ -464,19 +459,19 @@ Für den logarithmierer wurde die Schaltung \ref{} verwendet.
 Die aufgenommenen Daten sind in Tabelle \ref{tab:i_log} aufgelistet und in Grafik \ref{fig:i_log} halblogarithmisch dargestellt.
 Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
-    f_{i}(x) = (\num{0.0480}) \cdot x + (\num{0.4303})\,.
+    f_{i}(x) = (\SI{0.0480}{\volt}) \cdot x + (\SI{0.4303}{\volt})\,.
 \end{equation*}
 Mithilfe der Beziehung
 \begin{equation*}
     m = \frac{k_\mathrm{B} T}{e}\,,
 \end{equation*}
 wobei $k_\mathrm{B}$ die Boltzmann-Konstante, $T$ die Temperatur und $e$ die Elementarladung ist.
-Damit ergibt sich die Temperatur zu $T \approx \SI{557}{\kelvin}$.
+Damit ergibt sich die Betreibstemperatur zu $T \approx \SI{557}{\kelvin}$.
 Die Änderung der Ausgangsspannung, wenn sich die Eingangsspannung um eine Zehnerpotenz ändert, bestimmt sich zu $\Delta U_a \approx \SI{108.3}{\milli\volt}$.
 
 \begin{table}[!h]
     \centering
-    \caption{Eingangsspannung $U_\text{ein}/\si{\volt}$ und Ausgangsspannung $U_\text{aus}/\si{\volt}$ eines logarithmierers.}
+    \caption{Eingangsspannung $U_\text{ein}$ und Ausgangsspannung $U_\text{aus}$ eines logarithmierers.}
     \label{tab:i_log}
     \begin{tabular}{S[table-format=1.1] S[table-format=1.4(2)] S[table-format=2.1] S[table-format=1.4(2)]}
     \toprule 
@@ -502,7 +497,7 @@ Die Änderung der Ausgangsspannung, wenn sich die Eingangsspannung um eine Zehne
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.8\linewidth]{build/i_log_plot.pdf}
-    \caption{Halblogarithmische Darstellung der Ausgangsspannung $U_\text{aus}/\si{\volt}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}/\si{\volt}$ eines Logarithmierers.}
+    \caption{Halblogarithmische Darstellung der Ausgangsspannung $U_\text{aus}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}$ eines Logarithmierers.}
     \label{fig:i_log}
 \end{figure}
 
@@ -516,7 +511,7 @@ erkennbar ist, ist eine Auswertung weiter nicht möglich.
 
 \begin{table}[!h]
     \centering
-    \caption{Eingangsspannung $U_\text{ein}/\si{\volt}$ und Ausgangsspannung $U_\text{aus}/\si{\volt}$ eines Exponentierers.}
+    \caption{Eingangsspannung $U_\text{ein}$ und Ausgangsspannung $U_\text{aus}$ eines Exponentierers.}
     \label{tab:i_exp}
     \begin{tabular}{S[table-format=1.0] S[table-format=1.4(2)] S[table-format=2.0] S[table-format=2.4(2)]}
     \toprule 
@@ -537,7 +532,7 @@ erkennbar ist, ist eine Auswertung weiter nicht möglich.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.8\linewidth]{build/i_exp_plot.pdf}
-    \caption{Darstellung der Ausgangsspannung $U_\text{aus}/\si{\volt}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}/\si{\volt}$ eines Exponentierers.}
+    \caption{Darstellung der Ausgangsspannung $U_\text{aus}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}$ eines Exponentierers.}
     \label{fig:i_log}
 \end{figure}
 

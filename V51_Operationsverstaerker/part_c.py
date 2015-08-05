@@ -31,9 +31,9 @@ R_e = np.array(U_e / I)
 V = np.array(R_N / R_e)
 
 with open('build/c_table.tex', 'w', 'utf-8') as f:
-	f.write(table([r'$\nu/\si{\hertz}$', r'$U_e/\si{\volt}$', r'$U_a/\si{\volt}$', 
+	f.write(table([r'$\nu/\si{\hertz}$', r'$U_e/\si{\milli\volt}$', r'$U_a/\si{\volt}$', 
 					r'$R_e/\si{\ohm}$', r'$V$'], 
-					[nu, U_e, U_a, R_e, V]))
+					[nu, U_e*1e3, U_a, R_e, V]))
 
 def func(x,a,b):
 	return a*x+b

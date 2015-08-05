@@ -35,21 +35,32 @@ nu_2, U_2, dU_2 = np.genfromtxt("data/data_a_2.txt",unpack=True)
 nu_3, U_3, dU_3 = np.genfromtxt("data/data_a_3.txt",unpack=True)
 nu_4, U_4, dU_4 = np.genfromtxt("data/data_a_4.txt",unpack=True)
 
+print(len(nu_1))
+print(len(nu_2))
+print(len(nu_3))
+print(len(nu_4))
 with open('build/a_data_1.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_1, unp.uarray(U_1, dU_1)]
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$', 
+		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_1[0:7], unp.uarray(U_1[0:7], dU_1[0:7]), nu_1[7:14], unp.uarray(U_1[7:14], dU_1[7:14])]
 		))
 with open('build/a_data_2.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_2, unp.uarray(U_2, dU_2)]
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$', 
+		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_2[0:9], unp.uarray(U_2[0:9], dU_2[0:9]),
+		nu_2[9:18], unp.uarray(U_2[9:18], dU_2[9:18])]
 		))
 with open('build/a_data_3.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_3, unp.uarray(U_3, dU_3)]
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$',
+		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_3[0:10], unp.uarray(U_3[0:10], dU_3[0:10]),
+		nu_3[10:20], unp.uarray(U_3[10:20], dU_3[10:20])]
 		))
 with open('build/a_data_4.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_4, unp.uarray(U_4, dU_4)]
+	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$',
+		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
+		[nu_4[0:10], unp.uarray(U_4[0:10], dU_4[0:10]),
+		nu_4[10:20], unp.uarray(U_4[10:20], dU_4[10:20])]
 		))
 
 V_1 = unp.uarray(U_1,dU_1) / U_ein
