@@ -7,7 +7,7 @@ Fehlerfortpflanzung implementiert.
 \subsection{Frequenzgang eines gegenkekoppelten Verstärkers} % (fold)
 
 Im folgenden wird der Frequenzgang eines gegengekoppelten Verstärkers bei vier verschiedenen Verstärkungsgraden $V'$.
-Dazu wurde die Schaltung \ref{} verwendet.
+Dazu wurde die Schaltung \ref{fig:linear} verwendet.
 Bei allen Messungen wurde eine Eingangsspannung von $\SI{15}{\milli\ohm}$ verwendet.
 Zudem ist auf den Widerstand $R_1$ noch der Innenwiderstand der Spannungsquelle mit $R_i = \SI{50}{\ohm}$ aufaddiert worden.
 
@@ -45,7 +45,7 @@ Somit kann auch keine Leerlaufverstärkung $V_1$ abgeschätzt werden.
     \input{build/a_data_2.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_2} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_2} halblogarithmisch dargestellt.
+In Grafik \ref{fig:a_plot_2} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_2} halblogarithmisch dargestellt.
 Mithilfe einer linearen Regression der Form $f_2(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
@@ -80,7 +80,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_2$ zu
     \input{build/a_data_3.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_3} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_3} halblogarithmisch dargestellt.
+In Grafik \ref{fig:a_plot_3} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_3} halblogarithmisch dargestellt.
 Mithilfe einer linearen Regression der Form $f_3(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
@@ -114,7 +114,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_3$ zu
     \input{build/a_data_4.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_4} sind die gemessenen Messdaten aus Tabelle \ref{a_tab_4} halblogarithmisch dargestellt.
+In Grafik \ref{fig:a_plot_4} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_4} halblogarithmisch dargestellt.
 Mithilfe einer linearen Regression der Form $f_4(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
@@ -141,7 +141,6 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
 
 \paragraph{Grenzfrequenz - Verstärkungsgrad Produkt}
 
-Es wurde die Schaltung \ref{} verwendet.
 Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgerführt.
 \begin{table}[h!]
 \centering
@@ -162,7 +161,7 @@ Es ist zu erkennen, dass die Größenordnung des Produktes dieselbe ist und die 
 \subsection{Klemmenspannung eines speziellen NF-Generators}
 \label{sub:klemmenspannung_eines_speziellen_nf_generators}
 
-In den Schaltungen \ref{} und \ref{} wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
+In den Schaltungen \ref{fig:linear} und \ref{fig:elektrometer} wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
 Die Ergebnisse der Ausgangsspannungen sind in Tabelle \ref{tab:b_volt}
 Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Eingangswiderstände der Schaltungen erklären lassen.
 
@@ -186,7 +185,7 @@ Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Ein
 \subsection{Messung des Eingangswiderstandes $R_e$ und der Leerlaufverstärkung $V$} % (fold)
 \label{sub:}
 
-Für die Berechnung des Eingangswiderstandes wurde die Schaltung \ref{} verwendet und für die Generatorspannung $U_g = \SI{1.0(1)}{\volt}$, den Generatorwiderstand $R_v = \SI{10}{\kilo\ohm}$ und den Widerstand $R_N = \SI{100}{\kilo\ohm}$ gewählt.
+Für die Berechnung des Eingangswiderstandes wurde die Schaltung \ref{fig:amperemeter} verwendet und für die Generatorspannung $U_g = \SI{1.0(1)}{\volt}$, den Generatorwiderstand $R_v = \SI{10}{\kilo\ohm}$ und den Widerstand $R_N = \SI{100}{\kilo\ohm}$ gewählt.
 Die Ergebnisse sind in Tabelle \ref{tab:c_ergebnisse} aufgeführt. Das Ergebnis in dem Frequenzbereich von $\SIrange{100}{1600}{\hertz}$ ist in der doppellogarithmischen Grafik \ref{fig:c_plot} dargestellt. Zudem ist in der doppellogarithmischen Grafik \ref{fig:c_plot_full} der Frequenzbereiches von $\SIrange{100}{100000}{\hertz}$ abgebildet.
 
 Mithilfe der Gleichung
@@ -243,7 +242,7 @@ Dies ist somit auch der Bereich, indem nicht mehr $R_v \gg R_e$ gilt und somit a
 \end{table}
 
 \subsection{Umkehr-Integrator}
-Zur Überprüfung der Beziehung $U_a \approx \frac{1}{\nu}$ wurde die Schaltung nach Abbildung \ref{} verwendet.
+Zur Überprüfung der Beziehung $U_a \approx \frac{1}{\nu}$ wurde die Schaltung nach Abbildung \ref{fig:integrator-integrator} verwendet.
 Die verwendeten Daten sind in Tabelle \ref{tab:d_int_table} aufgelistet und in der doppellogarithmischen Abbildung \ref{fig:d_int_fig} dargestellt.
 Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
@@ -301,7 +300,7 @@ In Abbildung \ref{fig:int_sinus} ist eine integrierte Sinus-, in Abbildung \ref{
 \end{figure}
 
 \subsection{Umkehr-Differentiator}
-Es wurde ein Umkehr-Differentitor nach Schaltung \ref{} verwendet.
+Es wurde ein Umkehr-Differentitor nach Schaltung \ref{fig:integrator-differentiator} verwendet.
 Die verwendeten Daten sind in Tabelle \ref{tab:e_dif_table} aufgelistet und in der doppellogarithmischen Abbildung \ref{fig:e_dif_fig} dargestellt.
 Mithilfe einer linearen Regression der Form $f_{e}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
@@ -316,19 +315,19 @@ In Abbildung \ref{fig:dif_sinus} ist eine differentierte Sinus-, in Abbildung \r
     \label{tab:e_dif_table}
     \begin{tabular}{S[table-format=5.0] S[table-format=1.3(2)]}
     \toprule 
-        {$\nu/\si{\hertz}$} & {$U/\si{\volt}$} \\
+        \multicolumn{1}{c}{$\nu/\si{\hertz}$} & \multicolumn{1}{c}{$U/\si{\volt}$} \\
     \midrule
-           10   0.012(01)
-           20   0.015(01)
-           40   0.023(01)
-          100   0.041(01)
-          200   0.076(01)
-          400   0.143(01)
-          800   0.272(01)
-         1600   0.555(01)
-         3200   1.100(10)
-         6400   2.290(10)
-        10000   4.220(10)
+           10   0.012(01) \\
+           20   0.015(01) \\
+           40   0.023(01) \\
+          100   0.041(01) \\
+          200   0.076(01) \\
+          400   0.143(01) \\
+          800   0.272(01) \\
+         1600   0.555(01) \\
+         3200   1.100(10) \\
+         6400   2.290(10) \\
+        10000   4.220(10) \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -365,7 +364,7 @@ In Abbildung \ref{fig:dif_sinus} ist eine differentierte Sinus-, in Abbildung \r
 \subsection{Schmitt-Trigger} % (fold)
 \label{sub:schmitt_trigger}
 
-Zur Bestimmung des Scheitelwertes eines Schmitt-Triggers wurde die Schaltung in Abbildung \ref{} verwendet.
+Zur Bestimmung des Scheitelwertes eines Schmitt-Triggers wurde die Schaltung in Abbildung \ref{fig:schmitt_trigger} verwendet.
 Für die Schaltung wurden die Widerstände $R_1 = \SI{100}{\ohm}$ und $R_P = \SI{4.7}{\kilo\ohm}$ verwendet und der Zusammenhang $2 \cdot U_B = \SI{28.3}{\volt}$
 Gemessen wurde dabei ein Umspringen des Schalters von dem in Abbildung \ref{fig:schmitt_offen} dargestellten Spannungsverlauf auf den in Abbildung \ref{fig:schmitt_geschlossen} dargstellten Spannungsverlauf bei $U_\text{kipp} \approx \SI{314}{\milli\volt}$.
 Mithilfe der Gleichung
@@ -392,7 +391,7 @@ Dieser Wert weicht somit um etwa $\SI{4}{\percent}$ vom gemessenen Wert ab.
 \subsection{Dreieckspannungsgenerator} % (fold)
 \label{sub:dreiecksgenerator}
 
-Mithilfe der Schaltung \ref{} wurde ein Dreieckspannungsgenerator realisiert.
+Mithilfe der Schaltung \ref{fig:schmitt_trigger} wurde ein Dreieckspannungsgenerator realisiert.
 Abbildung \ref{fig:rechteck} zeigt die zunächst generierte Rechteckspannung und Abbildung \ref{fig:dreieck} die finale Dreieckspannung.
 Dabei wurde eine Frequenz von $\nu = \SI{1}{\kilo\hertz}$ und eine Spannung von $U_1 = \SI{200}{\milli\volt}$ gewählt.
 
@@ -454,9 +453,8 @@ um etwa $\SI{15}{\percent}$ ab.
     \centering
     \caption{Gemessene Amplituden einer gedämpften Schwingung.}
     \label{tab:ged_schwing}
-    \begin{tabular}
-        \include{build/h_table.tex}
-    \end{tabular}
+    \input{build/h_table.tex}
+
 \end{table}
 
 \subsection{Logarithmierer} % (fold)
@@ -524,14 +522,14 @@ erkennbar ist, ist eine Auswertung weiter nicht möglich.
     \toprule 
         {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} & {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} \\
     \midrule
-        0  &  -0.0336(10) & 8  &  -4.9490(10)
-        1  &   2.0536(10) & 9  &  -6.0920(10)
-        2  &   1.1365(10) & 10 &  -7.1390(10)
-        3  &   0.3070(10) & 11 &  -8.2070(10)
-        4  &  -0.6120(10) & 12 &  -9.2380(10)
-        5  &  -1.7050(10) & 13 & -10.1440(10)
-        6  &  -2.2788(10) & 14 & -10.9990(10)
-        7  &  -3.7420(10) & 15 & -12.1130(10)
+        0  &  -0.0336(10) & 8  &  -4.9490(10) \\
+        1  &   2.0536(10) & 9  &  -6.0920(10) \\
+        2  &   1.1365(10) & 10 &  -7.1390(10) \\
+        3  &   0.3070(10) & 11 &  -8.2070(10) \\
+        4  &  -0.6120(10) & 12 &  -9.2380(10) \\
+        5  &  -1.7050(10) & 13 & -10.1440(10) \\
+        6  &  -2.2788(10) & 14 & -10.9990(10) \\
+        7  &  -3.7420(10) & 15 & -12.1130(10) \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -544,10 +542,11 @@ erkennbar ist, ist eine Auswertung weiter nicht möglich.
 \end{figure}
 
 \subsection{Phasenabhängigkeit} % (fold)
-\label{sub:phasenabhängigkeit}
+\label{sub:phasenabhaengigkeit}
 
-Bei dem Verstärkungsgrad $V' = -\frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}} = -\num{1.2e3}$ ergiebt sich eine Phase von $\SI{180}{\degree}$.
-Dies ist in Abbildung \ref{fig:phase_verlauf} als Spannungsverlauf der Eingangs- und Ausgangsspanung dargestellt und in Abbildung \ref{fig:lissa} in vorm einer Lissajou-Figur.
+Zur Bestimmung der Phasenabhängigkeit wurde die Schaltung \ref{fig:linear} verwendet.
+Bei dem Verstärkungsgrad $V' = -\frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}} = -\num{1.2e3}$ ergibt sich eine Phase von $\SI{180}{\degree}$.
+Dies ist in Abbildung \ref{fig:phase_verlauf} als Spannungsverlauf der Eingangs- und Ausgangsspanung dargestellt und in Abbildung \ref{fig:phase_liss} in vorm einer Lissajou-Figur.
 
 \begin{figure}[!h]
     \centering
