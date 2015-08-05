@@ -25,7 +25,7 @@ popt, pcov = curve_fit(func, nu_log, U_log)
 print('exp: ' + str(ufloat(popt[0],pcov[0][0])) + ' ' + str(ufloat(popt[1],pcov[1][1])))
 #plot
 x = np.linspace(nu_log[0]-0.3,nu_log[len(nu_log)-1]+0.3,1e5)
-plt.plot(x,func(x,*popt),'k-',label=r'Regression')
+plt.plot(x,func(x,*popt),'k-',label=r'Regression $f_d(x)$')
 
 plt.plot(nu_log,U_log,'bx',label=r'Messpunkte')
 
@@ -52,8 +52,7 @@ popt, pcov = curve_fit(func, nu_log[3:10], U_log[3:10])
 print('log: ' + str(ufloat(popt[0],pcov[0][0])) + ' ' + str(ufloat(popt[1],pcov[1][1])))
 #plot
 x = np.linspace(nu_log[3]-0.3,nu_log[9]+0.3,1e5)
-plt.plot(x,func(x,*popt),'k-',label=r'Regression')
-
+plt.plot(x,func(x,*popt),'k-',label=r'Regression $f_e(x)$')
 plt.plot(nu_log,U_log,'bx',label=r'Messpunkte')
 
 plt.legend(loc='best')

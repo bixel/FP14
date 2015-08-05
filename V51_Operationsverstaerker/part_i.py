@@ -38,8 +38,8 @@ print(T_exp)
 x_log = np.linspace(np.log(U_in_log[1])-0.4, np.log(U_in_log[len(U_in_log)-1])+0.4, 1e3)
 x_exp = np.linspace(U_in_exp[1]-0.4, U_in_exp[15]+0.4, 1e3)
 
-plt.plot(np.log(U_in_log[1:]), U_out_log[1:],'xb',label='Messpunkte')
-plt.plot(x_log, func(x_log, *popt_log), 'k-', label='Regression')
+plt.plot(np.log(U_in_log[1:]), U_out_log[1:],'xb',label=r'Messpunkte')
+plt.plot(x_log, func(x_log, *popt_log), 'k-', label=r'Ausgleichsgerade $f_i(x)$')
 
 plt.grid()
 plt.title(r'Spannungscharakteristik des verwendeten Logarithmierers' + '\n')
@@ -52,7 +52,7 @@ plt.clf()
 
 plt.plot(U_in_exp[1:], U_out_exp_rescale[1:],'xb', label='Messpunkte')
 # plt.plot(U_in_exp[5:], np.log(U_out_exp_rescale[5:]),'xb', label='Messpunkte')
-plt.plot(x_exp, func(x_exp, *popt_exp), 'k-', label='Regression')
+# plt.plot(x_exp, func(x_exp, *popt_exp), 'k-', label='Regression')
 
 plt.grid()
 plt.title(r'Spannungscharakteristik des verwendeten Exponentierers' + '\n')

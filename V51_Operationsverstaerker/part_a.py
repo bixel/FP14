@@ -180,7 +180,7 @@ x_4_full = np.linspace(nu_4_log[0],nu_4_log[len(nu_4_log)-1],10**5)
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
 	+ r'$R_N = 1\,\mathrm{M}\Omega;\, R_1 = 100\,\Omega$')
 plt.plot(nu_1_log, unp.nominal_values(V_1_log),"xb",label=r'Messpunkte')
-plt.plot(x_1,func(x_1,*popt_1),'-k', label=r'Ausgleichsgerade $f_1(x)$')
+plt.plot(x_1,func(x_1,*popt_1),'-k', label=r'Regression $f_{a,1}(x)$')
 plt.legend(loc='best')
 plt.grid()
 plt.xlabel(r'$\log(\nu/\mathrm{Hz})$')
@@ -191,7 +191,7 @@ plt.clf()
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
 	+ r'$R_N = 120\,\mathrm{k}\Omega;\, R_1 = 100\,\Omega$')
 plt.plot(nu_2_log, unp.nominal_values(V_2_log),"xb",label=r'Messpunkte')
-plt.plot(x_2,func(x_2,*popt_2),'-k', label=r'Ausgleichsgerade $f_2(x)$')
+plt.plot(x_2,func(x_2,*popt_2),'-k', label=r'Regression $f_{a,2}(x)$')
 plt.axhline(y=unp.nominal_values(V_grenz_2_log),color='g',linestyle='--', 
 	label=r'$\log(\overline{V}/\sqrt{2})$')
 plt.axvline(x=unp.nominal_values(nu_grenz_2_log),color='r',linestyle='--',
@@ -206,7 +206,7 @@ plt.clf()
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
 	+ r'$R_N = 4.7\,\mathrm{k}\Omega;\, R_1 = 100\,\Omega$')
 plt.plot(nu_3_log, unp.nominal_values(V_3_log),"xb",label=r'Messpunkte')
-plt.plot(x_3,func(x_3,*popt_3),'-k', label=r'Ausgleichsgerade $f_3(x)$')
+plt.plot(x_3,func(x_3,*popt_3),'-k', label=r'Regression $f_{a,3}(x)$')
 plt.axhline(y=unp.nominal_values(V_grenz_3_log),color='g',linestyle='--', 
 	label=r'$\log(\overline{V}/\sqrt{2})$')
 plt.axvline(x=unp.nominal_values(nu_grenz_3_log),color='r',linestyle='--',
@@ -221,7 +221,7 @@ plt.clf()
 plt.title(r'Frequenzgang eines gekoppelten Verstärkers mit:'+ '\n' 
 	+ r'$R_N = 1\,\mathrm{M}\Omega;\, R_1 = 4.7\,\mathrm{k}\Omega$')
 plt.plot(nu_4_log, unp.nominal_values(V_4_log),"xb",label=r'Messpunkte')
-plt.plot(x_4,func(x_4,*popt_4),'-k', label=r'Ausgleichsgerade $f_4(x)$')
+plt.plot(x_4,func(x_4,*popt_4),'-k', label=r'Regression $f_{a,4}(x)$')
 plt.axhline(y=unp.nominal_values(V_grenz_4_log),color='g',linestyle='--', 
 	label=r'$\log(\overline{V}/\sqrt{2})$')
 plt.axvline(x=unp.nominal_values(nu_grenz_4_log),color='r',linestyle='--',

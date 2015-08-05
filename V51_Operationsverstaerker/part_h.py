@@ -28,24 +28,30 @@ for i in range(len(t)):
 val_log = np.log(val)
 
 def func(x,a,b):
-	return a*x+b
+	return x/a+b
 
 def func2(x,a,b,c):
 	return a*np.exp(x/b)+c
 
-popt, pcov = curve_fit(func,val_x[5:32],val_log[5:32])
+popt, pcov = curve_fit(func,val_x[0:6],val_log[0:6])
 popt1, pcov1 = curve_fit(func2,val_x,val)
 
-print(1/popt[0])
+print(ufloat(popt[0],pcov[0][0]))
+print(ufloat(popt[1],pcov[1][1]))
 
-
-x = np.linspace(val_x[5],val_x[30],1e4)
+x = np.linspace(val_x[0]-0.0015,val_x[5]+0.00001,1e4)
 x1 = np.linspace(val_x[0],val_x[len(val_x)-1],1e4)
 
-# plt.plot(x1,func2(x1,*popt1),'y-')
-# plt.plot(val_x,val,'rx')
+plt.plot(x,func(x,*popt),'g-',label=r'Regression $f_h(x)$')
+plt.plot(val_x,val_log,'rx',label=r'Messpunkte')
 
-plt.plot(x,func(x,*popt),'g-')
-plt.plot(val_x[5:32],val_log[5:32],'rx')
+plt.grid()
+plt.xlabel(r'$t/\mathrm{s}$')
+plt.ylabel(r'$\log{U/\mathrm{V}}$')
+plt.legend(loc="best")
 
 plt.savefig('build/h_plot.pdf')
+
+with open('build/h_table.tex', 'w', 'utf-8') as f:
+	f.write(table([r'$t/\si{\second}$', r'$U/\si{\volt}$'], 
+					[val_x, val]))
