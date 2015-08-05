@@ -7,6 +7,7 @@ Fehlerfortpflanzung implementiert.
 \subsection{Frequenzgang eines gegenkekoppelten Verstärkers} % (fold)
 
 Im folgenden wird der Frequenzgang eines gegengekoppelten Verstärkers bei vier verschiedenen Verstärkungsgraden $V'$.
+Dazu wurde die Schaltung \ref{} verwendet.
 Bei allen Messungen wurde eine Eingangsspannung von $\SI{15}{\milli\ohm}$ verwendet.
 Zudem ist auf den Widerstand $R_1$ noch der Innenwiderstand der Spannungsquelle mit $R_i = \SI{50}{\ohm}$ aufaddiert worden.
 
@@ -138,8 +139,9 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
     \label{fig:a_plot_4}
 \end{figure}
 
-\paragraph{Grenzfrequenz - Verstärkugnsgrad Produkt}
+\paragraph{Grenzfrequenz - Verstärkungsgrad Produkt}
 
+Es wurde die Schaltung \ref{} verwendet.
 Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgerführt.
 \begin{table}[h!]
 \centering
@@ -160,7 +162,7 @@ Es ist zu erkennen, dass die Größenordnung des Produktes dieselbe ist und die 
 \subsection{Klemmenspannung eines speziellen NF-Generators}
 \label{sub:klemmenspannung_eines_speziellen_nf_generators}
 
-In den Schaltungen wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
+In den Schaltungen \ref{} und \ref{} wurden die Widerstände $R_N = \SI{12}{\kilo\ohm}$ und $R_1 = \SI{100}{\ohm}$ gewählt.
 Die Ergebnisse der Ausgangsspannungen sind in Tabelle \ref{tab:b_volt}
 Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Eingangswiderstände der Schaltungen erklären lassen.
 
@@ -184,7 +186,7 @@ Der Unterschied in der Ausgangsspannung könnte sich durch die verschiedenen Ein
 \subsection{Messung des Eingangswiderstandes $R_e$ und der Leerlaufverstärkung $V$} % (fold)
 \label{sub:}
 
-Für die Berechnung des Eingangswiderstandes wurde die Generatorspannung $U_g = \SI{1.0(1)}{\volt}$, der Generatorwiderstand $R_v = \SI{10}{\kilo\ohm}$ und der Widerstand $R_N = \SI{100}{\kilo\ohm}$ gewählt.
+Für die Berechnung des Eingangswiderstandes wurde die Schaltung \ref{} verwendet und für die Generatorspannung $U_g = \SI{1.0(1)}{\volt}$, den Generatorwiderstand $R_v = \SI{10}{\kilo\ohm}$ und den Widerstand $R_N = \SI{100}{\kilo\ohm}$ gewählt.
 Die Ergebnisse sind in Tabelle \ref{tab:c_ergebnisse} aufgeführt. Das Ergebnis in dem Frequenzbereich von $\SIrange{100}{1600}{\hertz}$ ist in der doppellogarithmischen Grafik \ref{fig:c_plot} dargestellt. Zudem ist in der doppellogarithmischen Grafik \ref{fig:c_plot_full} der Frequenzbereiches von $\SIrange{100}{100000}{\hertz}$ abgebildet.
 
 Mithilfe der Gleichung
@@ -239,3 +241,227 @@ Dies ist somit auch der Bereich, indem nicht mehr $R_v \gg R_e$ gilt und somit a
     \label{tab:c_ergebnisse}
     \input{build/c_table.tex}
 \end{table}
+
+\subsection{Umkehr-Integrator}
+Zur Überprüfung der Beziehung $U_a \approx \frac{1}{\nu}$ wurde die Schaltung nach Abbildung \ref{} verwendet.
+Die verwendeten Daten sind in Tabelle \ref{tab:d_int_table} aufgelistet und in der doppellogarithmischen Abbildung \ref{fig:d_int_fig} dargestellt.
+Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
+\begin{equation*}
+    f_{d}(x) = (\num{-0.90593(5)}) \cdot x + (\num{5.2428(10)})\,.
+\end{equation*}
+Damit weicht der Exponent um etwa $\SI{10}{\percent}$ von der Beziehung $\approx \SI{1}{\nu}$ ab.
+Somit ist der Frequenzbereich, in dem der Umkehr-Integrator arbeitet, $\SIrange{10}{640}{\hertz}$.
+In Abbildung \ref{fig:int_sinus} ist eine integrierte Sinus-, in Abbildung \ref{fig:int_rechteck} eine integrierte Rechteck- und in Abbildung \ref{fig:int_dreieck} eine integrierte Dreieckspannung dargestellt.
+
+\begin{table}[!h]
+    \centering
+    \caption{Aufgenommene Ausgangsspannungen $U_a$ einer Sinusspannung in Abhängigkeit der Frequenz $\nu$ mit einem Umkehr-Integrator.}
+    \label{tab:d_int_table}
+    \begin{tabular}{S[table-format=3.0] S[table-format=2.2(2)]}
+    \toprule 
+        {$\nu/\si{\hertz}$} & {$U/\si{\volt}$} \\
+    \midrule
+         10 &   23.50(10)\\
+         20 &   12.10(10)\\
+         40 &    6.91(01)\\
+         80 &    3.66(01)\\
+        160 &    1.89(01)\\
+        320 &    1.01(01)\\
+        640 &    0.54(01)\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/d_plot.pdf}
+    \caption{Doppellogarithmische Darstellung der Ausgangsspannung $U_a$ gegen die Frequenz $\nu$ einer Sinusspannung mit einem Umkehr-Integrator.}
+    \label{fig:d_int_fig}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{data/scope_4.png}
+    \caption{Integrierte Rechteckspannung.}
+    \label{fig:int_rechteck}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{data/scope_5.png}
+    \caption{Integrierte Dreieckspannung.}
+    \label{fig:int_dreieck}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{data/scope_6.png}
+    \caption{Integrierte Sinusspannung.}
+    \label{fig:int_sinus}
+\end{figure}
+
+\subsection{Umkehr-Differentiator}
+Es wurde ein Umkehr-Differentitor nach Schaltung \ref{} verwendet.
+Die verwendeten Daten sind in Tabelle \ref{tab:e_dif_table} aufgelistet und in der doppellogarithmischen Abbildung \ref{fig:e_dif_fig} dargestellt.
+Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
+\begin{equation*}
+    f_{d}(x) = (\num{0.96707(18)}) \cdot x + (\num{-7.705(8)})\,.
+\end{equation*}
+Der Frequenzbereich, in dem der Umkehr-Differentiator arbeitet, ist somit etwa $\SIrange{100}{6400}{\hertz}$.
+
+\begin{table}[!h]
+    \centering
+    \caption{Aufgenommene Ausgangsspannungen $U_a$ einer Sinusspannung in Abhängigkeit der Frequenz $\nu$ mit einem Umkehr-Differentiator.}
+    \label{tab:e_dif_table}
+    \begin{tabular}{S[table-format=5.0] S[table-format=1.3(2)]}
+    \toprule 
+        {$\nu/\si{\hertz}$} & {$U/\si{\volt}$} \\
+    \midrule
+           10   0.012(01)
+           20   0.015(01)
+           40   0.023(01)
+          100   0.041(01)
+          200   0.076(01)
+          400   0.143(01)
+          800   0.272(01)
+         1600   0.555(01)
+         3200   1.100(10)
+         6400   2.290(10)
+        10000   4.220(10)
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/e_plot.pdf}
+    \caption{Doppellogarithmische Darstellung der Ausgangsspannung $U_a$ gegen die Frequenz $\nu$ einer Sinusspannung mit einem Umkehr-Differentiator.}
+    \label{fig:e_dif_fig}
+\end{figure}
+
+\subsection{Schmitt-Trigger} % (fold)
+\label{sub:schmitt_trigger}
+
+Zur Bestimmung des Scheitelwertes eines Schmitt-Triggers wurde die Schaltung in Abbildung \ref{} verwendet.
+Für die Schaltung wurden die Widerstände $R_1 = \SI{100}{\ohm}$ und $R_P = \SI{4.7}{\kilo\ohm}$ verwendet und der Zusammenhang $2 \cdot U_B = \SI{28.3}{\volt}$
+Gemessen wurde dabei ein Umspringen des Schalters von dem in Abbildung \ref{} dargestellten Spannungsverlauf auf den in Abbildung \ref{} dargstellten Spannungsverlauf bei $U_\text{kipp} \approx \SI{314}{\milli\volt}$.
+Mithilfe der Gleichung
+\begin{equation*}
+    U_\text{kipp} = U_B \cdot \frac{R_1}{R_P} 
+\end{equation*}
+ergibt sich $U_\text{kipp} \approx \SI{301.06}{\milli\volt}$.
+Dieser Wert weicht somit um etwa $\SI{4}{\percent}$ vom gemessenen Wert ab.
+
+\subsection{Dreieckspannungsgenerator} % (fold)
+\label{sub:dreiecksgenerator}
+
+Mithilfe der Schaltung \ref{} wurde ein Dreieckspannungsgenerator realisiert.
+Abbildung \ref{} zeigt die zunächst generierte Rechteckspannung und Abbildung \ref{} die finale Dreieckspannung.
+Dabei wurde eine Frequenz von $\nu = \SI{1}{\kilo\hertz}$ und eine Spannung von $U_1 = \SI{200}{\milli\volt}$ gewählt.
+
+\subsection{Gedämpfte Schwingung} % (fold)
+\label{sub:subsection_name}
+
+\subsection{Logarithmierer} % (fold)
+\label{sub:logarithmierer}
+
+Für den logarithmierer wurde die Schaltung \ref{} verwendet.
+Die aufgenommenen Daten sind in Tabelle \ref{tab:i_log} aufgelistet und in Grafik \ref{fig:i_log} halblogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
+\begin{equation*}
+    f_{d}(x) = (\num{0.04802165(9)}) \cdot x + (\num{0.43027060(32)})\,.
+\end{equation*}
+Mithilfe der Beziehung
+\begin{equation*}
+    m = \frac{k_\mathrm{B} T}{e}\,,
+\end{equation*}
+wobei $k_\mathrm{B}$ die Boltzmann-Konstante, $T$ die Temperatur und $e$ die Elementarladung ist.
+Damit ergibt sich die Temperatur zu $T \approx \SI{557}{\kelvin}$.
+Die Änderung der Ausgangsspannung, wenn sich die Eingangsspannung um eine Zehnerpotenz ändert, bestimmt sich zu $\Delta U_a \approx \SI{108.3}{\milli\volt}$.
+
+\begin{table}[!h]
+    \centering
+    \caption{Eingangsspannung $U_\text{ein}/\si{\volt}$ und Ausgangsspannung $U_\text{aus}/\si{\volt}$ eines logarithmierers.}
+    \label{tab:i_log}
+    \begin{tabular}{S[table-format=1.1] S[table-format=1.4(2)] S[table-format=2.1] S[table-format=1.4(2)]}
+    \toprule 
+        {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} & {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} \\
+    \midrule
+         0.0  &  0.2900(50)  &  6.5  &  0.5191(50) \\
+         0.5  &  0.3956(50)  &  7.0  &  0.5234(50) \\
+         1.0  &  0.4337(50)  &  7.5  &  0.5271(50) \\
+         1.5  &  0.4505(50)  &  8.0  &  0.5307(50) \\
+         2.0  &  0.4648(50)  &  8.5  &  0.5334(50) \\
+         2.5  &  0.4752(50)  &  9.0  &  0.5364(50) \\
+         3.0  &  0.4823(50)  &  9.5  &  0.5394(50) \\
+         3.5  &  0.4897(50)  & 10.0  &  0.5420(50) \\
+         4.0  &  0.4955(50)  & 11.0  &  0.5460(50) \\
+         4.5  &  0.5005(50)  & 12.0  &  0.5503(50) \\
+         5.0  &  0.5057(50)  & 13.0  &  0.5540(50) \\
+         5.5  &  0.5105(50)  & 14.0  &  0.5574(50) \\
+         6.0  &  0.5146(50)  & 15.0  &  0.5607(50) \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/i_log_plot.pdf}
+    \caption{Halblogarithmische Darstellung der Ausgangsspannung $U_\text{aus}/\si{\volt}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}/\si{\volt}$ eines Logarithmierers.}
+    \label{fig:i_log}
+\end{figure}
+
+\subsection{Exponentierer} % (fold)
+\label{sub:Exponentierer}
+
+Für den Exponentierer wurde die Schaltung \ref{} verwendet.
+Die Ergebnisse sind in Tabelle \ref{tab:i_exp} aufgelistet und in Grafik \ref{fig:i_log} dargestellt.
+Da in dem dargestellten Bereich kein exponentieller Zusammenhang 
+erkennbar ist, ist eine Auswertung weiter nicht möglich.
+
+\begin{table}[!h]
+    \centering
+    \caption{Eingangsspannung $U_\text{ein}/\si{\volt}$ und Ausgangsspannung $U_\text{aus}/\si{\volt}$ eines Exponentierers.}
+    \label{tab:i_exp}
+    \begin{tabular}{S[table-format=1.0] S[table-format=1.4(2)] S[table-format=2.0] S[table-format=2.4(2)]}
+    \toprule 
+        {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} & {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} \\
+    \midrule
+        0  &  -0.0336(10) & 8  &  -4.9490(10)
+        1  &   2.0536(10) & 9  &  -6.0920(10)
+        2  &   1.1365(10) & 10 &  -7.1390(10)
+        3  &   0.3070(10) & 11 &  -8.2070(10)
+        4  &  -0.6120(10) & 12 &  -9.2380(10)
+        5  &  -1.7050(10) & 13 & -10.1440(10)
+        6  &  -2.2788(10) & 14 & -10.9990(10)
+        7  &  -3.7420(10) & 15 & -12.1130(10)
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/i_exp_plot.pdf}
+    \caption{Darstellung der Ausgangsspannung $U_\text{aus}/\si{\volt}$ in Abhängigkeit von der Eingangsspannung $U_\text{ein}/\si{\volt}$ eines Exponentierers.}
+    \label{fig:i_log}
+\end{figure}
+
+\subsection{Phasenabhängigkeit} % (fold)
+\label{sub:phasenabhängigkeit}
+
+Bei dem Verstärkungsgrad $V' = -\frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}} = -\num{1.2e3}$ ergiebt sich eine Phase von $\SI{180}{\degree}$.
+Dies ist in Abbildung \ref{fig:phase_verlauf} als Spannungsverlauf der Eingangs- und Ausgangsspanung dargestellt und in Abbildung \ref{fig:lissa} in vorm einer Lissajou-Figur.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{data/scope_2.png}
+    \caption{Darstellung der Ausgangsspannung und der Eingangsspannung.}
+    \label{fig:phase_verlauf}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{data/scope_3.png}
+    \caption{Darstellung der Phasenbeziehung der Ausgangsspannung und der Eingangsspannung als Lissajou Figur.}
+    \label{fig:phase_liss}
+\end{figure}

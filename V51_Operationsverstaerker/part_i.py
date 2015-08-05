@@ -25,8 +25,8 @@ def func_exp(x,a,b,c):
 popt_log, pcov_log = curve_fit(func, np.log(U_in_log[1:]), U_out_log[1:])
 popt_exp, pcov_exp = curve_fit(func, U_in_exp[1:], U_out_exp_rescale[1:])
 
-print(popt_log)
-print(popt_exp)
+print(str(ufloat(popt_log[0],pcov_log[0][0])) + ' ' + str(ufloat(popt_log[1],pcov_log[1][1])))
+print(str(ufloat(popt_exp[0],pcov_exp[0][0])) + ' ' + str(ufloat(popt_exp[1],pcov_exp[1][1])))
 
 #Berechnung von T
 T_log = popt_log[0] * const
@@ -56,7 +56,7 @@ plt.plot(x_exp, func(x_exp, *popt_exp), 'k-', label='Regression')
 
 plt.grid()
 plt.title(r'Spannungscharakteristik des verwendeten Exponentierers' + '\n')
-plt.ylabel(r'$\log(U_\mathrm{aus}/\mathrm{V})$')
+plt.ylabel(r'$U_\mathrm{aus}/\mathrm{V}$')
 plt.xlabel(r'$U_\mathrm{ein}/\mathrm{V}$')
 plt.legend(loc='best')
 

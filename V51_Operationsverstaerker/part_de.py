@@ -22,7 +22,7 @@ nu_log = np.log(nu)
 
 #Fit
 popt, pcov = curve_fit(func, nu_log, U_log)
-
+print('exp: ' + str(ufloat(popt[0],pcov[0][0])) + ' ' + str(ufloat(popt[1],pcov[1][1])))
 #plot
 x = np.linspace(nu_log[0]-0.3,nu_log[len(nu_log)-1]+0.3,1e5)
 plt.plot(x,func(x,*popt),'k-',label=r'Regression')
@@ -47,8 +47,9 @@ U_log = np.log(U_raw)
 nu_log = np.log(nu)
 
 #fit
+print(nu[3:10])
 popt, pcov = curve_fit(func, nu_log[3:10], U_log[3:10])
-
+print('log: ' + str(ufloat(popt[0],pcov[0][0])) + ' ' + str(ufloat(popt[1],pcov[1][1])))
 #plot
 x = np.linspace(nu_log[3]-0.3,nu_log[9]+0.3,1e5)
 plt.plot(x,func(x,*popt),'k-',label=r'Regression')
