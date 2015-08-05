@@ -29,7 +29,7 @@ gleichstromgekoppeltem Differenzverstärker. Er ist in Abbildung
 \ref{fig:op} dargestellt.
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{img/op.pdf}
+    \includegraphics[width=0.5\linewidth]{img/op.pdf}
     \caption{
         Schaltbild eines Operationsverstärkers mit Ausgangsspannung
         $U_\text{A}$ und Eingangsspannungen $U_\text{p}$ und
@@ -102,7 +102,7 @@ $R_1$ und $R_\text{N}$ bestimmt werden, die in Abbildung \ref{fig:linear}
 dargestellt sind.
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{img/linearverstaerker.pdf}
+    \includegraphics[width=0.5\linewidth]{img/linearverstaerker.pdf}
     \caption{Rückgekoppelter Linearverstärker \cite{V51}.}
     \label{fig:linear}
 \end{figure}
@@ -131,7 +131,7 @@ Die Verstärkung $V^\prime$ des Elektrometerverstärkers beträgt
 \end{equation*}
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{img/elektrometer.pdf}
+    \includegraphics[width=0.5\linewidth]{img/elektrometer.pdf}
     \caption{Schaltbild eines Elektrometerverstärkers \cite{V51}.}
     \label{fig:elektrometer}
 \end{figure}
@@ -146,7 +146,7 @@ Somit können zum Beispiel Ströme in einem Ampèremeter gemessen werden, wobei
 der dazu nötige Spannungsabfall $\Delta U$ besonders gering ist.
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{img/amperemeter.pdf}
+    \includegraphics[width=0.5\linewidth]{img/amperemeter.pdf}
     \caption{Schaltbild eines Elektrometerverstärkers \cite{V51}.}
     \label{fig:amperemeter}
 \end{figure}
@@ -195,7 +195,23 @@ $U_\text{A,L}$
     \text{und} \qquad U_\text{A,E} &= \frac{k_\text{B}T}{e_0}\ln \frac{U_\text{e}}{R I}\,,
 \end{align*}
 mit der absoluten Temperatur $T$, der Boltzmannkonstante $k_\text{B}$ und
-der Elementarladung $e_0$.
+der Elementarladung $e_0$. Abbildung \ref{fig:log_expo} zeigt die Schaltungen.
+\begin{figure}
+    \begin{subfigure}{.49\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{img/log.pdf}
+        \caption{Schaltbild eines Logarithmierers \cite{V51}.}
+        \label{fig:log}
+    \end{subfigure}
+    \begin{subfigure}{.49\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{img/expo.pdf}
+        \caption{Schaltbild eines Exponentialgenerators \cite{V51}.}
+        \label{fig:expo}
+    \end{subfigure}
+    \caption{Linearverstärker mit Kondensator.}
+    \label{fig:log_expo}
+\end{figure}
 
 \subsection{Schmitt-Trigger}
 \label{subsec:schmitt_trigger}
@@ -217,7 +233,7 @@ Die entsprechende Schaltung ist in Abbildung \ref{fig:schmitt_trigger}
 dargestellt.
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{img/schmitt_trigger.pdf}
+    \includegraphics[width=0.5\linewidth]{img/schmitt_trigger.pdf}
     \caption{
         Schaltbild eines Operationsverstärker, der als Schmitt-Trigger
         genutzt wird.
@@ -227,7 +243,53 @@ dargestellt.
 
 \subsection{Signalgenerator}
 \label{subsec:signalgenerator}
+Schließich können mit Hilfe eines Operationsverstärkers verschiedene
+Signalspannungen erzeugt werden. Dazu wird jeweils eine Mehrzahl von OPs
+miteinander verschaltet.
+
+\subsubsection{Erzeugung von Dreieck- und Rechteckspannungen}
+\label{subsubsec:dreieck}
+Durch Kombination eines Schmitt-Triggers mit einem Integrationsglied
+lassen sich Dreiecks- und Rechtecksspannungen erzeugen. Damit wird die
+Integration genutzt, um den Schmitt-Trigger zu schalten und somit das
+Vorzeichen des Signals zu ändern. Je nach Ausgang der in Abbildung
+\ref{fig:dreieck} dargestellten Schaltung erhält man die gewünschte
+Spannungsform.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/dreieck.pdf}
+    \caption{
+        Schaltbild zur Erzeugung von Dreieck- und Recheckspannungen:
+        Es wird ein OP als Integrationsglied mit einem Schmitt-Trigger
+        verschaltet \cite{V51}.
+    }
+    \label{fig:dreieck}
+\end{figure}
 
 \subsubsection{Erzeugung von Sinusschwingungen}
 \label{subsubsec:sinusschwingungen}
+Durch Kombination zweier Integratoren mit einem Umkehrverstärker lassen sich
+gedämpfte Sinusschwingungen erzeugen.
+Die Schaltung kann durch eine Differetialgleichung 2. Ordung beschrieben
+werden und liefert die Lösung
+\begin{equation*}
+    U_\text{A}(t) = U_0 \exp\!\left( \frac{\eta t}{\num{20} RC} \right)
+                        \sin\!\left( \frac{t}{RC} \right)\,.
+\end{equation*}
+Dabei ist $\num{-1} < \eta < \num{1}$ durch das Potentiometer $P$ einzustellen.
+Die Schwingungsdauer beträgt dabei $T = 2\pi RC$, die Abklingzeit
+$\tau = 20 RC / |\eta|$. Damit sollte die Amplitude für $\eta = \num{0}$
+konstant bleiben.
+Das Schaltbild zu einem Sinusgenerator ist in Abbildung \ref{fig:sinus}
+dargestellt
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/sinus.pdf}
+    \caption{
+        Schaltbild eines Sinusgenerators. Es werden zwei Integrationsglieder
+        und ein Umkehrverstärker verbaut \cite{V51}.
+    }
+    \label{fig:sinus}
+\end{figure}
 
+\clearpage
