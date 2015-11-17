@@ -6,9 +6,16 @@ PLOTS = data.pdf fit_approx_set1.pdf fit_approx_set2.pdf\
 # Dont touch this laalaaalalaaaa
 PLOTS_WITH_PATH = $(patsubst %,build/plots/%,$(PLOTS))
 
+#techcontent
+TEXCONTENT = 00_main.tex \
+				01_theorie.tex  \
+				02_auswertung.tex
+
+
+
 all: build/00_main.pdf
 
-build/00_main.pdf: 00_main.tex ../head.tex ../math-commands.tex \
+build/00_main.pdf: $(TEXCONTENT) ../head.tex ../math-commands.tex \
 		../00_lit.bib $(PLOTS_WITH_PATH) | build
 	lualatex --output-directory build 00_main.tex
 
