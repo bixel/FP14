@@ -1,5 +1,6 @@
 # Lists and Configurables
-PLOTS = data.pdf fit_approx_set1.pdf fit_approx_set2.pdf
+PLOTS = data.pdf fit_approx_set1.pdf fit_approx_set2.pdf\
+		integrated-fit-set1.pdf integrated-fit-set2.pdf
 
 
 # Dont touch this laalaaalalaaaa

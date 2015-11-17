@@ -6,7 +6,7 @@ from matplotlib.patches import Rectangle
 import os
 from scipy import constants
 from scipy.optimize import curve_fit
-from scipy.integrate import quad
+from scipy.integrate import quad, trapz
 
 T1, I1 = np.genfromtxt('set1.txt', unpack=True)
 T2, I2 = np.genfromtxt('set2.txt', unpack=True)
@@ -76,4 +76,21 @@ for T, I, min_T, max_T, name in [[T1, I1, min1, max1, 'set1'],
     plt.plot(T, I, '+')
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=250))
     plt.savefig(plotdir + 'fit_approx_{}.pdf'.format(name))
+    plt.clf()
+
+
+def better_fit(T, i_T, Tstar):
+    """ Implementation of equation (14) of scriptum.
+    """
+    integral = np.array(
+        [trapz(i_T[(T > t) & (T < Tstar)], T[(T > t) & (T < Tstar)])
+         for t in T]
+    )
+    return np.log(integral / i_T)
+
+for T, I, min_T, name in [[T1, I1, 260, 'set1'],
+                          [T2, I2, 240, 'set2']]:
+    logstuff = better_fit(T, I, min_T)
+    plt.plot(1 / T, logstuff, '+')
+    plt.savefig(plotdir + 'integrated-fit-{}.pdf'.format(name))
     plt.clf()
