@@ -40,27 +40,28 @@ print(len(nu_2))
 print(len(nu_3))
 print(len(nu_4))
 with open('build/a_data_1.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$', 
-		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_1[0:7], unp.uarray(U_1[0:7], dU_1[0:7]), nu_1[7:14], unp.uarray(U_1[7:14], dU_1[7:14])]
+	f.write(table([r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$', 
+		r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$'],
+		[nu_1[0:7]/1e3, unp.uarray(U_1[0:7], dU_1[0:7]), 
+		nu_1[7:14]/1e3, unp.uarray(U_1[7:14], dU_1[7:14])]
 		))
 with open('build/a_data_2.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$', 
-		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_2[0:9], unp.uarray(U_2[0:9], dU_2[0:9]),
-		nu_2[9:18], unp.uarray(U_2[9:18], dU_2[9:18])]
+	f.write(table([r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$', 
+		r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$'],
+		[nu_2[0:9]/1e3, unp.uarray(U_2[0:9], dU_2[0:9]),
+		nu_2[9:18]/1e3, unp.uarray(U_2[9:18], dU_2[9:18])]
 		))
 with open('build/a_data_3.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$',
-		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_3[0:10], unp.uarray(U_3[0:10], dU_3[0:10]),
-		nu_3[10:20], unp.uarray(U_3[10:20], dU_3[10:20])]
+	f.write(table([r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\milli\volt}$',
+		r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\milli\volt}$'],
+		[nu_3[0:10]/1e3, unp.uarray(U_3[0:10], dU_3[0:10])*1e3,
+		nu_3[10:20]/1e3, unp.uarray(U_3[10:20], dU_3[10:20])*1e3]
 		))
 with open('build/a_data_4.tex', 'w') as f:
-	f.write(table([r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$',
-		r'$\nu / \si{\hertz}$', r'$U / \si{\volt}$'],
-		[nu_4[0:10], unp.uarray(U_4[0:10], dU_4[0:10]),
-		nu_4[10:20], unp.uarray(U_4[10:20], dU_4[10:20])]
+	f.write(table([r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$',
+		r'$\nu / \si{\kilo\hertz}$', r'$U / \si{\volt}$'],
+		[nu_4[0:10]/1e3, unp.uarray(U_4[0:10], dU_4[0:10]),
+		nu_4[10:20]/1e3, unp.uarray(U_4[10:20], dU_4[10:20])]
 		))
 
 V_1 = unp.uarray(U_1,dU_1) / U_ein

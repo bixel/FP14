@@ -1,17 +1,19 @@
+\FloatBarrier
+
 \section{Auswertung}
 \label{sec:auswertung}
 Im Folgenden werden alle Fehler mit Hilfe der \texttt{python}-Bibliothek
 \texttt{uncertainties}\cite{py-uncertainties} berechnet, die eine Gaußsche
 Fehlerfortpflanzung implementiert.
 
-\subsection{Frequenzgang eines gegenkekoppelten Verstärkers} % (fold)
+\subsection{Frequenzgang eines gegengekoppelten Verstärkers} % (fold)
 
-Im folgenden wird der Frequenzgang eines gegengekoppelten Verstärkers bei vier verschiedenen Verstärkungsgraden $V'$.
+Im folgenden wird der Frequenzgang eines gegengekoppelten Verstärkers bei vier verschiedenen Verstärkungsgraden $V'$ untersucht.
 Dazu wurde die Schaltung \ref{fig:linear} verwendet.
 Bei allen Messungen wurde eine Eingangsspannung von $\SI{15}{\milli\ohm}$ verwendet.
 Zudem ist auf den Widerstand $R_1$ noch der Innenwiderstand der Spannungsquelle mit $R_i = \SI{50}{\ohm}$ aufaddiert worden.
 
-\paragraph{Verstärungsgrad 1 $\frac{\SI{1}{\mega\ohm}}{\SI{100}{\ohm}}$}
+\paragraph{Verstärungsgrad 1 $\frac{R_N}{R_1} = \frac{\SI{1}{\mega\ohm}}{\SI{100}{\ohm}}$}
 
 \begin{table}
 \centering
@@ -20,7 +22,7 @@ Zudem ist auf den Widerstand $R_1$ noch der Innenwiderstand der Spannungsquelle 
     \input{build/a_data_1.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_1} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_1} halblogarithmisch dargestellt.
+In Grafik \ref{fig:a_plot_1} sind die Messdaten aus Tabelle \ref{tab:a_messwerte_1} doppellogarithmisch dargestellt.
 Mithilfe einer linearen Regression der Form $f_1(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
@@ -36,7 +38,7 @@ Somit kann auch keine Leerlaufverstärkung $V_1$ abgeschätzt werden.
     \label{fig:a_plot_1}
 \end{figure}
 
-\paragraph{Verstärungsgrad 2 $\frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}}$}
+\paragraph{Verstärungsgrad 2 $\frac{R_N}{R_1} = \frac{\SI{120}{\kilo\ohm}}{\SI{100}{\ohm}}$}
 
 \begin{table}
 \centering
@@ -45,24 +47,29 @@ Somit kann auch keine Leerlaufverstärkung $V_1$ abgeschätzt werden.
     \input{build/a_data_2.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_2} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_2} halblogarithmisch dargestellt.
-Mithilfe einer linearen Regression der Form $f_2(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+In Grafik \ref{fig:a_plot_2} sind die Messdaten aus Tabelle \ref{tab:a_messwerte_2} doppellogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_{a,2}(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
 	f_{a,2}(x) = (\num{-0.9652(2)}) \cdot x + (\num{13.0827(191)})\,.
 \end{equation*}
 Die Grenzfrequenz $\nu'_{g,2}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_2}{\sqrt{2}}$ abgefallen ist - ist zu $\nu'_{g,2} = \SI{1567.4(193)}{\hertz}$ bestimmt worden.
-Der Wert für die Verstärkung $V'_2$ lässt sich aus dem Wert des Plateaus zu $V'=560.0\pm6.7$ bestimmen.
+Der Wert für die Verstärkung $V'_2$ lässt sich aus dem Wert des Plateaus zu $V'_2=560.0\pm6.7$ bestimmen.
 Die ideale Verstärkung 
 \begin{equation*}
     V'_{2,\text{ideal}} = \frac{R_N}{R_1} \approx 800.0
 \end{equation*}
 weicht somit um etwa $\SI{30}{\percent}$ von der gemessenen ab.
-Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_2$ zu
+Mithilfe der Beziehung
 \begin{equation*}
-	V_2 = \frac{1}{V'_2} - \frac{R_1}{R_N} = \frac{1}{560.0\pm6.7} - \frac{\SI{150}{\ohm}}{\SI{120}{\kilo\ohm}} \approx 
+    V_2 = \left( \frac{1}{V'_2} - \frac{R_1}{R_N} \right) ^{-1}
+\end{equation*}
+wird die Leerlaufverstärkung $V_2$ zu
+\begin{equation*}
+	V_2 = \frac{1}{560.0\pm6.7} - \frac{\SI{150}{\ohm}}{\SI{120}{\kilo\ohm}} \approx 
     \num{1.87(7)e3}
 \end{equation*}
+bestimmt.
 
 \begin{figure}[h!]
     \centering
@@ -71,7 +78,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_2$ zu
     \label{fig:a_plot_2}
 \end{figure}
 
-\paragraph{Verstärungsgrad 3 $\frac{\SI{4.7}{\kilo\ohm}}{\SI{100}{\ohm}}$}
+\paragraph{Verstärungsgrad 3 $\frac{R_N}{R_1} = \frac{\SI{4.7}{\kilo\ohm}}{\SI{100}{\ohm}}$}
 
 \begin{table}
 \centering
@@ -80,23 +87,28 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_2$ zu
     \input{build/a_data_3.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_3} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_3} halblogarithmisch dargestellt.
-Mithilfe einer linearen Regression der Form $f_3(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+In Grafik \ref{fig:a_plot_3} sind die Messdaten aus Tabelle \ref{tab:a_messwerte_3} doppellogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_{a,3}(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
     f_{a,3}(x) = (\num{-0.7991(1)}) \cdot x + (\num{11.0282(187)})\,.
 \end{equation*}
-Die Grenzfrequenz $\nu'_{g,3}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_3}{\sqrt{3}}$ abgefallen ist - ist zu $\nu'_{g,3} = \SI{3.060(6)e4}{\hertz}$ bestimmt worden.
-Der Wert für die Verstärkung $V'_3$ lässt sich aus dem Wert des Plateaus zu $V'=22.667\pm0.033$ bestimmen.
+Die Grenzfrequenz $\nu'_{g,3}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_3}{\sqrt{2}}$ abgefallen ist - ist zu $\nu'_{g,3} = \SI{3.060(6)e4}{\hertz}$ bestimmt worden.
+Der Wert für die Verstärkung $V'_3$ lässt sich aus dem Wert des Plateaus zu $V'_3=22.667\pm0.033$ bestimmen.
 Die ideale Verstärkung 
 \begin{equation*}
     V'_{3,\text{ideal}} = \frac{R_N}{R_1} \approx 31.33
 \end{equation*}
 weicht somit um etwa $\SI{27}{\percent}$ von der gemessenen ab.
-Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_3$ zu
+Mithilfe der Beziehung
 \begin{equation*}
-    V_3 = \frac{1}{V'_3} - \frac{R_1}{R_N} = \frac{1}{22.667\pm0.033} - \frac{\SI{150}{\ohm}}{\SI{4.7}{\kilo\ohm}} \approx \num{81.9\pm0.4}
+    V_3 = \left( \frac{1}{V'_3} - \frac{R_1}{R_N} \right) ^{-1}
 \end{equation*}
+wird die Leerlaufverstärkung $V_3$ zu
+\begin{equation*}
+    V_3 = \frac{1}{22.667\pm0.033} - \frac{\SI{150}{\ohm}}{\SI{4.7}{\kilo\ohm}} \approx \num{81.9\pm0.4}
+\end{equation*}
+bestimmt.
 
 \begin{figure}[h!]
     \centering
@@ -105,7 +117,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_3$ zu
     \label{fig:a_plot_3}
 \end{figure}
 
-\paragraph{Verstärungsgrad 4 $\frac{\SI{1}{\mega\ohm}}{\SI{4.7}{\kilo\ohm}}$}
+\paragraph{Verstärungsgrad 4 $\frac{R_N}{R_1} = \frac{\SI{1}{\mega\ohm}}{\SI{4.7}{\kilo\ohm}}$}
 
 \begin{table}
 \centering
@@ -114,23 +126,28 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_3$ zu
     \input{build/a_data_4.tex}
 \end{table}
 
-In Grafik \ref{fig:a_plot_4} sind die gemessenen Messdaten aus Tabelle \ref{tab:a_messwerte_4} halblogarithmisch dargestellt.
-Mithilfe einer linearen Regression der Form $f_4(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
+In Grafik \ref{fig:a_plot_4} sind die Messdaten aus Tabelle \ref{tab:a_messwerte_4} doppellogarithmisch dargestellt.
+Mithilfe einer linearen Regression der Form $f_{a,4}(x)= m \cdot x + b$ wird die Steigung der fallenden Geraden bestimmt.
 Es ergibt sich
 \begin{equation*}
     f_{a,4}(x) = (\num{-0.8821(2)}) \cdot x + (\num{12.1148(217)})\,.
 \end{equation*}
-Die Grenzfrequenz $\nu'_{g,4}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_4}{\sqrt{4}}$ abgefallen ist - ist zu $\nu'_{g,4} = \SI{4.57(11)e3}{\hertz}$ bestimmt worden.
+Die Grenzfrequenz $\nu'_{g,4}$ - die Frequenz, bei der die Verstärkung auf $\frac{V'_4}{\sqrt{2}}$ abgefallen ist - ist zu $\nu'_{g,4} = \SI{4.57(11)e3}{\hertz}$ bestimmt worden.
 Der Wert für die Verstärkung $V'$ lässt sich aus dem Wert des Plateaus zu $V'_4=152.7\pm3.3$ bestimmen.
 Die ideale Verstärkung 
 \begin{equation*}
     V'_{4,\text{ideal}} = \frac{R_N}{R_1} \approx 210.53
 \end{equation*}
 weicht somit um etwa $\SI{27}{\percent}$ von der gemessenen ab.
-Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
+Mithilfe der Beziehung 
 \begin{equation*}
-    V_4 = \frac{1}{V'_4} - \frac{R_1}{R_N} = \frac{1}{152.7\pm3.3} - \frac{\SI{4.75}{\kilo\ohm}}{\SI{1}{\mega\ohm}} \approx \num{560\pm40}
+    V_4 = \left( \frac{1}{V'_4} - \frac{R_1}{R_N} \right) ^{-1}
 \end{equation*}
+wird die Leerlaufverstärkung $V_4$ zu
+\begin{equation*}
+    V_4 = \frac{1}{152.7\pm3.3} - \frac{\SI{4.75}{\kilo\ohm}}{\SI{1}{\mega\ohm}} \approx \num{560\pm40}
+\end{equation*}
+bestimmt.
 
 \begin{figure}[h!]
     \centering
@@ -141,7 +158,7 @@ Mithilfe der Gleichung \eqref{calc_V} wird die Leerlaufverstärkung $V_4$ zu
 
 \paragraph{Grenzfrequenz - Verstärkungsgrad Produkt}
 
-Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgerführt.
+Die Ergebnisse für das Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ sind in Tabelle \ref{tab:a_nu_v} aufgeführt.
 \begin{table}[h!]
 \centering
 \caption{Produkt aus Grenzfrequenz $\nu'_{g,i}$ und Verstärkung $V'_i$ der Messaufbauten 2 bis 4.}
@@ -360,13 +377,13 @@ In Abbildung \ref{fig:dif_sinus} ist eine differentierte Sinus-, in Abbildung \r
 \label{sub:schmitt_trigger}
 
 Zur Bestimmung des Scheitelwertes eines Schmitt-Triggers wurde die Schaltung in Abbildung \ref{fig:schmitt_trigger} verwendet.
-Für die Schaltung wurden die Widerstände $R_1 = \SI{100}{\ohm}$ und $R_P = \SI{4.7}{\kilo\ohm}$ verwendet und der Zusammenhang $2 \cdot U_B = \SI{28.3}{\volt}$
+Für die Schaltung wurden die Widerstände $R_1 = \SI{100}{\ohm}$ und $R_P = \SI{4.7}{\kilo\ohm}$ gewählt und der Zusammenhang $2 \cdot U_B = \SI{28.3}{\volt}$ festgestellt.
 Gemessen wurde dabei ein Umspringen des Schalters von dem in Abbildung \ref{fig:schmitt_offen} dargestellten Spannungsverlauf auf den in Abbildung \ref{fig:schmitt_geschlossen} dargstellten Spannungsverlauf bei $U_\text{kipp} \approx \SI{314}{\milli\volt}$.
 Mithilfe der Gleichung
 \begin{equation*}
-    U_\text{kipp} = U_B \cdot \frac{R_1}{R_P} 
+    U_\text{kipp,theo} = U_B \cdot \frac{R_1}{R_P} 
 \end{equation*}
-ergibt sich $U_\text{kipp} \approx \SI{301.06}{\milli\volt}$.
+ergibt sich $U_\text{kipp,theo} \approx \SI{301.06}{\milli\volt}$.
 Dieser Wert weicht somit um etwa $\SI{4}{\percent}$ vom gemessenen Wert ab.
 
 \begin{figure}[!h]
@@ -386,7 +403,7 @@ Dieser Wert weicht somit um etwa $\SI{4}{\percent}$ vom gemessenen Wert ab.
 \subsection{Dreieckspannungsgenerator} % (fold)
 \label{sub:dreiecksgenerator}
 
-Mithilfe der Schaltung \ref{fig:schmitt_trigger} wurde ein Dreieckspannungsgenerator realisiert.
+Mithilfe der Schaltung \ref{fig:dreieck} wurde ein Dreieckspannungsgenerator realisiert.
 Abbildung \ref{fig:rechteck} zeigt die zunächst generierte Rechteckspannung und Abbildung \ref{fig:dreieck} die finale Dreieckspannung.
 Dabei wurde eine Frequenz von $\nu = \SI{1}{\kilo\hertz}$ und eine Spannung von $U_1 = \SI{200}{\milli\volt}$ gewählt.
 
@@ -407,13 +424,13 @@ Dabei wurde eine Frequenz von $\nu = \SI{1}{\kilo\hertz}$ und eine Spannung von 
 \subsection{Gedämpfte Schwingung} % (fold)
 \label{sub:subsection_name}
 
-Zur realisierung einer gedämpften Schwingung wurde die Schaltung nach Abbildung \ref{} verwendet.
+Zur realisierung einer gedämpften Schwingung wurde die Schaltung nach Abbildung \ref{fig:sinus} verwendet.
 Für den Widerstand wurde $R = \SI{1}{\kilo\ohm}$ und für die Kapazität $C = \SI{20}{\nano\farad}$ gewählt.
 Bei einer Dämpfungskonstante von $\eta = 0$ ergibt sich die in Abbildung \ref{fig:unged_sinus} dargestellte Schwingung.
-Bei einer Dämpfungskonstante von $\eta = -1$ hingegen ergibt sich eine gedämpfte Schwingung wie in Abbildung \ref{fig:ged_sinus} dargestellt.
+Bei einer Dämpfungskonstante von $\eta = -1$ hingegen ergibt sich eine gedämpfte Schwingung wie in Abbildung \ref{fig:ged_sinus} abgebildet ist.
 Die Amplituden der gedämpften Schwingung wurden der Grafik entnommen und sind in Tabelle \ref{tab:ged_schwing} aufgelistet.
 Zudem sind die Daten in der halblogarithmischen Grafik \ref{fig:ged_schwing} dargestellt.
-Mithilfe einer linearen Regression der Form $f_{d}(x) = x / \tau + b$ ergibt sich für den linearen Bereich die Geradengleichung
+Mithilfe einer linearen Regression der Form $f_{h}(x) = x / \tau + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
     f_h(x) = -\frac{x}{\SI{0.0046}{\second}} + (\num{-9.7(26)})\,.
 \end{equation*}
@@ -455,9 +472,9 @@ um etwa $\SI{15}{\percent}$ ab.
 \subsection{Logarithmierer} % (fold)
 \label{sub:logarithmierer}
 
-Für den logarithmierer wurde die Schaltung \ref{} verwendet.
+Für den logarithmierer wurde die Schaltung \ref{fig:log} verwendet.
 Die aufgenommenen Daten sind in Tabelle \ref{tab:i_log} aufgelistet und in Grafik \ref{fig:i_log} halblogarithmisch dargestellt.
-Mithilfe einer linearen Regression der Form $f_{d}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
+Mithilfe einer linearen Regression der Form $f_{i}(x) = m \cdot x + b$ ergibt sich für den linearen Bereich die Geradengleichung
 \begin{equation*}
     f_{i}(x) = (\SI{0.0480}{\volt}) \cdot x + (\SI{0.4303}{\volt})\,.
 \end{equation*}
@@ -473,23 +490,23 @@ Die Änderung der Ausgangsspannung, wenn sich die Eingangsspannung um eine Zehne
     \centering
     \caption{Eingangsspannung $U_\text{ein}$ und Ausgangsspannung $U_\text{aus}$ eines logarithmierers.}
     \label{tab:i_log}
-    \begin{tabular}{S[table-format=1.1] S[table-format=1.4(2)] S[table-format=2.1] S[table-format=1.4(2)]}
+    \begin{tabular}{S[table-format=1.1] S[table-format=3.1(2)] S[table-format=2.1] S[table-format=3.1(2)]}
     \toprule 
-        {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} & {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\volt}$} \\
+        {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\milli\volt}$} & {$U_\text{ein}/\si{\volt}$} & {$U_\text{aus}/\si{\milli\volt}$} \\
     \midrule
-         0.0  &  0.2900(50)  &  6.5  &  0.5191(50) \\
-         0.5  &  0.3956(50)  &  7.0  &  0.5234(50) \\
-         1.0  &  0.4337(50)  &  7.5  &  0.5271(50) \\
-         1.5  &  0.4505(50)  &  8.0  &  0.5307(50) \\
-         2.0  &  0.4648(50)  &  8.5  &  0.5334(50) \\
-         2.5  &  0.4752(50)  &  9.0  &  0.5364(50) \\
-         3.0  &  0.4823(50)  &  9.5  &  0.5394(50) \\
-         3.5  &  0.4897(50)  & 10.0  &  0.5420(50) \\
-         4.0  &  0.4955(50)  & 11.0  &  0.5460(50) \\
-         4.5  &  0.5005(50)  & 12.0  &  0.5503(50) \\
-         5.0  &  0.5057(50)  & 13.0  &  0.5540(50) \\
-         5.5  &  0.5105(50)  & 14.0  &  0.5574(50) \\
-         6.0  &  0.5146(50)  & 15.0  &  0.5607(50) \\
+         0.0  &  290.0(50)  &  6.5  &  519.1(50) \\
+         0.5  &  395.6(50)  &  7.0  &  523.4(50) \\
+         1.0  &  433.7(50)  &  7.5  &  527.1(50) \\
+         1.5  &  450.5(50)  &  8.0  &  530.7(50) \\
+         2.0  &  464.8(50)  &  8.5  &  533.4(50) \\
+         2.5  &  475.2(50)  &  9.0  &  536.4(50) \\
+         3.0  &  482.3(50)  &  9.5  &  539.4(50) \\
+         3.5  &  489.7(50)  & 10.0  &  542.0(50) \\
+         4.0  &  495.5(50)  & 11.0  &  546.0(50) \\
+         4.5  &  500.5(50)  & 12.0  &  550.3(50) \\
+         5.0  &  505.7(50)  & 13.0  &  554.0(50) \\
+         5.5  &  510.5(50)  & 14.0  &  557.4(50) \\
+         6.0  &  514.6(50)  & 15.0  &  560.7(50) \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -504,7 +521,7 @@ Die Änderung der Ausgangsspannung, wenn sich die Eingangsspannung um eine Zehne
 \subsection{Exponentierer} % (fold)
 \label{sub:Exponentierer}
 
-Für den Exponentierer wurde die Schaltung \ref{} verwendet.
+Für den Exponentierer wurde die Schaltung \ref{fig:expo} verwendet.
 Die Ergebnisse sind in Tabelle \ref{tab:i_exp} aufgelistet und in Grafik \ref{fig:i_log} dargestellt.
 Da in dem dargestellten Bereich kein exponentieller Zusammenhang 
 erkennbar ist, ist eine Auswertung weiter nicht möglich.
@@ -556,3 +573,5 @@ Dies ist in Abbildung \ref{fig:phase_verlauf} als Spannungsverlauf der Eingangs-
     \caption{Darstellung der Phasenbeziehung der Ausgangsspannung und der Eingangsspannung als Lissajou Figur.}
     \label{fig:phase_liss}
 \end{figure}
+
+\FloatBarrier

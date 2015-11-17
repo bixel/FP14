@@ -13,6 +13,7 @@ TEXHEADERS = ../head.tex \
 PYTHON = part_a.py \
 			part_c.py \
 			part_de.py \
+			part_f.py \
 			part_h.py \
 			part_i.py
 

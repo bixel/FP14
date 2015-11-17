@@ -52,7 +52,7 @@ plt.legend(loc="best")
 
 plt.savefig('build/h_plot.pdf')
 
-with open('build/h_table.tex', 'w', 'utf-8') as f:
-	f.write(table([r'$t/\si{\second}$', r'$U/\si{\volt}$', r'$t/\si{\second}$', r'$U/\si{\volt}$'], 
-					[val_x[0:19], val[0:19], val_x[19:38], val[19:38]]))
-	print(val_x)
+val = val*1e3
+val_x = val_x*1e3
+
+print(val)
