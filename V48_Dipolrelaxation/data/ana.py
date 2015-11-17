@@ -13,8 +13,8 @@ T2, I2 = np.genfromtxt('set2.txt', unpack=True)
 T1 = constants.C2K(T1)
 T2 = constants.C2K(T2)
 
-min1, max1 = (260, 285)
-min2, max2 = (240, 265)
+min1, max1 = 260, 285
+min2, max2 = 240, 265
 
 plotdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                        '../build/plots/')
@@ -44,8 +44,8 @@ plt.clf()
 
 
 def j(T, C1, C2, W, T0):
-    """ equation (8) in script
-        is equal to (9) for C2 == 0
+    """ This function implements equation (8) in scriptum.
+        This is equal to (9) for C2 == 0.
     """
     integral = np.array([
         quad(lambda x: np.exp(-W / (constants.k * x)), T0, t)[0]
@@ -56,6 +56,7 @@ def j(T, C1, C2, W, T0):
             * np.exp(- W / (constants.k * T))
             )
 
+# Fit and plot for each dataset
 for T, I, min_T, max_T, name in [[T1, I1, min1, max1, 'set1'],
                                  [T2, I2, min2, max2, 'set2']]:
     T_fit_values = T[(T > min_T) & (T < max_T)]
