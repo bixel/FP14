@@ -1,4 +1,63 @@
 \section{Auswertung}
 \label{sec:auswertung}
+Es werden in diesem Versuch zwei Messreihen mit unterschiedlicher Heizrate
+$b$ durchgeführt. Zunächst müssen die Messwerte von Untergründen bereinigt
+werden, auf die im Folgenden eingegangen wird.
 
+Alle Fehler in dieser Auswertung werden -- wenn nicht anders beschrieben --
+mittels Gaußscher Fehlerfortpflanzungen mit Hilfe des \texttt{python}-Paketes
+\texttt{uncertainties} \cite{py-uncertainties} berechnet.
 
+Zur Beschreibung des oben genannten Untergrundes wird eine lineare Funktion
+$I_\text{bkg}(T)$ von den Daten abgezogen. Die Variablen der Funktion werden
+durch Fit an einen Teil der Daten bestimmt, der in Abbildungen
+\ref{fig:data-a} und \ref{fig:data-b} markiert ist.
+Die Fitfunktion hat die Gestalt
+\begin{equation*}
+    I_\text{bkg}(T) = A\cdot T + B\,.
+\end{equation*}
+Das Resultat, sowie der Fit sind ebenfalls in oben genannter Abbildung
+dargestellt und die entsprechenden Daten in den Tabellen \ref{tab:data1} und
+\ref{tab:data2} aufgeführt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/cleaned_data-set1.pdf}
+    \caption{Messdaten, roh und bereinigt. Der zu erwartende Peak ist
+    ausdrücklich schlecht zu erkennen.}
+    \label{fig:data-a}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/cleaned_data-set2.pdf}
+    \caption{Messdaten zur zweiten Messreihe, roh und bereinigt. Hier ist
+    der zu erwartende Peak gut zu erkennen.}
+    \label{fig:data-b}
+\end{figure}
+\begin{table}
+    \centering
+    \caption{Messdaten der ersten Messreihe.}
+    \label{tab:data1}
+    \input{build/tex/data-set1.tex}
+\end{table}
+\begin{table}
+    \centering
+    \caption{Messdaten der zweiten Messreihe.}
+    \label{tab:data2}
+    \input{build/tex/data-set2.tex}
+\end{table}
+Bei der ersten Messreihe ist auffällig, dass nur ein einzelner, flacher Peak
+zu erkennen ist. Dies macht die spätere Auswertung extrem schwierig.
+Aus diesem Grund werden die Ergebnisse der erste Messreihe im weiteren
+Verlauf nicht betrachtet.
+
+\subsection{Approximative Ausgleichsrechnung}
+\label{subsec:approx}
+Zunächst wird die in Abschnitt \ref{sub:berechnung_der_aktivierungsenergie_w_}
+aufgeführte Gleichung \ref{eqn:approx} zur Bestimmung der Aktivierungsenergie
+$W$ benutzt. Dabei wird diese mit einem nicht-linearen Fit in einem Bereich
+$T$ zwischen \SIrange{250}{267}{\kelvin} an die Daten angepasst.
+Das Ergebnis des Fits ist in Abbildung \ref{fig:fit_approx_set2} dargestellt.
+Der Fit liefert
+\begin{equation*}
+    \input{build/tex/W_approx_set2.tex}
+\end{equation*}

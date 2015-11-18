@@ -31,7 +31,7 @@ $(PLOTS_WITH_PATH): data/ana.py data/set*.txt | build
 	./ana.py
 
 build:
-	mkdir -p build/plots
+	mkdir -p build/plots build/tex
 
 clean:
 	rm -r build

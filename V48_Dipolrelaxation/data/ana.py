@@ -1,12 +1,18 @@
 #! /usr/bin/env python3
 
+import os
+
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
-import os
+
 from scipy import constants
 from scipy.optimize import curve_fit
 from scipy.integrate import quad, trapz
+
+from textable import table
+
+from uncertainties import ufloat
 
 T1, I1 = np.genfromtxt('set1.txt', unpack=True)
 T2, I2 = np.genfromtxt('set2.txt', unpack=True)
@@ -19,6 +25,7 @@ min2, max2 = 250, 267
 
 plotdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                        '../build/plots/')
+texdir = os.path.join(plotdir, '../tex/')
 
 
 # clear data
@@ -58,6 +65,19 @@ for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
         I1_cleaned = I_cleaned
     else:
         I2_cleaned = I_cleaned
+    with open('{}data-{}.tex'.format(texdir, name), 'w') as f:
+        f.write(table(
+            3*[r'$T/\si{\kelvin}$', r'$I/\si{\pico\ampere}$',
+               r'$I_\mathrm{cl}/\si{\pico\ampere}$'],
+            [
+                np.around(T[:23], 1), np.around(I[:23], 2),
+                np.around(I_cleaned[:23], 2),
+                np.around(T[23:46], 1), np.around(I[23:46], 2),
+                np.around(I_cleaned[23:46], 2),
+                np.around(T[46:], 1), np.around(I[46:], 2),
+                np.around(I_cleaned[46:], 2),
+            ]
+        ))
     xs = np.linspace(240, 340)
     plt.plot(xs, fit_function(xs, *var), label='fit')
     plt.plot(T[~selection], I[~selection], 'b.',
@@ -98,6 +118,9 @@ for T, I, selection, name in [[T1, I1_cleaned,
         T[selection], I[selection], p0=[1, 5e-20]
     )
     errs = np.sqrt(np.diag(cov))
+    W = ufloat(val[1], errs[1]) / constants.eV
+    with open('{}W_approx_{}.tex'.format(texdir, name), 'w') as f:
+        f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W))
     xs = np.linspace(220, 300, 100)
     plt.ylim(0, 25)
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=T0), 'r-', label='Fit')
