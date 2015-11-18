@@ -12,12 +12,22 @@ T1, I1 = np.genfromtxt('set1.txt', unpack=True)
 T2, I2 = np.genfromtxt('set2.txt', unpack=True)
 T1 = constants.C2K(T1)
 T2 = constants.C2K(T2)
+I1_cleaned, I2_cleaned = [], []
 
 min1, max1 = 260, 285
-min2, max2 = 240, 265
+min2, max2 = 250, 267
 
 plotdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                        '../build/plots/')
+
+
+# clear data
+def linear_fit(T, A, B):
+    return A*T + B
+
+
+def exp_fit(T, A, B, I0):
+    return A * np.exp(B * T) + I0
 
 
 def mark_lower_cut(pltobj=plt):
@@ -34,13 +44,33 @@ def mark_fit_area(xlim, ylim, plt=plt, **kwargs):
         **kwargs))
 
 
-plt.plot(T1, I1, '+')
-plt.plot(T2, I2, '+')
-mark_lower_cut()
-plt.xlabel(r'$T/\mathrm{K}$')
-plt.ylabel(r'$I/\mathrm{pA}$')
-plt.savefig(plotdir + 'data.pdf')
-plt.clf()
+for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
+                                   None, 'set1'],
+                                  [T2, I2, ((T2 > 280) & (T2 < 292)
+                                            | (T2 > 245) & (T2 < 260)),
+                                   None, 'set2']]:
+    fit_function = linear_fit
+    var, _ = curve_fit(fit_function, T[selection],
+                       I[selection], p0=p0)
+    print(var)
+    I_cleaned = I - fit_function(T, *var)
+    I_cleaned = I_cleaned - np.min(I_cleaned)
+    if name == 'set1':
+        I1_cleaned = I_cleaned
+    else:
+        I2_cleaned = I_cleaned
+    xs = np.linspace(240, 340)
+    plt.plot(xs, fit_function(xs, *var), label='fit')
+    plt.plot(T[~selection], I[~selection], 'b.',
+             label='Data (ignored for fit)')
+    plt.plot(T[selection], I[selection], 'g.', label='Data (used for fit)')
+    plt.plot(T, I_cleaned, 'r.', label='Cleaned Data')
+    plt.xlim(240, 320)
+    plt.legend(loc='best')
+    if p0:
+        plt.plot(xs, fit_function(xs, *p0))
+    plt.savefig('{}cleaned_data-{}.pdf'.format(plotdir, name))
+    plt.clf()
 
 
 def j(T, C1, C2, W, T0):
@@ -57,8 +87,8 @@ def j(T, C1, C2, W, T0):
             )
 
 # Fit and plot for each dataset
-for T, I, min_T, max_T, name in [[T1, I1, min1, max1, 'set1'],
-                                 [T2, I2, min2, max2, 'set2']]:
+for T, I, min_T, max_T, name in [[T1, I1_cleaned, min1, max1, 'set1'],
+                                 [T2, I2_cleaned, min2, max2, 'set2']]:
     T_fit_values = T[(T > min_T) & (T < max_T)]
     I_fit_values = I[(T > min_T) & (T < max_T)]
     print(T_fit_values, I_fit_values)
@@ -71,8 +101,8 @@ for T, I, min_T, max_T, name in [[T1, I1, min1, max1, 'set1'],
     print(val, errs)
 
     xs = np.linspace(min_T, max_T, 100)
-    mark_fit_area((200, min_T), (0, 25), alpha=0.2, edgecolor='none')
-    mark_fit_area((max_T, 340), (0, 25), alpha=0.2, edgecolor='none')
+    # mark_fit_area((200, min_T), (0, 25), alpha=0.2, edgecolor='none')
+    # mark_fit_area((max_T, 340), (0, 25), alpha=0.2, edgecolor='none')
     plt.plot(T, I, '+')
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=250))
     plt.savefig(plotdir + 'fit_approx_{}.pdf'.format(name))
@@ -86,10 +116,11 @@ def better_fit(T, i_T, Tstar):
         [trapz(i_T[(T > t) & (T < Tstar)], T[(T > t) & (T < Tstar)])
          for t in T]
     )
+    print(integral)
     return np.log(integral / i_T)
 
-for T, I, min_T, name in [[T1, I1, 260, 'set1'],
-                          [T2, I2, 240, 'set2']]:
+for T, I, min_T, name in [[T1, I1_cleaned, 310, 'set1'],
+                          [T2, I2_cleaned, 320, 'set2']]:
     logstuff = better_fit(T, I, min_T)
     plt.plot(1 / T, logstuff, '+')
     plt.savefig(plotdir + 'integrated-fit-{}.pdf'.format(name))
