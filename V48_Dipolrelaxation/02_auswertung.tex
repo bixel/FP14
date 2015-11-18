@@ -61,3 +61,21 @@ Der Fit liefert
 \begin{equation*}
     \input{build/tex/W_approx_set2.tex}
 \end{equation*}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/fit_approx_set2.pdf}
+    \caption{Ausgleichskurve zur approximativen Bestimmung der
+    Aktivierungsenergie $W$. Die für den Fit benutzten Datenpunkte
+    sind grün markiert.}
+    \label{fig:fit_approx_set2}
+\end{figure}
+
+\subsection{Ausgleichsrechnung mit Integration}
+\label{subsec:integration}
+Als zweite Methode zur Bestimmung der Aktivierungsenergie $W$ wird ein
+linearer Fit einer Funktion $F(T)$ an die inversen Temperaturdaten $1/T$
+durchgeführt.
+F ist definiert als
+\begin{equation*}
+    F(T) = \frac{\int_T^\ast i(T^\prime)\mathrm{d}T^\prime}{i(T)}\,.
+\end{equation*}
