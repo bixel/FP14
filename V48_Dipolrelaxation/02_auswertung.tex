@@ -73,9 +73,18 @@ Der Fit liefert
 \subsection{Ausgleichsrechnung mit Integration}
 \label{subsec:integration}
 Als zweite Methode zur Bestimmung der Aktivierungsenergie $W$ wird ein
-linearer Fit einer Funktion $F(T)$ an die inversen Temperaturdaten $1/T$
-durchgeführt.
-F ist definiert als
+linearer Fit der Form
+\begin{equation*}
+    F(T) = A\cdot\frac{1}{T} + B
+\end{equation*}
+an die inversen Temperaturdaten $1/T$ durchgeführt.
+Hierbei ist $F(T)$ wie in Gleichung \ref{eqn:integrate} definiert als
 \begin{equation*}
     F(T) = \frac{\int_T^\ast i(T^\prime)\mathrm{d}T^\prime}{i(T)}\,.
 \end{equation*}
+Aus der Steigung $A$ lässt sich somit die Aktivierungsenergie $W$
+berechnen durch
+\begin{equation*}
+    W = A\cdot k_\text{B}\,.
+\end{equation*}
+Außerdem 
