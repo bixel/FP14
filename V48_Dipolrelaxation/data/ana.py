@@ -52,7 +52,6 @@ for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
     fit_function = linear_fit
     var, _ = curve_fit(fit_function, T[selection],
                        I[selection], p0=p0)
-    print(var)
     I_cleaned = I - fit_function(T, *var)
     I_cleaned = I_cleaned - np.min(I_cleaned)
     if name == 'set1':
@@ -66,6 +65,8 @@ for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
     plt.plot(T[selection], I[selection], 'g.', label='Data (used for fit)')
     plt.plot(T, I_cleaned, 'r.', label='Cleaned Data')
     plt.xlim(240, 320)
+    plt.xlabel(r'$T$ / K')
+    plt.ylabel(r'$I$ / pA')
     plt.legend(loc='best')
     if p0:
         plt.plot(xs, fit_function(xs, *p0))
@@ -93,7 +94,7 @@ for T, I, selection, name in [[T1, I1_cleaned,
                               (T2 > 250) & (T2 < 267), 'set2']]:
     T0 = T[selection][0]
     val, cov = curve_fit(
-        lambda x, C1, W: j(x, C1, 0, W, T[selection][0]),
+        lambda x, C1, W: j(x, C1, 0, W, T0),
         T[selection], I[selection], p0=[1, 5e-20]
     )
     errs = np.sqrt(np.diag(cov))
@@ -118,12 +119,27 @@ def better_fit(T, i_T, Tstar):
         [trapz(i_T[(T > t) & (T < Tstar)], T[(T > t) & (T < Tstar)])
          for t in T]
     )
-    print(integral)
     return np.log(integral / i_T)
 
-for T, I, min_T, name in [[T1, I1_cleaned, 310, 'set1'],
-                          [T2, I2_cleaned, 320, 'set2']]:
-    logstuff = better_fit(T, I, min_T)
-    plt.plot(1 / T, logstuff, '+')
+for T, I, Tstar, selection, name in [[T1, I1_cleaned, 280,
+                                     (T1 > 250) & (T1 < 275), 'set1'],
+                                     [T2, I2_cleaned, 295,
+                                     (T2 > 250) & (T2 < 284), 'set2']]:
+    T = T[selection]
+    I = I[selection]
+    logstuff = better_fit(T, I, Tstar)
+    T = T[np.isfinite(logstuff)]
+    logstuff = logstuff[np.isfinite(logstuff)]
+    print(logstuff)
+    var, cov = curve_fit(linear_fit, 1 / T, logstuff)
+    errs = np.sqrt(np.diag(cov))
+    print(var, errs)
+    plt.plot(1 / T, logstuff, 'g.', label='Cleaned Data')
+    xs = np.linspace(np.min(1/T), np.max(1/T))
+    plt.plot(xs, linear_fit(xs, *var), 'r-', label='Fit')
+    plt.ticklabel_format(style='sci', scilimits=(0.1, 1000))
+    plt.xlabel(r'$1/T$ / $1/\mathrm{K}$')
+    plt.ylabel(r'$F(T)$')
+    plt.legend(loc='best')
     plt.savefig(plotdir + 'integrated-fit-{}.pdf'.format(name))
     plt.clf()
