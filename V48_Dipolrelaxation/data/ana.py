@@ -87,24 +87,26 @@ def j(T, C1, C2, W, T0):
             )
 
 # Fit and plot for each dataset
-for T, I, min_T, max_T, name in [[T1, I1_cleaned, min1, max1, 'set1'],
-                                 [T2, I2_cleaned, min2, max2, 'set2']]:
-    T_fit_values = T[(T > min_T) & (T < max_T)]
-    I_fit_values = I[(T > min_T) & (T < max_T)]
-    print(T_fit_values, I_fit_values)
-
+for T, I, selection, name in [[T1, I1_cleaned,
+                              (T1 > 260) & (T1 < 280), 'set1'],
+                              [T2, I2_cleaned,
+                              (T2 > 250) & (T2 < 267), 'set2']]:
+    T0 = T[selection][0]
     val, cov = curve_fit(
-        lambda x, C1, W: j(x, C1, 0, W, T[T > min1][0]),
-        T_fit_values, I_fit_values, p0=[1, 5e-20]
+        lambda x, C1, W: j(x, C1, 0, W, T[selection][0]),
+        T[selection], I[selection], p0=[1, 5e-20]
     )
     errs = np.sqrt(np.diag(cov))
-    print(val, errs)
-
-    xs = np.linspace(min_T, max_T, 100)
-    # mark_fit_area((200, min_T), (0, 25), alpha=0.2, edgecolor='none')
-    # mark_fit_area((max_T, 340), (0, 25), alpha=0.2, edgecolor='none')
-    plt.plot(T, I, '+')
-    plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=250))
+    xs = np.linspace(220, 300, 100)
+    plt.ylim(0, 25)
+    plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=T0), 'r-', label='Fit')
+    plt.plot(T[selection], I[selection], 'g.',
+             label='Cleaned Data\n(used by fit)')
+    plt.plot(T[~selection], I[~selection], 'b.',
+             label='Cleaned Data\n(ignored by fit)')
+    plt.xlabel(r'$T$ / K')
+    plt.ylabel(r'$I_\mathrm{cl}$ / pA')
+    plt.legend(loc='best')
     plt.savefig(plotdir + 'fit_approx_{}.pdf'.format(name))
     plt.clf()
 
