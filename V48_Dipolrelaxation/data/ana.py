@@ -13,6 +13,7 @@ from scipy.integrate import quad, trapz
 from textable import table
 
 from uncertainties import ufloat
+from uncertainties.unumpy import exp
 
 T1, I1 = np.genfromtxt('set1.txt', unpack=True)
 T2, I2 = np.genfromtxt('set2.txt', unpack=True)
@@ -144,19 +145,26 @@ def better_fit(T, i_T, Tstar):
     )
     return np.log(integral / i_T)
 
-for T, I, Tstar, selection, name in [[T1, I1_cleaned, 280,
-                                     (T1 > 250) & (T1 < 275), 'set1'],
-                                     [T2, I2_cleaned, 295,
-                                     (T2 > 250) & (T2 < 284), 'set2']]:
+for T, I, Tstar, selection, name, b in [[T1, I1_cleaned, 280,
+                                        (T1 > 250) & (T1 < 275), 'set1', 2],
+                                        [T2, I2_cleaned, 295,
+                                        (T2 > 250) & (T2 < 284), 'set2', 4]]:
     T = T[selection]
     I = I[selection]
     logstuff = better_fit(T, I, Tstar)
     T = T[np.isfinite(logstuff)]
     logstuff = logstuff[np.isfinite(logstuff)]
-    print(logstuff)
     var, cov = curve_fit(linear_fit, 1 / T, logstuff)
     errs = np.sqrt(np.diag(cov))
-    print(var, errs)
+    A = ufloat(var[0], errs[0])
+    W = A * constants.k
+    Tmax = ufloat(T[np.argmax(I)], 0.1)
+    tau0 = ((constants.k * Tmax**2) / (W * b)
+            * exp(-W / (constants.k * Tmax)))
+    with open('{}W_integrated_{}.tex'.format(texdir, name), 'w') as f:
+        f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W / constants.eV))
+    with open('{}tau0_integrated_{}.tex'.format(texdir, name), 'w') as f:
+        f.write(r'\tau_0 = \SI{{{:L}}}{{\femto\second}}'.format(tau0 * 1e15))
     plt.plot(1 / T, logstuff, 'g.', label='Cleaned Data')
     xs = np.linspace(np.min(1/T), np.max(1/T))
     plt.plot(xs, linear_fit(xs, *var), 'r-', label='Fit')
