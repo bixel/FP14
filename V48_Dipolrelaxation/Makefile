@@ -24,7 +24,7 @@ PLOTS_WITH_PATH = $(patsubst %,build/plots/%,$(PLOTS))
 all: build/00_main.pdf
 
 build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) $(PLOTS_WITH_PATH) | build
-	latexmk $(TEXOPTIONS) build 00_main.tex
+	latexmk $(TEXOPTIONS) 00_main.tex
 
 $(PLOTS_WITH_PATH): data/ana.py data/set*.txt | build
 	cd data; \
