@@ -69,6 +69,16 @@ Der Fit liefert
     sind grün markiert.}
     \label{fig:fit_approx_set2}
 \end{figure}
+Der erste Datensatz liefert des in Abbildung \ref{fig:fit_approx_set1}
+dargestellte Ergebnis mit $\input{build/tex/W_approx_set1.tex}$.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/fit_approx_set1.pdf}
+    \caption{Ausgleichskurve zur approximativen Bestimmung der
+    Aktivierungsenergie $W$. Die für den Fit benutzten Datenpunkte
+    sind grün markiert.}
+    \label{fig:fit_approx_set1}
+\end{figure}
 
 \subsection{Ausgleichsrechnung mit Integration}
 \label{subsec:integration}
@@ -93,7 +103,7 @@ bei maximalem Strom $T_\text{max}$ bestimmt:
     \tau_0 = \frac{k_\text{B}T_\text{max}^2}{Wb}
              \exp\!\left[-\frac{W}{k_\text{B}T_\text{max}} \right]
 \end{equation*}
-Der Fit ist in Abbildung \ref{fig:integrate_fit} dargestellt, er liefert
+Der Fit ist in Abbildung \ref{fig:integrate_fit2} dargestellt, er liefert
 \begin{equation*}
     \input{build/tex/W_integrated_set2.tex} \qquad\text{und}\qquad \input{build/tex/tau0_integrated_set2.tex}\,.
 \end{equation*}
@@ -101,12 +111,19 @@ Der Fit ist in Abbildung \ref{fig:integrate_fit} dargestellt, er liefert
     \centering
     \includegraphics[width=0.9\linewidth]{build/plots/integrated-fit-set2.pdf}
     \caption{Fit an linearisierte Daten der zweiten Messung.}
-    \label{fig:integrate_fit}
+    \label{fig:integrate_fit2}
 \end{figure}
 Die Analyse der ersten Messreihe liefert bei analogem Vorgehen
 $\input{build/tex/W_integrated_set1.tex}$ und
 $\input{build/tex/tau0_integrated_set1.tex}$, ist jedoch aus oben genannten
-Gründen nicht aussagekräftig.
+Gründen nicht aussagekräftig. Der entsprechende Fit ist in Abbildung
+\ref{fig:integrate_fit1} dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/plots/integrated-fit-set1.pdf}
+    \caption{Fit an linearisierte Daten der ersten Messung.}
+    \label{fig:integrate_fit1}
+\end{figure}
 
 \newpage
 \section{Diskussion}

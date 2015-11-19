@@ -110,7 +110,7 @@ def j(T, C1, C2, W, T0):
 
 # Fit and plot for each dataset
 for T, I, selection, name in [[T1, I1_cleaned,
-                              (T1 > 260) & (T1 < 280), 'set1'],
+                              (T1 > 265) & (T1 < 280), 'set1'],
                               [T2, I2_cleaned,
                               (T2 > 250) & (T2 < 267), 'set2']]:
     T0 = T[selection][0]
