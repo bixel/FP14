@@ -164,7 +164,13 @@ for T, I, Tstar, selection, name, b in [[T1, I1_cleaned, 280,
     with open('{}W_integrated_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W / constants.eV))
     with open('{}tau0_integrated_{}.tex'.format(texdir, name), 'w') as f:
-        f.write(r'\tau_0 = \SI{{{:L}}}{{\femto\second}}'.format(tau0 * 1e15))
+        factor = 1e15
+        unit = r'\femto'
+        if name == 'set1':
+            factor = 1e3
+            unit = r'\milli'
+        f.write(r'\tau_0 = \SI{{{:L}}}{{{}\second}}'
+                .format(tau0 * factor, unit))
     plt.plot(1 / T, logstuff, 'g.', label='Cleaned Data')
     xs = np.linspace(np.min(1/T), np.max(1/T))
     plt.plot(xs, linear_fit(xs, *var), 'r-', label='Fit')
