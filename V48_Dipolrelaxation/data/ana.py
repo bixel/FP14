@@ -51,6 +51,18 @@ def mark_fit_area(xlim, ylim, plt=plt, **kwargs):
         ylim[1] - ylim[0],
         **kwargs))
 
+# t1, t2 = [], []
+#
+# for t, T, name in [[t1, T1, 'set1'], [t2 / 60, T2, 'set2']]:
+#     var, covar = curve_fit(linear_fit, T, range(len(T)))
+#     errs = np.sqrt(np.diag(covar))
+#     b = ufloat(var[0], errs[0])
+#     plt.plot(T, 'g.')
+#     xs = np.linspace(np.min(t), np.max(t))
+#     plt.plot(xs, linear_fit(xs, *var))
+#     plt.savefig('{}b_fit_{}.pdf'.format(plotdir, name))
+#     plt.clf()
+
 
 for T, I, selection, p0, name, ff in [
         [
