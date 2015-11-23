@@ -85,7 +85,9 @@ for T, I, selection, p0, name, ff in [
     var, _ = curve_fit(fit_function, T[selection],
                        I[selection], p0=p0)
     I_cleaned = I - fit_function(T, *var)
-    # I_cleaned = I_cleaned - np.min(I_cleaned)
+    I_min = np.min(I_cleaned)
+    I_cleaned -= I_min
+    print(I_min)
     if name == 'set1':
         I1_cleaned = I_cleaned
     else:
@@ -108,9 +110,10 @@ for T, I, selection, p0, name, ff in [
     plt.plot(T[~selection], I[~selection], 'b.',
              label='Data (ignored for fit)')
     plt.plot(T[selection], I[selection], 'g.', label='Data (used for fit)')
-    plt.plot(T, I_cleaned, 'r.', label='Cleaned Data')
+    plt.plot(T, I_cleaned - I_min, 'r.', label='Cleaned Data')
+    plt.plot(xs, [-I_min] * len(xs), label='Offset')
     plt.xlim(240, 320)
-    plt.ylim(-5, 30)
+    plt.ylim(0, 30)
     plt.xlabel(r'$T$ / K')
     plt.ylabel(r'$I$ / pA')
     # if p0:
@@ -161,7 +164,7 @@ for T, I, selection, name in [
     with open('{}W_approx_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W))
     xs = np.linspace(220, 300, 100)
-    plt.ylim(-5, 25)
+    plt.ylim(0, 25)
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=T0), 'r-', label='Fit')
     plt.plot(T[selection], I[selection], 'g.',
              label='Cleaned Data\n(used by fit)')
@@ -197,8 +200,8 @@ for T, I, Tstar, selection, name, b, factor, unit in [
         [
             T2,
             I2_cleaned - np.min(I2_cleaned),
-            295,
-            (T2 > 250) & (T2 < 284),
+            330,
+            (T2 > 250) & (T2 < 300),
             'set2',
             4,
             1e12,
@@ -218,6 +221,7 @@ for T, I, Tstar, selection, name, b, factor, unit in [
     Tmax = ufloat(T[np.argmax(I)], 0.1)
     tau0 = ((constants.k * Tmax**2) / (W * b)
             * exp(-W / (constants.k * Tmax)))
+    print(tau0)
     with open('{}W_integrated_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W / constants.eV))
     with open('{}tau0_integrated_{}.tex'.format(texdir, name), 'w') as f:
@@ -235,6 +239,8 @@ for T, I, Tstar, selection, name, b, factor, unit in [
             1 / float(tl.get_text())
             / float(ax.get_xaxis().get_offset_text()
                     .get_text().replace('−', '-')))
+        if tl.get_text()
+        else ''
         for tl in ax.get_xticklabels()
     ])
     plt.xlabel(r'$1/T$ / $1/\mathrm{K}$')
