@@ -34,8 +34,8 @@ def linear_fit(T, A, B):
     return A*T + B
 
 
-def exp_fit(T, A, B, I0):
-    return A * np.exp(B * T) + I0
+def exp_fit(T, A, B, T0, I0):
+    return A * np.exp(B * (T - T0)) + I0
 
 
 def mark_lower_cut(pltobj=plt):
@@ -52,16 +52,28 @@ def mark_fit_area(xlim, ylim, plt=plt, **kwargs):
         **kwargs))
 
 
-for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
-                                   None, 'set1'],
-                                  [T2, I2, ((T2 > 280) & (T2 < 292)
-                                            | (T2 > 245) & (T2 < 260)),
-                                   None, 'set2']]:
-    fit_function = linear_fit
+for T, I, selection, p0, name, ff in [
+        [
+            T1,
+            I1,
+            ((T1 > 245) & (T1 < 275) | (T1 > 305)),
+            [1, 1, constants.C2K(0), 5],
+            'set1',
+            exp_fit,
+        ],
+        [
+            T2,
+            I2,
+            ((T2 > 280) & (T2 < 292) | (T2 > 245) & (T2 < 260)),
+            None,
+            'set2',
+            linear_fit,
+        ]]:
+    fit_function = ff
     var, _ = curve_fit(fit_function, T[selection],
                        I[selection], p0=p0)
     I_cleaned = I - fit_function(T, *var)
-    I_cleaned = I_cleaned - np.min(I_cleaned)
+    # I_cleaned = I_cleaned - np.min(I_cleaned)
     if name == 'set1':
         I1_cleaned = I_cleaned
     else:
@@ -86,11 +98,12 @@ for T, I, selection, p0, name in [[T1, I1, (T1 > 280) & (T1 < 294),
     plt.plot(T[selection], I[selection], 'g.', label='Data (used for fit)')
     plt.plot(T, I_cleaned, 'r.', label='Cleaned Data')
     plt.xlim(240, 320)
+    plt.ylim(-5, 30)
     plt.xlabel(r'$T$ / K')
     plt.ylabel(r'$I$ / pA')
+    # if p0:
+    #     plt.plot(xs, fit_function(xs, *p0), label='fitfunction')
     plt.legend(loc='best')
-    if p0:
-        plt.plot(xs, fit_function(xs, *p0))
     plt.savefig('{}cleaned_data-{}.pdf'.format(plotdir, name))
     plt.clf()
 
@@ -99,20 +112,33 @@ def j(T, C1, C2, W, T0):
     """ This function implements equation (8) in scriptum.
         This is equal to (9) for C2 == 0.
     """
-    integral = np.array([
-        quad(lambda x: np.exp(-W / (constants.k * x)), T0, t)[0]
-        for t in T
-    ])
+    if C2 != 0:
+        integral = np.array([
+            quad(lambda x: np.exp(-W / (constants.k * x)), T0, t)[0]
+            for t in T
+        ])
+    else:
+        integral = 0
     return (C1
-            * np.exp(C2 * integral[0])
+            * np.exp(C2 * integral)
             * np.exp(- W / (constants.k * T))
             )
 
 # Fit and plot for each dataset
-for T, I, selection, name in [[T1, I1_cleaned,
-                              (T1 > 265) & (T1 < 280), 'set1'],
-                              [T2, I2_cleaned,
-                              (T2 > 250) & (T2 < 267), 'set2']]:
+for T, I, selection, name in [
+        [
+            T1,
+            I1_cleaned - np.min(I1_cleaned),
+            (T1 > 258) & (T1 < 290),
+            'set1'
+        ],
+        [
+            T2,
+            I2_cleaned - np.min(I2_cleaned),
+            (T2 > 250) & (T2 < 267),
+            'set2'
+        ]]:
+    print(name)
     T0 = T[selection][0]
     val, cov = curve_fit(
         lambda x, C1, W: j(x, C1, 0, W, T0),
@@ -123,7 +149,7 @@ for T, I, selection, name in [[T1, I1_cleaned,
     with open('{}W_approx_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W))
     xs = np.linspace(220, 300, 100)
-    plt.ylim(0, 25)
+    plt.ylim(-5, 25)
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=T0), 'r-', label='Fit')
     plt.plot(T[selection], I[selection], 'g.',
              label='Cleaned Data\n(used by fit)')
@@ -145,15 +171,34 @@ def better_fit(T, i_T, Tstar):
     )
     return np.log(integral / i_T)
 
-for T, I, Tstar, selection, name, b in [[T1, I1_cleaned, 280,
-                                        (T1 > 250) & (T1 < 275), 'set1', 2],
-                                        [T2, I2_cleaned, 295,
-                                        (T2 > 250) & (T2 < 284), 'set2', 4]]:
+for T, I, Tstar, selection, name, b, factor, unit in [
+        [
+            T1,
+            I1_cleaned - np.min(I1_cleaned),
+            320,
+            (T1 > 260) & (T1 < 310),
+            'set1',
+            2,
+            1e12,
+            r'\pico',
+        ],
+        [
+            T2,
+            I2_cleaned - np.min(I2_cleaned),
+            295,
+            (T2 > 250) & (T2 < 284),
+            'set2',
+            4,
+            1e12,
+            r'\pico',
+        ]]:
+    print('better_fit {}'.format(name))
     T = T[selection]
     I = I[selection]
     logstuff = better_fit(T, I, Tstar)
     T = T[np.isfinite(logstuff)]
     logstuff = logstuff[np.isfinite(logstuff)]
+    print(T, logstuff)
     var, cov = curve_fit(linear_fit, 1 / T, logstuff)
     errs = np.sqrt(np.diag(cov))
     A = ufloat(var[0], errs[0])
@@ -164,17 +209,22 @@ for T, I, Tstar, selection, name, b in [[T1, I1_cleaned, 280,
     with open('{}W_integrated_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W / constants.eV))
     with open('{}tau0_integrated_{}.tex'.format(texdir, name), 'w') as f:
-        factor = 1e15
-        unit = r'\femto'
-        if name == 'set1':
-            factor = 1e3
-            unit = r'\milli'
         f.write(r'\tau_0 = \SI{{{:L}}}{{{}\second}}'
                 .format(tau0 * factor, unit))
     plt.plot(1 / T, logstuff, 'g.', label='Cleaned Data')
     xs = np.linspace(np.min(1/T), np.max(1/T))
     plt.plot(xs, linear_fit(xs, *var), 'r-', label='Fit')
     plt.ticklabel_format(style='sci', scilimits=(0.1, 1000))
+    plt.savefig(plotdir + 'integrated-fit-{}.pdf'.format(name))
+    ax = plt.gca()
+    print([tl.get_text() for tl in ax.get_xticklabels()])
+    ax.set_xticklabels([
+        r'$\frac{{1}}{{{:.0f}}}$'.format(
+            1 / float(tl.get_text())
+            / float(ax.get_xaxis().get_offset_text()
+                    .get_text().replace('−', '-')))
+        for tl in ax.get_xticklabels()
+    ])
     plt.xlabel(r'$1/T$ / $1/\mathrm{K}$')
     plt.ylabel(r'$F(T)$')
     plt.legend(loc='best')
