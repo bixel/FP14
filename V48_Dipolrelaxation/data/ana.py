@@ -64,11 +64,12 @@ def mark_fit_area(xlim, ylim, plt=plt, **kwargs):
 #     plt.clf()
 
 
-for T, I, selection, p0, name, ff in [
+for T, I, selection, fit_selection, p0, name, ff in [
         [
             T1,
             I1,
             ((T1 > 245) & (T1 < 275) | (T1 > 305)),
+            (T1 > 255) & (T1 < 310),
             [1, 1, constants.C2K(0), 5],
             'set1',
             exp_fit,
@@ -77,6 +78,7 @@ for T, I, selection, p0, name, ff in [
             T2,
             I2,
             ((T2 > 280) & (T2 < 292) | (T2 > 245) & (T2 < 260)),
+            (T1 > 245) & (T1 < 290),
             None,
             'set2',
             linear_fit,
@@ -85,7 +87,7 @@ for T, I, selection, p0, name, ff in [
     var, _ = curve_fit(fit_function, T[selection],
                        I[selection], p0=p0)
     I_cleaned = I - fit_function(T, *var)
-    I_min = np.min(I_cleaned)
+    I_min = np.min(I_cleaned[fit_selection])
     I_cleaned -= I_min
     print(I_min)
     if name == 'set1':
@@ -110,12 +112,13 @@ for T, I, selection, p0, name, ff in [
     plt.plot(T[~selection], I[~selection], 'b.',
              label='Data (ignored for fit)')
     plt.plot(T[selection], I[selection], 'g.', label='Data (used for fit)')
-    plt.plot(T, I_cleaned - I_min, 'r.', label='Cleaned Data')
-    plt.plot(xs, [-I_min] * len(xs), label='Offset')
+    plt.plot(T, I_cleaned + I_min, 'r.', label='Cleaned Data')
+    plt.plot(xs, [I_min] * len(xs), label='Offset')
     plt.xlim(240, 320)
-    plt.ylim(0, 30)
+    plt.ylim(-9, 30)
     plt.xlabel(r'$T$ / K')
     plt.ylabel(r'$I$ / pA')
+    plt.grid()
     # if p0:
     #     plt.plot(xs, fit_function(xs, *p0), label='fitfunction')
     plt.legend(loc='best')
@@ -140,31 +143,37 @@ def j(T, C1, C2, W, T0):
             )
 
 # Fit and plot for each dataset
-for T, I, selection, name in [
+for T, I, selection, name, p0 in [
         [
             T1,
-            I1_cleaned - np.min(I1_cleaned),
+            I1_cleaned,
             (T1 > 258) & (T1 < 290),
-            'set1'
+            'set1',
+            [1e-3, 1e-20]
         ],
         [
             T2,
-            I2_cleaned - np.min(I2_cleaned),
+            I2_cleaned,
             (T2 > 250) & (T2 < 267),
-            'set2'
+            'set2',
+            [1e9, 1e-20]
         ]]:
     print(name)
     T0 = T[selection][0]
+    print(p0)
     val, cov = curve_fit(
         lambda x, C1, W: j(x, C1, 0, W, T0),
-        T[selection], I[selection], p0=[1, 5e-20]
+        T[selection], I[selection], p0=p0, maxfev=2000
     )
+    print(val)
     errs = np.sqrt(np.diag(cov))
     W = ufloat(val[1], errs[1]) / constants.eV
     with open('{}W_approx_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W))
     xs = np.linspace(220, 300, 100)
-    plt.ylim(0, 25)
+    plt.ylim(-4, 23)
+    plt.xlim(220, 320)
+    plt.grid()
     plt.plot(xs, j(xs, C1=val[0], W=val[1], C2=0, T0=T0), 'r-', label='Fit')
     plt.plot(T[selection], I[selection], 'g.',
              label='Cleaned Data\n(used by fit)')
@@ -189,7 +198,7 @@ def better_fit(T, i_T, Tstar):
 for T, I, Tstar, selection, name, b, factor, unit in [
         [
             T1,
-            I1_cleaned - np.min(I1_cleaned),
+            I1_cleaned,
             320,
             (T1 > 260) & (T1 < 310),
             'set1',
@@ -199,13 +208,13 @@ for T, I, Tstar, selection, name, b, factor, unit in [
         ],
         [
             T2,
-            I2_cleaned - np.min(I2_cleaned),
-            330,
-            (T2 > 250) & (T2 < 300),
+            I2_cleaned,
+            290,
+            (T2 > 250) & (T2 < 280),
             'set2',
             4,
-            1e12,
-            r'\pico',
+            1e18,
+            r'\atto',
         ]]:
     print('better_fit {}'.format(name))
     T = T[selection]
@@ -216,12 +225,15 @@ for T, I, Tstar, selection, name, b, factor, unit in [
     print(T, logstuff)
     var, cov = curve_fit(linear_fit, 1 / T, logstuff)
     errs = np.sqrt(np.diag(cov))
+    print(var, errs)
     A = ufloat(var[0], errs[0])
     W = A * constants.k
     Tmax = ufloat(T[np.argmax(I)], 0.1)
+    with open('{}T_max_{}.tex'.format(texdir, name), 'w') as f:
+        f.write(r'T_\text{{max}} = \SI{{{:L}}}{{\kelvin}}'.format(Tmax))
     tau0 = ((constants.k * Tmax**2) / (W * b)
             * exp(-W / (constants.k * Tmax)))
-    print(tau0)
+    print(tau0, Tmax, W, b)
     with open('{}W_integrated_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W / constants.eV))
     with open('{}tau0_integrated_{}.tex'.format(texdir, name), 'w') as f:

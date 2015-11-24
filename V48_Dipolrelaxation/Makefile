@@ -13,7 +13,9 @@ TEXHEADERS = ../head.tex \
 #techcontent
 TEXCONTENT = 00_main.tex \
 			 01_theorie.tex  \
-			 02_auswertung.tex
+			 02_auswertung.tex \
+			 data/data-set1.tex \
+			 data/data-set2.tex
 
 
 # Dont touch this laalaaalalaaaa
