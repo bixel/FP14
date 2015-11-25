@@ -13,6 +13,7 @@ from scipy.integrate import quad, trapz
 from textable import table
 
 from uncertainties import ufloat
+from uncertainties import unumpy as unp
 from uncertainties.unumpy import exp
 
 T1, I1 = np.genfromtxt('set1.txt', unpack=True)
@@ -23,6 +24,8 @@ I1_cleaned, I2_cleaned = [], []
 
 min1, max1 = 260, 285
 min2, max2 = 250, 267
+
+Ws = {'integrated': {}, 'approx': {}}
 
 plotdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                        '../build/plots/')
@@ -168,6 +171,7 @@ for T, I, selection, name, p0 in [
     print(val)
     errs = np.sqrt(np.diag(cov))
     W = ufloat(val[1], errs[1]) / constants.eV
+    Ws['approx'][name] = W
     with open('{}W_approx_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'W = \SI{{{:L}}}{{\electronvolt}}'.format(W))
     xs = np.linspace(220, 300, 100)
@@ -228,6 +232,7 @@ for T, I, Tstar, selection, name, b, factor, unit in [
     print(var, errs)
     A = ufloat(var[0], errs[0])
     W = A * constants.k
+    Ws['integrated'][name] = W
     Tmax = ufloat(T[np.argmax(I)], 0.1)
     with open('{}T_max_{}.tex'.format(texdir, name), 'w') as f:
         f.write(r'T_\text{{max}} = \SI{{{:L}}}{{\kelvin}}'.format(Tmax))
@@ -260,3 +265,44 @@ for T, I, Tstar, selection, name, b, factor, unit in [
     plt.legend(loc='best')
     plt.savefig(plotdir + 'integrated-fit-{}.pdf'.format(name))
     plt.clf()
+
+
+def tau0(W, Tmax, b):
+    return ((constants.k * Tmax**2) / (W * b) * exp(-W / (constants.k * Tmax)))
+
+
+ws = np.linspace(0.3 * constants.eV, 1.8 * constants.eV, 500)
+tau0s = unp.uarray([tau0(w, 266, 4) for w in ws], 0.1)
+plt.plot(ws / constants.eV, unp.nominal_values(tau0s))
+plt.xlabel(r'W / eV')
+plt.ylabel(r'$\tau_0$ / s')
+plt.yscale('log')
+plt.savefig('{}_tau0_test.pdf'.format(plotdir))
+plt.clf()
+
+W1 = Ws['integrated']['set1']
+W2 = Ws['integrated']['set2']
+with open('{}W_ratio_approx.tex'.format(texdir), 'w') as f:
+    f.write(r'\num{{{:L}}}'.format(
+        Ws['approx']['set2'] / Ws['approx']['set1']
+    ))
+with open('{}W_ratio_integrated.tex'.format(texdir), 'w') as f:
+    f.write(r'\num{{{:L}}}'.format(
+        Ws['integrated']['set2'] / Ws['integrated']['set1']
+    ))
+with open('{}W_err_set1.tex'.format(texdir), 'w') as f:
+    f.write(r'\SI{{{:.3f}}}{{\electronvolt}}'.format(
+        Ws['integrated']['set1'].s / constants.eV
+    ))
+with open('{}W_err_set2.tex'.format(texdir), 'w') as f:
+    f.write(r'\SI{{{:.2f}}}{{\electronvolt}}'.format(
+        Ws['integrated']['set2'].s / constants.eV
+    ))
+with open('{}tau0_err_estimate_set1.tex'.format(texdir), 'w') as f:
+    f.write(r'\num{{{:e}}}'.format(
+        tau0(W1.n - 0.3 * constants.eV, 291.55, 2) - tau0(W1.n, 291.55, 2)
+    ))
+with open('{}tau0_err_estimate_set2.tex'.format(texdir), 'w') as f:
+    f.write(r'\num{{{:e}}}'.format(
+        tau0(W2.n - 0.3 * constants.eV, 266.95, 4) - tau0(W2.n, 266.95, 4)
+    ))

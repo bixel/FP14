@@ -111,10 +111,11 @@ berechnen durch
 \end{equation*}
 Außerdem wird schließlich die Relaxationszeit $\tau_0$ aus der Temperatur
 bei maximalem Strom $T_\text{max}$ bestimmt:
-\begin{equation*}
+\begin{equation}
+    \label{eqn:tau0}
     \tau_0 = \frac{k_\text{B}T_\text{max}^2}{Wb}
              \exp\!\left[-\frac{W}{k_\text{B}T_\text{max}} \right]
-\end{equation*}
+\end{equation}
 Die Fits sind in Abbildungen \ref{fig:integrate_fit1} und \ref{fig:integrate_fit2}
 dargestellt, sie liefern
 \begin{equation*}
@@ -125,6 +126,8 @@ für Datensatz A in einem Bereich $T \in [\SI{260}{\kelvin}, \SI{310}{\kelvin}]$
     \input{build/tex/W_integrated_set2.tex} \qquad\text{und}\qquad \input{build/tex/tau0_integrated_set2.tex}
 \end{equation*}
 für Datensatz B in einem Bereich $T \in [\SI{250}{\kelvin}, \SI{280}{\kelvin}]$ bei $\input{build/tex/T_max_set2.tex}$.
+Die Fehler dieser Werte berücksichtigen jedoch keine systematischen Unsicherheiten
+und werden daher stark unterschätzt. Darauf wird in der Diskussion weiter eingegangen.
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{build/plots/integrated-fit-set1.pdf}
@@ -143,13 +146,27 @@ für Datensatz B in einem Bereich $T \in [\SI{250}{\kelvin}, \SI{280}{\kelvin}]$
 \label{sec:diskussion}
 Alle hier durchgeführten Methoden zur Bestimmung der Aktivierungsenergie $W$
 liefern Werte im erwarteten Bereich von einigen Millielektronvolt.
-Die verschiedenen Messreihen liefern jedoch um einen Faktor \num{2} beziehungsweise
-\num{1.7} unterschiedliche Werte, was an den stark unterschiedlichen Peaks
-in den Datensätzen liegt und weiter untersucht werden müsste.
-Das größte Problem der Analyse besteht in der extremen Diskrepanz der Werte
-$\tau_0$, die sich um einige Größenordnungen unterscheiden. Möglicherweise
-spielen hier numerische Instabilitäten eine große Rolle, die weiter untersucht
-werden müsste.
+Die verschiedenen Messreihen liefern unterscheiden sich jedoch um einen Faktor
+\input{build/tex/W_ratio_approx.tex} (approximative Methode) beziehungsweise
+\input{build/tex/W_ratio_integrated.tex} (integrierende Methode), was
+auf systematische Fehler hindeutet und mit weiteren Messungen untersucht
+werden muss.
 
-Der Grundsätzliche Nachweis einer Dipolrelaxation im hier betrachten Modell
-kann jedoch verifiziert werden.
+Die mit Hilfe der integrierenden Methode bestimmten Werte der Relaxationszeit
+$\tau_0$ sind schließlich nicht signifikant.
+Die Fehler berücksichtigen nicht die starke Abhängigkeit von $\tau_0$ von der
+Aktivierungsenergie $W$, die in Abbildung \ref{fig:_tau_test} dargestellt ist.
+Bei einer Änderung von $W$ um einige \SI{100}{\milli\electronvolt} ändert
+sich der Wert der Relaxationszeit bereits um etliche Größenordnungen.
+Änderungen in diesem Bereich treten bereits auf, wenn der Wertebereich des Fits
+leicht verändert wird und einige Meßpunkte mehr oder weniger betrachtet werden.
+Die damit verbundenen Fehler machen eine Aussage über den wahren Wert von
+$\tau_0$ unmöglich.
+Die Unsicherheit $\Delta\tau_0$ sollte daher wesentlich zu größeren Werten hin
+korrigiert werden.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/_tau0_test.pdf}
+    \caption{Relaxationszeit $\tau_0$ (Gleichung \ref{eqn:tau0}) in Abhängigkeit der Aktivierugnsenergie $W$.}
+    \label{fig:_tau_test}
+\end{figure}
