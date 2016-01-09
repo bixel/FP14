@@ -10,11 +10,12 @@ Magnetfeld wird dabei durch die Boltzmann-Verteilung beschrieben:
     \frac{N_2}{N_1} = \frac{g_2}{g_1}\cdot
         \mathrm{e}^\frac{W_1 - W_2}{k_\text{B}T}\,.
 \end{equation}
-Dabei bezeichnet $g_i$ und $W_i$ ein jeweiliges statistisches Gewicht,
-beziehungsweise die jeweilige Energie $T$ die Temperatur und $k_\text{B}$ die
-bekannte Boltzmann-Konstante.
+Dabei bezeichnet $g_i$ ein jeweiliges statistisches Gewicht, $W_i$, die
+jeweilige Energie, $T$ die Temperatur und $k_\text{B}$ die bekannte
+Boltzmann-Konstante.
 
-Diese Verteilung kann durch optisches Pumpen beeinflusst werden.
+Diese Verteilung kann durch sogenanntes optisches Pumpen, worauf im Abschnitt
+\ref{subsec:optisches_pumpen} näher eingegangen wird, beeinflusst werden.
 Durch Einstrahlung von Licht der Wellenlänge
 \begin{equation}
 \label{eq:wellenlaenge}
@@ -61,12 +62,16 @@ Die Energie benachbarter Zeeman-Niveaus unterscheidet sich dabei jeweils um
     U_\text{HF} = g_F \mu_\text{B} B\,,
 \end{equation}
 mit dem Landé-Faktor $g_F$ und einem äußeren Magnetfeld der Feldstärke $B$.
-Aus der vektoriellen Betrachtung der magnetischen Momente und deren Richtungsquantelung folgt für den Landé-Faktor des Atoms
+Diese Differenz liegt üblicherweise im Bereich von einigen
+\si{\micro\electronvolt} und ist damit wesentlich kleiner als andere
+Energieskalen der Atomstruktur.
+Aus der vektoriellen Betrachtung der magnetischen Momente und deren
+Richtungsquantelung folgt für den Landé-Faktor des Atoms
 \begin{equation}
 \label{eq:lande_faktor}
     g_F = g_J \frac{F(F+1) + J(J+1) - I(I+1)}{2F(F+1)}\,.
 \end{equation}
-Da $g_S$ bekannt ist, kann zudem $g_J$ bestimmt werden zu
+Da $g_S$ bekannt ist, kann ebenso $g_J$ bestimmt werden zu
 \begin{equation}
 \label{eq:gj}
     g_J = \frac{\num{3.0023}\cdot J(J+1)
@@ -74,7 +79,33 @@ Da $g_S$ bekannt ist, kann zudem $g_J$ bestimmt werden zu
                {2J(J+1)}
           \,.
 \end{equation}
+Mit Hilfe des hier vorgestellten Versuchs soll der oben genannte Landé-Faktor
+$g_F$ bestimmt werden.
 
 \subsection{Optisches Pumpen}
 \label{subsec:optisches_pumpen}
+% Da der Energiebereich der Zeeman-Aufspaltung westentlich kleiner als der des
+% sichtbaren Lichtes ist, lassen sich Übergänge zwischen diesen Niveaus nicht
+% direkt messen.
+Übergänge zwischen zwei Energieniveaus eines Atoms können auf drei
+verschiedenen Wegen von Statten gehen. Unter Absorption eines Photons mit einer
+Energie, die der Lücke zweier Niveaus entspricht kann ein Elektron in das
+jeweils höhere Niveau angeregt werden.  Ein bereits angeregtes Elektron kann
+spontan unter Emission eines Photons in ein niedrigeres Niveau fallen.
+Schließlich kann ein Übergang von einem höheren Niveau $W_2$ in ein niedrigeres
+Niveau $W_1$ durch Einstrahlung eines Photons mit der Energie $W_2 - W_1$
+stimuliert werden.  Dabei wird ein zweites Photon mit denselben Eigenschaften
+des eingestrahlten Photons emittiert.
 
+Für diese Übergänge existieren auf Grund der Quanteneigenschaften der
+Elektronen bestimmte Auswahlregeln.  Unter Einstrahlung von rechtszirkular
+polarisiertem D1-Licht ($\sigma^+$-Licht) werden beispielsweise lediglich
+Übergänge angeregt, für die $\Delta M = \num{+1}$ gilt.  $M$ ist dabei die
+Quantenzahl der Zeeman-Aufspaltung.  Unter dieser Voraussetzung lässt sich ein
+Niveau $W_1$ entleeren, wenn es keine niedrigeren Niveaus gibt, aus denen $W_1$
+unter Beachtung von $\Delta M = \num{+1}$ erreicht werden kann, jedoch höhere
+Niveaus mit dieser Eigenschaft existieren, die folglich befüllt werden.
+
+Genau diese Bedingungen herrschen bei den hier untersuchten Atomen.
+Durch Einstrahlung von $\sigma^+$-Licht lässt sich eine Besetzungsinversion
+herstellen.
