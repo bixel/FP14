@@ -1,6 +1,5 @@
 # Lists and Configurables
-PLOTS = cleaned_data-set1.pdf fit_approx_set1.pdf integrated-fit-set1.pdf \
-		cleaned_data-set2.pdf fit_approx_set2.pdf integrated-fit-set2.pdf
+PLOTS = transmission.pdf
 
 TEXOPTIONS = -lualatex \
 			 --output-directory=build \
@@ -22,8 +21,11 @@ PLOTS_WITH_PATH = $(patsubst %,build/plots/%,$(PLOTS))
 
 all: build/00_main.pdf
 
-build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) | build
+build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) $(PLOTS_WITH_PATH) | build
 	latexmk $(TEXOPTIONS) 00_main.tex
+
+$(PLOTS_WITH_PATH): img/plot.py matplotlibrc | build
+	./img/plot.py
 
 build:
 	mkdir -p build/plots build/tex

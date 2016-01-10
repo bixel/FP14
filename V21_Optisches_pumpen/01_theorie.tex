@@ -84,18 +84,16 @@ $g_F$ bestimmt werden.
 
 \subsection{Optisches Pumpen}
 \label{subsec:optisches_pumpen}
-% Da der Energiebereich der Zeeman-Aufspaltung westentlich kleiner als der des
-% sichtbaren Lichtes ist, lassen sich Übergänge zwischen diesen Niveaus nicht
-% direkt messen.
 Übergänge zwischen zwei Energieniveaus eines Atoms können auf drei
-verschiedenen Wegen von Statten gehen. Unter Absorption eines Photons mit einer
-Energie, die der Lücke zweier Niveaus entspricht kann ein Elektron in das
-jeweils höhere Niveau angeregt werden.  Ein bereits angeregtes Elektron kann
-spontan unter Emission eines Photons in ein niedrigeres Niveau fallen.
+verschiedenen Wegen von Statten gehen. Unter \emph{Absorption} eines Photons
+mit einer Energie, die der Lücke zweier Niveaus entspricht kann ein Elektron in
+das jeweils höhere Niveau angeregt werden.  Ein bereits angeregtes Elektron
+kann spontan unter Emission eines Photons in ein niedrigeres Niveau fallen
+(\emph{spontene Emission}).
 Schließlich kann ein Übergang von einem höheren Niveau $W_2$ in ein niedrigeres
 Niveau $W_1$ durch Einstrahlung eines Photons mit der Energie $W_2 - W_1$
 stimuliert werden.  Dabei wird ein zweites Photon mit denselben Eigenschaften
-des eingestrahlten Photons emittiert.
+des eingestrahlten Photons emittiert (\emph{induzierte Emission}).
 
 Für diese Übergänge existieren auf Grund der Quanteneigenschaften der
 Elektronen bestimmte Auswahlregeln.  Unter Einstrahlung von rechtszirkular
@@ -108,4 +106,51 @@ Niveaus mit dieser Eigenschaft existieren, die folglich befüllt werden.
 
 Genau diese Bedingungen herrschen bei den hier untersuchten Atomen.
 Durch Einstrahlung von $\sigma^+$-Licht lässt sich eine Besetzungsinversion
-herstellen.
+herstellen. Diese Übergänge werden in Abbildung \ref{fig:besetzungsinversion}
+dargestellt. Der Einfachheit halber wird dabei die Hyperfeinstruktur nicht
+betrachtet, der Kernspin also vernachlässigt. Eine Besetzungsinversion kann
+jedoch analog zu diesem einfachen Beispiel auch mit Betrachtung des Kernspin
+auftreten.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/besetzungsinversion}
+    \caption{
+        Energieschema eines hypothetischen Alkali-Atoms \cite{V21}. Unter Einstrahlung von
+        $\sigma^+$-Licht sind lediglich die eingezeichneten Übergänge möglich.
+        Als Folge dessen lässt sich der Zustand $S, M_J=-\sfrac{1}{2}$
+        vollständig entleeren.
+    }
+    \label{fig:besetzungsinversion}
+\end{figure}
+
+\subsection{Messung der Zeeman-Aufspaltung}
+\label{subsec:messung}
+Die durch optisches Pumpen erreichte Besetzungsinversion kann durch Einkoppeln
+eines elektromagnetischen Schwingfeldes rückgängig gemacht werden. Hierfür wird
+die Feldstärke des Feldes variiert, bis der übervölkerte Zustand durch
+induzierte Emission entleert wird. Die entsprechende Resonanzfrequenz $\nu$
+genügt dann
+\begin{equation}
+\label{eq:resonanz}
+    h\nu = g_J \mu_B B_\text{m} \Delta M_J\,,
+\end{equation}
+wobei $B_\text{m}$ die Magnetfeldstärke des eingestrahlten Feldes bezeichnet.
+
+Um den Effekt der Besetzungszustände zu messen, genügt es ein Gas der zu
+untersuchenden Atome in den Strahlengang von zuvor beschriebenem
+$\sigma^+$-Licht zu bringen und die Intensität des transmittierten Lichtes mit
+Hilfe einer Photodiode zu messen. Herrscht Besetzungsinversion, ist das Gas
+transparent, da keine Photonen mehr absorbiert werden können. Unter Variation
+des Magnetfeldes $B_\text{m}$ hat die Transmissionskurve dann eine Gestalt wie
+in Abbildung \ref{fig:transmission} dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{build/plots/transmission.pdf}
+    \caption{
+        Transmissionskurve in Abhängigkeit der Magnetfeldstärke $B_\text{m}$
+        \cite{V21}. Im Bereich des Nullfeldes und bei induzierter Emission
+        (Bedingung \ref{eq:resonanz} ist erfüllt) verschwindet die
+        Transmission, weil Absorption möglich ist.
+    }
+    \label{fig:transmission}
+\end{figure}

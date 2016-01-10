@@ -3,3 +3,4 @@
 # text.latex.unicode    : True
 # pgf.texsystem         : lualatex
 # text.latex.preamble   : \usepackage{siunitx}
+figure.figsize: 6, 4
