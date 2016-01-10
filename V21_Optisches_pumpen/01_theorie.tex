@@ -115,10 +115,10 @@ auftreten.
     \centering
     \includegraphics[width=0.7\linewidth]{img/besetzungsinversion}
     \caption{
-        Energieschema eines hypothetischen Alkali-Atoms \cite{V21}. Unter Einstrahlung von
-        $\sigma^+$-Licht sind lediglich die eingezeichneten Übergänge möglich.
-        Als Folge dessen lässt sich der Zustand $S, M_J=-\sfrac{1}{2}$
-        vollständig entleeren.
+        Energieschema eines hypothetischen Alkali-Atoms \cite{V21}. Unter
+        Einstrahlung von $\sigma^+$-Licht sind lediglich die eingezeichneten
+        Übergänge möglich.  Als Folge dessen lässt sich der Zustand $S,
+        M_J=-\sfrac{1}{2}$ vollständig entleeren.
     }
     \label{fig:besetzungsinversion}
 \end{figure}
@@ -136,21 +136,42 @@ genügt dann
 \end{equation}
 wobei $B_\text{m}$ die Magnetfeldstärke des eingestrahlten Feldes bezeichnet.
 
-Um den Effekt der Besetzungszustände zu messen, genügt es ein Gas der zu
+Um den Effekt der Besetzungszustände zu messen, genügt es, ein Gas der zu
 untersuchenden Atome in den Strahlengang von zuvor beschriebenem
 $\sigma^+$-Licht zu bringen und die Intensität des transmittierten Lichtes mit
 Hilfe einer Photodiode zu messen. Herrscht Besetzungsinversion, ist das Gas
 transparent, da keine Photonen mehr absorbiert werden können. Unter Variation
 des Magnetfeldes $B_\text{m}$ hat die Transmissionskurve dann eine Gestalt wie
 in Abbildung \ref{fig:transmission} dargestellt.
+Wenn kein Feld vorhanden ist, wird das Licht absorbiert, weil es keine
+Zeeman-Aufspaltung gibt. Dadurch wird das Gasgemisch undurchlässig.
+Dasselbe gilt für die Situation, in welcher die Besetzungsinversion teilweise
+durch induzierte Emission aufgehoben wird -- auch hier wird ein Teil des
+eingestrahlten Lichtes absorbiert und die Transparenz nimmt ab.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{build/plots/transmission.pdf}
     \caption{
-        Transmissionskurve in Abhängigkeit der Magnetfeldstärke $B_\text{m}$
-        \cite{V21}. Im Bereich des Nullfeldes und bei induzierter Emission
-        (Bedingung \ref{eq:resonanz} ist erfüllt) verschwindet die
-        Transmission, weil Absorption möglich ist.
+        Transmissionskurve in Abhängigkeit der Magnetfeldstärke $B_\text{m}$.
+        Im Bereich des Nullfeldes und bei induzierter Emission (Bedingung
+        \ref{eq:resonanz} ist erfüllt) verschwindet die Transmission, weil
+        Absorption möglich ist.
     }
     \label{fig:transmission}
 \end{figure}
+
+\subsection{Quadratischer Zeeman-Effekt}
+\label{subsec:quadratischer_zeeman-effekt}
+Der in Abschnitt \ref{subsec:zeemanneffekt_und_hyperfeinstruktur}
+aufgeführte Energieunterschied $U_\text{HF}$ benachbarter Zeeman-Niveaus
+(\ref{eq:zeeman_energie}) gilt nur näherungsweise für kleine Magnetfeldstärken
+$B$. Unter Beachtung höherer Terme der Ordnung $B^2$ erhält man den sogenannten
+quadratischen Zeeman-Effekt in der Gestalt
+\begin{equation}
+\label{eq:quadratischer_zeeman}
+    U_\text{HF} = g_F \mu_B B
+        + (g_F\mu_B B)^2 \frac{1 - 2M_F}{\Delta E_\text{Hy}} - \dots\,.
+\end{equation}
+Hierin entspricht $\Delta E_\text{Hy}$ den Energieunterschieden benachbarter
+Hyperfeinstrukturniveaus. Durch diesen Effekt werden die Energien der
+Zeeman-Übergänge bei Vorliegen einer Hyperfeinstruktur leicht verschoben.
