@@ -62,7 +62,7 @@ def _calc_square(inputB, inputG, deltaJ):
 	squareList = []
 	singleList = []
 	for m in range(-2,3):
-		deltaValOne = inputG * MU_B * inputB
+		deltaValOne = inputG * MU_B * unp.nominal_values(inputB)
 		deltaValTwo = (1 - 2*m) / deltaJ
 		squareList.append(deltaValOne**2 * deltaValTwo)
 		singleList.append(deltaValOne)
@@ -72,7 +72,7 @@ def _calc_square(inputB, inputG, deltaJ):
 def _calc_gj():
 	gjz = 3.0023*J*(J+1) + 1.0023*(S*(S+1) - L*(L+1))
 	gjn = 2*J*(J+1)
-	return gjz / gjn
+	return np.float64(gjz / gjn)
 
 
 def _calc_i(gj, gf):
@@ -98,7 +98,6 @@ sweep2Raw = unp.uarray(sweep2Raw, DELTA_I)
 hor0Raw = unp.uarray(hor0Raw, DELTA_I)
 hor1Raw = unp.uarray(hor1Raw, DELTA_I)
 hor2Raw = unp.uarray(hor2Raw, DELTA_I)
-
 with open('c_data_raw.tex', 'w') as f:
 	f.write(
 		table(
@@ -106,10 +105,10 @@ with open('c_data_raw.tex', 'w') as f:
 				r'$\nu / \si{\kilo\hertz}$', 
 				r'$I_\text{0,sweep} / \si{\milli\ampere}$', 
 				r'$I_\text{0,hor} / \si{\milli\ampere}$', 
-				r'$I_\text{1,sweep} / \si{\milli\ampere}$',
-				r'$I_\text{1,hor} / \si{\milli\ampere}$',
-				r'$I_\text{2,sweep} / \si{\milli\ampere}$',
-				r'$I_\text{2,hor} / \si{\milli\ampere}$'
+				r'$I_\text{87,sweep} / \si{\milli\ampere}$',
+				r'$I_\text{87,hor} / \si{\milli\ampere}$',
+				r'$I_\text{85,sweep} / \si{\milli\ampere}$',
+				r'$I_\text{85,hor} / \si{\milli\ampere}$'
 			],[
 				nuArr*1e-3,
 				sweep0Raw*1e3, 
@@ -141,12 +140,12 @@ with open('c_data_b.tex', 'w') as f:
 				r'$B_\text{0,ges} / \si{\micro\tesla}$', 
 				r'$B_\text{0,sweep} / \si{\micro\tesla}$', 
 				r'$B_\text{0,hor} / \si{\micro\tesla}$',
-				r'$B_\text{1,ges} / \si{\micro\tesla}$',
-				r'$B_\text{1,sweep} / \si{\micro\tesla}$',
-				r'$B_\text{1,hor} / \si{\micro\tesla}$',
-				r'$B_\text{2,ges} / \si{\micro\tesla}$',
-				r'$B_\text{2,sweep} / \si{\micro\tesla}$',
-				r'$B_\text{2,hor} / \si{\micro\tesla}$'
+				r'$B_\text{87,ges} / \si{\micro\tesla}$',
+				r'$B_\text{87,sweep} / \si{\micro\tesla}$',
+				r'$B_\text{87,hor} / \si{\micro\tesla}$',
+				r'$B_\text{85,ges} / \si{\micro\tesla}$',
+				r'$B_\text{85,sweep} / \si{\micro\tesla}$',
+				r'$B_\text{85,hor} / \si{\micro\tesla}$'
 			],[
 				b0Ges*1e6,
 				hor0B*1e6,
@@ -186,10 +185,18 @@ popt2, pcov2 = curve_fit(
 	unp.nominal_values(b2Ges)
 	)
 
+with open('c_fit_m_87.tex', 'w') as f:
+	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt1[0]))
+with open('c_fit_b_87.tex', 'w') as f:
+	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt1[1]))
+with open('c_fit_m_85.tex', 'w') as f:
+	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt2[0]))
+with open('c_fit_b_85.tex', 'w') as f:
+	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt2[1]))
+
 gf1 = _calc_g(popt1[0])
 gf2 = _calc_g(popt2[0])
 gj = _calc_gj()
-
 i1 = _calc_i(gj, gf1)
 i2 = _calc_i(gj, gf2)
 
@@ -197,34 +204,51 @@ with open('c_data_gi.tex', 'w') as f:
 	f.write(
 		table(
 			[
-				r'$g_\text{f,1} / \si{}$',
-				r'$g_\text{f,2} / \si{}$',
-				r'$g_\text{j} / \si{}$',
-				r'$I_\text{1} / \si{}$', 
-				r'$I_\text{2} / \si{}$'
+				r'$g_\text{f,87}$',
+				r'$g_\text{f,85}$',
+				r'$g_\text{j}$',
+				r'$I_\text{85}$', 
+				r'$I_\text{87}$'
 			],[
-				gf1,
-				gf2,
-				gj,
-				i1,
-				i2
+				gf1.round(4),
+				gf2.round(4),
+				gj.round(4),
+				i1.round(4),
+				i2.round(4)
 			]
 			)
 		)
 
-square1 = np.array(_calc_square(b1Ges, gf1, DELTA_85))
-square2 = np.array(_calc_square(b2Ges, gf2, DELTA_87))
+
+mList = np.array([-2, -1, 0, 1, 2])
+
+square1 = np.array(_calc_square(b1Ges, gf1, DELTA_87))
+square2 = np.array(_calc_square(b2Ges, gf2, DELTA_85))
 
 deltaSquare1 = square1[1] / square1[0]
 deltaSquare2 = square2[1] / square2[0]
 
+mArr = np.array([-2, -1, 0, 1, 2])
+
 ratio1, ratio2 = _calc_ratio()
+
+with open('c_data_ratio.tex', 'w') as f:
+	f.write(
+		table([
+				r'#Rb$_\text{87}$ / \si{\percent}',
+				r'#Rb$_\text{85}$ / \si{\percent}'
+				],[
+					ratio1*100,
+					ratio2*100
+				]
+				)
+			)
 
 x = np.linspace(
 	unp.nominal_values(nuArr[0]), 
 	unp.nominal_values(nuArr[-1]), 10**5
 	)
-plt.plot(x, func_linear(x, *popt1))
+plt.plot(x, func_linear(x, popt1[0], popt1[1]))
 plt.errorbar(
 	unp.nominal_values(nuArr), 
 	unp.nominal_values(b1Ges), 
@@ -236,12 +260,8 @@ plt.xlim(
 	)
 plt.grid()
 plt.savefig('c_fit1.pdf')
+plt.clf()
 
-
-x = np.linspace(
-	unp.nominal_values(nuArr[0]), 
-	unp.nominal_values(nuArr[-1]), 10**5
-	)
 plt.plot(x, func_linear(x, *popt2))
 plt.errorbar(
 	unp.nominal_values(nuArr), 
