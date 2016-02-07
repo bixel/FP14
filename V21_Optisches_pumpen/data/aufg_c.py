@@ -235,8 +235,8 @@ ratio1, ratio2 = _calc_ratio()
 with open('c_data_ratio.tex', 'w') as f:
 	f.write(
 		table([
-				r'#Rb$_\text{87}$ / \si{\percent}',
-				r'#Rb$_\text{85}$ / \si{\percent}'
+				r'#Rb$_\text{87} / \si{\percent}$',
+				r'#Rb$_\text{85} / \si{\percent}$'
 				],[
 					ratio1*100,
 					ratio2*100

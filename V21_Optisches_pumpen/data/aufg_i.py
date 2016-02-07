@@ -3,10 +3,13 @@ import matplotlib.pylab as plt
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
 from uncertainties import unumpy as unp
+from textable import table
 
 def func_exp(x, a, b, c, d):
 	return a * np.exp(-b*(x + c)) + d
 
+def func_exp2(x, a, b, c):
+	return a * np.exp(-b*x) + c
 
 def func_hyp(x, a, b, c):
 	return a + b / (x - c)
@@ -41,18 +44,54 @@ period2 = (tTwo2 - tOne2) / number2
 period1E = (tTwo1E - tOne1E) / number1
 period2E = (tTwo2E - tOne2E) / number2
 
+with open('i_raw.tex', 'w') as f:
+	f.write(
+		table([
+				r'$V_\text{87} / \si{\volt}$',
+				r'$t_\text{1,87} / \si{\micro\second}$',
+				r'$t_\text{2,87} / \si{\micro\second}$',
+				r'$T_\text{87} / \si{\micro\second}$',
+				r'#Perioden$_\text{87}$',
+				r'$V_\text{85} / \si{\volt}$',
+				r'$t_\text{1,85} / \si{\micro\second}$',
+				r'$t_\text{2,85} / \si{\micro\second}$',
+				r'#Perioden$_\text{85}$',
+				r'$T_\text{85} / \si{\micro\second}$'
+				],[
+					V1,
+					tOne1E*10**6,
+					tTwo1E*10**6,
+					number1,
+					period1E*10**6,
+					V2,
+					tOne2E*10**6,
+					tTwo2E*10**6,
+					number2,
+					period2E*10**6
+				]
+				)
+			)
+
 poptE1, pcovE1 = curve_fit(
-	func_exp, expX1[600:-1], expY1[600:-1], 
-	p0=(-5, 105, -0.11, 9.5)
+	func_exp2, expX1[600:-1000], expY1[600:-1000], 
+	p0=(-1000000, 110, 9.3)
 	)
+print(poptE1)
+print(expY1[700:-1])
+print(np.sqrt(np.diag(pcovE1)))
+# with open('i_fit_em_87.tex', 'w') as f:
+# 	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt1[0]))
+# with open('i_fit_eb_87.tex', 'w') as f:
+# 	f.write(r'\SI{%1.4e}{\tesla\per\hertz}'%(popt1[1]))
 x=np.linspace(expX1[600], expX1[-1], 10**5)
-plt.plot(x, func_exp(x, *poptE1))
+plt.plot(x, func_exp2(x, *poptE1))
 plt.plot(
-	expX1[600:-1], expY1[600:-1], 'k.', markersize=2
+	expX1[600:-1], expY1[600:-1], 'kx', markersize=2
 	)
 plt.xlim((expX1[600]*99/100,expX1[-1]*101/100))
 plt.grid()
-plt.show()
+plt.savefig('fit_E_87.pdf')
+plt.clf()
 
 poptE2, pcovE2 = curve_fit(
 	func_exp, expX2[800:-1], expY2[800:-1],
@@ -61,11 +100,12 @@ poptE2, pcovE2 = curve_fit(
 x=np.linspace(expX2[800], expX2[-1], 10**5)
 plt.plot(x, func_exp(x, *poptE2))
 plt.plot(
-	expX2[800:-1], expY2[800:-1], 'k.', markersize=2
+	expX2[800:-1], expY2[800:-1], 'kx', markersize=2
 	)
 plt.xlim((expX2[800]*99/100,expX2[-1]*101/100))
 plt.grid()
-plt.show()
+plt.savefig('fit_E_85.pdf')
+plt.clf()
 
 poptT1, pcovT1 = curve_fit(
 	func_hyp, V1, period1, p0=(0.00015, 0.0015, 0)
@@ -78,7 +118,8 @@ plt.errorbar(
 plt.plot(V1, period1, 'rx')
 plt.xlim((V1[0]*90/100, V1[-1]*101/100))
 plt.grid()
-plt.show()
+plt.savefig('fit_T_87.pdf')
+plt.clf()
 
 poptT2, pcovT2 = curve_fit(
 	func_hyp, V2, period2, p0=(0.00015, 0.0015, 0)
@@ -91,4 +132,5 @@ plt.errorbar(
 plt.plot(V1, period2, 'rx')
 plt.xlim((V2[0]*90/100, V2[-1]*101/100))
 plt.grid()
-plt.show()
+plt.savefig('fit_T_85.pdf')
+plt.clf()
