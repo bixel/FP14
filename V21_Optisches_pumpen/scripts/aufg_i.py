@@ -39,8 +39,8 @@ expX2E = unp.uarray(expX2, DELTA_EX)
 expY1E = unp.uarray(expY1, DELTA_EY)
 expY2E = unp.uarray(expY2, DELTA_EY)
 
-V1, tOne1, tTwo1, number1 = np.genfromtxt('data/aufg_i_peak1.dat', unpack=True)
-V2, tOne2, tTwo2, number2 = np.genfromtxt('data/aufg_i_peak2.dat', unpack=True)
+V1, tOne1, tTwo1, number1 = np.genfromtxt('data/aufg_i_peak2.dat', unpack=True)
+V2, tOne2, tTwo2, number2 = np.genfromtxt('data/aufg_i_peak1.dat', unpack=True)
 
 tOne1 = tOne1 * 10**-3
 tTwo1 = tTwo1 * 10**-3
@@ -118,18 +118,18 @@ summer2 = sum(expY2E[-500:])
 average2 = summer2 / len(expY2E[-500:])
 
 poptL1, pcovL1 = curve_fit(
-    func_linear, expX1[600:-1700]*1e3,
-    -np.log(-expY1[600:-1700] + unp.nominal_values(average1)),
+    func_linear, expX1[600:1226]*1e3,
+    -np.log(-expY1[600:1226] + unp.nominal_values(average1)),
     p0=(0, 0)
     )
 
 poptL2, pcovL2 = curve_fit(
-    func_linear, expX2[810:-1400]*1e3,
-    -np.log(-expY2[810:-1400] + unp.nominal_values(average2)),
+    func_linear, expX2[810:1426]*1e3,
+    -np.log(-expY2[810:1426] + unp.nominal_values(average2)),
     p0=(0, 0)
     )
 
-x = np.linspace(expX1[600]*1e3*0.9, expX1[-1700]*1e3*1.1, 10**5)
+x = np.linspace(expX1[600]*1e3*0.9, expX1[1226]*1e3*1.1, 10**5)
 plt.plot(
     expX1*1e3,
     -np.log(abs(-expY1 + unp.nominal_values(average1))),
@@ -148,7 +148,7 @@ plt.grid()
 plt.savefig('build/plots/fit_L_87.pdf')
 plt.clf()
 
-x = np.linspace(expX2[810]*1e3*0.9, expX2[-1400]*1e3*1.1, 10**5)
+x = np.linspace(expX2[810]*1e3*0.9, expX2[1426]*1e3*1.1, 10**5)
 plt.plot(
     expX2*1e3,
     -np.log(abs(-expY2 + unp.nominal_values(average2))),
@@ -185,22 +185,22 @@ with open('build/tex/i_fit_start_85.tex', 'w') as f:
     f.write(r'\SI{{{:.4f}}}{{\milli\second}}'.format(expX2[810] * 1e3))
 
 with open('build/tex/i_fit_end_87.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\milli\second}}'.format(expX1[-1700] * 1e3))
+    f.write(r'\SI{{{:.4f}}}{{\milli\second}}'.format(expX1[1226] * 1e3))
 
 with open('build/tex/i_fit_end_85.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\milli\second}}'.format(expX2[-1400] * 1e3))
+    f.write(r'\SI{{{:.4f}}}{{\milli\second}}'.format(expX2[1426] * 1e3))
 
 with open('build/tex/i_fit_m_87.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\mega\hertz}}'.format(poptL1[0]))
+    f.write(r'\SI{{{:.4f}}}{{1\per\milli\second}}'.format(poptL1[0]))
 
 with open('build/tex/i_fit_m_85.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\mega\hertz}}'.format(poptL2[0]))
+    f.write(r'\SI{{{:.4f}}}{{1\per\milli\second}}'.format(poptL2[0]))
 
 with open('build/tex/i_fit_tau_87.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\mega\hertz}}'.format(-poptL1[0]))
+    f.write(r'\SI{{{:.4f}}}{{1\per\milli\second}}'.format(-poptL1[0]))
 
 with open('build/tex/i_fit_tau_85.tex', 'w') as f:
-    f.write(r'\SI{{{:.4f}}}{{\mega\hertz}}'.format(-poptL2[0]))
+    f.write(r'\SI{{{:.4f}}}{{1\per\milli\second}}'.format(-poptL2[0]))
 
 with open('build/tex/i_fit_b_87.tex', 'w') as f:
     f.write(r'\SI{{{:L}}}{{}}'.format(bLArray[0]))

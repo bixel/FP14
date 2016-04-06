@@ -260,8 +260,8 @@ with open('build/tex/c_data_gi.tex', 'w') as f:
                 r'$g_\text{f,87}$',
                 r'$g_\text{f,85}$',
                 r'$g_\text{j}$',
-                r'$I_\text{85}$',
-                r'$I_\text{87}$'
+                r'$I_\text{87}$',
+                r'$I_\text{85}$'
             ], [
                 gf1.round(4),
                 gf2.round(4),
