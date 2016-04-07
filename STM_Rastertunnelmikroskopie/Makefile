@@ -1,5 +1,5 @@
 # Lists and Configurables
-PLOTS =
+PLOTS = HOPG_downwards.pdf
 
 TEXOPTIONS = -lualatex \
 			 --output-directory=build \
@@ -7,7 +7,8 @@ TEXOPTIONS = -lualatex \
 			 --halt-on-error
 
 TEXHEADERS = ../head.tex \
-			 ../math-commands.tex
+			 ../math-commands.tex \
+			 ../00_lit.bib
 
 #techcontent
 TEXCONTENT = 00_main.tex \
@@ -25,7 +26,7 @@ analysis: raw/*.txt | build
 	jupyter notebook analysis.ipynb
 
 build:
-	mkdir -p build/{plots}
+	mkdir -p build/plots
 
 clean:
 	rm -rf build

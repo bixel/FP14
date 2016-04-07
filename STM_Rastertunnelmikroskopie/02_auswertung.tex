@@ -3,23 +3,56 @@
 Im Folgenden Abschnitt werden die Messungen der Gitterkonstante von HOPG, sowie
 der Plateauhöhen von Gold erläutert. Zum einlesen und einer einfachen
 Rauschunterdrückung der Messdaten wird die freie Software \texttt{gwyddion}
-benutzt. Für die Analyse wird \texttt{python} verwendet.
+\cite{gwyddion} benutzt. Für die Analyse wird \texttt{python} \cite{python3}
+verwendet.
 
 Um mit dem Mikroskop verwertbare Bilder zu erzeugen, muss zunächst eine Stück
 Wolframdraht mit einer Zange abgetrennt werden. Dabei ist es essentiell, den
 Draht abzureissen, statt ihn abzuschneiden. Dadurch wird gewährleistet, dass
 ein Ende des Drates eine sehr feine -- im Idealfall einatomige -- Spitze
-besitzt.
+aufweist.
 
 Die Spitze wird in den Mikroskopschlitten eingelegt und die Probe mit Hilfe von
 Piezzoelementen an diese herangefahren.
 
 \subsection{Gittervektoren von HOPG}
 \label{subsec:gitter}
+Zunächst werden einige Testaufnahmen erstellt, um Mikroskopeinstellungen zu
+finden, die die zu untersuchende Gitterstruktur erkennen lassen.
+Der Bildausschnitt deckt dabei eine Fläche von $\num{2}\times\num{2}\,
+\si{\nano\meter\squared}$ ab. Die Aufnahme, nach Vorverarbeitung durch
+\texttt{gwyddion}, ist in Abbildung \ref{fig:hopg1} dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{build/plots/HOPG_downwards.pdf}
+    \caption{Aufnahme von Graphit mit dem Rastertunnelmikroskop. Eine
+             periodische Struktur ist klar zu erkennen.}
+    \label{fig:hopg1}
+\end{figure}
+Offensichtlich taucht bei $x \approx \SI{1.05}{\nano\meter}$ eine Unstetigkeit
+auf. Außerdem ist die Aufnahme im Bereich $y > \SI{1.5}{\nano\meter}$
+anscheinend verzerrt. Diese Werte werden als grobe Grenzen der Daten einer
+Bestimmung der Gittervektoren benutzt.
 
+In einem nächsten Schritt werden alle lokalen Maxima in einer Umgebung von
+\num{12} Pixeln gesucht und markiert. Im zuvor gewählten Selektionsbereich
+werden zudem zwei Korridore mit möglichst vielen Maxima gewählt, die sich an
+der grob zu erkennenden Struktur der Gitterstruktur orientieren.
+Die grobe Vorselektion, die Maxima und die Selektionskorridore sind in
+Abbildung \ref{fig:hopg1_selektion} dargestellt.
+
+An die Punkte innerhalb dieser Korridore werden in einem Least-Squares-Fit
+lineare Funktionen angepasst und damit Richtungsvektoren bestimmt. Die Länge
+dieser Vektoren wird duch Mittelung über alle benutzten Punkte bestimmt.
+Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und haben die Werte
+\begin{align*}
+    \input{build/tex/hopg1_vec_a.tex} \qquad \text{und} \qquad
+    \input{build/tex/hopg1_vec_b.tex}\,.
+\end{align*}
 
 \subsection{Plateauhöhen einer Goldoberfläche}
 \label{subsec:gold}
 
+\clearpage
 \section{Diskussion}
 \label{sec:diskussion}
