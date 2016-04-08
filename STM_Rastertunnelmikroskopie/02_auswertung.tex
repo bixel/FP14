@@ -24,7 +24,7 @@ Der Bildausschnitt deckt dabei eine Fläche von $\num{2}\times\num{2}\,
 \texttt{gwyddion}, ist in Abbildung \ref{fig:hopg1} dargestellt.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{build/plots/HOPG_downwards.pdf}
+    \includegraphics[width=0.5\linewidth]{build/plots/HOPG_downwards.pdf}
     \caption{Aufnahme von Graphit mit dem Rastertunnelmikroskop. Eine
              periodische Struktur ist klar zu erkennen.}
     \label{fig:hopg1}
@@ -40,15 +40,33 @@ werden zudem zwei Korridore mit möglichst vielen Maxima gewählt, die sich an
 der grob zu erkennenden Struktur der Gitterstruktur orientieren.
 Die grobe Vorselektion, die Maxima und die Selektionskorridore sind in
 Abbildung \ref{fig:hopg1_selektion} dargestellt.
-
 An die Punkte innerhalb dieser Korridore werden in einem Least-Squares-Fit
 lineare Funktionen angepasst und damit Richtungsvektoren bestimmt. Die Länge
 dieser Vektoren wird duch Mittelung über alle benutzten Punkte bestimmt.
+Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ der Hexagonalen Struktur, sowie ein Vektor des Ebenenabstandes $\vec{b}$ bestimmt.
 Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und haben die Werte
 \begin{align*}
-    \input{build/tex/hopg1_vec_a.tex} \qquad \text{und} \qquad
-    \input{build/tex/hopg1_vec_b.tex}\,.
+    \input{build/tex/hopg1_vec_a.tex} \qquad &\text{mit} \qquad
+    \input{build/tex/hopg1_vec_a_len.tex}\,,\\
+    \input{build/tex/hopg1_vec_b.tex} \qquad &\text{mit}\qquad
+    \input{build/tex/hopg1_vec_b_len.tex}\,,\\
+    \text{und}\qquad\input{build/tex/hopg1_vec_c.tex} \qquad &\text{mit}\qquad
+    \input{build/tex/hopg1_vec_c_len.tex}\,.
 \end{align*}
+
+\begin{figure}
+    \centering
+    \subcaptionbox{
+        Grobe Vorselektion der zum Fitten genutzten Datenpunkte.
+        \label{fig:hopg1_selektion}
+    }[0.6\linewidth]{\includegraphics[width=0.57\linewidth]{build/plots/hopg_down_selection.pdf}}
+    \subcaptionbox{
+        Gefittete Gittervektoren.
+        \label{fig:hopg1_vektoren}
+    }[0.39\linewidth]{\includegraphics[width=0.42\linewidth]{build/plots/hopg_down_arrows.pdf}}
+    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren.}
+    \label{fig:hopg_fit}
+\end{figure}
 
 \subsection{Plateauhöhen einer Goldoberfläche}
 \label{subsec:gold}

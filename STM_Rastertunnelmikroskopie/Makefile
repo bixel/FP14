@@ -1,6 +1,3 @@
-# Lists and Configurables
-PLOTS = HOPG_downwards.pdf
-
 TEXOPTIONS = -lualatex \
 			 --output-directory=build \
 			 --interaction=nonstopmode \
@@ -15,18 +12,23 @@ TEXCONTENT = 00_main.tex \
 			 01_theorie.tex  \
 			 02_auswertung.tex \
 
-PLOTS_WITH_PATH = $(patsubst %,build/plots/%,$(PLOTS))
-
 all: build/00_main.pdf
 
-build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) $(PLOTS_WITH_PATH) | build
+build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) build/.ana-done | build
 	latexmk $(TEXOPTIONS) 00_main.tex
 
 analysis: raw/*.txt | build
 	jupyter notebook analysis.ipynb
 
+build/.ana-done: raw/*.txt build/analysis.py | build
+	ipython3 build/analysis.py
+	touch build/.ana-done
+
+build/analysis.py: analysis.ipynb | build
+	jupyter nbconvert --to=script --output=build/analysis analysis.ipynb
+
 build:
-	mkdir -p build/plots
+	mkdir -p build/plots build/tex
 
 clean:
 	rm -rf build
