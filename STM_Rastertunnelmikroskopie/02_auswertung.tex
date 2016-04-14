@@ -1,8 +1,8 @@
 \section{Messung} % (fold)
 \label{sec:messung}
 Im Folgenden Abschnitt werden die Messungen der Gitterkonstante von HOPG, sowie
-der Plateauhöhen von Gold erläutert. Zum einlesen und einer einfachen
-Rauschunterdrückung der Messdaten wird die freie Software \texttt{gwyddion}
+der Plateauhöhen von Gold erläutert. Zum einlesen der Messdaten und für eine
+einfache Rauschunterdrückung wird die freie Software \texttt{gwyddion}
 \cite{gwyddion} benutzt. Für die Analyse wird \texttt{python} \cite{python3}
 verwendet.
 
@@ -13,7 +13,11 @@ ein Ende des Drates eine sehr feine -- im Idealfall einatomige -- Spitze
 aufweist.
 
 Die Spitze wird in den Mikroskopschlitten eingelegt und die Probe mit Hilfe von
-Piezzoelementen an diese herangefahren.
+Piezzoelementen an diese herangefahren. Die Steuerung wird mit Hilfe der dem
+Mikroskop beiliegenden Software \emph{Zitation einfügen} durchgeführt.
+Sobald der Abstand so klein ist, dass ein Tunnelstrom gemessen wird, fährt
+die Probe ein zuvor definiertes Raster in $x$- und $y$-Richtung ab. Das so
+entstehende Bild wird gespeichert und ausgewertet.
 
 \subsection{Gittervektoren von HOPG}
 \label{subsec:gitter}
@@ -31,8 +35,8 @@ Der Bildausschnitt deckt dabei eine Fläche von $\num{2}\times\num{2}\,
 \end{figure}
 Offensichtlich taucht bei $x \approx \SI{1.05}{\nano\meter}$ eine Unstetigkeit
 auf. Außerdem ist die Aufnahme im Bereich $y > \SI{1.5}{\nano\meter}$
-anscheinend verzerrt. Diese Werte werden als grobe Grenzen der Daten einer
-Bestimmung der Gittervektoren benutzt.
+anscheinend verzerrt. Diese Werte werden als grobe Selektion der Daten
+benutzt, mit denen die Gittervektoren bestimmt werden.
 
 In einem nächsten Schritt werden alle lokalen Maxima in einer Umgebung von
 \num{12} Pixeln gesucht und markiert. Im zuvor gewählten Selektionsbereich
@@ -43,8 +47,10 @@ Abbildung \ref{fig:hopg1_selektion} dargestellt.
 An die Punkte innerhalb dieser Korridore werden in einem Least-Squares-Fit
 lineare Funktionen angepasst und damit Richtungsvektoren bestimmt. Die Länge
 dieser Vektoren wird duch Mittelung über alle benutzten Punkte bestimmt.
-Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ der Hexagonalen Struktur, sowie ein Vektor des Ebenenabstandes $\vec{b}$ bestimmt.
-Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und haben die Werte
+Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ der Hexagonalen
+Struktur, sowie ein Vektor des Ebenenabstandes $\vec{b}$ bestimmt.
+Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und
+haben die Werte
 \begin{align*}
     \input{build/tex/hopg1_vec_a.tex} \qquad &\text{mit} \qquad
     \input{build/tex/hopg1_vec_a_len.tex}\,,\\
@@ -52,6 +58,25 @@ Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und haben
     \input{build/tex/hopg1_vec_b_len.tex}\,,\\
     \text{und}\qquad\input{build/tex/hopg1_vec_c.tex} \qquad &\text{mit}\qquad
     \input{build/tex/hopg1_vec_c_len.tex}\,.
+\end{align*}
+Durch Vergleich mit den Literaturwerten \cite{HOPG_gittervektoren} $\hat{a}
+= \SI{2.461}{\angstrom}$ und $\hat{b} = \SI{6.708}{\angstrom}$ lässt sich
+eine Skalierung der $x$- und $y$- Achse finden, sodass die gemessenen Werte
+für $\left|\vec{a}_1\right|$ und $\left|\vec{b}\right|$ mit diesen
+übereinstimmen. Der zweite Vektor $\vec{a}_2$ kann dann für einen
+Crosscheck ebenfalls transformiert und dessen Betrag mit dem Literaturwert
+verglichen werden.
+Für die Skalierungswerte $s_x$ und $s_y$ in $x$- und $y$-Richtung ergibt sich
+\begin{align*}
+    s_x &= \sqrt{\frac{\hat{a}^2 - s_y^2 a_y^2}
+                      {a_x^2}}
+                      &\text{und}&&
+    s_y &= \sqrt{\frac{a_x^2\hat{b}^2 - b_x^2\hat{a}^2}
+                                       {a_x^2 b_y^2 - a_y^2 b_x^2}}\\
+    \Rightarrow\qquad
+    s_x &= \SI{1}{\angstrom}
+    &&&
+    s_y &= \SI{1}{\angstrom}\,.
 \end{align*}
 
 \begin{figure}
