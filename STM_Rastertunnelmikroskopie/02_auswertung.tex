@@ -43,24 +43,23 @@ In einem nächsten Schritt werden alle lokalen Maxima in einer Umgebung von
 werden zudem zwei Korridore mit möglichst vielen Maxima gewählt, die sich an
 der grob zu erkennenden Struktur der Gitterstruktur orientieren.
 Die grobe Vorselektion, die Maxima und die Selektionskorridore sind in
-Abbildung \ref{fig:hopg1_selektion} dargestellt.
+Abbildung \ref{fig:hopg1_selektion} beispielhaft dargestellt.
 An die Punkte innerhalb dieser Korridore werden in einem Least-Squares-Fit
 lineare Funktionen angepasst und damit Richtungsvektoren bestimmt. Die Länge
 dieser Vektoren wird duch Mittelung über alle benutzten Punkte bestimmt.
-Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ der Hexagonalen
-Struktur, sowie ein Vektor des Ebenenabstandes $\vec{b}$ bestimmt.
-Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und
-haben die Werte
-\begin{align*}
-    \input{build/tex/down_vec_a.tex} \qquad &\text{mit} \qquad
-    \input{build/tex/down_vec_a_len.tex}\,,\\
-    \text{und}\qquad\input{build/tex/down_vec_b.tex} \qquad &\text{mit}\qquad
-    \input{build/tex/down_vec_b_len.tex}\,.
-\end{align*}
-Der Winkel zwischen den Vektoren beträgt
-\begin{align*}
-    \input{build/tex/down_angle.tex}\,.
-\end{align*}
+Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ bestimmt.
+Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet.
+Zudem wird der Winkel zwischen beiden Vektoren bestimmt.
+Diese Analyse wird für alle vier Messungen durchgeführt. Es ergeben sich die
+in Tabelle \ref{tab:vektoren} aufgeführten Werte.
+\begin{table}
+    \centering
+    \caption{
+    }
+    \label{tab:vektoren}
+    \input{build/tex/table_vec.tex}
+\end{table}
+
 Durch Vergleich mit den Literaturwerten \cite{HOPG_gittervektoren} $\hat{a}
 = \SI{2.461}{\angstrom}$ und dem erwarteten Winkel $\alpha = \SI{60}{\degree}$
 lässt sich
