@@ -14,7 +14,7 @@ def numplaces(num, uncert=False):
         try:
             a, b = '{}'.format(num).split('.')
         except:
-            a = ''.format(num)
+            a = '{}'.format(num)
             b = ''
         return len(a), len(b)
 

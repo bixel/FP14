@@ -55,17 +55,44 @@ in Tabelle \ref{tab:vektoren} aufgeführten Werte.
 \begin{table}
     \centering
     \caption{
+        Werte der durch Fit bestimmten Gittervektoren von HOPG. Es sind $x$-
+        und $y$-Komponenten der Vektoren $\vec{a}_i$, deren Länge $a_i$, sowie
+        der Winkel $\alpha$ zwischen beiden Vektoren aufgeführt.
     }
     \label{tab:vektoren}
     \input{build/tex/table_vec.tex}
 \end{table}
+Mittelung über alle Messungen ergibt
+\begin{align*}
+    \input{build/tex/avg_a1.tex}\,,\\
+    \input{build/tex/avg_a2.tex}\,,\\
+    \text{und}\qquad\input{build/tex/avg_a1_len.tex}\,,\\
+    \input{build/tex/avg_a2_len.tex}\,,\\
+    \text{sowie}\qquad\input{build/tex/avg_angle.tex}\,.
+\end{align*}
 
 Durch Vergleich mit den Literaturwerten \cite{HOPG_gittervektoren} $\hat{a}
 = \SI{2.461}{\angstrom}$ und dem erwarteten Winkel $\alpha = \SI{60}{\degree}$
 lässt sich
-eine Skalierung der $x$- und $y$- Achse finden, sodass die gemessenen Werte
-für $\left|\vec{a}_i\right|$ mit diesen
-übereinstimmen.
+eine Skalierung $s_x$ bzw. $s_y$ der $x$- und $y$- Achse finden, sodass die
+gemessenen Werte für $\left|\vec{a}_i\right|$ mit diesen übereinstimmen.
+Diese Transformation lässt sich mit einer Diagonalmatrix $S$ ausdrücken als
+$\vec{a}_i \to S\vec{a}_i$ und die zu erfüllenden Bedingungen lauten
+\begin{align*}
+    \frac{S\vec{a}_1\vec{a}_2}
+         {\sqrt{\left(S\vec{a}_1\right)^2 \left(S\vec{a}_2\right)^2}}
+         &= \cos{\alpha}\,\\
+         \text{und}\qquad\left(S\vec{a}_1\right)^2
+         &= \left(S\vec{a}_1\right)^2 = \hat{a}^2\,.
+\end{align*}
+Daraus folgt für ein gegebenes $s_y$
+\begin{align*}
+    s_x^2 &= \frac{\hat{a}^2\cos{\alpha} - s_y^2 a_{1,y} a_{2,y}}
+                  {a_{1,x} a_{2,x}}\,.
+\end{align*}
+Die Skalierungsfaktoren sind schließlich $\input{build/tex/scale_x.tex}$ und
+$\input{build/tex/scale_y.tex}$. Eine entsprechend Skalierte Darstellung der
+Messdaten ist in Abbildung \ref{fig:scale} gezeigt.
 \begin{figure}
     \centering
     \subcaptionbox{
