@@ -52,33 +52,21 @@ Struktur, sowie ein Vektor des Ebenenabstandes $\vec{b}$ bestimmt.
 Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet und
 haben die Werte
 \begin{align*}
-    \input{build/tex/hopg1_vec_a.tex} \qquad &\text{mit} \qquad
-    \input{build/tex/hopg1_vec_a_len.tex}\,,\\
-    \input{build/tex/hopg1_vec_b.tex} \qquad &\text{mit}\qquad
-    \input{build/tex/hopg1_vec_b_len.tex}\,,\\
-    \text{und}\qquad\input{build/tex/hopg1_vec_c.tex} \qquad &\text{mit}\qquad
-    \input{build/tex/hopg1_vec_c_len.tex}\,.
+    \input{build/tex/down_vec_a.tex} \qquad &\text{mit} \qquad
+    \input{build/tex/down_vec_a_len.tex}\,,\\
+    \text{und}\qquad\input{build/tex/down_vec_b.tex} \qquad &\text{mit}\qquad
+    \input{build/tex/down_vec_b_len.tex}\,.
+\end{align*}
+Der Winkel zwischen den Vektoren beträgt
+\begin{align*}
+    \input{build/tex/down_angle.tex}\,.
 \end{align*}
 Durch Vergleich mit den Literaturwerten \cite{HOPG_gittervektoren} $\hat{a}
-= \SI{2.461}{\angstrom}$ und $\hat{b} = \SI{6.708}{\angstrom}$ lässt sich
+= \SI{2.461}{\angstrom}$ und dem erwarteten Winkel $\alpha = \SI{60}{\degree}$
+lässt sich
 eine Skalierung der $x$- und $y$- Achse finden, sodass die gemessenen Werte
-für $\left|\vec{a}_1\right|$ und $\left|\vec{b}\right|$ mit diesen
-übereinstimmen. Der zweite Vektor $\vec{a}_2$ kann dann für einen
-Crosscheck ebenfalls transformiert und dessen Betrag mit dem Literaturwert
-verglichen werden.
-Für die Skalierungswerte $s_x$ und $s_y$ in $x$- und $y$-Richtung ergibt sich
-\begin{align*}
-    s_x &= \sqrt{\frac{\hat{a}^2 - s_y^2 a_y^2}
-                      {a_x^2}}
-                      &\text{und}&&
-    s_y &= \sqrt{\frac{a_x^2\hat{b}^2 - b_x^2\hat{a}^2}
-                                       {a_x^2 b_y^2 - a_y^2 b_x^2}}\\
-    \Rightarrow\qquad
-    s_x &= \SI{1}{\angstrom}
-    &&&
-    s_y &= \SI{1}{\angstrom}\,.
-\end{align*}
-
+für $\left|\vec{a}_i\right|$ mit diesen
+übereinstimmen.
 \begin{figure}
     \centering
     \subcaptionbox{
