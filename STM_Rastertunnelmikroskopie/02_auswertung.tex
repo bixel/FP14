@@ -3,8 +3,9 @@
 Im Folgenden Abschnitt werden die Messungen der Gitterkonstante von HOPG, sowie
 der Plateauhöhen von Gold erläutert. Zum einlesen der Messdaten und für eine
 einfache Rauschunterdrückung wird die freie Software \texttt{gwyddion}
-\cite{gwyddion} benutzt. Für die Analyse wird \texttt{python} \cite{python3}
-verwendet.
+\cite{gwyddion} benutzt. Für die Analyse der HOPG Struktur wird \texttt{python}
+\cite{python3} verwendet.
+Um die Plateauhöhen von Gold zu studieren wird die Software \texttt{WSxM} \cite{WSxM} genutzt.
 
 Um mit dem Mikroskop verwertbare Bilder zu erzeugen, muss zunächst eine Stück
 Wolframdraht mit einer Zange abgetrennt werden. Dabei ist es essentiell, den
@@ -24,8 +25,8 @@ entstehende Bild wird gespeichert und ausgewertet.
 Zunächst werden einige Testaufnahmen erstellt, um Mikroskopeinstellungen zu
 finden, die die zu untersuchende Gitterstruktur erkennen lassen.
 Der Bildausschnitt deckt dabei eine Fläche von $\num{2}\times\num{2}\,
-\si{\nano\meter\squared}$ ab. Die Aufnahme, nach Vorverarbeitung durch
-\texttt{gwyddion}, ist in Abbildung \ref{fig:hopg1} dargestellt.
+\si{\nano\meter\squared}$ ab. Eine beispielhafte Aufnahme, nach Vorverarbeitung
+durch \texttt{gwyddion}, ist in Abbildung \ref{fig:hopg1} dargestellt.
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{build/plots/HOPG_downwards.pdf}
@@ -43,12 +44,13 @@ In einem nächsten Schritt werden alle lokalen Maxima in einer Umgebung von
 werden zudem zwei Korridore mit möglichst vielen Maxima gewählt, die sich an
 der grob zu erkennenden Struktur der Gitterstruktur orientieren.
 Die grobe Vorselektion, die Maxima und die Selektionskorridore sind in
-Abbildung \ref{fig:hopg1_selektion} beispielhaft dargestellt.
+Abbildung \ref{fig:hopg1_selektion} bis \ref{fig:hopg4_selektion} dargestellt.
 An die Punkte innerhalb dieser Korridore werden in einem Least-Squares-Fit
 lineare Funktionen angepasst und damit Richtungsvektoren bestimmt. Die Länge
 dieser Vektoren wird duch Mittelung über alle benutzten Punkte bestimmt.
 Dabei werden zwei Gittervektoren $\vec{a}_1$ und $\vec{a}_2$ bestimmt.
-Die Vektoren sind in Abbildunge \ref{fig:hopg1_vektoren} eingezeichnet.
+Die Vektoren sind in Abbildungen \ref{fig:hopg1_vektoren} bis
+\ref{fig:hopg4_vektoren} eingezeichnet.
 Zudem wird der Winkel zwischen beiden Vektoren bestimmt.
 Diese Analyse wird für alle vier Messungen durchgeführt. Es ergeben sich die
 in Tabelle \ref{tab:vektoren} aufgeführten Werte.
@@ -60,7 +62,9 @@ in Tabelle \ref{tab:vektoren} aufgeführten Werte.
         der Winkel $\alpha$ zwischen beiden Vektoren aufgeführt.
     }
     \label{tab:vektoren}
-    \input{build/tex/table_vec.tex}
+    \begin{adjustbox}{center}
+        \input{build/tex/table_vec.tex}
+    \end{adjustbox}
 \end{table}
 Mittelung über alle Messungen ergibt
 \begin{align*}
@@ -91,8 +95,8 @@ Daraus folgt für ein gegebenes $s_y$
                   {a_{1,x} a_{2,x}}\,.
 \end{align*}
 Die Skalierungsfaktoren sind schließlich $\input{build/tex/scale_x.tex}$ und
-$s_y = \num{1}$. Eine entsprechend Skalierte Darstellung der
-Messdaten ist in Abbildung \ref{fig:scale} gezeigt.
+$s_y = \num{1}$.
+\clearpage
 \begin{figure}
     \centering
     \subcaptionbox{
@@ -103,9 +107,49 @@ Messdaten ist in Abbildung \ref{fig:scale} gezeigt.
         Gefittete Gittervektoren.
         \label{fig:hopg1_vektoren}
     }[0.39\linewidth]{\includegraphics[width=0.42\linewidth]{build/plots/hopg_down_arrows.pdf}}
-    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren.}
-    \label{fig:hopg_fit}
+    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren. HOPG Messung \num{1}.}
+    \label{fig:hopg1_fit}
 \end{figure}
+\begin{figure}
+    \centering
+    \subcaptionbox{
+        Grobe Vorselektion der zum Fitten genutzten Datenpunkte.
+        \label{fig:hopg2_selektion}
+    }[0.6\linewidth]{\includegraphics[width=0.57\linewidth]{build/plots/hopg_down-back_selection.pdf}}
+    \subcaptionbox{
+        Gefittete Gittervektoren.
+        \label{fig:hopg2_vektoren}
+    }[0.39\linewidth]{\includegraphics[width=0.42\linewidth]{build/plots/hopg_down-back_arrows.pdf}}
+    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren. HOPG Messung \num{2}.}
+    \label{fig:hopg2_fit}
+\end{figure}
+\begin{figure}
+    \centering
+    \subcaptionbox{
+        Grobe Vorselektion der zum Fitten genutzten Datenpunkte.
+        \label{fig:hopg3_selektion}
+    }[0.65\linewidth]{\includegraphics[width=0.63\linewidth]{build/plots/hopg_up_selection.pdf}}
+    \subcaptionbox{
+        Gefittete Gittervektoren.
+        \label{fig:hopg3_vektoren}
+    }[0.34\linewidth]{\includegraphics[width=0.35\linewidth]{build/plots/hopg_up_arrows.pdf}}
+    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren. HOPG Messung \num{3}.}
+    \label{fig:hopg3_fit}
+\end{figure}
+\begin{figure}
+    \centering
+    \subcaptionbox{
+        Grobe Vorselektion der zum Fitten genutzten Datenpunkte.
+        \label{fig:hopg4_selektion}
+    }[0.49\linewidth]{\includegraphics[width=0.49\linewidth]{build/plots/hopg_up-back_selection.pdf}}
+    \subcaptionbox{
+        Gefittete Gittervektoren.
+        \label{fig:hopg4_vektoren}
+    }[0.49\linewidth]{\includegraphics[width=0.49\linewidth]{build/plots/hopg_up-back_arrows.pdf}}
+    \caption{Vorselektion und Fitresultate der Bestimmung der Gittervektoren. HOPG Messung \num{4}.}
+    \label{fig:hopg4_fit}
+\end{figure}
+\clearpage
 
 \subsection{Plateauhöhen einer Goldoberfläche}
 \label{subsec:gold}
