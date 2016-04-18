@@ -14,7 +14,7 @@ TEXCONTENT = 00_main.tex \
 
 all: build/00_main.pdf
 
-build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) build/.ana-done | build
+build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) build/.ana-done raw/*.png | build
 	latexmk $(TEXOPTIONS) 00_main.tex
 
 analysis: raw/*.txt | build
