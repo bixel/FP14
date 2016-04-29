@@ -7,8 +7,8 @@ einfache Rauschunterdrückung wird die freie Software \texttt{gwyddion}
 \cite{python3} verwendet.
 Um die Plateauhöhen von Gold zu studieren wird die Software \texttt{WSxM} \cite{WSxM} genutzt.
 
-Um mit dem Mikroskop verwertbare Bilder zu erzeugen, muss zunächst eine Stück
-Wolframdraht mit einer Zange abgetrennt werden. Dabei ist es essentiell, den
+Um mit dem Mikroskop verwertbare Bilder zu erzeugen, muss zunächst ein Stück
+Platindraht mit einer Zange abgetrennt werden. Dabei ist es essentiell, den
 Draht abzureissen, statt ihn abzuschneiden. Dadurch wird gewährleistet, dass
 ein Ende des Drates eine sehr feine -- im Idealfall einatomige -- Spitze
 aufweist.
@@ -160,7 +160,7 @@ eingezeichneten Geraden ergeben diese Höhenwerte das in Abbildung
 
 An dieses Profil werden zwei Plateauhöhen $h_1$ und $h_2$ gefittet. Die
 $x$-Werte werden dabei an den Stellen $x = \SI{60}{\nano\meter}$ und $x =
-\SI{100}{\nano\meter}$ unterteilt.  Damit ergeben sie Die Plateauhöhen für Gold
+\SI{100}{\nano\meter}$ unterteilt.  Damit ergeben sie die Plateauhöhen für Gold
 zu
 \begin{equation*}
     \input{build/tex/plateau1.tex}\qquad\text{und}\qquad\input{build/tex/plateau2.tex}\,.
@@ -187,22 +187,26 @@ zu
 \section{Diskussion}
 \label{sec:diskussion}
 Die Bestimmung der HOPG Gittervektoren verdeutlicht das hohe
-Auflösungsvermögen von Rastertunnelmikroskopie. Selbst ohne Korrektur des
-Koordinatensystems des Mikroskops sind die hier bestimmten längen der Vektoren
+Auflösungsvermögen der Rastertunnelmikroskopie. Selbst ohne Korrektur des
+Koordinatensystems des Mikroskops sind die hier bestimmten Längen der Vektoren
 vergleichbar mit den Literaturwerten $\hat{a} = \SI{2.461}{\angstrom}$. Die
 Abweichung ist jedoch mit etwa $2\sigma$ signifikant. Der Winkel zwischen den
 hier bestimmten Vektoren ist innerhalb der
-Messfehler verträglich mit dem erwarteten Wert von \SI{60}{degree}.
+Messfehler verträglich mit dem erwarteten Wert von \SI{60}{\degree}.
 
 Das Höhenprofil von Gold liefert Werte für Plateauhöhen, die etwa dem doppelten
 Literaturwert für den Gitterabstand \SI{407.82}{\pico\meter} von Gold
 entsprechen. Diese Abweichung kann nur teilweise auf den Einfluss von
 Hystereseeffekten der Piezzo-Kristalle zurückgeführt werden, da diese, wie in
-\ref{ssub:piezokristalle} beschrieben, gering sein sollten. Möglicherweise
-stellt die Abnutzung der Mikroskopspitze einen bedeutenden systematischen
-Fehler dar, was weiter untersucht werden müsste. Desweiteren könnten die
-Plateaukanten durch mehr als eine abgetragene Atomschicht entstehen, was ein
+\ref{ssub:piezokristalle} beschrieben, gering sein sollten.
+%%% das hier ist anscheinend quatsch. Erst ein effekt nach mehreren Tagen
+% Möglicherweise stellt die Abnutzung der Mikroskopspitze einen bedeutenden
+% systematischen Fehler dar, was weiter untersucht werden müsste.
+Die
+Plateaukanten könnte mehr als einer Atomschicht entsprechen, was ein
 ganzzahliges Vielfaches der Gitterkonstante als Kantenhöhe erwarten ließe.
+Zudem ist nicht ohne weiteres klar, welche Netzebene in dem Bild betrachtet
+wird.
 Unter dieser Annahme wäre das hier gemessene Ergebnis mit mit einer Shichtdicke
 von \num{2} Atomen kompatibel. Jedoch müsste auch die Gültigkeit dieser Annahme
 weiter untersucht werden.
