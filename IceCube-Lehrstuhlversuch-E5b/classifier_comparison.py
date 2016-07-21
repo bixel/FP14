@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.rcParams['figure.figsize'] = (15, 10)
+plt.rcParams['font.size'] = 16
+plt.rcParams['backend'] = 'agg'
 plt.style.use('ggplot')
 
 from sklearn.ensemble import (RandomForestClassifier,
@@ -24,7 +26,7 @@ import os
 print('Reading Data.')
 DATA, LABELS = read_dataset()
 train_data, test_data, train_labels, test_labels = train_test_split(
-    DATA, LABELS, test_size=0.3)
+    DATA, LABELS, test_size=0.3, random_state=1)
 
 classifiers = {
     'RF': {
@@ -44,6 +46,8 @@ classifiers = {
 
 print('Training/Loading several ({}) classifiers now.'
       .format(len(classifiers)))
+
+plt.figure(figsize=(10, 10))
 for name, d in classifiers.items():
     path = 'build/{}.pcl'.format(name)
     try:
@@ -101,9 +105,13 @@ nnet_score = roc_auc_score(Ytrue_val, Ypred_val)
 nnet_curve = roc_curve(Ytrue_val, Ypred_val)[:2]
 
 plt.plot(*nnet_curve, label='NNet: {:2.2f}% ROC AUC'.format(nnet_score * 100))
+plt.plot([0, 1], '--', label='Random Selection')
 
 plt.xlim(-0.05, 1.05)
 plt.ylim(0, 1.05)
+plt.xlabel('False positive rate')
+plt.ylabel('True positive rate')
 plt.legend(loc='best')
+plt.tight_layout()
 plt.savefig('build/plots/comparison.pdf')
 plt.clf()
