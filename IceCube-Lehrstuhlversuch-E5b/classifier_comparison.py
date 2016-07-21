@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.rcParams['figure.figsize'] = (15, 10)
 plt.rcParams['font.size'] = 16
-plt.rcParams['backend'] = 'agg'
 plt.style.use('ggplot')
 
 from sklearn.ensemble import (RandomForestClassifier,
@@ -47,7 +46,7 @@ classifiers = {
 print('Training/Loading several ({}) classifiers now.'
       .format(len(classifiers)))
 
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(5, 5))
 for name, d in classifiers.items():
     path = 'build/{}.pcl'.format(name)
     try:
