@@ -11,13 +11,14 @@ from sklearn.ensemble import (RandomForestClassifier,
                               AdaBoostClassifier)
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import roc_curve, roc_auc_score
+from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve
 
 import pickle
 import tqdm
 
 from data_preparation import read_dataset
 from neural_net import build_net, iterate_epochs, iterate_minibatches
+from best_feature import mrmr_best_features
 
 import lasagne
 import os
@@ -27,27 +28,49 @@ DATA, LABELS = read_dataset()
 train_data, test_data, train_labels, test_labels = train_test_split(
     DATA, LABELS, test_size=0.3, random_state=1)
 
-classifiers = {
-    'RF': {
+classifiers = [
+    {
+        'name': 'RF',
         'classifier': RandomForestClassifier(n_jobs=4),
     },
-    'GB': {
+    {
+        'name': 'GB',
         'classifier': GradientBoostingClassifier(),
     },
-    'ADA': {
+    {
+        'name': 'ADA',
         'classifier': AdaBoostClassifier(),
     },
-    'KNN': {
+    {
+        'name': 'KNN',
         'classifier': KNeighborsClassifier(n_jobs=4,
                                            n_neighbors=15),
     },
-}
+    {
+        'name': 'KNN20',
+        'classifier': KNeighborsClassifier(n_jobs=4,
+                                           n_neighbors=15),
+        'cols': mrmr_best_features[:20],
+    },
+]
 
 print('Training/Loading several ({}) classifiers now.'
       .format(len(classifiers)))
 
-plt.figure(figsize=(5, 5))
-for name, d in classifiers.items():
+roc_fig = plt.figure(figsize=(5, 5))
+pr_fig = plt.figure(figsize=(5, 5))
+eff_fig = plt.figure(figsize=(5, 5))
+for d in classifiers:
+    name = d['name']
+    if 'cols' in d:
+        X_train = train_data[d['cols']]
+        X_test = test_data[d['cols']]
+    else:
+        X_train = train_data
+        X_test = test_data
+
+    assert(X_train.shape[1] == X_test.shape[1])
+
     path = 'build/{}.pcl'.format(name)
     try:
         with open(path, 'rb') as f:
@@ -58,14 +81,18 @@ for name, d in classifiers.items():
             print('No object found. Writing classifier object for {}'
                   .format(name))
             cl = d['classifier']
-            cl.fit(train_data, train_labels)
+            cl.fit(X_train, train_labels)
             pickle.dump(cl, f)
-    probas = cl.predict_proba(test_data)[:, 1]
+    probas = cl.predict_proba(X_test)[:, 1]
     curve = roc_curve(test_labels, probas)[:2]
     score = roc_auc_score(test_labels, probas)
-    classifiers[name]['curve'] = curve
-    classifiers[name]['score'] = score
-    plt.plot(*curve, label='{}: {:2.2f}% ROC AUC'.format(name, score * 100))
+    pr_curve = precision_recall_curve(test_labels, probas)
+    d['curve'] = curve
+    d['score'] = score
+    label = '{}: {:2.2f}% ROC AUC'.format(name, score * 100)
+    roc_fig.gca().plot(*curve, label=label)
+    pr_fig.gca().plot(pr_curve[2], pr_curve[0][:-1], label=name)
+    eff_fig.gca().plot(pr_curve[2], pr_curve[1][:-1], label=name)
 
 
 print('Compiling Network.', end='')
@@ -102,15 +129,33 @@ Ytrue_val = np.concatenate(Ytrue_batches)
 Ypred_val = np.concatenate(Ypred_batches)
 nnet_score = roc_auc_score(Ytrue_val, Ypred_val)
 nnet_curve = roc_curve(Ytrue_val, Ypred_val)[:2]
+nnet_pr_curve = precision_recall_curve(Ytrue_val, Ypred_val)
 
-plt.plot(*nnet_curve, label='NNet: {:2.2f}% ROC AUC'.format(nnet_score * 100))
-plt.plot([0, 1], '--', label='Random Selection')
+roc_fig.gca().plot(*nnet_curve, label='NNet: {:2.2f}% ROC AUC'.format(nnet_score * 100))
+roc_fig.gca().plot([0, 1], '--', label='Random Selection')
+roc_fig.gca().set_xlim(-0.05, 1.05)
+roc_fig.gca().set_ylim(0, 1.05)
+roc_fig.gca().set_xlabel('False positive rate')
+roc_fig.gca().set_ylabel('True positive rate')
+roc_fig.gca().legend(loc='best')
+roc_fig.tight_layout()
+roc_fig.savefig('build/plots/comparison.pdf')
+roc_fig.clf()
 
-plt.xlim(-0.05, 1.05)
-plt.ylim(0, 1.05)
-plt.xlabel('False positive rate')
-plt.ylabel('True positive rate')
-plt.legend(loc='best')
-plt.tight_layout()
-plt.savefig('build/plots/comparison.pdf')
-plt.clf()
+pr_fig.gca().plot(nnet_pr_curve[2], nnet_pr_curve[0][:-1], label='NNet')
+pr_fig.gca().set_ylim(0.5, 1.05)
+pr_fig.gca().set_xlabel('Klassifizierungsschwelle')
+pr_fig.gca().set_ylabel('Reinheit')
+pr_fig.gca().legend(loc='best')
+pr_fig.tight_layout()
+pr_fig.savefig('build/plots/pr_comparison.pdf')
+pr_fig.clf()
+
+eff_fig.gca().plot(nnet_pr_curve[2], nnet_pr_curve[1][:-1], label='NNet')
+eff_fig.gca().set_ylim(0, 1.05)
+eff_fig.gca().set_xlabel('Klassifizierungsschwelle')
+eff_fig.gca().set_ylabel('Effizienz')
+eff_fig.gca().legend(loc='best')
+eff_fig.tight_layout()
+eff_fig.savefig('build/plots/eff_comparison.pdf')
+eff_fig.clf()
