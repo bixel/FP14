@@ -1,0 +1,343 @@
+\section{Messung} % (fold)
+\label{sec:messung}
+
+Zunächst wird berechnet, welche Kombinationen der Millerschen Indizes $h$, $k$ und $l$ bei den betrachteten Kristallstrukturen möglich sind.
+Für diese wird anschließend der Wert $m_i = h_i^2 + k_i^2 + l_i^2$ bestimmt und die Wurzel aus dem Quotienten $m_i / m_1$ berechnet.
+Anschließend werden diese Werte mit den Gemessenen verglichen und so die Wahrscheinlichsten Kristallstrukturen bestimmt.
+
+Abschließend können die Gitterkonstanten der Strukturen berechnet werden.
+
+Zur Berechnung der Fehler wurde die uncertainties Bibliothek in python genutzt, wodurch der Fehler nach
+\begin{equation*}
+    \Delta f = \sqrt{\sum_{i=1}^N \left( \left(\frac{\partial f}{\partial x_i}\right)^2  \Delta f_{x_i}^2 \right)}
+\end{equation*}
+berechnet wird \cite{py-uncertainties}.
+Dabei wurde ein Fehler auf die gemessene Länge $s$ von
+\begin{equation*}
+    \Delta s = \SI{0.01}{\milli\meter}
+\end{equation*}
+angenommen.
+Sind bei Werten keine Fehler angegeben, so haben diese keine Aussagekraft, da der Wert mithilfe der durchgeführten Messung nicht so genau bestimmt werden kann.
+
+\subsection{Mögliche Werte für $h$, $k$ und $l$ verschiedener Kristallstrukturen} % (fold)
+\label{sub:mögliche_werte_für_h_k_und_l_verschiedener_kristallstrukturen}
+
+Zur Berechnung der nicht verschwindenden Netzebenen wird der Strukturfaktor nach
+\begin{equation*}
+    S = \sum_j{f_j \exp{(-2 \pi i(x_j \cdot h + y_j \cdot k + z_j \cdot l))}}\,,
+\end{equation*}
+und den fundamentalen Translationen aus Kapitel \ref{sub:kubische_kristallstrukturen} berechnet.
+Es wurden die Kristallgitter SC-Strukur, FCC-Struktur, BCC-Struktur, Diamant-Struktur, Zinkblende-Struktur, Steinsalz-Struktur, Fluorid-Struktur und Caesiumchlorid-Struktur betrachtet.
+Die nicht verschwindenden Kombinationen der Werte $h$, $k$ und $l$ sind in Tabelle \ref{tab:struktur_hkl} aufgelistet.
+\begin{table}[!ht]
+    \centering
+    \caption{Kombinationen der Werte $(h k l)$ für nicht verschwindende Reflexe verschiedener Kristallgitter. Für die Steinsalz-Struktur wurde eine Basis aus Chlor auf der fundamentalen Translation A und Calcium auf der fundamentalen Translation B und für die Caesiumchlorid-Struktur eine Basis aus Caesium auf der fundamentalen Translation A und Chlot auf der fundamentalen Translation B.}
+    \input{build/tex/hkl.tex}
+    \label{tab:struktur_hkl}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Verwendete Formfaktoren zur Berechnung der nicht verschwindenden Reflexe der Werte $(h, k, l)$ \cite{V41}.}
+    \input{build/tex/formfaktoren.tex}
+    \label{tab:formfaktoren}
+\end{table}
+Bei einer weiteren Betrachtung der Formfaktoren aus Tabelle \ref{tab:formfaktoren} ergeben sich zusätzlich die in den Tabellen \ref{tab:struktur_hkl_stein} bis \ref{tab:struktur_hkl_caesium4} dargestellten Reflexe.
+
+
+\subsection{Messdaten} % (fold)
+\label{sub:messdaten}
+
+Um die Gitterstrukturen der gemessenen Probe 6 und dem Salz 1 zu bestimmen, werden zunächst die Streuwinkel aus den Ringen der Filmstreifen nach
+\begin{equation*}
+    \Theta' = \frac{s}{R}\,,
+\end{equation*}
+mit $R = \SI{57.3}{\milli\meter}$, bestimmt.
+
+Da die statistische Verteilung der Kristallorientierungen auf einen Kegelmantel mit dem Öffnungswinkel $2\Theta$ abbildet ergibt sich für $\Theta$
+\begin{equation*}
+    \Theta = \frac{\Theta'}{2}\,,
+\end{equation*}
+woraus sich der Netzebenenabstand nach der Bragg'schen Bedingung
+\begin{equation*}
+    d = \frac{\lambda}{2\sin{(\Theta)}}\,,
+\end{equation*}
+mit $\lambda = \SI{1.5417}{\angstrom}$, ergibt.
+Diese ist ein Mittelwert aus der $\lambda_{K_{\alpha,1}} = \SI{1.54093}{\angstrom}$ und $\lambda_{K_{\alpha,2}} = \SI{1.54478}{\angstrom}$ Wellenlänge der Röntgenstrahlung.
+Für die letzten vier Werte ist diese Näherung jedoch nicht gültig, da es zu einer Aufspaltung der Ringe gekommen ist.
+Somit wurde für diese Werte der Mittelwert nach
+\begin{equation*}
+    s_\text{Mittel} = \frac{s_{i} + s_{i+1}}{2}
+\end{equation*}
+gebildet.
+Zudem ist es zu einer Aufspaltung der ersten vier Werte gekommen, aufgrund des nicht perfekten herausfilterns der $K_{\beta}$ Linie.
+Auch für diese ist der Mittelwert errechnet worden.
+
+Die errechneten Ergebnisse sind in den Tabellen \ref{tab:data_1} bis \ref{tab:data_4} dargestellt.
+Da im Nachhinein keine Zuordnung von vorne und hinten auf dem Filmstreifen möglich ist,
+werden diese sowohl von rechts nach links ausgemessen,
+als auch von links nach rechts ausgemessen ausgewertet.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Gemessene und errechnete Werte der gemessenen Probe 6, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/data_probe.tex}
+    \label{tab:data_1}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Gemessene und errechnete Werte der gemessenen Probe 6, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/data_probe_inv.tex}
+    \label{tab:data_2}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Gemessene und errechnete Werte des gemessenen Salz 1, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/data_salt.tex}
+    \label{tab:data_3}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Gemessene und errechnete Werte des gemessenen Salz 1, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/data_salt_inv.tex}
+    \label{tab:data_4}
+\end{table}
+\clearpage
+
+
+\subsection{Analyse der Probe 6} % (fold)
+\label{sub:analyse_der_probe_6}
+
+\subsubsection{Bestimmung der Kristallstruktur} % (fold)
+\label{ssub:bestimmung_der_kristallstruktur_probe}
+
+Da es sich bei der Probe 6 um ein Metall handeln soll,
+kommen für die Kristallgitter SC-Struktur, BCC-Struktur, FCC-Struktur und Diamant-Struktur infrage.
+
+Da sich für die Gitterkonstante die Beziehung
+\begin{equation*}
+    a = d \cdot \sqrt{h^2 + k^2 + l^2} = d \cdot \sqrt{m} = d_i \cdot \sqrt{m_i}\,,
+\end{equation*}
+ergibt,
+lassen sich die gemessenen Netzebenenabstände $d_i$ mit den Kombinationen von $(h k l)$
+der möglichen Kristallgitter über die Beziehung
+\begin{equation*}
+    \frac{d_1}{d_i} = \sqrt{\frac{m_i}{m_1}}\,,
+\end{equation*}
+vergleichen.
+Dabei ergeben sich die in den Tabellen \ref{tab:probe_vergleich} und \ref{tab:probe_vergleich_inv}
+dargestellten Abweichungen.
+Eine genauere Betrachtung der wahrscheinlichsten Kristallgitter ist in den Tabellen \ref{tab:probe_vergleich_1} und \ref{tab:probe_vergleich_inv_1} dargestellt.
+
+Zum Vergleich sind die unwahrscheinlicheren Kristallgitter in den Tabellen \ref{tab:probe_vergleich_2} bis \ref{tab:probe_vergleich_inv_4} abgebildet.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Mittlere Abweichung der verglichenen Werte der gemessenen Probe 6, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/arrProbeDiffN.tex}
+    \label{tab:probe_vergleich}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Vergleich der Werte der gemessenen Probe 6 mit den Werten der FCC-Struktur, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/arrProbeDiffN_first_one.tex}
+    \label{tab:probe_vergleich_1}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Mittlere Abweichung der verglichenen Werte der gemessenen Probe 6, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/arrProbeDiffInvN.tex}
+    \label{tab:probe_vergleich_inv}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Vergleich der Werte der gemessenen Probe 6 mit den Werten der FCC-Struktur, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/arrProbeDiffInvN_first_one.tex}
+    \label{tab:probe_vergleich_inv_1}
+\end{table}
+
+\clearpage
+\subsubsection{Bestimmung der Gitterkonstanten $a$} % (fold)
+\label{sub:bestimmung_der_gitterkonstanten_probe}
+
+Zur Bestimmung der Gitterkonstanten wird der Zusammenhang
+\begin{equation*}
+    a = d_i \cdot \sqrt{m_i}\,,
+\end{equation*}
+verwendet.
+Um die scheinbare Abhängigkeit zwischen der Gitterkonstanten $a$ und dem Winkel $\Theta$ auszugleichen,
+werden die errechnete Konstanten gegen $\cos^2{(\Theta)}$ aufgetragen und mithilfe einer linearen Regression der Form
+$f(x) = c_\text{Probe} \cdot x + b$ die Konstante $a$ über die Beziehung
+\begin{equation*}
+    a = b\,,
+\end{equation*}
+bestimmt.
+
+Die verwendeten Werte für die Regression der wahrscheinlichsten Kristallstruktur sind in den Tabellen \ref{tab:data_probe_fit_1} und \ref{tab:data_probe_fit_inv_1} dargestellt.
+Die zugehörigen Graphen sind in den Abbildungen \ref{fig:data_probe_fit_1} und \ref{fig:data_probe_fit_inv_1} abgebildet.
+Die Ergebnisse der Regression zeigen die Tabellen \ref{tab:data_probe_fit_erg_1} und \ref{tab:data_probe_fit_erg_inv_1}.
+Die Werte der unwahrscheinlicheren Kristallstrukturen zeigen die Tabellen \ref{tab:data_probe_fit_2} bis \ref{tab:data_probe_fit_inv_4}.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Werte der Probe 6, welche für die lineare Regression genutzt werden, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/arrProbeDiffN_first_two.tex}
+    \label{tab:data_probe_fit_1}
+\end{table}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{build/pic/arrProbeDiffN_first.pdf}
+    \caption{Errechnete Werte der Gitterkonstanten $a$ der Probe 6 mit einer FCC-Struktur und die dazugehörige Regressionsgerade, wenn von rechts nach links gemessen wird.}
+    \label{fig:data_probe_fit_1}
+\end{figure}
+\begin{table}[!ht]
+    \centering
+    \caption{Ergebnisse der linearen Regression der Probe 6, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/arrProbeDiffN_fit.tex}
+    \label{tab:data_probe_fit_erg_1}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Werte der Probe 6, welche für die lineare Regression genutzt werden, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/arrProbeDiffInvN_first_two.tex}
+    \label{tab:data_probe_fit_inv_1}
+\end{table}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{build/pic/arrProbeDiffInvN_first.pdf}
+    \caption{Errechnete Werte der Gitterkonstanten $a$ der Probe 6 mit einer FCC-Struktur und die dazugehörige Regressionsgerade, wenn von links nach rechts gemessen wird.}
+    \label{fig:data_probe_fit_inv_1}
+\end{figure}
+\begin{table}[!ht]
+    \centering
+    \caption{Ergebnisse der linearen Regression der Probe 6, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/arrProbeDiffInvN_fit.tex}
+    \label{tab:data_probe_fit_erg_inv_1}
+\end{table}
+
+\clearpage
+\subsection{Analyse des Salzes 1} % (fold)
+\label{sub:analyse_des_salzes_1}
+
+\subsubsection{Bestimmung der Kristallstruktur} % (fold)
+\label{ssub:bestimmung_der_kristallstruktur_salz}
+
+
+Da es sich bei dem Salz 1 um ein Salz handeln soll,
+kommen für die Kristallgitter Zinkblende-Struktur, Steinsalz-Struktur, Fluorid-Struktur und Caesiumchlorid-Struktur infrage.
+
+Wie bei in Abschnitt \ref{sub:analyse_der_probe_6} bereits beschrieben werden die Kristallgitter über die Beziehung
+\begin{equation*}
+    \frac{d_1}{d_i} = \sqrt{\frac{m_i}{m_1}}\,,
+\end{equation*}
+verglichen.
+Dabei ergaben sich die in den Tabellen \ref{tab:salt_vergleich} und \ref{tab:salt_vergleich_inv}
+dargestellten Abweichungen der wahrscheinlichsten Kristallstrukturen.
+Eine genauere Betrachtung der wahrscheinlichsten Kristallgitter ist in den Tabellen \ref{tab:salt_vergleich_1} bis \ref{tab:salt_vergleich_inv_1} dargestellt.
+
+Zum Vergleich sind die unwahrscheinlicheren Kristallgitter in den Tabellen \ref{tab:salt_vergleich_2} bis \ref{tab:salt_vergleich_inv_4} abgebildet.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Mittlere Abweichung der verglichenen Werte des gemessenenen Salzes 1, wenn von rechts nach links gemessen wird.}
+    \input{build/tex/arrSaltDiffN.tex}
+    \label{tab:salt_vergleich}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Vergleich der Werte des gemessenen Salzes 1 mit den Werten der Caesiumchlorid-Struktur, wenn von rechts nach links gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffN_first_one.tex}
+    \label{tab:salt_vergleich_1}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Mittlere Abweichung der verglichenen Werte des gemessenenen Salzes 1, wenn von links nach rechts gemessen wird.}
+    \input{build/tex/arrSaltDiffInvN.tex}
+    \label{tab:salt_vergleich_inv}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Vergleich der Werte des gemessenen Salzes 1 mit den Werten der Caesiumchlorid-Struktur, wenn von links nach rechts gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffInvN_first_one.tex}
+    \label{tab:salt_vergleich_inv_1}
+\end{table}
+
+\clearpage
+\subsubsection{Bestimmung der Gitterkonstanten $a$} % (fold)
+\label{sub:bestimmung_der_gitterkonstanten_salt}
+
+Um die scheinbare Abhängigkeit zwischen der Gitterkonstanten $a$ und dem Winkel $\Theta$ auszugleichen, werden,
+wie in Abschnitt \ref{sub:bestimmung_der_gitterkonstanten_probe} beschrieben,
+die errechneten Konstanten gegen $\cos^2{(\Theta)}$ aufgetragen und mithilfe einer linearen Regression der Form
+$f(x) = c_\text{Salz} \cdot x + b$ die Konstante $a$ über die Beziehung
+\begin{equation*}
+    a = b\,,
+\end{equation*}
+bestimmt.
+
+Die verwendeten Werte für die Regression der wahrscheinlichsten Kristallstruktur sind in den Tabellen \ref{tab:data_salt_fit_1} bis \ref{tab:data_salt_fit_inv_1} dargestellt.
+Die zugehörigen Graphen sind in den Abbildungen \ref{fig:data_salt_fit_1} bis \ref{fig:data_salt_fit_inv_1} abgebildet.
+Die Ergebnisse der Regression zeigen die Tabellen \ref{tab:data_salt_fit_erg_1} bis \ref{tab:data_salt_fit_erg_inv_1}.
+Die Werte der unwahrscheinlicheren Kristallstrukturen zeigen die Tabellen \ref{tab:data_salt_fit_2} bis \ref{tab:data_salt_fit_inv_4}.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Werte des Salzes 1 der Caesiumchlorid-Struktur, welche für die lineare Regression genutzt werden, wenn von rechts nach links gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffN_first_two.tex}
+    \label{tab:data_salt_fit_1}
+\end{table}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{build/pic/arrSaltDiffN_first.pdf}
+    \caption{Errechnete Werte der Gitterkonstanten $a$ des Salzes 1 mit einer Caesiumchlorid-Struktur und die dazugehörige Regressionsgerade, wenn von rechts nach links gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \label{fig:data_salt_fit_1}
+\end{figure}
+\begin{table}[!ht]
+    \centering
+    \caption{Ergebnisse der linearen Regression des Salzes 1 der Caesiumchlorid-Struktur, wenn von rechts nach links gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffN_fit.tex}
+    \label{tab:data_salt_fit_erg_1}
+\end{table}
+\begin{table}[!ht]
+    \centering
+    \caption{Werte des Salzes 1 der Caesiumchlorid-Struktur, welche für die lineare Regression genutzt werden, wenn von links nach rechts gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffInvN_first_two.tex}
+    \label{tab:data_salt_fit_inv_2}
+\end{table}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{build/pic/arrSaltDiffInvN_first.pdf}
+    \caption{Errechnete Werte der Gitterkonstanten $a$ des Salzes 1 mit einer Caesiumchlorid-Struktur und die dazugehörige Regressionsgerade, wenn von links nach rechts gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \label{fig:data_salt_fit_inv_1}
+\end{figure}
+\begin{table}[!ht]
+    \centering
+    \caption{Ergebnisse der linearen Regression des Salzes 1 der Caesiumchlorid-Struktur, wenn von links nach rechts gemessen wird. Dabei sitzen auf den Positionen A der fundamentalen Translation Caesium Atome und auf den Positionen B der fundamentalen Translation Chlor Atome.}
+    \input{build/tex/arrSaltDiffInvN_fit.tex}
+    \label{tab:data_salt_fit_erg_inv_1}
+\end{table}
+
+\clearpage
+\section{Diskussion} % (fold)
+\label{sec:diskussion}
+
+Mithilfe des Versuchs ließ sich die Kristallstruktur der gemessenen Probe 6 und dem Salz 1 auf eine wahrscheinlichste Kristallstruktur einschränken.
+Aufgrund der geringeren Abweichung der Werte ist es wahrscheinlicher, dass bei der Probe 6 die von rechts nach links und bei dem Salz 1 die von rechts nach links gemessenen Streifen die richtige Ableserichtung darstellen.
+
+Für die Probe 6 ergibt sich für das wahrscheinlichste Kristallgitter eine FCC-Struktur mit einer mittleren Abweichung von $\SI{0.92 \pm 0.02}{\percent}$.
+Obwohl die sichtbaren Ringe sehr deutlich sind, fehlen einige Reflexe der Kombinationen von $h$, $k$ und $l$ für große $m$, welche sich durch eine längere Belichtung auf dem Filmstreifen zeigen könnten.
+Weiterhin kam es zu einer Aufspaltung in den letzten beiden und den ersten beiden Ringen.
+Dies ist auf die verschiedenen Wellenlängen der $K_{\alpha,1}$, $K_{\alpha,2}$ und $K_{\beta}$ Linie der Kupfer Anode zurückzuführen.
+Dies musste durch Mittelung der jeweils zusammengehörigen Werte ausgeglichen werden.
+Für die Gitterkonstante der FCC-Struktur ergibt sich mithilfe einer linearen Regression der Wert $\SI{3.05 \pm 0.02}{\angstrom}$.
+
+Beim gemessenen Salz 1 ist es hingegen am wahrscheinlichsten, dass es sich um eine Caesiumchlorid-Struktur handelt bei einer mittleren Abweichung von $\SI{3.18 \pm 0.04}{\percent}$.
+Die Ringe waren auf dem Streifen schwach bis deutlich zu erkennen, doch fehlten hierbei die Reflexe für größere $m$.
+Um die Reflexe zu verdeutlichen und die fehlenden Reflexe sichtbar zu machen, könnte eine längere Belichtungszeit gewählt werden.
+Die Gitterkonstante der Caesiumchlorid-Struktur ergibt sich somit mithilfe einer linearen Regression zu $\SI{4.13}{\angstrom}$.
+Der Fehler ist nicht signifikant.
+Zudem erbringt eine Betrachtung verschiedener Formfaktoren keine Änderung im Ergebnis
+
+Abweichungen der Quotienten von den theoretischen Werten könnten sich neben den Ablesefehlern durch Inhomogenitäten oder Fehler innerhalb der Elementarzellen ergeben haben.
+Aufgrund der gleichen Reflexe bei der Betrachtung verschiedener Formfaktoren innerhalb der Basis, ist es nicht möglich, auf die Atome, aus denen das Gitter aufgebaut ist, zurückzuschließen.
+Da jedoch Aluminium, Kupfer, Nickel, Blei, Gold, Platin, Silber, Rhodium und Palladium in natürlicher Weise in einer FCC-Struktur vorkommen, ist anzunehmen, dass sich eines dieser Stoffe hinter der Probe 6 verbirgt.
+Bei dem Salz 1 hingegen ist es wahrscheinlich dass die Caesiumchlroid-Strukur aus Caesium und Chlor aufgebaut ist, da dieses für diese Elemente charakteristisch ist.
