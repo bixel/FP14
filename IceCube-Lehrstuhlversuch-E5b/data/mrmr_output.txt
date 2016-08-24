@@ -1,0 +1,119 @@
+You have specified parameters: threshold=mu+/-1.00*sigma #fea=50 selection method=MID #maxVar=10000 #maxSample=40000
+
+Target classification variable (#1 column in the input data) has name=0 	entropy score=1.000
+
+*** MaxRel features ***
+Order 	 Fea 	 Name 	 Score
+1 	 35 	 MPEFitParaboloid.z 	 0.229
+2 	 29 	 MPEFitHighNoise.z 	 0.227
+3 	 18 	 LineFit_TT.z 	 0.227
+4 	 98 	 SplineMPEMuEXDifferential.z 	 0.226
+5 	 115 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_Muon.z 	 0.226
+6 	 65 	 SplineMPE.z 	 0.226
+7 	 107 	 SplineMPETruncatedEnergy_SPICEMie_AllBINS_Muon.z 	 0.226
+8 	 50 	 MuEXAngular4.z 	 0.226
+9 	 15 	 HitStatisticsValues.cog_z 	 0.221
+10 	 10 	 HitStatisticsValues.z_mean 	 0.218
+11 	 25 	 LineFit_TTParams.lf_vel_z 	 0.201
+12 	 57 	 SPEFit2Bayesian.z 	 0.195
+13 	 95 	 SplineMPEFitParams.rlogl 	 0.187
+14 	 8 	 HitStatisticsValues.z_min 	 0.186
+15 	 9 	 HitStatisticsValues.z_max 	 0.160
+16 	 74 	 SplineMPEDirectHitsA.n_dir_doms 	 0.135
+17 	 73 	 SplineMPEDirectHitsA.n_dir_strings 	 0.133
+18 	 20 	 LineFit_TT.zenith 	 0.126
+19 	 12 	 HitStatisticsValues.z_travel 	 0.108
+20 	 52 	 MuEXAngular4.zenith 	 0.106
+21 	 31 	 MPEFitHighNoise.zenith 	 0.100
+22 	 112 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_MuEres.value 	 0.099
+23 	 37 	 MPEFitParaboloid.zenith 	 0.095
+24 	 79 	 SplineMPEDirectHitsC.dir_track_length 	 0.092
+25 	 40 	 MPEFitParaboloidFitParams.zenith 	 0.092
+26 	 104 	 SplineMPETruncatedEnergy_SPICEMie_AllBINS_MuEres.value 	 0.091
+27 	 86 	 SplineMPEDirectHitsE.dir_track_length 	 0.088
+28 	 71 	 SplineMPECharacteristics.track_hits_separation_length 	 0.084
+29 	 121 	 NewAtt.DirectEllipse 	 0.078
+30 	 80 	 SplineMPEDirectHitsC.n_dir_strings 	 0.078
+31 	 125 	 NewAtt.SplineVerRadius 	 0.071
+32 	 120 	 NewAtt.radius 	 0.071
+33 	 81 	 SplineMPEDirectHitsC.n_dir_doms 	 0.071
+34 	 117 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_Muon.zenith 	 0.069
+35 	 67 	 SplineMPE.zenith 	 0.069
+36 	 100 	 SplineMPEMuEXDifferential.zenith 	 0.069
+37 	 109 	 SplineMPETruncatedEnergy_SPICEMie_AllBINS_Muon.zenith 	 0.069
+38 	 87 	 SplineMPEDirectHitsE.dir_track_hit_distribution_smoothness 	 0.062
+39 	 72 	 SplineMPECharacteristics.track_hits_distribution_smoothness 	 0.053
+40 	 59 	 SPEFit2Bayesian.zenith 	 0.052
+41 	 4 	 HitStatisticsValues.cog_z_sigma 	 0.051
+42 	 11 	 HitStatisticsValues.z_sigma 	 0.051
+43 	 69 	 SplineMPECharacteristics.avg_dom_dist_q_tot_dom 	 0.049
+44 	 88 	 SplineMPEDirectHitsE.n_dir_strings 	 0.045
+45 	 89 	 SplineMPEDirectHitsE.n_dir_doms 	 0.040
+46 	 54 	 MuEXAngular4_Sigma.value 	 0.038
+47 	 123 	 NewAtt.SepDevide 	 0.038
+48 	 61 	 SPEFit2BayesianFitParams.logl 	 0.032
+49 	 22 	 LineFit_TTParams.lf_vel 	 0.030
+50 	 122 	 NewAtt.DeltaZd 	 0.028
+
+*** mRMR features ***
+Order 	 Fea 	 Name 	 Score
+1 	 35 	 MPEFitParaboloid.z 	 0.229
+2 	 95 	 SplineMPEFitParams.rlogl 	 0.107
+3 	 25 	 LineFit_TTParams.lf_vel_z 	 0.107
+4 	 73 	 SplineMPEDirectHitsA.n_dir_strings 	 0.047
+5 	 71 	 SplineMPECharacteristics.track_hits_separation_length 	 0.039
+6 	 125 	 NewAtt.SplineVerRadius 	 0.028
+7 	 87 	 SplineMPEDirectHitsE.dir_track_hit_distribution_smoothness 	 0.028
+8 	 57 	 SPEFit2Bayesian.z 	 0.033
+9 	 12 	 HitStatisticsValues.z_travel 	 0.033
+10 	 69 	 SplineMPECharacteristics.avg_dom_dist_q_tot_dom 	 0.022
+11 	 112 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_MuEres.value 	 0.026
+12 	 52 	 MuEXAngular4.zenith 	 0.030
+13 	 74 	 SplineMPEDirectHitsA.n_dir_doms 	 0.022
+14 	 59 	 SPEFit2Bayesian.zenith 	 0.023
+15 	 79 	 SplineMPEDirectHitsC.dir_track_length 	 0.027
+16 	 18 	 LineFit_TT.z 	 0.028
+17 	 54 	 MuEXAngular4_Sigma.value 	 0.017
+18 	 20 	 LineFit_TT.zenith 	 0.020
+19 	 80 	 SplineMPEDirectHitsC.n_dir_strings 	 0.014
+20 	 102 	 SplineMPEMuEXDifferential.energy 	 0.014
+21 	 122 	 NewAtt.DeltaZd 	 0.013
+22 	 104 	 SplineMPETruncatedEnergy_SPICEMie_AllBINS_MuEres.value 	 0.013
+23 	 98 	 SplineMPEMuEXDifferential.z 	 0.019
+24 	 81 	 SplineMPEDirectHitsC.n_dir_doms 	 0.014
+25 	 72 	 SplineMPECharacteristics.track_hits_distribution_smoothness 	 0.011
+26 	 97 	 SplineMPEMuEXDifferential.y 	 0.010
+27 	 31 	 MPEFitHighNoise.zenith 	 0.013
+28 	 121 	 NewAtt.DirectEllipse 	 0.012
+29 	 8 	 HitStatisticsValues.z_min 	 0.011
+30 	 22 	 LineFit_TTParams.lf_vel 	 0.006
+31 	 96 	 SplineMPEMuEXDifferential.x 	 0.006
+32 	 119 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_Muon.energy 	 0.005
+33 	 86 	 SplineMPEDirectHitsE.dir_track_length 	 0.005
+34 	 29 	 MPEFitHighNoise.z 	 0.006
+35 	 120 	 NewAtt.radius 	 0.005
+36 	 58 	 SPEFit2Bayesian.time 	 0.004
+37 	 123 	 NewAtt.SepDevide 	 0.004
+38 	 37 	 MPEFitParaboloid.zenith 	 0.005
+39 	 43 	 MPEFitParaboloidFitParams.err2 	 0.003
+40 	 9 	 HitStatisticsValues.z_max 	 0.003
+41 	 42 	 MPEFitParaboloidFitParams.err1 	 0.002
+42 	 111 	 SplineMPETruncatedEnergy_SPICEMie_AllBINS_Muon.energy 	 0.001
+43 	 47 	 MPEFit_TT.fit_status 	 -0.000
+44 	 32 	 MPEFitHighNoise.azimuth 	 -0.000
+45 	 115 	 SplineMPETruncatedEnergy_SPICEMie_AllDOMS_Muon.z 	 0.003
+46 	 89 	 SplineMPEDirectHitsE.n_dir_doms 	 0.001
+47 	 4 	 HitStatisticsValues.cog_z_sigma 	 0.001
+48 	 5 	 HitStatisticsValues.min_pulse_time 	 -0.001
+49 	 60 	 SPEFit2Bayesian.azimuth 	 -0.001
+50 	 40 	 MPEFitParaboloidFitParams.zenith 	 0.000
+
+
+ *** This program and the respective minimum Redundancy Maximum Relevance (mRMR)
+     algorithm were developed by Hanchuan Peng <hanchuan.peng@gmail.com>for
+     the paper
+     "Feature selection based on mutual information: criteria of
+      max-dependency, max-relevance, and min-redundancy,"
+      Hanchuan Peng, Fuhui Long, and Chris Ding,
+      IEEE Transactions on Pattern Analysis and Machine Intelligence,
+      Vol. 27, No. 8, pp.1226-1238, 2005.
