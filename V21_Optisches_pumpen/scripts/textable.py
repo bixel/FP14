@@ -93,7 +93,7 @@ def table(names, cols):
 
     line = []
     maxlen = 0
-    if not isinstance(cols[0], uncertainties.AffineScalarFunc) \
+    if not isinstance(cols[0], uncertainties.core.AffineScalarFunc) \
             and not isinstance(cols[0], numpy.float64):
         for c in cols:
             maxlen = max(len(c), maxlen)
@@ -103,7 +103,7 @@ def table(names, cols):
     for i in range(maxlen):
         for c in cols:
             try:
-                if not isinstance(cols[0], uncertainties.AffineScalarFunc) \
+                if not isinstance(cols[0], uncertainties.core.AffineScalarFunc) \
                         and not isinstance(cols[0], numpy.float64):
                     if is_uncert(c[i]):
                         line.append('{:fL}'.format(c[i]))

@@ -89,23 +89,29 @@ PLOTS_WITH_PATH = $(patsubst %,build/plots/%,$(PLOTS))
 
 all: build/00_main.pdf
 
-build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) $(PLOTS_WITH_PATH) $(TEX_C) $(PLOT_C) $(TEX_I) $(PLOT_I) $(TEX_OWN)| build
+build/00_main.pdf: $(TEXCONTENT) $(TEXHEADERS) $(PLOTS_WITH_PATH) $(TEX_C) $(PLOT_C) $(TEX_I) $(PLOT_I) $(TEX_OWN)| build build/plots build/tex
 	latexmk $(TEXOPTIONS) 00_main.tex
 
-$(PLOTS_WITH_PATH): scripts/plot.py matplotlibrc | build
-	./scripts/plot.py
+$(PLOTS_WITH_PATH): scripts/plot.py matplotlibrc | build build/plots build/tex
+	python scripts/plot.py
 
-$(TEX_C) $(PLOT_C): scripts/aufg_c.py | build
+$(TEX_C) $(PLOT_C): scripts/aufg_c.py | build build/plots build/tex
 	python scripts/aufg_c.py
 
-$(TEX_I) $(PLOT_I): scripts/aufg_i.py | build
+$(TEX_I) $(PLOT_I): scripts/aufg_i.py | build build/plots build/tex
 	python scripts/aufg_i.py
 
 # $(PLOTS_WITH_PATH): img/plot.py matplotlibrc | build
 # 	./img/plot.py
 
 build:
-	mkdir -p build/plots build/tex
+	mkdir -p build 
+
+build/plots:
+	mkdir -p build/plots
+
+build/tex:
+	mkdir -p build/tex
 
 clean:
 	rm -r build
